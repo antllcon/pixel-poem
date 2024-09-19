@@ -55,6 +55,12 @@ build CMakeFiles/pixel_poem.dir/main.cpp.o: CXX_COMPILER__pixel_poem_unscanned_D
   OBJECT_DIR = CMakeFiles/pixel_poem.dir
   OBJECT_FILE_DIR = CMakeFiles/pixel_poem.dir
 
+build CMakeFiles/pixel_poem.dir/character/Character.cpp.o: CXX_COMPILER__pixel_poem_unscanned_Debug /projects/CLionProjects/pixel_poem/character/Character.cpp || cmake_object_order_depends_target_pixel_poem
+  DEP_FILE = CMakeFiles/pixel_poem.dir/character/Character.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/pixel_poem.dir
+  OBJECT_FILE_DIR = CMakeFiles/pixel_poem.dir/character
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target pixel_poem
@@ -63,7 +69,7 @@ build CMakeFiles/pixel_poem.dir/main.cpp.o: CXX_COMPILER__pixel_poem_unscanned_D
 #############################################
 # Link the executable pixel_poem
 
-build pixel_poem: CXX_EXECUTABLE_LINKER__pixel_poem_Debug CMakeFiles/pixel_poem.dir/main.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+build pixel_poem: CXX_EXECUTABLE_LINKER__pixel_poem_Debug CMakeFiles/pixel_poem.dir/main.cpp.o CMakeFiles/pixel_poem.dir/character/Character.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
   FLAGS = -g
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
   OBJECT_DIR = CMakeFiles/pixel_poem.dir
