@@ -1,0 +1,35 @@
+# Файлы конфигурации и кэш CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Сборочные артефакты
+build/
+bin/
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.lib
+*.dll
+*.so
+
+# Лог файлы
+*.log
+
+# Файлы настроек IDE (например, CLion)
+.idea/
+.vscode/
+*.swp
+
+# Файлы для отладки
+*.dSYM/
+*.stackdump
+
+/shelf/
+/workspace.xml
+/httpRequests/
+/dataSources/
+/dataSources.local.xml
