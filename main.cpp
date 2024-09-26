@@ -1,48 +1,36 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "character/Character.hpp"
 
-void drawCircleCenter(sf::RenderWindow& window, float radius) {
+// void drawRectangle(sf::RenderWindow &window, float x, float y, float width, float height, float color); {
+//     sf::RectangleShape rectangle(sf::Vector2f(width, height));
+//     rectangle.setPosition(x, y);
+//     rectangle.setFillColor(sf::Color::Black);
+// }
 
-    sf::Vector2u windowSize = window.getSize(); // что такое
-
-    float x = static_cast<float>(windowSize.x) / 2 - radius;
-    float y = static_cast<float>(windowSize.y) / 2 - radius;
-
-    sf::CircleShape circle(radius);
-    circle.setFillColor(sf::Color::Green); // задаем цвет
-
-    circle.setPosition(x, y);
-
-    window.clear();
-    window.draw(circle);
-    window.display();
-}
+//
+// void drawCircleCenter(sf::RenderWindow& window, float x, float y, float radius) {
+//
+//     sf::Vector2u windowSize = window.getSize();
+//
+//     float x = static_cast<float>(windowSize.x) / 2 - radius;
+//     float y = static_cast<float>(windowSize.y) / 2 - radius;
+//
+//     sf::CircleShape circle(radius);
+//     circle.setFillColor(sf::Color::Green); // задаем цвет
+//
+//     circle.setPosition(x, y);
+//
+//     window.clear();
+//     window.draw(circle);
+//     window.display();
+// }
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 600),
         "Pixel Poem");
 
-    Character hero(400.0f, 300.0f, 0.2f, 20, 60, 1);
-
     while (window.isOpen()) {
         sf::Event event = sf::Event();
-
-        float moveX = 0.0f;
-        float moveY = 0.0f;
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-            moveX -= 1.0f;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-            moveX += 1.0f;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-            moveY -= 1.0f;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-            moveY += 1.0f;
-        }
 
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
@@ -50,14 +38,30 @@ int main() {
             }
         }
 
-        hero.move(moveX, moveY);
-
-        // Очищаем экран и отрисовываем персонажа
-        window.clear();
-        hero.draw(window);
+        // window.clear();
         window.display();
 
-        // drawCircleCenter(window, 64.0f);
+        sf::RectangleShape rectangle;
+        rectangle.setPosition(sf::Vector2f(20, 20));
+        rectangle.setSize({60, 180});
+        rectangle.setFillColor(sf::Color(60, 60, 60));
+
+        sf::CircleShape circleRed(25);
+        circleRed.setPosition(sf::Vector2f(25, 25));
+        circleRed.setFillColor(sf::Color(255, 0, 0));
+
+        sf::CircleShape circleYellow(25);
+        circleYellow.setPosition(sf::Vector2f(25, 85));
+        circleYellow.setFillColor(sf::Color(255, 255, 0));
+
+        sf::CircleShape circleGreen(25);
+        circleGreen.setPosition(sf::Vector2f(25, 145));
+        circleGreen.setFillColor(sf::Color(0, 255, 0));
+
+        window.draw(rectangle);
+        window.draw(circleRed);
+        window.draw(circleYellow);
+        window.draw(circleGreen);
     }
 
     std::cout << "@antllcon production" << std::endl;
