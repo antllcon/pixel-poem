@@ -1,59 +1,60 @@
-#include <iostream>
+// main.cpp
 #include <SFML/Graphics.hpp>
+#include "config.h"
+#include "player/Player.h"
+#include "game/Game.h"
+#include "enemy/Enemy.h"
 
-int main() {
-    // Объявление констант
-    constexpr int SCREEN_WIDTH = 800;
-    constexpr int SCREEN_HEIGHT = 600;
-    constexpr float BALL_RADIUS = 40;
+// Функция проверки закрытия окна
+static void eventClose(sf::RenderWindow &window)
+{
+	sf::Event event;
+	while (window.pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+		{
+			window.close();
+		}
+	}
+}
 
-    sf::Vector2f speed = {150.f, -150.f};
+// Функция обновления времени между кадрами
+static float updateDeltaTime(sf::Clock &clock)
+{
+	sf::Time elapsed = clock.restart();
+	return elapsed.asSeconds();
+}
 
-    sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT),
-        "Pixel Poem");
-    sf::Clock clock;
+// Функция отрисовки
+static void render(sf::RenderWindow &window, Player &player, Enemy &enemy)
+{
+	window.clear();
+	player.draw(window);
+	enemy.draw(window);
+	window.display();
+}
 
-    // шар
-    sf::CircleShape circle(BALL_RADIUS);
-    circle.setPosition(100, 200);
-    circle.setFillColor(sf::Color(0, 255, 255));
-
-    while (window.isOpen()) {
-        sf::Event event = sf::Event();
-
-        // конец игрового цикла - закрытие программы
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                window.close();
-            }
-        }
-
-        // работа со временем - шаг процессов
-        const float deltaTime = clock.restart().asSeconds();
-        sf::Vector2f position = circle.getPosition();
-
-        position += speed * deltaTime;
-
-        if ((position.x + 2 * BALL_RADIUS >= SCREEN_WIDTH) && (speed.x > 0)) {
-            speed.x = -speed.x;
-        }
-        if ((position.x < 0) && (speed.x < 0)) {
-            speed.x = -speed.x;
-        }
-        if ((position.y + 2 * BALL_RADIUS >= SCREEN_HEIGHT) && (speed.y > 0)) {
-            speed.y = -speed.y;
-        }
-        if ((position.y < 0) && (speed.y < 0)) {
-            speed.y = -speed.y;
-        }
-
-        circle.setPosition(position);
-
-        // рисование
-        window.clear();
-        window.draw(circle);
-        window.display();
-    }
-
-    return 0;
+int main()
+{
+	// Инициализация игры
+	Game pixelPoem;
+	pixelPoem.setState(Game::GameState::Play);
+	// Инициализация игрока
+	Player player(PLAYER_SIZE, PLAYER_COLOR, PLAYER_SPEED, PLAYER_HEALTH);
+	// Инициализация бота
+	Enemy enemy(BOT_SIZE, BOT_COLOR, BOT_HEALTH);
+	// Инициализация экрана
+	sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT),
+	                        "Pixel Poem");
+	// Инициализация часов
+	sf::Clock clock;
+	// Цикл игры
+	while (window.isOpen())
+	{
+		eventClose(window);
+		float deltaTime = updateDeltaTime(clock);
+		pixelPoem.update(deltaTime, player);
+		render(window, player, enemy);
+	}
+	return 0;
 }
