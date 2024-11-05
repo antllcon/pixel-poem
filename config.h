@@ -27,4 +27,13 @@ constexpr int BOT_SIZE = 24;
 constexpr int BOT_HEALTH = 25;
 const sf::Color BOT_COLOR = sf::Color(150, 50, 50);
 
+// Характеристики оружия
+constexpr float WEAPON_COOLDOWN = 0.0000005f;
+
+// Характеристики пуль
+constexpr int BULLET_SIZE = 10;
+constexpr int BULLET_SPEED = 500.f;
+constexpr int BULLET_DAMAGE = 10;
+const sf::Color BULLET_COLOR = sf::Color(0, 50, 200);
+
 #endif
