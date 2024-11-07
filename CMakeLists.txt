@@ -5,5 +5,6 @@ find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 add_executable(pixel_poem main.cpp player/Player.cpp game/Game.cpp enemy/Enemy.cpp
         weapon/weapon.cpp
         bullet/bullet.h
-        bullet/bullet.cpp)
+        bullet/bullet.cpp
+        player/Player.h)
 target_link_libraries(pixel_poem sfml-graphics sfml-audio)

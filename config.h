@@ -16,6 +16,7 @@ constexpr float MAP_BOT_SPAWN_X = 120.f;
 constexpr float MAP_BOT_SPAWN_Y = 20.f;
 
 // Характеристики игрока
+const sf::Vector2f PLAYER_VIEW(1.0f, 0.0f);
 constexpr bool PLAYER_AIM = false;
 constexpr int PLAYER_SIZE = 24;
 constexpr int PLAYER_HEALTH = 100;

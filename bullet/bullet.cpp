@@ -2,9 +2,11 @@
 
 #include "bullet.h"
 
+#include "../config.h"
+
 // Конструктор
-Bullet::Bullet(sf::Vector2f position, sf::Vector2f direction, int size, sf::Color color, float speed, float damage)
-    : direction(direction), color(color), speed(speed), damage(damage)
+Bullet::Bullet(sf::Vector2f position, sf::Vector2f direction)
+    : size(BULLET_SIZE), direction(direction), color(BULLET_COLOR), speed(BULLET_SPEED), damage(BULLET_DAMAGE)
 {
     bullet.setSize(sf::Vector2f(size, size));
     bullet.setFillColor(color);

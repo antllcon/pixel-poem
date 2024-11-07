@@ -1,28 +1,24 @@
-#include "weapon.h"
+// weapon.cpp
 
-#include <iostream>
+#include "weapon.h"
 
 #include "../config.h"
 
 // Конструктор
-Weapon::Weapon(float cooldown, int bulletSize, sf::Color bulletColor, float bulletSpeed, float bulletDamage)
+Weapon::Weapon(float cooldown)
     : cooldown(cooldown), timeLastShoot(0.f),
-      bulletSize(bulletSize), bulletColor(bulletColor), bulletSpeed(bulletSpeed), bulletDamage(bulletDamage)
+      bulletSize(BULLET_SIZE), bulletColor(BULLET_COLOR), bulletSpeed(BULLET_SPEED), bulletDamage(BULLET_DAMAGE)
 {
 }
 
 std::optional<Bullet> Weapon::shootBullet(sf::Vector2f position, sf::Vector2f direction, float deltaTime)
 {
-
     timeLastShoot += deltaTime;
 
-    std::cout << cooldown << " <= " << timeLastShoot << std::endl;
-
-    if (0.001f <= timeLastShoot || timeLastShoot == 0.f)
+    if (timeLastShoot >= cooldown)
     {
-        std::cout << "урон пошел" << std::endl;
         timeLastShoot = 0.f;
-        return Bullet(position, direction, 5, BULLET_COLOR, BULLET_SPEED, BULLET_DAMAGE);
+        return Bullet(position, direction);
     }
     return std::nullopt;
 }

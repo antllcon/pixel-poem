@@ -1,3 +1,5 @@
+// bullet.h
+
 #pragma once
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -6,7 +8,7 @@ class Bullet
 {
 public:
     // Конструктор
-    Bullet(sf::Vector2f position, sf::Vector2f direction, int size, sf::Color color, float speed, float damage);
+    Bullet(sf::Vector2f position, sf::Vector2f direction);
 
     // Методы
     void update(float deltaTime);
@@ -27,6 +29,7 @@ public:
 private:
     sf::RectangleShape bullet;
 
+    int size;
     sf::Vector2f direction;
     sf::Color color;
     float speed;

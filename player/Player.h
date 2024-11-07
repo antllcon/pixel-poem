@@ -1,3 +1,5 @@
+// player.h
+
 #pragma once
 
 #include <SFML/Graphics.hpp>
@@ -6,7 +8,6 @@
 class Player
 {
 public:
-    // Перечисление направления
     enum class Direction
     {
         None,
@@ -16,16 +17,9 @@ public:
         Right
     };
 
-    // Конструктор
     Player(int size, sf::Color color, float speed, int health, bool aim);
-
-    // Методы
-    void processInput(sf::Event event, float deltaTime);
-    void processMoveDirection();
-    void processShoot(float deltaTime);
+    void processInput(const sf::Event& event, float deltaTime, const sf::RenderWindow& window);
     void update(float deltaTime);
-    void move(float deltaTime);
-    void shoot(float deltaTime);
     void draw(sf::RenderWindow& window);
 
     // Геттеры и сеттеры
@@ -39,21 +33,25 @@ public:
     void setSpeed(float newSpeed);
     void setHealth(int newHealth);
     void setAim(bool newAim);
-    void setMoveDirection(const sf::Vector2f& newMoveDirection);
-
 private:
-    sf::RectangleShape player; // визуальное представление
-    sf::Vector2f moveDirection; // направление ходьбы
-    // TODO сделать направление взгляда
-    sf::Vector2f lastDirection; // последнее направление
-    // sf::Vector2f shootDirection; // направление стрельбы
-    float speed; // скорость
-    int health; // здоровье
-    bool aim; // авто наведение
+    sf::RectangleShape player;
+    sf::Vector2f moveDirection;
+    sf::Vector2f viewDirection;
+    float speed;
+    int health;
+    bool aim;
 
-    // TODO придумать как прокинуть константу
     Weapon weapon;
     std::vector<Bullet> bullets;
+    float shootCooldownTime = 0.25f;
+    float timeSinceLastShoot = 0.0f;
 
-    void handleShoot(float deltaTime);
+    void processMoveDirection();
+    void processViewDirection(const sf::RenderWindow& window);
+    void setMoveDirection(const sf::Vector2f& newMoveDirection);
+    void setViewDirection(const sf::Vector2f& newViewDirection);
+    void processShoot(const sf::Event& event, float deltaTime);
+    void view();
+    void move(float deltaTime);
+    void shoot(float deltaTime);
 };

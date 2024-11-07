@@ -1,3 +1,5 @@
+// weapon.h
+
 #pragma once
 
 #include <SFML/Graphics.hpp>
@@ -10,9 +12,8 @@ class Weapon
 {
 public:
     // Конструктор
-    Weapon(float cooldown, int bullSize, sf::Color bulletColor, float bulletSpeed, float bulletDamage);
+    Weapon(float cooldown);
 
-    // Метод для стрельбы, возвращает новый объект Bullet
     std::optional<Bullet> shootBullet(sf::Vector2f position, sf::Vector2f direction, float deltaTime);
 
     // Сеттеры и геттеры

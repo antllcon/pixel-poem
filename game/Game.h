@@ -1,37 +1,37 @@
-#pragma once
+// Game.h
 
+#pragma once
 #include <SFML/Graphics.hpp>
-#include "../player/Player.h"
-#include "../enemy/Enemy.h"
+#include <memory>
+
+class Player;
+class Enemy;
 
 class Game
 {
 public:
-    // Перечисление состояний
-    enum class GameState
-    {
-        Start, // Начальное состояние - меню игры
-        Play, // Игровое состояние - игровой процесс
-        Pause, // Прерывание игрового состояния - пауза
-        End // Окончание игрового состояния - конец, итоги игры
-    };
+    enum class GameState { Start, Play, Pause, End };
 
-    // Конструктор
     Game();
+    ~Game();
 
-    // Методы
-    void processEvents(sf::RenderWindow& window, Player& player, Enemy& enemy);
-    void updateDeltaTime();
-    void update(Player& player, Enemy& enemy);
-    static void updateCamera(sf::RenderWindow& window, sf::View& view, const Player& player);
-    static void render(sf::RenderWindow& window, Player& player, Enemy& enemy);
+    void processEvents(sf::RenderWindow& window);
+    void update(sf::RenderWindow& window);
+    void render(sf::RenderWindow& window);
 
-    // Сеттеры и геттеры
     void setState(GameState newState);
     GameState getState() const;
 
 private:
+    void initEntitiesPlay();
+    void updateDeltaTime();
+    void updateCamera(sf::RenderWindow& window);
+
     GameState state;
     sf::Clock clock;
     float deltaTime;
+    sf::View view;
+
+    std::unique_ptr<Player> player;
+    std::unique_ptr<Enemy> enemy;
 };
