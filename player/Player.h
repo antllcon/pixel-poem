@@ -18,7 +18,7 @@ public:
     };
 
     Player(int size, sf::Color color, float speed, int health, bool aim);
-    void processInput(const sf::Event& event, float deltaTime, const sf::RenderWindow& window);
+    void processInput(float globalTime);
     void update(float deltaTime);
     void draw(sf::RenderWindow& window);
 
@@ -35,6 +35,7 @@ public:
     void setAim(bool newAim);
 private:
     sf::RectangleShape player;
+    sf::Vector2f position;
     sf::Vector2f moveDirection;
     sf::Vector2f viewDirection;
     float speed;
@@ -43,15 +44,14 @@ private:
 
     Weapon weapon;
     std::vector<Bullet> bullets;
-    float shootCooldownTime = 0.25f;
-    float timeSinceLastShoot = 0.0f;
 
     void processMoveDirection();
-    void processViewDirection(const sf::RenderWindow& window);
+    void processViewDirection();
+    void processShoot(float globalTime);
     void setMoveDirection(const sf::Vector2f& newMoveDirection);
     void setViewDirection(const sf::Vector2f& newViewDirection);
-    void processShoot(const sf::Event& event, float deltaTime);
     void view();
     void move(float deltaTime);
     void shoot(float deltaTime);
+    void bulletDraw(sf::RenderWindow& window);
 };

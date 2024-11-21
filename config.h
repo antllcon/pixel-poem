@@ -3,6 +3,13 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+// Цвета
+const sf::Color COLOR_GREEN = sf::Color(102, 153, 102);
+const sf::Color COLOR_PURPLE = sf::Color(204, 0, 102);
+const sf::Color COLOR_BRAUN = sf::Color(153, 102, 102);
+const sf::Color COLOR_GRAY = sf::Color(69, 69, 69);
+const sf::Color COLOR_DARK = sf::Color(51, 51, 51);
+
 // Размеры окна игры
 constexpr int SCREEN_WIDTH = 800;
 constexpr int SCREEN_HEIGHT = 600;
@@ -35,6 +42,10 @@ constexpr float WEAPON_COOLDOWN = 0.0000005f;
 constexpr int BULLET_SIZE = 10;
 constexpr int BULLET_SPEED = 500.f;
 constexpr int BULLET_DAMAGE = 10;
-const sf::Color BULLET_COLOR = sf::Color(0, 50, 200);
+const sf::Color BULLET_COLOR = COLOR_GREEN;
+
+const std::string SRC_FONT = "/projects/CLionProjects/pixel_poem/resources/fonts/pp-font-third.ttf";
+const std::string SRC_CONTROLLER = "/projects/CLionProjects/pixel_poem/resources/sprites/controller.png";
+
 
 #endif

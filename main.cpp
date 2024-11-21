@@ -8,6 +8,7 @@ int main()
 {
     // Инициализация экрана
     sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Pixel Poem");
+
     // Инициализация игры
     Game pixelPoem;
     pixelPoem.setState(Game::GameState::Start);

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "../bullet/bullet.h"
 
 class Enemy
 {
@@ -23,5 +24,6 @@ public:
 
 private:
 	sf::RectangleShape enemy;
+	sf::Vector2f position;
 	int health;
 };

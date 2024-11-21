@@ -5,31 +5,32 @@
 
 // Конструктор
 Enemy::Enemy(int size, sf::Color color, int health)
-	// характеристики
-	: health(health)
+	: position(MAP_BOT_SPAWN_X, MAP_BOT_SPAWN_Y), health(health)
 {
-	// визуальное представление
 	enemy.setSize(sf::Vector2f(size, size));
-	enemy.setPosition(MAP_BOT_SPAWN_X, MAP_BOT_SPAWN_Y);
+	enemy.setPosition(position);
 	enemy.setFillColor(color);
 }
 
-// Метод рисования
 void Enemy::draw(sf::RenderWindow &window)
 {
 	window.draw(enemy);
 }
 
-// Гетеры
-float Enemy::getX() { return enemy.getPosition().x; }
-float Enemy::getY() { return enemy.getPosition().y; }
-
-// Геттеры для характеристик
+float Enemy::getX() { return position.x; }
+float Enemy::getY() { return position.y; }
 int Enemy::getHealth() const { return health; }
 
-// Cетеры
-void Enemy::setX(float x) { enemy.setPosition(x, enemy.getPosition().y); }
-void Enemy::setY(float y) { enemy.setPosition(enemy.getPosition().x, y); }
+void Enemy::setX(float x)
+{
+	position.x = x;
+	enemy.setPosition(position);
+}
 
-// Сетеры для характеристик
+void Enemy::setY(float y)
+{
+	position.y = y;
+	enemy.setPosition(position);
+}
+
 void Enemy::setHealth(int newHealth) { health = newHealth; }

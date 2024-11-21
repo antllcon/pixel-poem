@@ -2,23 +2,32 @@
 
 #include "weapon.h"
 
-#include "../config.h"
-
 // Конструктор
 Weapon::Weapon(float cooldown)
-    : cooldown(cooldown), timeLastShoot(0.f),
-      bulletSize(BULLET_SIZE), bulletColor(BULLET_COLOR), bulletSpeed(BULLET_SPEED), bulletDamage(BULLET_DAMAGE)
 {
-}
+    this->cooldown = cooldown;
+};
 
-std::optional<Bullet> Weapon::shootBullet(sf::Vector2f position, sf::Vector2f direction, float deltaTime)
+
+
+// Методы
+std::optional<Bullet> Weapon::tryShoot(sf::Vector2f position, sf::Vector2f direction, float globalTime)
 {
-    timeLastShoot += deltaTime;
-
-    if (timeLastShoot >= cooldown)
+    if (globalTime - timeLastShoot >= cooldown)
     {
-        timeLastShoot = 0.f;
+        timeLastShoot = globalTime;
         return Bullet(position, direction);
     }
     return std::nullopt;
 }
+
+
+
+// Сеттеры и геттеры
+void Weapon::setCooldown(float newCooldown) { cooldown = newCooldown; }
+
+float Weapon::getCooldown() const { return cooldown; }
+
+void Weapon::setTimeLastShoot(float newTimeLastShoot) { timeLastShoot = newTimeLastShoot; }
+
+float Weapon::getTimeLastShoot() const { return timeLastShoot; }
