@@ -2,13 +2,16 @@
 
 #ifndef CONFIG_H
 #define CONFIG_H
-
+#include <SFML/Graphics.hpp>
 // Цвета
 const sf::Color COLOR_GREEN = sf::Color(102, 153, 102);
 const sf::Color COLOR_PURPLE = sf::Color(204, 0, 102);
 const sf::Color COLOR_BRAUN = sf::Color(153, 102, 102);
 const sf::Color COLOR_GRAY = sf::Color(69, 69, 69);
 const sf::Color COLOR_DARK = sf::Color(51, 51, 51);
+
+// Контроллер
+constexpr int DEAD_ZONE = 5.0f;
 
 // Размеры окна игры
 constexpr int SCREEN_WIDTH = 800;
@@ -44,6 +47,7 @@ constexpr int BULLET_SPEED = 500.f;
 constexpr int BULLET_DAMAGE = 10;
 const sf::Color BULLET_COLOR = COLOR_GREEN;
 
+// Ресурсы для игры
 const std::string SRC_FONT = "/projects/CLionProjects/pixel_poem/resources/fonts/pp-font-third.ttf";
 const std::string SRC_CONTROLLER = "/projects/CLionProjects/pixel_poem/resources/sprites/controller.png";
 

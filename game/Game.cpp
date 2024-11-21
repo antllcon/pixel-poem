@@ -7,7 +7,7 @@
 #include "../enemy/Enemy.h"
 
 // Конструктор
-Game::Game() : selectedOption(0), state(GameState::Start), deltaTime(0.1f), globalTime(0.f), player(nullptr), enemy(nullptr) {
+Game::Game() : inputHandler(), selectedOption(0), state(GameState::Start), deltaTime(0.1f), globalTime(0.f), player(nullptr), enemy(nullptr) {
     view = sf::View(sf::FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
     initMenu();
     initControllerStatus();
@@ -16,21 +16,26 @@ Game::Game() : selectedOption(0), state(GameState::Start), deltaTime(0.1f), glob
 // unique_ptr автоматически очищает память
 Game::~Game() = default;
 
+void Game::testInputHandler() {
+    if (inputHandler.isPressed("moveUp")) {
+    }
+}
+
+
 // Методы
 void Game::processEvents(sf::RenderWindow& window) {
     sf::Event event;
     while (window.pollEvent(event)) {
+        inputHandler.processInput(window);
         switch (state) {
         case GameState::Start:
-            processControllerConnect();
-            if (event.type == sf::Event::KeyPressed) {
-                processSelectionButton(event);
-                processMenu(event, window);
-            }
+            testInputHandler();
+            processSelectionButton();
+            processMenu(window);
             break;
 
         case GameState::Play:
-            if (player) player->processInput(globalTime);
+            if (player) player->processInput(inputHandler, globalTime);
             break;
 
         case GameState::Pause:
@@ -40,10 +45,11 @@ void Game::processEvents(sf::RenderWindow& window) {
             break;
         }
     }
+    inputHandler.resetStates();
 }
 
-void Game::processMenu(const sf::Event& event, sf::RenderWindow& window)  {
-    if (event.key.code == sf::Keyboard::Enter) {
+void Game::processMenu(sf::RenderWindow& window)  {
+    if (inputHandler.isPressed("approve")) {
         if (selectedOption == 0) {
             setState(GameState::Play);
             initEntitiesPlay();
@@ -51,21 +57,22 @@ void Game::processMenu(const sf::Event& event, sf::RenderWindow& window)  {
             window.close();
         }
     }
-}
-
-void Game::processSelectionButton(const sf::Event& event) {
-    if (event.key.code == sf::Keyboard::Up || event.key.code == sf::Keyboard::Down) {
-        selectedOption = (!selectedOption) ? 1 : 0;
-
-        startText.setFillColor(selectedOption == 0 ? COLOR_GREEN : COLOR_GRAY);
-        exitText.setFillColor(selectedOption == 1 ? COLOR_GREEN : COLOR_GRAY);
+    if (inputHandler.isPressed("exit")) {
+        window.close();
     }
 }
 
-bool Game::processControllerConnect() {
-    sf::Joystick::update();
-    if (sf::Joystick::isConnected(0)) return true;
-    return false;
+void Game::processSelectionButton() {
+    if (inputHandler.isPressed("moveUp")) {
+        selectedOption = 0;
+        startText.setFillColor(COLOR_GREEN);
+        exitText.setFillColor(COLOR_GRAY);
+    }
+    if (inputHandler.isPressed("moveDown")) {
+        selectedOption = 1;
+        exitText.setFillColor(COLOR_GREEN);
+        startText.setFillColor(COLOR_GRAY);
+    }
 }
 
 void Game::update(sf::RenderWindow& window) {
@@ -78,6 +85,8 @@ void Game::update(sf::RenderWindow& window) {
 
     case GameState::Play:
         if (player) player->update(deltaTime);
+        if (enemy) enemy->update(deltaTime);
+
         break;
 
     case GameState::Pause:
@@ -97,7 +106,7 @@ void Game::render(sf::RenderWindow& window) {
         window.draw(subtitleText);
         window.draw(startText);
         window.draw(exitText);
-        if (processControllerConnect()) {
+        if (inputHandler.processControllerConnect()) {
             window.draw(spriteController);
         }
         break;

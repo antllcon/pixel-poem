@@ -3,6 +3,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include "../input/input.h"
 
 class Player;
 class Enemy;
@@ -24,6 +25,10 @@ public:
     GameState getState() const;
 
 private:
+    // Обработчик ввода
+    void testInputHandler();
+    Input inputHandler;
+
     // меню
     sf::Texture textureController;
     sf::Sprite spriteController;
@@ -37,11 +42,10 @@ private:
     void initMenu();
     void initEntitiesPlay();
     void initControllerStatus();
-    void processMenu(const sf::Event& event, sf::RenderWindow& window);
-    void processSelectionButton(const sf::Event& event);
+    void processMenu(sf::RenderWindow& window);
+    void processSelectionButton();
     void updateDeltaTime();
     void updateCamera(sf::RenderWindow& window);
-    static bool processControllerConnect();
 
     GameState state;
     sf::Clock clock;

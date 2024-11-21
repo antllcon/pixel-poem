@@ -1,16 +1,16 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "../bullet/bullet.h"
+#include <random>
 
-class Enemy
-{
+class Enemy {
 public:
 	// Конструктор
 	Enemy(int size, sf::Color color, int health);
 
 	// Методы
-	void draw(sf::RenderWindow &window);
+	void draw(sf::RenderWindow& window);
+	void update(float deltaTime);
 
 	// Геттеры
 	float getX();
@@ -25,5 +25,12 @@ public:
 private:
 	sf::RectangleShape enemy;
 	sf::Vector2f position;
+	sf::Vector2f moveDirection;
 	int health;
+
+	float speed = 100.f;
+	float directionChangeInterval = 2.f; // Интервал изменения направления (в секундах)
+	float timeSinceDirectionChange = 0.f; // Время с последнего изменения направления
+
+	void setRandomDirection();
 };

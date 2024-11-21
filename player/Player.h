@@ -5,6 +5,8 @@
 #include <SFML/Graphics.hpp>
 #include "../weapon/weapon.h"
 
+class Input;
+
 class Player
 {
 public:
@@ -18,7 +20,7 @@ public:
     };
 
     Player(int size, sf::Color color, float speed, int health, bool aim);
-    void processInput(float globalTime);
+    void processInput(const Input& inputHandler, float globalTime);
     void update(float deltaTime);
     void draw(sf::RenderWindow& window);
 
@@ -45,9 +47,9 @@ private:
     Weapon weapon;
     std::vector<Bullet> bullets;
 
-    void processMoveDirection();
-    void processViewDirection();
-    void processShoot(float globalTime);
+    void processMoveDirection(const Input& inputHandler);
+    void processViewDirection(const Input& inputHandler);
+    void processShoot(const Input& inputHandler, float globalTime);
     void setMoveDirection(const sf::Vector2f& newMoveDirection);
     void setViewDirection(const sf::Vector2f& newViewDirection);
     void view();
