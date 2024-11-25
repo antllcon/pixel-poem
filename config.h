@@ -18,6 +18,8 @@ constexpr int DEAD_ZONE = 5.0f;
 // Размеры окна игры
 constexpr int SCREEN_WIDTH = 800;
 constexpr int SCREEN_HEIGHT = 600;
+constexpr int CAMERA_DELTA_WIDTH = 300;
+constexpr int CAMERA_DELTA_HEIGHT = 200;
 
 // Координаты появления игрока на карте (в px)
 constexpr float MAP_PLAYER_SPAWN_X = 20.f;

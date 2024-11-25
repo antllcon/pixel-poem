@@ -12,6 +12,8 @@ add_executable(pixel_poem main.cpp player/Player.cpp game/Game.cpp enemy/Enemy.c
         weapon/Weapon.h
         Utils.h
         Utils.h
-        Utils.h)
+        Utils.h
+        menu/Menu.h
+        menu/Menu.cpp)
 target_link_libraries(pixel_poem sfml-graphics sfml-audio)
 install(TARGETS pixel_poem DESTINATION /usr/local/bin)
