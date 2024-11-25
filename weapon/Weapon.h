@@ -1,9 +1,9 @@
-// weapon.h
+// Weapon.h
 
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "../bullet/bullet.h"
+#include "../bullet/Bullet.h"
 #include <optional>
 
 class Weapon

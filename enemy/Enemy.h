@@ -1,25 +1,25 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <random>
 
 class Enemy {
 public:
 	// Конструктор
-	Enemy(int size, sf::Color color, int health);
+	Enemy(sf::Color color, int health, int speed, float directionChangeInterval, float timeSinceDirectionChange);
 
 	// Методы
 	void draw(sf::RenderWindow& window);
 	void update(float deltaTime);
+	void takeDamage(float damage);
+	bool getIsAlive() const;
 
 	// Геттеры
-	float getX();
-	float getY();
+	void setPosition(float x, float y); // Установка позиции
+	sf::Vector2f getPosition() const;
+	sf::Vector2f getSize() const;
 	int getHealth() const;
 
 	// Сеттеры
-	void setX(float x);
-	void setY(float y);
 	void setHealth(int newHealth);
 
 private:
@@ -27,10 +27,12 @@ private:
 	sf::Vector2f position;
 	sf::Vector2f moveDirection;
 	int health;
+	int size;
+	bool isAlive;
 
-	float speed = 100.f;
-	float directionChangeInterval = 2.f; // Интервал изменения направления (в секундах)
-	float timeSinceDirectionChange = 0.f; // Время с последнего изменения направления
+	float speed;
+	float directionChangeInterval;
+	float timeSinceDirectionChange;
 
 	void setRandomDirection();
 };

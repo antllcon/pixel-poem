@@ -3,12 +3,14 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 #include <SFML/Graphics.hpp>
+
 // Цвета
 const sf::Color COLOR_GREEN = sf::Color(102, 153, 102);
 const sf::Color COLOR_PURPLE = sf::Color(204, 0, 102);
 const sf::Color COLOR_BRAUN = sf::Color(153, 102, 102);
 const sf::Color COLOR_GRAY = sf::Color(69, 69, 69);
 const sf::Color COLOR_DARK = sf::Color(51, 51, 51);
+const sf::Color COLOR_RED = sf::Color(153, 0, 0);
 
 // Контроллер
 constexpr int DEAD_ZONE = 5.0f;
@@ -36,10 +38,14 @@ const sf::Color PLAYER_COLOR = sf::Color(78, 162, 122);
 // Характеристики бота
 constexpr int BOT_SIZE = 24;
 constexpr int BOT_HEALTH = 25;
+constexpr float BOT_SPEED = 100.f;
+constexpr float BOT_DIRECTION_CHANGE_INTERVAL = 2.f;
+constexpr float BOT_DIRECTION_CHANGE_TIME = 0.f;
+constexpr int NUM_ENEMIES = 100;
 const sf::Color BOT_COLOR = sf::Color(150, 50, 50);
 
 // Характеристики оружия
-constexpr float WEAPON_COOLDOWN = 0.0000005f;
+constexpr float WEAPON_COOLDOWN = 0.25f;
 
 // Характеристики пуль
 constexpr int BULLET_SIZE = 10;

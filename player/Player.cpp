@@ -1,24 +1,21 @@
 // Player.cpp
 
-// #include <SFML/Window/Joystick.hpp>
 #include "Player.h"
 #include <cmath>
 
 #include "../config.h"
-#include "../input/input.h"
+#include "../input/Input.h"
 
 // Конструктор
 Player::Player(int size, sf::Color color, float speed, int health, bool aim)
     : position(MAP_PLAYER_SPAWN_X, MAP_PLAYER_SPAWN_Y), moveDirection(0.f, 0.f), speed(speed), health(health), aim(aim),
-      weapon(weapon) {
+      weapon(WEAPON_COOLDOWN) {
     setViewDirection(PLAYER_VIEW);
     player.setSize(sf::Vector2f(size, size));
     player.setFillColor(color);
     player.setPosition(position);
     player.setOrigin(size / 2.f, size / 2.f);
-    weapon = Weapon(0.25f);
 }
-
 
 // Методы
 void Player::processInput(const Input& inputHandler, float globalTime) {
@@ -43,19 +40,15 @@ void Player::draw(sf::RenderWindow& window) {
 void Player::processViewDirection(const Input& inputHandler) {
     sf::Vector2f newDirection(0.f, 0.f);
     if (inputHandler.isPressed("lookUp")) {
-        // std::cout << "вверх" << std::endl;
         newDirection.y -= 1;
     }
     if (inputHandler.isPressed("lookDown")) {
-        // std::cout << "вниз" << std::endl;
         newDirection.y += 1;
     }
     if (inputHandler.isPressed("lookLeft")) {
-        // std::cout << "влево" << std::endl;
         newDirection.x -= 1;
     }
     if (inputHandler.isPressed("lookRight")) {
-        // std::cout << "вниз" << std::endl;
         newDirection.x += 1;
     }
     if (newDirection.x != 0.f && newDirection.y != 0.f) {
@@ -66,7 +59,6 @@ void Player::processViewDirection(const Input& inputHandler) {
             newDirection.x = 0.f;
         }
     }
-    // std::cout << newDirection.x << "  " << newDirection.y << std::endl;
     setViewDirection(newDirection);
 }
 
@@ -101,7 +93,7 @@ void Player::setMoveDirection(const sf::Vector2f& newMoveDirection) {
 }
 
 void Player::setViewDirection(const sf::Vector2f& newViewDirection) {
-    if (newViewDirection.x != 0.f && newViewDirection.y != 0.f) {
+    if (newViewDirection.x != 0.f || newViewDirection.y != 0.f) {
         float length = std::sqrt(newViewDirection.x * newViewDirection.x + newViewDirection.y * newViewDirection.y);
         viewDirection = sf::Vector2f(newViewDirection.x / length, newViewDirection.y / length);
     }
@@ -156,3 +148,11 @@ float Player::getSpeed() const { return speed; }
 int Player::getHealth() const { return health; }
 
 bool Player::getAim() const { return aim; }
+
+const std::vector<Bullet>& Player::getBullets() const {
+    return bullets;
+}
+
+std::vector<Bullet>& Player::getBullets() {
+    return bullets;
+}

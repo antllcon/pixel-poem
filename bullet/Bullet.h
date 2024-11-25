@@ -1,10 +1,6 @@
-// bullet.h
-
 #pragma once
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
-
-#include "../enemy/Enemy.h"
 
 class Bullet
 {
@@ -15,15 +11,17 @@ public:
     // Методы
     void update(float deltaTime);
     void draw(sf::RenderWindow& window);
+    sf::Vector2f getPosition() const;
+    sf::Vector2f getSize() const;
+    void activate();
+    bool isActive() const;
+    void deactivate();
 
 private:
     sf::RectangleShape bullet;
     sf::Vector2f direction;
-    sf::Vector2f position;
-    sf::Color color;
     float speed;
     float damage;
-    int size;
     bool active;
 
     void move(float deltaTime);

@@ -1,6 +1,6 @@
 // weapon.cpp
 
-#include "weapon.h"
+#include "Weapon.h"
 
 // Конструктор
 Weapon::Weapon(float cooldown)

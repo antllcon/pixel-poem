@@ -3,7 +3,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "../weapon/weapon.h"
+#include "../weapon/Weapon.h"
 
 class Input;
 
@@ -19,6 +19,7 @@ public:
         Right
     };
 
+    // Конструктор
     Player(int size, sf::Color color, float speed, int health, bool aim);
     void processInput(const Input& inputHandler, float globalTime);
     void update(float deltaTime);
@@ -35,6 +36,7 @@ public:
     void setSpeed(float newSpeed);
     void setHealth(int newHealth);
     void setAim(bool newAim);
+
 private:
     sf::RectangleShape player;
     sf::Vector2f position;
@@ -43,6 +45,8 @@ private:
     float speed;
     int health;
     bool aim;
+    const std::vector<Bullet>& getBullets() const; // Возвращает только для чтения
+    std::vector<Bullet>& getBullets(); // Возвращает для модификации
 
     Weapon weapon;
     std::vector<Bullet> bullets;
