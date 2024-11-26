@@ -1,0 +1,18 @@
+# Основные параметры для форматирования
+BasedOnStyle: Google
+IndentWidth: 4
+ColumnLimit: 80
+
+# Добавление пустых строк
+EmptyLineBeforeAccessModifier: LogicalBlock  # Пустая строка перед модификаторами доступа (public, private)
+SeparateDefinitionBlocks: Always            # Разделение блоков определения функций
+InsertTrailingCommas: None                 # Убирает лишние запятые
+
+# Настройки для структурирования кода
+MaxEmptyLinesToKeep: 1                      # Максимум одна пустая строка подряд
+KeepEmptyLinesAtTheStartOfBlocks: false    # Убирает пустые строки в начале блоков
+
+# Отступы внутри кода
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 1                         # Комментарии всегда выровнены
