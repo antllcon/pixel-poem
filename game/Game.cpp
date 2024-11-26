@@ -1,4 +1,5 @@
 #include "Game.h"
+
 #include "../config.h"
 #include "../enemy/Enemy.h"
 #include "../player/Player.h"
@@ -11,7 +12,6 @@ Game::Game() : state(GameState::Start), globalTime(0.f), deltaTime(0.1f) {
 Game::~Game() = default;
 
 void Game::processEvents(sf::RenderWindow& window) {
-
     sf::Event event;
 
     while (window.pollEvent(event)) {
@@ -55,7 +55,7 @@ void Game::handleStartEvents(sf::RenderWindow& window) {
 
 void Game::handlePlayEvents() {
     inputHandler.processInput();
-    if (player) player->processInput(inputHandler, globalTime);
+    if (player) player->processInput(inputHandler, globalTime, bullets);
     inputHandler.resetStates();
 }
 
@@ -70,7 +70,6 @@ void Game::handleEndEvents() {
 }
 
 void Game::update(sf::RenderWindow& window) {
-
     updateDeltaTime();
     updateCamera(window);
 
@@ -81,9 +80,8 @@ void Game::update(sf::RenderWindow& window) {
         case GameState::Play:
             // Проверка коллизий
             if (player) player->update(deltaTime);
-            for (auto& enemy : enemies) {
-                enemy->update(deltaTime);
-            }
+            updateEnemy();
+            updateBullets();
             break;
 
         case GameState::Pause:
@@ -94,8 +92,20 @@ void Game::update(sf::RenderWindow& window) {
     }
 }
 
-void Game::render(sf::RenderWindow& window) {
+void Game::updateEnemy() {
+    for (auto& enemy : enemies) {
+        enemy->update(deltaTime);
+    }
+}
 
+void Game::updateBullets() {
+    for (auto& bullet : bullets) {
+        bullet.update(deltaTime);
+    }
+    std::erase_if(bullets, [](const Bullet& b) { return !b.isActive(); });
+}
+
+void Game::render(sf::RenderWindow& window) {
     window.clear(sf::Color::Black);
 
     switch (state) {
@@ -107,6 +117,9 @@ void Game::render(sf::RenderWindow& window) {
             if (player) player->draw(window);
             for (const auto& enemy : enemies) {
                 enemy->draw(window);
+            }
+            for (const auto& bullet : bullets) {
+                bullet.draw(window);
             }
             break;
 
@@ -127,7 +140,7 @@ void Game::initEntitiesPlay() {
 
 void Game::spawnPlayer() {
     player = std::make_unique<Player>(PLAYER_SIZE, PLAYER_COLOR, PLAYER_SPEED,
-                                      PLAYER_HEALTH, PLAYER_AIM);
+                                      PLAYER_HEALTH);
 }
 
 void Game::spawnEnemies(int numEnemies) {
@@ -151,10 +164,14 @@ void Game::updateDeltaTime() {
 
 void Game::updateCamera(sf::RenderWindow& window) {
     if (state == GameState::Play && player) {
-        float cameraLeft = view.getCenter().x - SCREEN_WIDTH / 2.0f + CAMERA_DELTA_WIDTH;
-        float cameraRight = view.getCenter().x + SCREEN_WIDTH / 2.0f - CAMERA_DELTA_WIDTH;
-        float cameraTop = view.getCenter().y - SCREEN_HEIGHT / 2.0f + CAMERA_DELTA_HEIGHT;
-        float cameraBottom = view.getCenter().y + SCREEN_HEIGHT / 2.0f - CAMERA_DELTA_HEIGHT;
+        float cameraLeft =
+            view.getCenter().x - SCREEN_WIDTH / 2.0f + CAMERA_DELTA_WIDTH;
+        float cameraRight =
+            view.getCenter().x + SCREEN_WIDTH / 2.0f - CAMERA_DELTA_WIDTH;
+        float cameraTop =
+            view.getCenter().y - SCREEN_HEIGHT / 2.0f + CAMERA_DELTA_HEIGHT;
+        float cameraBottom =
+            view.getCenter().y + SCREEN_HEIGHT / 2.0f - CAMERA_DELTA_HEIGHT;
 
         if (player->getX() < cameraLeft) {
             view.move(player->getX() - cameraLeft, 0);
@@ -173,6 +190,36 @@ void Game::updateCamera(sf::RenderWindow& window) {
     }
     window.setView(view);
 }
+
+// void Game::checkCollisions() {
+//     // Проверка пуль игрока с врагами
+//     for (auto& bullet : player->getBullets()) {
+//         for (auto& enemy : enemies) {
+//             if (bullet.getGlobalBounds().intersects(enemy->getGlobalBounds())) {
+//                 enemy->takeDamage(bullet.getDamage());
+//                 bullet.setInactive();  // Или удаляем пулю
+//             }
+//         }
+//     }
+//
+//     // Проверка врагов с игроком
+//     for (auto& enemy : enemies) {
+//         if (enemy->getGlobalBounds().intersects(player->getGlobalBounds())) {
+//             player->takeDamage(enemy->getDamage());
+//         }
+//     }
+//
+//     // Проверка пуль врагов с игроком (если у врагов есть пули)
+//     for (const auto& enemy : enemies) {
+//         for (const auto& bullet : enemy->getBullets()) {
+//             if (bullet.getGlobalBounds().intersects(
+//                     player->getGlobalBounds())) {
+//                 player->takeDamage(bullet.getDamage());
+//                 bullet.setInactive();  // Или удаляем пулю
+//             }
+//         }
+//     }
+// }
 
 void Game::setState(GameState newState) { state = newState; }
 

@@ -1,9 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <memory>
+
 #include "../input/Input.h"
 #include "../menu/Menu.h"
 
+class Bullet;
 class Player;
 class Enemy;
 
@@ -25,9 +27,10 @@ class Game {
     sf::Clock clock;
     sf::View view;
     Menu menu;
+    Input inputHandler;
     std::unique_ptr<Player> player;
     std::vector<std::unique_ptr<Enemy>> enemies;
-    Input inputHandler;
+    std::vector<Bullet> bullets;
 
     float globalTime;
     float deltaTime;
@@ -39,6 +42,9 @@ class Game {
     void initEntitiesPlay();
     void spawnPlayer();
     void spawnEnemies(int numEnemies);
+    void updateEnemy();
+    void updateBullets();
     void updateDeltaTime();
     void updateCamera(sf::RenderWindow& window);
+    void checkCollisions();
 };

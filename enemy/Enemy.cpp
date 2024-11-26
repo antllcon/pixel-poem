@@ -55,14 +55,8 @@ void Enemy::setPosition(float x, float y) {
     position = sf::Vector2f(x, y);
 }
 
-
-// Геттеры и сеттеры
 sf::Vector2f Enemy::getPosition() const {
     return position;
-}
-
-sf::Vector2f Enemy::getSize() const {
-    return sf::Vector2f(size, size);
 }
 
 void Enemy::takeDamage(float damage) {

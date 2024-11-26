@@ -47,6 +47,7 @@ constexpr int NUM_ENEMIES = 100;
 const sf::Color BOT_COLOR = sf::Color(150, 50, 50);
 
 // Характеристики оружия
+constexpr float WEAPON_DESERT_EAGLE = 0.25f;
 constexpr float WEAPON_COOLDOWN = 0.25f;
 
 // Характеристики пуль

@@ -1,33 +1,42 @@
-// weapon.cpp
 
 #include "Weapon.h"
 
-// Конструктор
-Weapon::Weapon(float cooldown)
-{
-    this->cooldown = cooldown;
-};
+#include <unordered_map>
 
+const std::unordered_map<WeaponType, WeaponProperties> weaponConfigs = {
+    {WeaponType::Pistol, {10.f, 0.5f, 500}},
+    {WeaponType::Rifle, {8.f, 0.1f, 800}},
+    {WeaponType::Shotgun, {25.f, 1.0f, 1000}}};
 
+Weapon::Weapon(WeaponType type): type(type){}
 
-// Методы
-std::optional<Bullet> Weapon::tryShoot(sf::Vector2f position, sf::Vector2f direction, float globalTime)
-{
-    if (globalTime - timeLastShoot >= cooldown)
-    {
+std::optional<Bullet> Weapon::tryShoot(sf::Vector2f position,
+                                       sf::Vector2f direction,
+                                       float globalTime, Bullet::OwnerType owner) {
+    if (globalTime - timeLastShoot >= getCooldown()) {
         timeLastShoot = globalTime;
-        return Bullet(position, direction);
+        return Bullet(owner, position, direction, getSpeed(), getDamage());
     }
     return std::nullopt;
 }
 
 
+void Weapon::setWeaponType(WeaponType newType) {
+    type = newType;
+}
 
-// Сеттеры и геттеры
-void Weapon::setCooldown(float newCooldown) { cooldown = newCooldown; }
+WeaponType Weapon::getWeaponType() const {
+    return type;
+}
 
-float Weapon::getCooldown() const { return cooldown; }
+float Weapon::getSpeed() const {
+    return weaponConfigs.at(type).speed;
+}
 
-void Weapon::setTimeLastShoot(float newTimeLastShoot) { timeLastShoot = newTimeLastShoot; }
+float Weapon::getDamage() const {
+    return weaponConfigs.at(type).damage;
+}
 
-float Weapon::getTimeLastShoot() const { return timeLastShoot; }
+float Weapon::getCooldown() const {
+    return weaponConfigs.at(type).cooldown;
+}

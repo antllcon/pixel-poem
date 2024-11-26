@@ -3,25 +3,30 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "../bullet/Bullet.h"
 #include <optional>
 
-class Weapon
-{
-public:
-    // Конструктор
-    Weapon(float cooldown);
+#include "../bullet/Bullet.h"
 
-    // Методы
-    std::optional<Bullet> tryShoot(sf::Vector2f position, sf::Vector2f direction, float globalTime);
-
-    // Сеттеры и геттеры
-    void setCooldown(float newCooldown);
-    float getCooldown() const;
-    void setTimeLastShoot(float newTimeLastShoot);
-    float getTimeLastShoot() const;
-
-private:
+struct WeaponProperties {
+    float damage;
     float cooldown;
+    float speed;
+};
+
+enum class WeaponType { Pistol, Rifle, Shotgun };
+
+class Weapon {
+   public:
+    Weapon(WeaponType type);
+    std::optional<Bullet> tryShoot(sf::Vector2f vector2, sf::Vector2f direction,
+                                   float global_time, Bullet::OwnerType owner);
+    void setWeaponType(WeaponType newType);
+    float getSpeed() const;
+    float getDamage() const;
+    float getCooldown() const;
+    WeaponType getWeaponType() const;
+
+   private:
+    WeaponType type;
     float timeLastShoot = 0.0f;
 };

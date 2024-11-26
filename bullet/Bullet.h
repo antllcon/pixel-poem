@@ -2,27 +2,22 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
-class Bullet
-{
+class Bullet {
 public:
-    // Конструктор
-    Bullet(sf::Vector2f position, sf::Vector2f direction);
+    enum class OwnerType { Player, Bot };
 
-    // Методы
+    Bullet(OwnerType ownerType, sf::Vector2f position, sf::Vector2f direction, float speed, float damage);
+
     void update(float deltaTime);
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window) const;
     sf::Vector2f getPosition() const;
-    sf::Vector2f getSize() const;
-    void activate();
     bool isActive() const;
-    void deactivate();
 
 private:
+    OwnerType owner;
     sf::RectangleShape bullet;
     sf::Vector2f direction;
     float speed;
     float damage;
     bool active;
-
-    void move(float deltaTime);
 };
