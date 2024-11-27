@@ -1,16 +1,12 @@
 #include "Input.h"
 
 #include <iostream>
-#include "../config.h"
+#include "../../core/config.h"
 
-// #include <iostream>
-
-// Конструктор
 Input::Input() {
     resetStates();
 }
 
-// Проверка подключения геймпада
 bool Input::processControllerConnect() {
     sf::Joystick::update();
     if (sf::Joystick::isConnected(0)) return true;
@@ -28,7 +24,6 @@ void Input::checkRightStick(unsigned int joystickId) {
     std::cout << "Right Stick - X: " << rightX << ", Y: " << rightY << std::endl;
 }
 
-// Начатое нажатие
 bool Input::isPressed(const std::string& action) const {
     auto it = buttonStates.find(action);
     if (it != buttonStates.end()) {
@@ -37,7 +32,6 @@ bool Input::isPressed(const std::string& action) const {
     return false;
 }
 
-// Обработка всех событий ввода
 void Input::processInput() {
     if (processControllerConnect()) {
         checkHeldGamepadButtons();  // Проверка кнопок геймпада
@@ -47,7 +41,6 @@ void Input::processInput() {
     }
 }
 
-// Сброс всех состояний
 void Input::resetStates() {
     buttonStates["moveUp"] = {false};
     buttonStates["moveDown"] = {false};

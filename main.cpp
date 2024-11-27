@@ -1,6 +1,5 @@
-#include <SFML/Graphics.hpp>
-#include "config.h"
-#include "game/Game.h"
+#include "core/config.h"
+#include "core/game/Game.h"
 
 int main() {
     // Инициализация экрана

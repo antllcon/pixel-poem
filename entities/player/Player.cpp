@@ -2,9 +2,10 @@
 #include "Player.h"
 
 #include <cmath>
+#include <iostream>
 
-#include "../config.h"
-#include "../input/Input.h"
+#include "../../core/config.h"
+#include "../../systems/input/Input.h"
 
 Player::Player(int size, sf::Color color, float speed, int health)
     : position(MAP_PLAYER_SPAWN_X, MAP_PLAYER_SPAWN_Y),
@@ -111,3 +112,13 @@ void Player::view() {
 float Player::getX() const { return position.x; }
 
 float Player::getY() const { return position.y; }
+
+sf::FloatRect Player::getGlobalBounds() const {
+    return player.getGlobalBounds();
+}
+void Player::takeDamage(float damage) {
+    health -= damage;
+    if (health <= 0) {
+        std::cout << "Ты умер!" << std::endl;
+    }
+}

@@ -11,6 +11,7 @@ const sf::Color COLOR_BRAUN = sf::Color(153, 102, 102);
 const sf::Color COLOR_GRAY = sf::Color(69, 69, 69);
 const sf::Color COLOR_DARK = sf::Color(51, 51, 51);
 const sf::Color COLOR_RED = sf::Color(153, 0, 0);
+const sf::Color COLOR_DARK_PURPLE = sf::Color(64, 28, 47);
 
 // Контроллер
 constexpr int DEAD_ZONE = 5.0f;
@@ -33,17 +34,21 @@ constexpr float MAP_BOT_SPAWN_Y = 20.f;
 const sf::Vector2f PLAYER_VIEW(1.0f, 0.0f);
 constexpr bool PLAYER_AIM = false;
 constexpr int PLAYER_SIZE = 24;
-constexpr int PLAYER_HEALTH = 100;
+constexpr float PLAYER_HEALTH = 100;
 constexpr float PLAYER_SPEED = 250.f;
 const sf::Color PLAYER_COLOR = sf::Color(78, 162, 122);
 
 // Характеристики бота
 constexpr int BOT_SIZE = 24;
-constexpr int BOT_HEALTH = 25;
+constexpr float BOT_HEALTH = 25;
 constexpr float BOT_SPEED = 100.f;
 constexpr float BOT_DIRECTION_CHANGE_INTERVAL = 2.f;
 constexpr float BOT_DIRECTION_CHANGE_TIME = 0.f;
-constexpr int NUM_ENEMIES = 100;
+constexpr float BOT_VIEW_SIZE = 256.f;
+const sf::FloatRect BOT_VIEW_AREA(-BOT_VIEW_SIZE, -BOT_VIEW_SIZE,
+                                  BOT_VIEW_SIZE * 2 + BOT_SIZE,
+                                  BOT_VIEW_SIZE * 2 + BOT_SIZE);
+constexpr int NUM_ENEMIES = 5;
 const sf::Color BOT_COLOR = sf::Color(150, 50, 50);
 
 // Характеристики оружия
@@ -57,8 +62,9 @@ constexpr int BULLET_DAMAGE = 10;
 const sf::Color BULLET_COLOR = COLOR_GREEN;
 
 // Ресурсы для игры
-const std::string SRC_FONT = "/projects/CLionProjects/pixel_poem/resources/fonts/pp-font-third.ttf";
-const std::string SRC_CONTROLLER = "/projects/CLionProjects/pixel_poem/resources/sprites/controller.png";
-
+const std::string SRC_FONT =
+    "/projects/CLionProjects/pixel_poem/resources/fonts/pp-font-third.ttf";
+const std::string SRC_CONTROLLER =
+    "/projects/CLionProjects/pixel_poem/resources/sprites/controller.png";
 
 #endif

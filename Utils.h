@@ -1,10 +1,11 @@
 #pragma once
-#include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics/Rect.hpp>
 
-bool checkCollision(const sf::Vector2f& pos1, const sf::Vector2f& size1,
-                    const sf::Vector2f& pos2, const sf::Vector2f& size2) {
-    return pos1.x < pos2.x + size2.x &&
-           pos1.x + size1.x > pos2.x &&
-           pos1.y < pos2.y + size2.y &&
-           pos1.y + size1.y > pos2.y;
+inline sf::FloatRect addFloatRects(const sf::FloatRect& rect1, const sf::FloatRect& rect2) {
+    return sf::FloatRect(
+        rect1.left + rect2.left,   // Сложение координат X
+        rect1.top + rect2.top,     // Сложение координат Y
+        rect1.width + rect2.width, // Сложение ширин
+        rect1.height + rect2.height // Сложение высот
+    );
 }

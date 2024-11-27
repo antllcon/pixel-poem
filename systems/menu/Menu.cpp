@@ -1,6 +1,6 @@
 #include "Menu.h"
 
-#include "../config.h"
+#include "../../core/config.h"
 
 Menu::Menu() {
     initTextMenu();

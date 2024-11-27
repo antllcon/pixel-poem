@@ -1,8 +1,11 @@
 #include "Game.h"
 
+#include <iostream>
+
+#include "../../Utils.h"
 #include "../config.h"
-#include "../enemy/Enemy.h"
-#include "../player/Player.h"
+#include "../../entities/enemy/Enemy.h"
+#include "../../entities/player/Player.h"
 
 Game::Game() : state(GameState::Start), globalTime(0.f), deltaTime(0.1f) {
     srand(static_cast<unsigned>(time(nullptr)));
@@ -56,6 +59,10 @@ void Game::handleStartEvents(sf::RenderWindow& window) {
 void Game::handlePlayEvents() {
     inputHandler.processInput();
     if (player) player->processInput(inputHandler, globalTime, bullets);
+    sf::Vector2f position(player->getX(), player->getY());
+    for (auto& enemy : enemies) {
+        enemy->processInput(position, globalTime, bullets);
+    }
     inputHandler.resetStates();
 }
 
@@ -78,7 +85,7 @@ void Game::update(sf::RenderWindow& window) {
             break;
 
         case GameState::Play:
-            // Проверка коллизий
+            checkCollisions();
             if (player) player->update(deltaTime);
             updateEnemy();
             updateBullets();
@@ -96,17 +103,21 @@ void Game::updateEnemy() {
     for (auto& enemy : enemies) {
         enemy->update(deltaTime);
     }
+    std::erase_if(enemies, [](const std::unique_ptr<Enemy>& enemy) {
+        return !enemy->getIsAlive();
+    });
 }
 
 void Game::updateBullets() {
     for (auto& bullet : bullets) {
         bullet.update(deltaTime);
     }
-    std::erase_if(bullets, [](const Bullet& b) { return !b.isActive(); });
+    std::erase_if(bullets,
+                  [](const Bullet& bullet) { return !bullet.isActive(); });
 }
 
 void Game::render(sf::RenderWindow& window) {
-    window.clear(sf::Color::Black);
+    window.clear(COLOR_DARK_PURPLE);
 
     switch (state) {
         case GameState::Start:
@@ -147,9 +158,9 @@ void Game::spawnEnemies(int numEnemies) {
     for (int i = 0; i < numEnemies; ++i) {
         float x = static_cast<float>(rand() % SCREEN_WIDTH);
         float y = static_cast<float>(rand() % SCREEN_HEIGHT);
-        auto enemy = std::make_unique<Enemy>(BOT_COLOR, BOT_HEALTH, BOT_SPEED,
-                                             BOT_DIRECTION_CHANGE_INTERVAL,
-                                             BOT_DIRECTION_CHANGE_TIME);
+        auto enemy = std::make_unique<Enemy>(
+            EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED,
+            BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME);
         enemy->setPosition(x, y);
         enemies.push_back(std::move(enemy));
     }
@@ -191,35 +202,50 @@ void Game::updateCamera(sf::RenderWindow& window) {
     window.setView(view);
 }
 
-// void Game::checkCollisions() {
-//     // Проверка пуль игрока с врагами
-//     for (auto& bullet : player->getBullets()) {
-//         for (auto& enemy : enemies) {
-//             if (bullet.getGlobalBounds().intersects(enemy->getGlobalBounds())) {
-//                 enemy->takeDamage(bullet.getDamage());
-//                 bullet.setInactive();  // Или удаляем пулю
-//             }
-//         }
-//     }
-//
-//     // Проверка врагов с игроком
-//     for (auto& enemy : enemies) {
-//         if (enemy->getGlobalBounds().intersects(player->getGlobalBounds())) {
-//             player->takeDamage(enemy->getDamage());
-//         }
-//     }
-//
-//     // Проверка пуль врагов с игроком (если у врагов есть пули)
-//     for (const auto& enemy : enemies) {
-//         for (const auto& bullet : enemy->getBullets()) {
-//             if (bullet.getGlobalBounds().intersects(
-//                     player->getGlobalBounds())) {
-//                 player->takeDamage(bullet.getDamage());
-//                 bullet.setInactive();  // Или удаляем пулю
-//             }
-//         }
-//     }
-// }
+void Game::checkCollisions() {
+    checkBulletEnemyCollisions();   // Пули игрока ↔ Враги
+    checkBulletPlayerCollisions();  // Пули врагов ↔ Игрок
+    checkPlayerEnemyCollisions();   // Игрок ↔ Враги
+}
+
+void Game::checkPlayerEnemyCollisions() {
+    for (auto& enemy : enemies) {
+        sf::FloatRect viewAreaBounds = enemy->getGlobalBounds();
+        sf::FloatRect viewArea = addFloatRects(viewAreaBounds, BOT_VIEW_AREA);
+        if (player->getGlobalBounds().intersects(viewArea)) {
+            enemy->setState(EnemyState::attack);
+        } else {
+            if (enemy->getState() == EnemyState::attack) {
+                enemy->setState(EnemyState::sleep);
+            }
+        }
+    }
+}
+
+void Game::checkBulletEnemyCollisions() {
+    for (auto& bullet : bullets) {
+        if (bullet.getOwnerType() == Bullet::OwnerType::Player) {
+            for (auto& enemy : enemies) {
+                if (bullet.getGlobalBounds().intersects(
+                        enemy->getGlobalBounds())) {
+                    enemy->takeDamage(bullet.getDamage());
+                    bullet.setActive(false);
+                }
+            }
+        }
+    }
+}
+
+void Game::checkBulletPlayerCollisions() {
+    for (auto& bullet : bullets) {
+        if (bullet.getOwnerType() == Bullet::OwnerType::Bot) {
+            if (bullet.getGlobalBounds().intersects(player->getGlobalBounds())) {
+                player->takeDamage(bullet.getDamage());
+                bullet.setActive(false);
+            }
+        }
+    }
+}
 
 void Game::setState(GameState newState) { state = newState; }
 

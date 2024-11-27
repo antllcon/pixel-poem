@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-#include "../input/Input.h"
-#include "../menu/Menu.h"
+#include "../../systems/input/Input.h"
+#include "../../systems/menu/Menu.h"
 
 class Bullet;
 class Player;
@@ -47,4 +47,7 @@ class Game {
     void updateDeltaTime();
     void updateCamera(sf::RenderWindow& window);
     void checkCollisions();
+    void checkBulletEnemyCollisions();
+    void checkBulletPlayerCollisions();
+    void checkPlayerEnemyCollisions();
 };

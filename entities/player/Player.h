@@ -17,6 +17,8 @@ class Player {
     void draw(sf::RenderWindow& window);
     float getX() const;
     float getY() const;
+    void takeDamage(float damage);
+    sf::FloatRect getGlobalBounds() const;
 
    private:
     sf::RectangleShape player;
@@ -24,7 +26,7 @@ class Player {
     sf::Vector2f moveDirection;
     sf::Vector2f viewDirection;
     float speed;
-    int health;
+    float health;
     Weapon weapon;
 
     void processMoveDirection(const Input& inputHandler);
