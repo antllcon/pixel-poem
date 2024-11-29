@@ -13,16 +13,23 @@ Player* EntityManager::getPlayer() {
     return player.get();
 }
 
-void EntityManager::spawnEnemies() {
+void EntityManager::spawnEnemies(const std::vector<sf::Vector2f>& roomPositions) {
     for (int i = 0; i < NUM_ENEMIES; ++i) {
-        // Изменить для комнат расположение
-        float x = static_cast<float>(rand() % SCREEN_WIDTH);
-        float y = static_cast<float>(rand() % SCREEN_HEIGHT);
-        // Исправить enemy - не передавать color, interval, подумать, что передавать
-        auto enemy = std::make_unique<Enemy>(EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED,
-                                             BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME);
-        enemy->setPosition(x, y);
-        enemies.push_back(std::move(enemy));
+
+        if (roomPositions.empty()) break;
+
+        int roomIndex = rand() % roomPositions.size();
+        if (roomIndex != 1) {
+            sf::Vector2f spawnPosition = roomPositions[roomIndex];
+            auto enemy = std::make_unique<Enemy>(EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED,
+                                                 BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME);
+            enemy->setPosition(spawnPosition.x, spawnPosition.y);
+            enemies.push_back(std::move(enemy));
+
+        } else {
+            break;
+            // spawnEnemies(roomPositions);
+        }
     }
 }
 

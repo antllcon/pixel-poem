@@ -1,0 +1,7 @@
+/projects/CLionProjects/pixel_poem/build/CMakeFiles/pixel_poem.dir
+/projects/CLionProjects/pixel_poem/build/CMakeFiles/edit_cache.dir
+/projects/CLionProjects/pixel_poem/build/CMakeFiles/rebuild_cache.dir
+/projects/CLionProjects/pixel_poem/build/CMakeFiles/list_install_components.dir
+/projects/CLionProjects/pixel_poem/build/CMakeFiles/install.dir
+/projects/CLionProjects/pixel_poem/build/CMakeFiles/install/local.dir
+/projects/CLionProjects/pixel_poem/build/CMakeFiles/install/strip.dir

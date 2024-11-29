@@ -24,6 +24,7 @@ set(SOURCES
         entities/entity/EntityManager.cpp
         systems/collision/CollisionManager.cpp
         systems/camera/cameraManager.cpp
+        systems/map/mapManager.cpp
 )
 
 set(HEADERS
@@ -43,6 +44,7 @@ set(HEADERS
         entities/entity/EntitiyManager.h
         systems/collision/CollisionManager.h
         systems/camera/CameraManager.h
+        systems/map/mapManager.h
 
 )
 

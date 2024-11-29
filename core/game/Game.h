@@ -5,6 +5,7 @@
 #include "../../entities/entity/EntitiyManager.h"
 #include "../../systems/camera/CameraManager.h"
 #include "../../systems/collision/CollisionManager.h"
+#include "../../systems/map/mapManager.h"
 #include "../../systems/input/Input.h"
 #include "../../systems/map/Map.h"
 #include "../../systems/menu/Menu.h"
@@ -31,9 +32,9 @@ class Game {
     EntityManager entityManager;
     CollisionManager collisionManager;
     CameraManager cameraManager;
+    MapManager mapManager;
     Input inputHandler;
     Menu menu;
-    Map map;
     UI* ui;
 
     sf::Clock clock;

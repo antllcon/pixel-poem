@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/pixel_poem.dir/core/game/Game.cpp.o"
+  "CMakeFiles/pixel_poem.dir/core/game/Game.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/core/game/GameStateManager.cpp.o"
+  "CMakeFiles/pixel_poem.dir/core/game/GameStateManager.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/entities/bullet/Bullet.cpp.o"
+  "CMakeFiles/pixel_poem.dir/entities/bullet/Bullet.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/entities/enemy/Enemy.cpp.o"
+  "CMakeFiles/pixel_poem.dir/entities/enemy/Enemy.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/entities/entity/EntityManager.cpp.o"
+  "CMakeFiles/pixel_poem.dir/entities/entity/EntityManager.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o"
+  "CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/entities/weapon/Weapon.cpp.o"
+  "CMakeFiles/pixel_poem.dir/entities/weapon/Weapon.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/main.cpp.o"
+  "CMakeFiles/pixel_poem.dir/main.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/animation/Animation.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/animation/Animation.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/menu/Menu.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/menu/Menu.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o.d"
+  "pixel_poem"
+  "pixel_poem.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/pixel_poem.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

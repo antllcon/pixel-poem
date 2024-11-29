@@ -7,7 +7,6 @@ Map::Map(int w, int h) : width(w), height(h) {
     grid.resize(height, std::vector<int>(width, 0));
 }
 
-
 void Map::printMap() const {
     for (const auto& row : grid) {
         for (int cell : row) {
@@ -36,7 +35,6 @@ void Map::placeRooms(Map& map, int roomCount){
         grid[y][x] = 1;
     }
 }
-
 
 void Map::connectRooms(Map& map) {
     auto& grid = map.getGrid();

@@ -1,35 +1,23 @@
-# Файлы конфигурации и кэш CMake
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-Makefile
+#Файлы конфигурации и кэш CMake
+CMakeCache.txt CMakeFiles /
+    cmake_install.cmake Makefile
 
-# Сборочные артефакты
-build/
-bin/
-*.o
-*.obj
-*.exe
-*.out
-*.a
-*.lib
-*.dll
-*.so
+#Сборочные артефакты
+        build /
+    bin /
+    *.o *.obj *.exe *.out *.a *.lib *.dll
+         *.so
 
-# Лог файлы
-*.log
+#Лог файлы
+             *.log
 
-# Файлы настроек IDE (например, CLion)
-.idea/
-.vscode/
-*.swp
+#Файлы настроек IDE(например, CLion)
+                 .idea /
+        .vscode /
+    *.swp
 
-# Файлы для отладки
-*.dSYM/
-*.stackdump
+#Файлы для отладки
+         *.dSYM /
+    *.stackdump
 
-/shelf/
-/workspace.xml
-/httpRequests/
-/dataSources/
-/dataSources.local.xml
+    / shelf / / workspace.xml / httpRequests / / dataSources / / dataSources.local.xml

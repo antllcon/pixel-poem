@@ -8,7 +8,7 @@ class Bullet {
 public:
     enum class OwnerType { Player, Bot };
 
-    Bullet(OwnerType ownerType, sf::Vector2f position, sf::Vector2f direction, float speed, int damage);
+    Bullet(OwnerType ownerType, sf::Vector2f positionSpawn, sf::Vector2f direction, float speed, int damage);
 
     void update(float deltaTime);
     void draw(sf::RenderWindow& window) const;

@@ -2,6 +2,7 @@
 #include "Player.h"
 
 #include <cmath>
+#include <iostream>
 
 #include "../../core/config.h"
 #include "../../systems/input/Input.h"
@@ -72,7 +73,13 @@ void Player::processViewDirection(const Input& inputHandler) {
             newDirection.x = 0.f;
         }
     }
+
     setViewDirection(newDirection);
+    if (newDirection.x > 0) {
+        sprite.setScale(SCALE_FACTOR_LEFT);
+    } else if (newDirection.x < 0) {
+        sprite.setScale(SCALE_FACTOR_RIGHT);
+    }
 }
 
 void Player::processMoveDirection(const Input& inputHandler) {

@@ -5,27 +5,18 @@
 #include "../../Utils.h"
 #include "../../entities/enemy/Enemy.h"
 #include "../../entities/player/Player.h"
-#include "../../systems/map/Map.h"
 #include "../config.h"
 
 Game::Game()
     // Исправить конструктор, что за srand, поменять объявление map, перенести, убрать view
     : gameStateManager(gameStateManager),
       cameraManager(SCREEN_WIDTH, SCREEN_HEIGHT, CAMERA_DELTA_WIDTH, CAMERA_DELTA_HEIGHT),
-      map(MAP_WIDTH, MAP_HEIGHT),
+      mapManager(MAP_WIDTH, MAP_HEIGHT, ROOM_COUNT),  // Инициализация MapManager
       ui(nullptr),
       globalTime(0.f),
       deltaTime(0.f) {
     srand(static_cast<unsigned>(time(nullptr)));
     view = sf::View(sf::FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
-
-    // Перенести карту в сущности
-    map.placeRooms(map, ROOM_COUNT);
-    map.connectRooms(map);
-    map.printMap();
-
-    entityManager.spawnPlayer();
-    entityManager.spawnEnemies();
 }
 
 Game::~Game() = default;
@@ -155,7 +146,8 @@ void Game::render(sf::RenderWindow& window) {
             break;
 
         case GameStateManager::GameState::Play:
-            window.clear(COLOR_DARK_PURPLE);
+            window.clear(COLOR_DARK);
+            mapManager.render(window);
             if (entityManager.getPlayer()) entityManager.getPlayer()->draw(window);
             for (const auto& enemy : entityManager.getEnemies()) {
                 enemy->draw(window);
@@ -182,11 +174,14 @@ void Game::render(sf::RenderWindow& window) {
 }
 
 void Game::initEntitiesPlay() {
+    mapManager.generateMap();
     entityManager.spawnPlayer();
     // Нужна ли обертка, стоит ли так вызывать конструктор?
     ui = new UI(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(),
                 entityManager.getPlayer()->getMoney());
-    entityManager.spawnEnemies();
+
+    const auto roomPositions = mapManager.getRoomPositions();
+    entityManager.spawnEnemies(roomPositions);
 }
 
 GameStateManager& Game::getStateManager() { return gameStateManager; }

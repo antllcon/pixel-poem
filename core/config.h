@@ -1,13 +1,12 @@
 #ifndef CONFIG_H
 #define CONFIG_H
-#include <SFML/Graphics.hpp>
 
 // === Цветовые настройки ===
 const sf::Color COLOR_LIGHT_YELLOW = sf::Color(255, 255, 200);
 const sf::Color COLOR_DARK_PURPLE = sf::Color(64, 28, 47);
 const sf::Color COLOR_GREEN = sf::Color(102, 153, 102);
 const sf::Color COLOR_PURPLE = sf::Color(204, 0, 102);
-const sf::Color COLOR_BRAUN = sf::Color(153, 102, 102);
+const sf::Color COLOR_BRAUN = sf::Color(100, 73, 73);
 const sf::Color COLOR_GRAY = sf::Color(69, 69, 69);
 const sf::Color COLOR_DARK = sf::Color(51, 51, 51);
 const sf::Color COLOR_RED = sf::Color(153, 0, 0);
@@ -18,9 +17,10 @@ const sf::Color COLOR_BLUE = sf::Color(100, 0, 255);
 // === Основные настройки игры ===
 constexpr int SCREEN_WIDTH = 1920;
 constexpr int SCREEN_HEIGHT = 1080;
-constexpr int ROOM_COUNT = 4;
-constexpr int MAP_WIDTH = 5;
-constexpr int MAP_HEIGHT = 5;
+constexpr int ROOM_COUNT = 9;
+constexpr int MAP_WIDTH = 9;
+constexpr int MAP_HEIGHT = 9;
+constexpr int CELL_SIZE = 256;
 constexpr float CAMERA_DELTA_WIDTH = SCREEN_WIDTH / 6.f;
 constexpr float CAMERA_DELTA_HEIGHT = SCREEN_HEIGHT / 6.f;
 constexpr int DEAD_ZONE = 5.0f;
@@ -36,8 +36,8 @@ constexpr int PLAYER_SIZE = 24;
 constexpr int PLAYER_HEALTH = 10;
 constexpr int PLAYER_ARMOR = 20;
 constexpr int PLAYER_MONEY = 0;
-constexpr float MAP_PLAYER_SPAWN_X = 20.f;
-constexpr float MAP_PLAYER_SPAWN_Y = 20.f;
+constexpr float MAP_PLAYER_SPAWN_X = 128.f;
+constexpr float MAP_PLAYER_SPAWN_Y = 128.f;
 
 // === Настройки врагов (ботов) ===
 const sf::Color BOT_COLOR = sf::Color(150, 50, 50);
@@ -86,6 +86,8 @@ const sf::Vector2f MONEY_TEXT_POS = sf::Vector2f(SCREEN_WIDTH - 55, 18);
 // === Масштабирование текстур ===
 const sf::Vector2f SCALE_FACTOR_LEFT = {2.2f, 2.2f};
 const sf::Vector2f SCALE_FACTOR_RIGHT = {-2.2f, 2.2f};
+const sf::Vector2f SCALE_FACTOR_UP = {2.2f, -2.2f};
+const sf::Vector2f SCALE_FACTOR_DOWN = {2.2f, 2.2f};
 
 // === Анимации ===
 constexpr float ANIMATION_SPEED = 0.2f;

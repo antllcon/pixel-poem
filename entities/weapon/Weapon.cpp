@@ -4,15 +4,12 @@
 #include <unordered_map>
 
 const std::unordered_map<WeaponType, WeaponProperties> weaponConfigs = {
-    {WeaponType::Pistol, {1, 0.5f, 500}},
-    {WeaponType::Rifle, {2, 0.1f, 800}},
-    {WeaponType::Shotgun, {5, 1.0f, 1000}}};
+    {WeaponType::Pistol, {1, 0.5f, 500}}, {WeaponType::Rifle, {2, 0.1f, 800}}, {WeaponType::Shotgun, {5, 1.0f, 1000}}};
 
-Weapon::Weapon(WeaponType type): type(type){}
+Weapon::Weapon(WeaponType type) : type(type) {}
 
-std::optional<Bullet> Weapon::tryShoot(sf::Vector2f position,
-                                       sf::Vector2f direction,
-                                       float globalTime, Bullet::OwnerType owner) {
+std::optional<Bullet> Weapon::tryShoot(sf::Vector2f position, sf::Vector2f direction, float globalTime,
+                                       Bullet::OwnerType owner) {
     if (globalTime - timeLastShoot >= getCooldown()) {
         timeLastShoot = globalTime;
         return Bullet(owner, position, direction, getSpeed(), getDamage());
@@ -20,23 +17,12 @@ std::optional<Bullet> Weapon::tryShoot(sf::Vector2f position,
     return std::nullopt;
 }
 
+void Weapon::setWeaponType(WeaponType newType) { type = newType; }
 
-void Weapon::setWeaponType(WeaponType newType) {
-    type = newType;
-}
+WeaponType Weapon::getWeaponType() const { return type; }
 
-WeaponType Weapon::getWeaponType() const {
-    return type;
-}
+float Weapon::getSpeed() const { return weaponConfigs.at(type).speed; }
 
-float Weapon::getSpeed() const {
-    return weaponConfigs.at(type).speed;
-}
+int Weapon::getDamage() const { return weaponConfigs.at(type).damage; }
 
-int Weapon::getDamage() const {
-    return weaponConfigs.at(type).damage;
-}
-
-float Weapon::getCooldown() const {
-    return weaponConfigs.at(type).cooldown;
-}
+float Weapon::getCooldown() const { return weaponConfigs.at(type).cooldown; }

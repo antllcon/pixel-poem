@@ -7,6 +7,7 @@ class Map {
 
     void printMap() const;
     std::vector<std::vector<int>>& getGrid();
+
     static void placeRooms(Map& map, int roomCount);
     static void connectRooms(Map& map);
 
