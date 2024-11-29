@@ -17,6 +17,10 @@ add_executable(pixel_poem main.cpp entities/player/Player.cpp core/game/Game.cpp
         systems/menu/Menu.cpp
         core/config.h
         systems/ui/UI.cpp
-        systems/ui/UI.h)
+        systems/ui/UI.h
+        systems/animation/Animation.h
+        systems/animation/Animation.cpp
+        systems/map/Map.h
+        systems/map/Map.cpp)
 target_link_libraries(pixel_poem sfml-graphics sfml-audio)
 install(TARGETS pixel_poem DESTINATION /usr/local/bin)

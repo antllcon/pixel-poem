@@ -6,7 +6,7 @@ class Bullet {
 public:
     enum class OwnerType { Player, Bot };
 
-    Bullet(OwnerType ownerType, sf::Vector2f position, sf::Vector2f direction, float speed, float damage);
+    Bullet(OwnerType ownerType, sf::Vector2f position, sf::Vector2f direction, float speed, int damage);
 
     void update(float deltaTime);
     void draw(sf::RenderWindow& window) const;
@@ -14,7 +14,7 @@ public:
     OwnerType getOwnerType() const;
     sf::Vector2f getPosition() const;
     sf::FloatRect getGlobalBounds() const;
-    float getDamage() const;
+    int getDamage() const;
     bool isActive() const;
     void setActive(bool newActive);
 
@@ -23,6 +23,6 @@ private:
     sf::RectangleShape bullet;
     sf::Vector2f direction;
     float speed;
-    float damage;
+    int damage;
     bool active;
 };

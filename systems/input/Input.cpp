@@ -21,7 +21,7 @@ void Input::checkRightStick(unsigned int joystickId) {
     float rightX = sf::Joystick::getAxisPosition(joystickId, sf::Joystick::U);
     float rightY = sf::Joystick::getAxisPosition(joystickId, sf::Joystick::R);
 
-    std::cout << "Right Stick - X: " << rightX << ", Y: " << rightY << std::endl;
+    // std::cout << "Right Stick - X: " << rightX << ", Y: " << rightY << std::endl;
 }
 
 bool Input::isPressed(const std::string& action) const {
@@ -71,6 +71,7 @@ void Input::checkHeldKeys() {
     updateButtonState("lookUp", sf::Keyboard::isKeyPressed(sf::Keyboard::Up));
     updateButtonState("lookDown", sf::Keyboard::isKeyPressed(sf::Keyboard::Down));
     updateButtonState("lookLeft", sf::Keyboard::isKeyPressed(sf::Keyboard::Left));
+    updateButtonState("lookRight", sf::Keyboard::isKeyPressed(sf::Keyboard::Right));
 }
 
 void Input::checkHeldGamepadButtons() {

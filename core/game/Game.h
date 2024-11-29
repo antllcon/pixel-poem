@@ -3,7 +3,9 @@
 #include <memory>
 
 #include "../../systems/input/Input.h"
+#include "../../systems/map/Map.h"
 #include "../../systems/menu/Menu.h"
+#include "../../systems/ui/UI.h"
 
 class Bullet;
 class Player;
@@ -12,6 +14,7 @@ class Enemy;
 class Game {
    public:
     enum class GameState { Start, Play, Pause, End };
+    enum class GamePlayState { Attack, Sleep };
 
     Game();
     ~Game();
@@ -24,13 +27,16 @@ class Game {
 
    private:
     GameState state;
+    GamePlayState playState;
     sf::Clock clock;
     sf::View view;
     Menu menu;
+    Map map;
     Input inputHandler;
     std::unique_ptr<Player> player;
     std::vector<std::unique_ptr<Enemy>> enemies;
     std::vector<Bullet> bullets;
+    UI* ui;
 
     float globalTime;
     float deltaTime;

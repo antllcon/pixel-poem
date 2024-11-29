@@ -1,3 +1,6 @@
+#include <iostream>
+
+
 #include "core/config.h"
 #include "core/game/Game.h"
 
@@ -15,6 +18,7 @@ int main() {
         pixelPoem.processEvents(window);
         pixelPoem.update(window);
         pixelPoem.render(window);
+        // std::cout << std::to_string(static_cast<int>(pixelPoem.getState())) << std::endl;
     }
     return 0;
 }

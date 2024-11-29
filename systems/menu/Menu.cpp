@@ -10,7 +10,7 @@ Menu::Menu() {
 }
 
 void Menu::initTextMenu() {
-    font.loadFromFile(SRC_FONT);
+    font.loadFromFile(SRC_FONT_HARRY);
 
     titleText.setFont(font);
     titleText.setString("Pixel Poem");

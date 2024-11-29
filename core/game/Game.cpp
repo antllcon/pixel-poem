@@ -3,13 +3,25 @@
 #include <iostream>
 
 #include "../../Utils.h"
-#include "../config.h"
 #include "../../entities/enemy/Enemy.h"
 #include "../../entities/player/Player.h"
+#include "../../systems/map/Map.h"
+#include "../config.h"
 
-Game::Game() : state(GameState::Start), globalTime(0.f), deltaTime(0.1f) {
+Game::Game()
+    : state(GameState::Start),
+      playState(GamePlayState::Sleep),
+      map(MAP_WIDTH, MAP_HEIGHT),
+      ui(nullptr),
+      globalTime(0.f),
+      deltaTime(0.1f) {
     srand(static_cast<unsigned>(time(nullptr)));
     view = sf::View(sf::FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
+
+    map.placeRooms(map, ROOM_COUNT);
+    map.connectRooms(map);
+
+    map.printMap();
 }
 
 Game::~Game() = default;
@@ -87,11 +99,28 @@ void Game::update(sf::RenderWindow& window) {
         case GameState::Play:
             checkCollisions();
             if (player) player->update(deltaTime);
+            if (ui)
+                ui->update(player->getHealth(), player->getArmor(),
+                           player->getMoney());
             updateEnemy();
             updateBullets();
+            if (playState == GamePlayState::Sleep) {
+                if (player) player->regenerateArmor(globalTime);
+            }
+            if (!player->getIsAlive()) {
+                setState(GameState::Pause);
+            }
             break;
 
         case GameState::Pause:
+            if (ui)
+                ui->update(player->getHealth(), player->getArmor(),
+                           player->getMoney());
+            updateEnemy();
+            updateBullets();
+            if (playState == GamePlayState::Sleep) {
+                if (player) player->regenerateArmor(globalTime);
+            }
             break;
 
         case GameState::End:
@@ -117,14 +146,14 @@ void Game::updateBullets() {
 }
 
 void Game::render(sf::RenderWindow& window) {
-    window.clear(COLOR_DARK_PURPLE);
-
     switch (state) {
         case GameState::Start:
+            window.clear(COLOR_DARK);
             menu.renderMenu(inputHandler, window);
             break;
 
         case GameState::Play:
+            window.clear(COLOR_DARK_PURPLE);
             if (player) player->draw(window);
             for (const auto& enemy : enemies) {
                 enemy->draw(window);
@@ -132,12 +161,18 @@ void Game::render(sf::RenderWindow& window) {
             for (const auto& bullet : bullets) {
                 bullet.draw(window);
             }
+            window.setView(view);
+            window.setView(window.getDefaultView());
+            if (ui) ui->render(window);
+            window.setView(view);
+
             break;
 
         case GameState::Pause:
             break;
 
         case GameState::End:
+            window.clear(COLOR_DARK_PURPLE);
             break;
     }
 
@@ -146,12 +181,14 @@ void Game::render(sf::RenderWindow& window) {
 
 void Game::initEntitiesPlay() {
     spawnPlayer();
+    ui = new UI(player->getHealth(), player->getArmor(), player->getMoney());
     spawnEnemies(NUM_ENEMIES);
 }
 
 void Game::spawnPlayer() {
-    player = std::make_unique<Player>(PLAYER_SIZE, PLAYER_COLOR, PLAYER_SPEED,
-                                      PLAYER_HEALTH);
+    player =
+        std::make_unique<Player>(PLAYER_SIZE, PLAYER_COLOR, PLAYER_SPEED,
+                                 PLAYER_HEALTH, PLAYER_ARMOR, PLAYER_MONEY);
 }
 
 void Game::spawnEnemies(int numEnemies) {
@@ -175,14 +212,10 @@ void Game::updateDeltaTime() {
 
 void Game::updateCamera(sf::RenderWindow& window) {
     if (state == GameState::Play && player) {
-        float cameraLeft =
-            view.getCenter().x - SCREEN_WIDTH / 2.0f + CAMERA_DELTA_WIDTH;
-        float cameraRight =
-            view.getCenter().x + SCREEN_WIDTH / 2.0f - CAMERA_DELTA_WIDTH;
-        float cameraTop =
-            view.getCenter().y - SCREEN_HEIGHT / 2.0f + CAMERA_DELTA_HEIGHT;
-        float cameraBottom =
-            view.getCenter().y + SCREEN_HEIGHT / 2.0f - CAMERA_DELTA_HEIGHT;
+        float cameraLeft = view.getCenter().x - CAMERA_DELTA_WIDTH;
+        float cameraRight = view.getCenter().x + CAMERA_DELTA_WIDTH;
+        float cameraTop = view.getCenter().y - CAMERA_DELTA_HEIGHT;
+        float cameraBottom = view.getCenter().y + CAMERA_DELTA_HEIGHT;
 
         if (player->getX() < cameraLeft) {
             view.move(player->getX() - cameraLeft, 0);
@@ -239,7 +272,8 @@ void Game::checkBulletEnemyCollisions() {
 void Game::checkBulletPlayerCollisions() {
     for (auto& bullet : bullets) {
         if (bullet.getOwnerType() == Bullet::OwnerType::Bot) {
-            if (bullet.getGlobalBounds().intersects(player->getGlobalBounds())) {
+            if (bullet.getGlobalBounds().intersects(
+                    player->getGlobalBounds())) {
                 player->takeDamage(bullet.getDamage());
                 bullet.setActive(false);
             }

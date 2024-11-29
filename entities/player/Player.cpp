@@ -2,17 +2,21 @@
 #include "Player.h"
 
 #include <cmath>
-#include <iostream>
 
 #include "../../core/config.h"
 #include "../../systems/input/Input.h"
 
-Player::Player(int size, sf::Color color, float speed, int health)
+Player::Player(int size, sf::Color color, float speed, int health, int armor,
+               int money)
     : position(MAP_PLAYER_SPAWN_X, MAP_PLAYER_SPAWN_Y),
-      moveDirection(0.f, 0.f),
+      moveDirection(PLAYER_MOVE_DIRECTION),
+      weapon(WeaponType::Rifle),
       speed(speed),
       health(health),
-      weapon(WeaponType::Rifle) {
+      armor(armor),
+      money(money),
+      isAlive(true),
+      regenerationCooldown(PLAYER_REGENERATION_COOLDOWN) {
     setViewDirection(PLAYER_VIEW);
     player.setSize(sf::Vector2f(size, size));
     player.setFillColor(color);
@@ -78,7 +82,8 @@ void Player::processMoveDirection(const Input& inputHandler) {
 void Player::processShoot(const Input& inputHandler, float globalTime,
                           std::vector<Bullet>& gameBullets) {
     if (inputHandler.isPressed("shoot")) {
-        auto bulletOpt = weapon.tryShoot(position, viewDirection, globalTime, Bullet::OwnerType::Player);
+        auto bulletOpt = weapon.tryShoot(position, viewDirection, globalTime,
+                                         Bullet::OwnerType::Player);
         if (bulletOpt) {
             gameBullets.push_back(bulletOpt.value());
         }
@@ -113,12 +118,42 @@ float Player::getX() const { return position.x; }
 
 float Player::getY() const { return position.y; }
 
+int Player::getHealth() const { return health; }
+
+int Player::getArmor() const { return armor; }
+
+int Player::getMoney() const { return money; }
+
+void Player::takeMoney(int newMoney) { money += newMoney; }
+
 sf::FloatRect Player::getGlobalBounds() const {
     return player.getGlobalBounds();
 }
-void Player::takeDamage(float damage) {
-    health -= damage;
-    if (health <= 0) {
-        std::cout << "Ты умер!" << std::endl;
+
+bool Player::getIsAlive() const { return isAlive; }
+
+
+void Player::takeDamage(int damage) {
+    if (armor > 0) {
+        armor -= damage;
+        if (armor < 0) {
+            armor = 0;
+        }
+    }
+    if (armor == 0) {
+        if (health > 0) {
+            health -= damage;
+        }
+        if (health == 0 && isAlive) {
+            isAlive = false;
+        }
+    }
+}
+
+void Player::regenerateArmor(float globalTime) {
+    if (globalTime - lastRegeneration > regenerationCooldown &&
+        armor < PLAYER_ARMOR) {
+        armor += PLAYER_REGENERATION_ARMOR;
+        lastRegeneration = globalTime;
     }
 }

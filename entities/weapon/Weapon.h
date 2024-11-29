@@ -8,7 +8,7 @@
 #include "../bullet/Bullet.h"
 
 struct WeaponProperties {
-    float damage;
+    int damage;
     float cooldown;
     float speed;
 };
@@ -22,7 +22,7 @@ class Weapon {
                                    float global_time, Bullet::OwnerType owner);
     void setWeaponType(WeaponType newType);
     float getSpeed() const;
-    float getDamage() const;
+    int getDamage() const;
     float getCooldown() const;
     WeaponType getWeaponType() const;
 

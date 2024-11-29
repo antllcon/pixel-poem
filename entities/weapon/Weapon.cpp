@@ -4,9 +4,9 @@
 #include <unordered_map>
 
 const std::unordered_map<WeaponType, WeaponProperties> weaponConfigs = {
-    {WeaponType::Pistol, {10.f, 0.5f, 500}},
-    {WeaponType::Rifle, {8.f, 0.1f, 800}},
-    {WeaponType::Shotgun, {25.f, 1.0f, 1000}}};
+    {WeaponType::Pistol, {1, 0.5f, 500}},
+    {WeaponType::Rifle, {2, 0.1f, 800}},
+    {WeaponType::Shotgun, {5, 1.0f, 1000}}};
 
 Weapon::Weapon(WeaponType type): type(type){}
 
@@ -33,7 +33,7 @@ float Weapon::getSpeed() const {
     return weaponConfigs.at(type).speed;
 }
 
-float Weapon::getDamage() const {
+int Weapon::getDamage() const {
     return weaponConfigs.at(type).damage;
 }
 

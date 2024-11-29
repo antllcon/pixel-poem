@@ -1,5 +1,8 @@
 #pragma once
 
+#include "../../systems/animation/Animation.h"
+
+
 #include <SFML/Graphics.hpp>
 
 #include "../weapon/Weapon.h"
@@ -16,7 +19,7 @@ class Enemy {
     void update(float deltaTime);
     void processInput(sf::Vector2f position, float globalTime,
                       std::vector<Bullet>& gameBullets);
-    void takeDamage(float damage);
+    void takeDamage(int damage);
     bool getIsAlive() const;
     sf::FloatRect getGlobalBounds() const;
     void setPosition(float x, float y);
@@ -25,6 +28,8 @@ class Enemy {
     EnemyState getState() const;
 
    private:
+    sf::Sprite sprite;
+    Animation animation;
     sf::RectangleShape enemy;
     sf::Vector2f position;
     sf::Vector2f moveDirection;

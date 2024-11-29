@@ -4,7 +4,7 @@
 #include "../player/Player.h"
 
 Bullet::Bullet(OwnerType owner, sf::Vector2f position, sf::Vector2f direction,
-               float speed, float damage)
+               float speed, int damage)
     : owner(owner),
       direction(direction),
       speed(speed),
@@ -41,7 +41,7 @@ sf::FloatRect Bullet::getGlobalBounds() const {
     return bullet.getGlobalBounds();
 }
 
-float Bullet::getDamage() const { return damage; }
+int Bullet::getDamage() const { return damage; }
 
 bool Bullet::isActive() const { return active; }
 

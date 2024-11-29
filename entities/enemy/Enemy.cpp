@@ -1,6 +1,7 @@
 #include "Enemy.h"
 
 #include <cmath>
+#include <iostream>
 #include <random>
 
 #include "../../Utils.h"
@@ -8,7 +9,8 @@
 
 Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed,
              float directionChangeInterval, float timeSinceDirectionChange)
-    : position(MAP_BOT_SPAWN_X, MAP_BOT_SPAWN_Y),
+    : animation(ANIMATION_SPEED),
+      position(MAP_BOT_SPAWN_X, MAP_BOT_SPAWN_Y),
       state(state),
       weapon(WeaponType::Rifle),
       health(health),
@@ -21,23 +23,37 @@ Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed,
     enemy.setFillColor(color);
     setRandomDirection();
     enemy.setSize(sf::Vector2f(size, size));
+    enemy.setOrigin(enemy.getLocalBounds().width / 2,
+                    enemy.getLocalBounds().height / 2);
+
+    for (int i = 1; i <= 4; ++i) {
+        sf::Texture texture;
+        texture.loadFromFile(SRC_SKELETON + std::to_string(i) + PNG);
+        animation.addFrame(texture);
+    }
+
+    animation.applyToSprite(sprite);
+    sprite.setOrigin(sprite.getLocalBounds().width / 2,
+                     sprite.getLocalBounds().height / 2);
+    sprite.setPosition(position);
+    sprite.setScale(SCALE_FACTOR_LEFT);
 }
 
-void Enemy::draw(sf::RenderWindow& window) { window.draw(enemy); }
+void Enemy::draw(sf::RenderWindow& window) { window.draw(sprite); }
 
 void Enemy::update(float deltaTime) {
-    // Обновляем таймер
     timeSinceDirectionChange += deltaTime;
 
-    // Если пришло время изменить направление
     if (timeSinceDirectionChange >= directionChangeInterval) {
         setRandomDirection();
         timeSinceDirectionChange = 0.f;
     }
 
-    // Двигаем врага
     position += moveDirection * speed * deltaTime;
     enemy.setPosition(position);
+    sprite.setPosition(position);
+    animation.update(deltaTime);
+    animation.applyToSprite(sprite);
 }
 
 void Enemy::processInput(sf::Vector2f playerPosition, float globalTime,
@@ -55,13 +71,16 @@ void Enemy::processViewDirection(sf::Vector2f playerPosition) {
     float deltaY = playerPosition.y - position.y;
 
     if (std::abs(deltaX) > std::abs(deltaY)) {
-        // Игрок находится преимущественно по горизонтали
-        newDirection.x = (deltaX > 0) ? 1.f : -1.f;  // Вправо или влево
+        newDirection.x = (deltaX > 0) ? 1.f : -1.f;
     } else {
-        // Игрок находится преимущественно по вертикали
-        newDirection.y = (deltaY > 0) ? 1.f : -1.f;  // Вниз или вверх
+        newDirection.y = (deltaY > 0) ? 1.f : -1.f;
     }
     setViewDirection(newDirection);
+    if (newDirection.x > 0) {
+        sprite.setScale(SCALE_FACTOR_LEFT);
+    } else if (newDirection.x < 0) {
+        sprite.setScale(SCALE_FACTOR_RIGHT);
+    }
 }
 
 void Enemy::processShoot(float globalTime, std::vector<Bullet>& gameBullets) {
@@ -92,7 +111,7 @@ void Enemy::setPosition(float x, float y) { position = sf::Vector2f(x, y); }
 
 sf::Vector2f Enemy::getPosition() const { return position; }
 
-void Enemy::takeDamage(float damage) {
+void Enemy::takeDamage(int damage) {
     health -= damage;
     if (health <= 0 && isAlive) {
         isAlive = false;
