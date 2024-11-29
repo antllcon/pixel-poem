@@ -22,6 +22,7 @@ set(SOURCES
         systems/map/Map.cpp
         core/game/GameStateManager.cpp
         entities/EntitiyManager/EntityManager.cpp
+        systems/collision/CollisionManager.cpp
 )
 
 set(HEADERS
@@ -39,6 +40,7 @@ set(HEADERS
         core/config.h
         core/game/GameStateManager.h
         entities/EntitiyManager/EntitiyManager.h
+        systems/collision/CollisionManager.h
 )
 
 # Добавление исполняемого файла

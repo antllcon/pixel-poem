@@ -8,6 +8,7 @@
 #include "../../systems/ui/UI.h"
 #include "GameStateManager.h"
 #include "../../entities/EntitiyManager/EntitiyManager.h"
+#include "../../systems/collision/CollisionManager.h"
 
 class Bullet;
 class Player;
@@ -27,6 +28,7 @@ class Game {
    private:
     GameStateManager gameStateManager;
     EntityManager entityManager;
+    CollisionManager collisionManager;
     sf::Clock clock;
     sf::View view;
     Menu menu;
@@ -44,8 +46,4 @@ class Game {
     void initEntitiesPlay();
     void updateDeltaTime();
     void updateCamera(sf::RenderWindow& window);
-    void checkCollisions();
-    void checkBulletEnemyCollisions();
-    void checkBulletPlayerCollisions();
-    void checkPlayerEnemyCollisions();
 };

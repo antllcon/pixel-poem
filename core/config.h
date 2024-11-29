@@ -29,7 +29,7 @@ constexpr int DEAD_ZONE = 5.0f;
 const sf::Vector2f PLAYER_VIEW(1.0f, 0.0f);
 const sf::Vector2f PLAYER_MOVE_DIRECTION = sf::Vector2f(0.f, 0.f);
 const sf::Color PLAYER_COLOR = sf::Color(78, 162, 122);
-constexpr float PLAYER_SPEED = 250.f;
+constexpr float PLAYER_SPEED = 100.f;
 constexpr float PLAYER_REGENERATION_COOLDOWN = 3.f;
 constexpr int PLAYER_REGENERATION_ARMOR = 1;
 constexpr int PLAYER_SIZE = 24;

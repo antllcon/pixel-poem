@@ -101,7 +101,7 @@ void Game::update(sf::RenderWindow& window) {
         case GameStateManager::GameState::Play:
             // обработка коллизий и изменение состояний игрока - разобраться!!!
             // вынести это в методы
-            checkCollisions();
+            collisionManager.checkCollisions(entityManager);
 
             if (entityManager.getPlayer()) entityManager.getPlayer()->update(deltaTime);
             if (ui) {
@@ -162,7 +162,8 @@ void Game::render(sf::RenderWindow& window) {
 void Game::initEntitiesPlay() {
     entityManager.spawnPlayer();
     // Нужна ли обертка, стоит ли так вызывать конструктор?
-    ui = new UI(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(), entityManager.getPlayer()->getMoney());
+    ui = new UI(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(),
+                entityManager.getPlayer()->getMoney());
     entityManager.spawnEnemies();
 }
 
@@ -196,50 +197,6 @@ void Game::updateCamera(sf::RenderWindow& window) {
         view.setCenter(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f);
     }
     window.setView(view);
-}
-
-void Game::checkCollisions() {
-    checkBulletEnemyCollisions();   // Пули игрока ↔ Враги
-    checkBulletPlayerCollisions();  // Пули врагов ↔ Игрок
-    checkPlayerEnemyCollisions();   // Игрок ↔ Враги
-}
-
-void Game::checkPlayerEnemyCollisions() {
-    for (auto& enemy : entityManager.getEnemies()) {
-        sf::FloatRect viewAreaBounds = enemy->getGlobalBounds();
-        sf::FloatRect viewArea = addFloatRects(viewAreaBounds, BOT_VIEW_AREA);
-        if (entityManager.getPlayer()->getGlobalBounds().intersects(viewArea)) {
-            enemy->setState(EnemyState::attack);
-        } else {
-            if (enemy->getState() == EnemyState::attack) {
-                enemy->setState(EnemyState::sleep);
-            }
-        }
-    }
-}
-
-void Game::checkBulletEnemyCollisions() {
-    for (auto& bullet : entityManager.getBullets()) {
-        if (bullet.getOwnerType() == Bullet::OwnerType::Player) {
-            for (auto& enemy : entityManager.getEnemies()) {
-                if (bullet.getGlobalBounds().intersects(enemy->getGlobalBounds())) {
-                    enemy->takeDamage(bullet.getDamage());
-                    bullet.setActive(false);
-                }
-            }
-        }
-    }
-}
-
-void Game::checkBulletPlayerCollisions() {
-    for (auto& bullet : entityManager.getBullets()) {
-        if (bullet.getOwnerType() == Bullet::OwnerType::Bot) {
-            if (bullet.getGlobalBounds().intersects(entityManager.getPlayer()->getGlobalBounds())) {
-                entityManager.getPlayer()->takeDamage(bullet.getDamage());
-                bullet.setActive(false);
-            }
-        }
-    }
 }
 
 GameStateManager& Game::getStateManager() { return gameStateManager; }
