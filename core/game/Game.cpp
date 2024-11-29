@@ -9,14 +9,18 @@
 #include "../config.h"
 
 Game::Game()
+    // Исправить конструктор, что за srand, поменять объявление map, перенести, убрать view
     : gameStateManager(gameStateManager), map(MAP_WIDTH, MAP_HEIGHT), ui(nullptr), globalTime(0.f), deltaTime(0.1f) {
     srand(static_cast<unsigned>(time(nullptr)));
     view = sf::View(sf::FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
 
+    // Перенести карту в сущности
     map.placeRooms(map, ROOM_COUNT);
     map.connectRooms(map);
-
     map.printMap();
+
+    entityManager.spawnPlayer();
+    entityManager.spawnEnemies();
 }
 
 Game::~Game() = default;
@@ -63,12 +67,15 @@ void Game::handleStartEvents(sf::RenderWindow& window) {
     inputHandler.resetStates();
 }
 
+// Стрельба и направление - разобраться!!!
 void Game::handlePlayEvents() {
     inputHandler.processInput();
-    if (player) player->processInput(inputHandler, globalTime, bullets);
-    sf::Vector2f position(player->getX(), player->getY());
-    for (auto& enemy : enemies) {
-        enemy->processInput(position, globalTime, bullets);
+    if (entityManager.getPlayer()) {
+        entityManager.getPlayer()->processInput(inputHandler, globalTime, entityManager.getBullets());
+    }
+    sf::Vector2f position(entityManager.getPlayer()->getX(), entityManager.getPlayer()->getY());
+    for (auto& enemy : entityManager.getEnemies()) {
+        enemy->processInput(position, globalTime, entityManager.getBullets());
     }
     inputHandler.resetStates();
 }
@@ -92,15 +99,20 @@ void Game::update(sf::RenderWindow& window) {
             break;
 
         case GameStateManager::GameState::Play:
+            // обработка коллизий и изменение состояний игрока - разобраться!!!
+            // вынести это в методы
             checkCollisions();
-            if (player) player->update(deltaTime);
-            if (ui) ui->update(player->getHealth(), player->getArmor(), player->getMoney());
-            updateEnemy();
-            updateBullets();
-            if (gameStateManager.getPlayState() == GameStateManager::GamePlayState::Sleep) {
-                if (player) player->regenerateArmor(globalTime);
+
+            if (entityManager.getPlayer()) entityManager.getPlayer()->update(deltaTime);
+            if (ui) {
+                ui->update(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(),
+                           entityManager.getPlayer()->getMoney());
             }
-            if (!player->getIsAlive()) {
+            entityManager.update(deltaTime);
+            if (gameStateManager.getPlayState() == GameStateManager::GamePlayState::Sleep) {
+                if (entityManager.getPlayer()) entityManager.getPlayer()->regenerateArmor(globalTime);
+            }
+            if (!entityManager.getPlayer()->getIsAlive()) {
                 gameStateManager.setState(GameStateManager::GameState::Pause);
             }
             break;
@@ -113,75 +125,45 @@ void Game::update(sf::RenderWindow& window) {
     }
 }
 
-void Game::updateEnemy() {
-    for (auto& enemy : enemies) {
-        enemy->update(deltaTime);
-    }
-    std::erase_if(enemies, [](const std::unique_ptr<Enemy>& enemy) { return !enemy->getIsAlive(); });
-}
-
-void Game::updateBullets() {
-    for (auto& bullet : bullets) {
-        bullet.update(deltaTime);
-    }
-    std::erase_if(bullets, [](const Bullet& bullet) { return !bullet.isActive(); });
-}
-
 void Game::render(sf::RenderWindow& window) {
     switch (gameStateManager.getState()) {
         case GameStateManager::GameState::Start:
             window.clear(COLOR_DARK);
-        menu.renderMenu(inputHandler, window);
-        break;
+            menu.renderMenu(inputHandler, window);
+            break;
 
         case GameStateManager::GameState::Play:
             window.clear(COLOR_DARK_PURPLE);
-        if (player) player->draw(window);
-        for (const auto& enemy : enemies) {
-            enemy->draw(window);
-        }
-        for (const auto& bullet : bullets) {
-            bullet.draw(window);
-        }
-        window.setView(view);  // Установка игровой камеры
-        window.setView(window.getDefaultView());  // Сброс для интерфейса
-        if (ui) ui->render(window);  // Отрисовка UI
-        window.setView(view);  // Возвращение камеры
+            if (entityManager.getPlayer()) entityManager.getPlayer()->draw(window);
+            for (const auto& enemy : entityManager.getEnemies()) {
+                enemy->draw(window);
+            }
+            for (const auto& bullet : entityManager.getBullets()) {
+                bullet.draw(window);
+            }
+            window.setView(view);                     // Установка игровой камеры
+            window.setView(window.getDefaultView());  // Сброс для интерфейса
+            if (ui) ui->render(window);               // Отрисовка UI
+            window.setView(view);                     // Возвращение камеры
 
-        break;
+            break;
 
         case GameStateManager::GameState::Pause:
             break;
 
         case GameStateManager::GameState::End:
             window.clear(COLOR_DARK_PURPLE);
-        break;
+            break;
     }
-
 
     window.display();
 }
 
 void Game::initEntitiesPlay() {
-    spawnPlayer();
-    ui = new UI(player->getHealth(), player->getArmor(), player->getMoney());
-    spawnEnemies(NUM_ENEMIES);
-}
-
-void Game::spawnPlayer() {
-    player =
-        std::make_unique<Player>(PLAYER_SIZE, PLAYER_COLOR, PLAYER_SPEED, PLAYER_HEALTH, PLAYER_ARMOR, PLAYER_MONEY);
-}
-
-void Game::spawnEnemies(int numEnemies) {
-    for (int i = 0; i < numEnemies; ++i) {
-        float x = static_cast<float>(rand() % SCREEN_WIDTH);
-        float y = static_cast<float>(rand() % SCREEN_HEIGHT);
-        auto enemy = std::make_unique<Enemy>(EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED,
-                                             BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME);
-        enemy->setPosition(x, y);
-        enemies.push_back(std::move(enemy));
-    }
+    entityManager.spawnPlayer();
+    // Нужна ли обертка, стоит ли так вызывать конструктор?
+    ui = new UI(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(), entityManager.getPlayer()->getMoney());
+    entityManager.spawnEnemies();
 }
 
 void Game::updateDeltaTime() {
@@ -192,23 +174,23 @@ void Game::updateDeltaTime() {
 }
 
 void Game::updateCamera(sf::RenderWindow& window) {
-    if (gameStateManager.getState() == GameStateManager::GameState::Play && player) {
+    if (gameStateManager.getState() == GameStateManager::GameState::Play && entityManager.getPlayer()) {
         float cameraLeft = view.getCenter().x - CAMERA_DELTA_WIDTH;
         float cameraRight = view.getCenter().x + CAMERA_DELTA_WIDTH;
         float cameraTop = view.getCenter().y - CAMERA_DELTA_HEIGHT;
         float cameraBottom = view.getCenter().y + CAMERA_DELTA_HEIGHT;
 
-        if (player->getX() < cameraLeft) {
-            view.move(player->getX() - cameraLeft, 0);
+        if (entityManager.getPlayer()->getX() < cameraLeft) {
+            view.move(entityManager.getPlayer()->getX() - cameraLeft, 0);
         }
-        if (player->getX() > cameraRight) {
-            view.move(player->getX() - cameraRight, 0);
+        if (entityManager.getPlayer()->getX() > cameraRight) {
+            view.move(entityManager.getPlayer()->getX() - cameraRight, 0);
         }
-        if (player->getY() < cameraTop) {
-            view.move(0, player->getY() - cameraTop);
+        if (entityManager.getPlayer()->getY() < cameraTop) {
+            view.move(0, entityManager.getPlayer()->getY() - cameraTop);
         }
-        if (player->getY() > cameraBottom) {
-            view.move(0, player->getY() - cameraBottom);
+        if (entityManager.getPlayer()->getY() > cameraBottom) {
+            view.move(0, entityManager.getPlayer()->getY() - cameraBottom);
         }
     } else {
         view.setCenter(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f);
@@ -223,10 +205,10 @@ void Game::checkCollisions() {
 }
 
 void Game::checkPlayerEnemyCollisions() {
-    for (auto& enemy : enemies) {
+    for (auto& enemy : entityManager.getEnemies()) {
         sf::FloatRect viewAreaBounds = enemy->getGlobalBounds();
         sf::FloatRect viewArea = addFloatRects(viewAreaBounds, BOT_VIEW_AREA);
-        if (player->getGlobalBounds().intersects(viewArea)) {
+        if (entityManager.getPlayer()->getGlobalBounds().intersects(viewArea)) {
             enemy->setState(EnemyState::attack);
         } else {
             if (enemy->getState() == EnemyState::attack) {
@@ -237,9 +219,9 @@ void Game::checkPlayerEnemyCollisions() {
 }
 
 void Game::checkBulletEnemyCollisions() {
-    for (auto& bullet : bullets) {
+    for (auto& bullet : entityManager.getBullets()) {
         if (bullet.getOwnerType() == Bullet::OwnerType::Player) {
-            for (auto& enemy : enemies) {
+            for (auto& enemy : entityManager.getEnemies()) {
                 if (bullet.getGlobalBounds().intersects(enemy->getGlobalBounds())) {
                     enemy->takeDamage(bullet.getDamage());
                     bullet.setActive(false);
@@ -250,17 +232,14 @@ void Game::checkBulletEnemyCollisions() {
 }
 
 void Game::checkBulletPlayerCollisions() {
-    for (auto& bullet : bullets) {
+    for (auto& bullet : entityManager.getBullets()) {
         if (bullet.getOwnerType() == Bullet::OwnerType::Bot) {
-            if (bullet.getGlobalBounds().intersects(player->getGlobalBounds())) {
-                player->takeDamage(bullet.getDamage());
+            if (bullet.getGlobalBounds().intersects(entityManager.getPlayer()->getGlobalBounds())) {
+                entityManager.getPlayer()->takeDamage(bullet.getDamage());
                 bullet.setActive(false);
             }
         }
     }
 }
 
-GameStateManager& Game::getStateManager() {
-    return gameStateManager;
-}
-
+GameStateManager& Game::getStateManager() { return gameStateManager; }

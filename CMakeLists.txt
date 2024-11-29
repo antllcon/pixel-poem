@@ -21,6 +21,7 @@ set(SOURCES
         systems/animation/Animation.cpp
         systems/map/Map.cpp
         core/game/GameStateManager.cpp
+        entities/EntitiyManager/EntityManager.cpp
 )
 
 set(HEADERS
@@ -37,6 +38,7 @@ set(HEADERS
         Utils.h
         core/config.h
         core/game/GameStateManager.h
+        entities/EntitiyManager/EntitiyManager.h
 )
 
 # Добавление исполняемого файла

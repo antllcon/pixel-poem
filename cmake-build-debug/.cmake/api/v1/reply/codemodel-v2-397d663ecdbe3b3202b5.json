@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-24a4660e9013b7c8199a.json",
+					"jsonFile" : "directory-.-Debug-14b8ef219276d4a03f40.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.28"
@@ -40,7 +40,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "pixel_poem::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-pixel_poem-Debug-73ee65935358a8315f96.json",
+					"jsonFile" : "target-pixel_poem-Debug-e44539289192166815b8.json",
 					"name" : "pixel_poem",
 					"projectIndex" : 0
 				}
