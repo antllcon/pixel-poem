@@ -1,26 +1,49 @@
 cmake_minimum_required(VERSION 3.28)
+
+# Имя проекта и стандарт C++
 project(pixel_poem)
 set(CMAKE_CXX_STANDARD 20)
+
+# Подключение SFML
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
-add_executable(pixel_poem main.cpp entities/player/Player.cpp core/game/Game.cpp entities/enemy/Enemy.cpp
+
+# Установка переменных для групп файлов
+set(SOURCES
+        main.cpp
+        core/game/Game.cpp
+        entities/player/Player.cpp
+        entities/enemy/Enemy.cpp
         entities/weapon/Weapon.cpp
-        entities/bullet/Bullet.h
         entities/bullet/Bullet.cpp
-        entities/player/Player.h
-        systems/input/Input.h
         systems/input/Input.cpp
-        entities/weapon/Weapon.h
-        Utils.h
-        Utils.h
-        Utils.h
-        systems/menu/Menu.h
         systems/menu/Menu.cpp
-        core/config.h
         systems/ui/UI.cpp
+        systems/animation/Animation.cpp
+        systems/map/Map.cpp
+        core/game/GameStateManager.cpp
+)
+
+set(HEADERS
+        core/game/Game.h
+        entities/player/Player.h
+        entities/enemy/Enemy.h
+        entities/weapon/Weapon.h
+        entities/bullet/Bullet.h
+        systems/input/Input.h
+        systems/menu/Menu.h
         systems/ui/UI.h
         systems/animation/Animation.h
-        systems/animation/Animation.cpp
         systems/map/Map.h
-        systems/map/Map.cpp)
+        Utils.h
+        core/config.h
+        core/game/GameStateManager.h
+)
+
+# Добавление исполняемого файла
+add_executable(pixel_poem ${SOURCES} ${HEADERS})
+
+# Линковка с SFML
 target_link_libraries(pixel_poem sfml-graphics sfml-audio)
+
+# Установка файла
 install(TARGETS pixel_poem DESTINATION /usr/local/bin)

@@ -6,6 +6,7 @@
 #include "../../systems/map/Map.h"
 #include "../../systems/menu/Menu.h"
 #include "../../systems/ui/UI.h"
+#include "GameStateManager.h"
 
 class Bullet;
 class Player;
@@ -13,21 +14,17 @@ class Enemy;
 
 class Game {
    public:
-    enum class GameState { Start, Play, Pause, End };
-    enum class GamePlayState { Attack, Sleep };
-
     Game();
     ~Game();
 
     void processEvents(sf::RenderWindow& window);
     void update(sf::RenderWindow& window);
     void render(sf::RenderWindow& window);
-    void setState(GameState newState);
-    GameState getState() const;
+
+    GameStateManager& getStateManager();
 
    private:
-    GameState state;
-    GamePlayState playState;
+    GameStateManager gameStateManager;
     sf::Clock clock;
     sf::View view;
     Menu menu;

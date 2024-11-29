@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "../weapon/Weapon.h"
+#include "../../systems/animation/Animation.h"
 
 class Input;
 
@@ -10,10 +11,8 @@ class Player {
    public:
     enum class Direction { None, Up, Down, Left, Right };
 
-    Player(int size, sf::Color color, float speed, int health, int armor,
-           int money);
-    void processInput(const Input& inputHandler, float globalTime,
-                      std::vector<Bullet>& gameBullets);
+    Player(int size, sf::Color color, float speed, int health, int armor, int money);
+    void processInput(const Input& inputHandler, float globalTime, std::vector<Bullet>& gameBullets);
     void update(float deltaTime);
     void draw(sf::RenderWindow& window);
     float getX() const;
@@ -29,6 +28,8 @@ class Player {
 
    private:
     sf::RectangleShape player;
+    sf::Sprite sprite;
+    Animation animation;
     sf::Vector2f position;
     sf::Vector2f moveDirection;
     sf::Vector2f viewDirection;
@@ -43,8 +44,7 @@ class Player {
 
     void processMoveDirection(const Input& inputHandler);
     void processViewDirection(const Input& inputHandler);
-    void processShoot(const Input& inputHandler, float globalTime,
-                      std::vector<Bullet>& gameBullets);
+    void processShoot(const Input& inputHandler, float globalTime, std::vector<Bullet>& gameBullets);
     void setMoveDirection(const sf::Vector2f& newMoveDirection);
     void setViewDirection(const sf::Vector2f& newViewDirection);
     void view();

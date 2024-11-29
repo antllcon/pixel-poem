@@ -1,14 +1,13 @@
 #include "Enemy.h"
 
 #include <cmath>
-#include <iostream>
 #include <random>
 
 #include "../../Utils.h"
 #include "../../core/config.h"
 
-Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed,
-             float directionChangeInterval, float timeSinceDirectionChange)
+Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed, float directionChangeInterval,
+             float timeSinceDirectionChange)
     : animation(ANIMATION_SPEED),
       position(MAP_BOT_SPAWN_X, MAP_BOT_SPAWN_Y),
       state(state),
@@ -23,8 +22,7 @@ Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed,
     enemy.setFillColor(color);
     setRandomDirection();
     enemy.setSize(sf::Vector2f(size, size));
-    enemy.setOrigin(enemy.getLocalBounds().width / 2,
-                    enemy.getLocalBounds().height / 2);
+    enemy.setOrigin(enemy.getLocalBounds().width / 2, enemy.getLocalBounds().height / 2);
 
     for (int i = 1; i <= 4; ++i) {
         sf::Texture texture;
@@ -33,8 +31,7 @@ Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed,
     }
 
     animation.applyToSprite(sprite);
-    sprite.setOrigin(sprite.getLocalBounds().width / 2,
-                     sprite.getLocalBounds().height / 2);
+    sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
     sprite.setPosition(position);
     sprite.setScale(SCALE_FACTOR_LEFT);
 }
@@ -56,8 +53,7 @@ void Enemy::update(float deltaTime) {
     animation.applyToSprite(sprite);
 }
 
-void Enemy::processInput(sf::Vector2f playerPosition, float globalTime,
-                         std::vector<Bullet>& gameBullets) {
+void Enemy::processInput(sf::Vector2f playerPosition, float globalTime, std::vector<Bullet>& gameBullets) {
     processViewDirection(playerPosition);
     if (state == EnemyState::attack) {
         processShoot(globalTime, gameBullets);
@@ -84,8 +80,7 @@ void Enemy::processViewDirection(sf::Vector2f playerPosition) {
 }
 
 void Enemy::processShoot(float globalTime, std::vector<Bullet>& gameBullets) {
-    auto bulletOpt = weapon.tryShoot(position, viewDirection, globalTime,
-                                     Bullet::OwnerType::Bot);
+    auto bulletOpt = weapon.tryShoot(position, viewDirection, globalTime, Bullet::OwnerType::Bot);
     if (bulletOpt) {
         gameBullets.push_back(bulletOpt.value());
     }
@@ -122,9 +117,7 @@ bool Enemy::getIsAlive() const { return isAlive; }
 
 sf::FloatRect Enemy::getGlobalBounds() const { return enemy.getGlobalBounds(); }
 
-void Enemy::setViewDirection(const sf::Vector2f& newViewDirection) {
-    viewDirection = newViewDirection;
-}
+void Enemy::setViewDirection(const sf::Vector2f& newViewDirection) { viewDirection = newViewDirection; }
 
 EnemyState Enemy::getState() const { return state; }
 

@@ -9,12 +9,7 @@
 #include "../config.h"
 
 Game::Game()
-    : state(GameState::Start),
-      playState(GamePlayState::Sleep),
-      map(MAP_WIDTH, MAP_HEIGHT),
-      ui(nullptr),
-      globalTime(0.f),
-      deltaTime(0.1f) {
+    : gameStateManager(gameStateManager), map(MAP_WIDTH, MAP_HEIGHT), ui(nullptr), globalTime(0.f), deltaTime(0.1f) {
     srand(static_cast<unsigned>(time(nullptr)));
     view = sf::View(sf::FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
 
@@ -35,20 +30,20 @@ void Game::processEvents(sf::RenderWindow& window) {
         }
     }
 
-    switch (state) {
-        case GameState::Start:
+    switch (gameStateManager.getState()) {
+        case GameStateManager::GameState::Start:
             handleStartEvents(window);
             break;
 
-        case GameState::Play:
+        case GameStateManager::GameState::Play:
             handlePlayEvents();
             break;
 
-        case GameState::Pause:
+        case GameStateManager::GameState::Pause:
             handlePauseEvents();
             break;
 
-        case GameState::End:
+        case GameStateManager::GameState::End:
             handleEndEvents();
             break;
     }
@@ -58,10 +53,10 @@ void Game::handleStartEvents(sf::RenderWindow& window) {
     inputHandler.processInput();
     menu.processMenu(inputHandler);
     if (inputHandler.isPressed("approve")) {
-        if (menu.getSelectedOption() == 0) {
+        if (menu.getSelectedOption() == false) {
             initEntitiesPlay();
-            setState(GameState::Play);
-        } else if (menu.getSelectedOption() == 1) {
+            gameStateManager.setState(GameStateManager::GameState::Play);
+        } else if (menu.getSelectedOption() == true) {
             window.close();
         }
     }
@@ -92,38 +87,28 @@ void Game::update(sf::RenderWindow& window) {
     updateDeltaTime();
     updateCamera(window);
 
-    switch (state) {
-        case GameState::Start:
+    switch (gameStateManager.getState()) {
+        case GameStateManager::GameState::Start:
             break;
 
-        case GameState::Play:
+        case GameStateManager::GameState::Play:
             checkCollisions();
             if (player) player->update(deltaTime);
-            if (ui)
-                ui->update(player->getHealth(), player->getArmor(),
-                           player->getMoney());
+            if (ui) ui->update(player->getHealth(), player->getArmor(), player->getMoney());
             updateEnemy();
             updateBullets();
-            if (playState == GamePlayState::Sleep) {
+            if (gameStateManager.getPlayState() == GameStateManager::GamePlayState::Sleep) {
                 if (player) player->regenerateArmor(globalTime);
             }
             if (!player->getIsAlive()) {
-                setState(GameState::Pause);
+                gameStateManager.setState(GameStateManager::GameState::Pause);
             }
             break;
 
-        case GameState::Pause:
-            if (ui)
-                ui->update(player->getHealth(), player->getArmor(),
-                           player->getMoney());
-            updateEnemy();
-            updateBullets();
-            if (playState == GamePlayState::Sleep) {
-                if (player) player->regenerateArmor(globalTime);
-            }
+        case GameStateManager::GameState::Pause:
             break;
 
-        case GameState::End:
+        case GameStateManager::GameState::End:
             break;
     }
 }
@@ -132,49 +117,47 @@ void Game::updateEnemy() {
     for (auto& enemy : enemies) {
         enemy->update(deltaTime);
     }
-    std::erase_if(enemies, [](const std::unique_ptr<Enemy>& enemy) {
-        return !enemy->getIsAlive();
-    });
+    std::erase_if(enemies, [](const std::unique_ptr<Enemy>& enemy) { return !enemy->getIsAlive(); });
 }
 
 void Game::updateBullets() {
     for (auto& bullet : bullets) {
         bullet.update(deltaTime);
     }
-    std::erase_if(bullets,
-                  [](const Bullet& bullet) { return !bullet.isActive(); });
+    std::erase_if(bullets, [](const Bullet& bullet) { return !bullet.isActive(); });
 }
 
 void Game::render(sf::RenderWindow& window) {
-    switch (state) {
-        case GameState::Start:
+    switch (gameStateManager.getState()) {
+        case GameStateManager::GameState::Start:
             window.clear(COLOR_DARK);
-            menu.renderMenu(inputHandler, window);
-            break;
+        menu.renderMenu(inputHandler, window);
+        break;
 
-        case GameState::Play:
+        case GameStateManager::GameState::Play:
             window.clear(COLOR_DARK_PURPLE);
-            if (player) player->draw(window);
-            for (const auto& enemy : enemies) {
-                enemy->draw(window);
-            }
-            for (const auto& bullet : bullets) {
-                bullet.draw(window);
-            }
-            window.setView(view);
-            window.setView(window.getDefaultView());
-            if (ui) ui->render(window);
-            window.setView(view);
+        if (player) player->draw(window);
+        for (const auto& enemy : enemies) {
+            enemy->draw(window);
+        }
+        for (const auto& bullet : bullets) {
+            bullet.draw(window);
+        }
+        window.setView(view);  // Установка игровой камеры
+        window.setView(window.getDefaultView());  // Сброс для интерфейса
+        if (ui) ui->render(window);  // Отрисовка UI
+        window.setView(view);  // Возвращение камеры
 
+        break;
+
+        case GameStateManager::GameState::Pause:
             break;
 
-        case GameState::Pause:
-            break;
-
-        case GameState::End:
+        case GameStateManager::GameState::End:
             window.clear(COLOR_DARK_PURPLE);
-            break;
+        break;
     }
+
 
     window.display();
 }
@@ -187,17 +170,15 @@ void Game::initEntitiesPlay() {
 
 void Game::spawnPlayer() {
     player =
-        std::make_unique<Player>(PLAYER_SIZE, PLAYER_COLOR, PLAYER_SPEED,
-                                 PLAYER_HEALTH, PLAYER_ARMOR, PLAYER_MONEY);
+        std::make_unique<Player>(PLAYER_SIZE, PLAYER_COLOR, PLAYER_SPEED, PLAYER_HEALTH, PLAYER_ARMOR, PLAYER_MONEY);
 }
 
 void Game::spawnEnemies(int numEnemies) {
     for (int i = 0; i < numEnemies; ++i) {
         float x = static_cast<float>(rand() % SCREEN_WIDTH);
         float y = static_cast<float>(rand() % SCREEN_HEIGHT);
-        auto enemy = std::make_unique<Enemy>(
-            EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED,
-            BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME);
+        auto enemy = std::make_unique<Enemy>(EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED,
+                                             BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME);
         enemy->setPosition(x, y);
         enemies.push_back(std::move(enemy));
     }
@@ -205,13 +186,13 @@ void Game::spawnEnemies(int numEnemies) {
 
 void Game::updateDeltaTime() {
     deltaTime = clock.restart().asSeconds();
-    if (state == GameState::Play) {
+    if (gameStateManager.getState() == GameStateManager::GameState::Play) {
         globalTime += deltaTime;
     }
 }
 
 void Game::updateCamera(sf::RenderWindow& window) {
-    if (state == GameState::Play && player) {
+    if (gameStateManager.getState() == GameStateManager::GameState::Play && player) {
         float cameraLeft = view.getCenter().x - CAMERA_DELTA_WIDTH;
         float cameraRight = view.getCenter().x + CAMERA_DELTA_WIDTH;
         float cameraTop = view.getCenter().y - CAMERA_DELTA_HEIGHT;
@@ -259,8 +240,7 @@ void Game::checkBulletEnemyCollisions() {
     for (auto& bullet : bullets) {
         if (bullet.getOwnerType() == Bullet::OwnerType::Player) {
             for (auto& enemy : enemies) {
-                if (bullet.getGlobalBounds().intersects(
-                        enemy->getGlobalBounds())) {
+                if (bullet.getGlobalBounds().intersects(enemy->getGlobalBounds())) {
                     enemy->takeDamage(bullet.getDamage());
                     bullet.setActive(false);
                 }
@@ -272,8 +252,7 @@ void Game::checkBulletEnemyCollisions() {
 void Game::checkBulletPlayerCollisions() {
     for (auto& bullet : bullets) {
         if (bullet.getOwnerType() == Bullet::OwnerType::Bot) {
-            if (bullet.getGlobalBounds().intersects(
-                    player->getGlobalBounds())) {
+            if (bullet.getGlobalBounds().intersects(player->getGlobalBounds())) {
                 player->takeDamage(bullet.getDamage());
                 bullet.setActive(false);
             }
@@ -281,6 +260,7 @@ void Game::checkBulletPlayerCollisions() {
     }
 }
 
-void Game::setState(GameState newState) { state = newState; }
+GameStateManager& Game::getStateManager() {
+    return gameStateManager;
+}
 
-Game::GameState Game::getState() const { return state; }

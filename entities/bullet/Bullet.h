@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+#include "../../systems/animation/Animation.h"
 
 class Bullet {
 public:
@@ -20,6 +22,9 @@ public:
 
 private:
     OwnerType owner;
+    sf::Sprite sprite;
+    Animation animation;
+    sf::Vector2f position;
     sf::RectangleShape bullet;
     sf::Vector2f direction;
     float speed;

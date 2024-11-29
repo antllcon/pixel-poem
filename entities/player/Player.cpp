@@ -6,9 +6,9 @@
 #include "../../core/config.h"
 #include "../../systems/input/Input.h"
 
-Player::Player(int size, sf::Color color, float speed, int health, int armor,
-               int money)
-    : position(MAP_PLAYER_SPAWN_X, MAP_PLAYER_SPAWN_Y),
+Player::Player(int size, sf::Color color, float speed, int health, int armor, int money)
+    : animation(ANIMATION_SPEED),
+      position(MAP_PLAYER_SPAWN_X, MAP_PLAYER_SPAWN_Y),
       moveDirection(PLAYER_MOVE_DIRECTION),
       weapon(WeaponType::Rifle),
       speed(speed),
@@ -22,10 +22,20 @@ Player::Player(int size, sf::Color color, float speed, int health, int armor,
     player.setFillColor(color);
     player.setPosition(position);
     player.setOrigin(size / 2.f, size / 2.f);
+
+    for (int i = 1; i <= 4; ++i) {
+        sf::Texture texture;
+        texture.loadFromFile(SRC_KNIGHT + std::to_string(i) + PNG);
+        animation.addFrame(texture);
+    }
+
+    animation.applyToSprite(sprite);
+    sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
+    sprite.setPosition(position);
+    sprite.setScale(SCALE_FACTOR_LEFT);
 }
 
-void Player::processInput(const Input& inputHandler, float globalTime,
-                          std::vector<Bullet>& gameBullets) {
+void Player::processInput(const Input& inputHandler, float globalTime, std::vector<Bullet>& gameBullets) {
     processViewDirection(inputHandler);
     processMoveDirection(inputHandler);
     processShoot(inputHandler, globalTime, gameBullets);
@@ -34,9 +44,12 @@ void Player::processInput(const Input& inputHandler, float globalTime,
 void Player::update(float deltaTime) {
     view();
     move(deltaTime);
+    sprite.setPosition(position);
+    animation.update(deltaTime);
+    animation.applyToSprite(sprite);
 }
 
-void Player::draw(sf::RenderWindow& window) { window.draw(player); }
+void Player::draw(sf::RenderWindow& window) { window.draw(player); window.draw(sprite);  }
 
 void Player::processViewDirection(const Input& inputHandler) {
     sf::Vector2f newDirection(0.f, 0.f);
@@ -79,27 +92,21 @@ void Player::processMoveDirection(const Input& inputHandler) {
     setMoveDirection(newDirection);
 }
 
-void Player::processShoot(const Input& inputHandler, float globalTime,
-                          std::vector<Bullet>& gameBullets) {
+void Player::processShoot(const Input& inputHandler, float globalTime, std::vector<Bullet>& gameBullets) {
     if (inputHandler.isPressed("shoot")) {
-        auto bulletOpt = weapon.tryShoot(position, viewDirection, globalTime,
-                                         Bullet::OwnerType::Player);
+        auto bulletOpt = weapon.tryShoot(position, viewDirection, globalTime, Bullet::OwnerType::Player);
         if (bulletOpt) {
             gameBullets.push_back(bulletOpt.value());
         }
     }
 }
 
-void Player::setMoveDirection(const sf::Vector2f& newMoveDirection) {
-    moveDirection = newMoveDirection;
-}
+void Player::setMoveDirection(const sf::Vector2f& newMoveDirection) { moveDirection = newMoveDirection; }
 
 void Player::setViewDirection(const sf::Vector2f& newViewDirection) {
     if (newViewDirection.x != 0.f || newViewDirection.y != 0.f) {
-        float length = std::sqrt(newViewDirection.x * newViewDirection.x +
-                                 newViewDirection.y * newViewDirection.y);
-        viewDirection = sf::Vector2f(newViewDirection.x / length,
-                                     newViewDirection.y / length);
+        float length = std::sqrt(newViewDirection.x * newViewDirection.x + newViewDirection.y * newViewDirection.y);
+        viewDirection = sf::Vector2f(newViewDirection.x / length, newViewDirection.y / length);
     }
 }
 
@@ -126,12 +133,9 @@ int Player::getMoney() const { return money; }
 
 void Player::takeMoney(int newMoney) { money += newMoney; }
 
-sf::FloatRect Player::getGlobalBounds() const {
-    return player.getGlobalBounds();
-}
+sf::FloatRect Player::getGlobalBounds() const { return player.getGlobalBounds(); }
 
 bool Player::getIsAlive() const { return isAlive; }
-
 
 void Player::takeDamage(int damage) {
     if (armor > 0) {
@@ -151,8 +155,7 @@ void Player::takeDamage(int damage) {
 }
 
 void Player::regenerateArmor(float globalTime) {
-    if (globalTime - lastRegeneration > regenerationCooldown &&
-        armor < PLAYER_ARMOR) {
+    if (globalTime - lastRegeneration > regenerationCooldown && armor < PLAYER_ARMOR) {
         armor += PLAYER_REGENERATION_ARMOR;
         lastRegeneration = globalTime;
     }
