@@ -11,8 +11,6 @@
 Game::Game()
     // Исправить конструктор, что за srand, поменять объявление map, перенести, убрать view
     : gameStateManager(gameStateManager),
-      entityManager(),
-      collisionManager(),
       cameraManager(SCREEN_WIDTH, SCREEN_HEIGHT, CAMERA_DELTA_WIDTH, CAMERA_DELTA_HEIGHT),
       map(MAP_WIDTH, MAP_HEIGHT),
       ui(nullptr),
@@ -133,6 +131,22 @@ void Game::update(sf::RenderWindow& window) {
     }
 }
 
+void Game::updateDeltaTime() {
+    deltaTime = clock.restart().asSeconds();
+    if (gameStateManager.getState() == GameStateManager::GameState::Play) {
+        globalTime += deltaTime;
+    }
+}
+
+void Game::updateCamera(sf::RenderWindow& window) {
+    if (gameStateManager.getState() == GameStateManager::GameState::Play && entityManager.getPlayer()) {
+        cameraManager.update(view, entityManager.getPlayer());
+    } else {
+        cameraManager.reset(view);
+    }
+    window.setView(view);
+}
+
 void Game::render(sf::RenderWindow& window) {
     switch (gameStateManager.getState()) {
         case GameStateManager::GameState::Start:
@@ -173,22 +187,6 @@ void Game::initEntitiesPlay() {
     ui = new UI(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(),
                 entityManager.getPlayer()->getMoney());
     entityManager.spawnEnemies();
-}
-
-void Game::updateDeltaTime() {
-    deltaTime = clock.restart().asSeconds();
-    if (gameStateManager.getState() == GameStateManager::GameState::Play) {
-        globalTime += deltaTime;
-    }
-}
-
-void Game::updateCamera(sf::RenderWindow& window) {
-    if (gameStateManager.getState() == GameStateManager::GameState::Play && entityManager.getPlayer()) {
-        cameraManager.update(view, entityManager.getPlayer());
-    } else {
-        cameraManager.reset(view);
-    }
-    window.setView(view);
 }
 
 GameStateManager& Game::getStateManager() { return gameStateManager; }
