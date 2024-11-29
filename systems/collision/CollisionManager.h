@@ -1,5 +1,5 @@
 #pragma once
-#include "../../entities/EntitiyManager/EntitiyManager.h"
+#include "../../entities/entity/EntitiyManager.h"
 
 class CollisionManager {
 public:

@@ -21,8 +21,9 @@ set(SOURCES
         systems/animation/Animation.cpp
         systems/map/Map.cpp
         core/game/GameStateManager.cpp
-        entities/EntitiyManager/EntityManager.cpp
+        entities/entity/EntityManager.cpp
         systems/collision/CollisionManager.cpp
+        systems/camera/cameraManager.cpp
 )
 
 set(HEADERS
@@ -39,8 +40,10 @@ set(HEADERS
         Utils.h
         core/config.h
         core/game/GameStateManager.h
-        entities/EntitiyManager/EntitiyManager.h
+        entities/entity/EntitiyManager.h
         systems/collision/CollisionManager.h
+        systems/camera/CameraManager.h
+
 )
 
 # Добавление исполняемого файла

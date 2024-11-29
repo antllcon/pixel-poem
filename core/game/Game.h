@@ -7,8 +7,9 @@
 #include "../../systems/menu/Menu.h"
 #include "../../systems/ui/UI.h"
 #include "GameStateManager.h"
-#include "../../entities/EntitiyManager/EntitiyManager.h"
+#include "../../entities/entity/EntitiyManager.h"
 #include "../../systems/collision/CollisionManager.h"
+#include "../../systems/camera/CameraManager.h"
 
 class Bullet;
 class Player;
@@ -29,6 +30,7 @@ class Game {
     GameStateManager gameStateManager;
     EntityManager entityManager;
     CollisionManager collisionManager;
+    CameraManager cameraManager;
     sf::Clock clock;
     sf::View view;
     Menu menu;

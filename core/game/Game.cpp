@@ -10,7 +10,14 @@
 
 Game::Game()
     // Исправить конструктор, что за srand, поменять объявление map, перенести, убрать view
-    : gameStateManager(gameStateManager), map(MAP_WIDTH, MAP_HEIGHT), ui(nullptr), globalTime(0.f), deltaTime(0.1f) {
+    : gameStateManager(gameStateManager),
+      entityManager(),
+      collisionManager(),
+      cameraManager(SCREEN_WIDTH, SCREEN_HEIGHT, CAMERA_DELTA_WIDTH, CAMERA_DELTA_HEIGHT),
+      map(MAP_WIDTH, MAP_HEIGHT),
+      ui(nullptr),
+      globalTime(0.f),
+      deltaTime(0.f) {
     srand(static_cast<unsigned>(time(nullptr)));
     view = sf::View(sf::FloatRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
 
@@ -67,8 +74,9 @@ void Game::handleStartEvents(sf::RenderWindow& window) {
     inputHandler.resetStates();
 }
 
-// Стрельба и направление - разобраться!!!
 void Game::handlePlayEvents() {
+    // Стрельба и направление - разобраться!!!
+
     inputHandler.processInput();
     if (entityManager.getPlayer()) {
         entityManager.getPlayer()->processInput(inputHandler, globalTime, entityManager.getBullets());
@@ -176,25 +184,9 @@ void Game::updateDeltaTime() {
 
 void Game::updateCamera(sf::RenderWindow& window) {
     if (gameStateManager.getState() == GameStateManager::GameState::Play && entityManager.getPlayer()) {
-        float cameraLeft = view.getCenter().x - CAMERA_DELTA_WIDTH;
-        float cameraRight = view.getCenter().x + CAMERA_DELTA_WIDTH;
-        float cameraTop = view.getCenter().y - CAMERA_DELTA_HEIGHT;
-        float cameraBottom = view.getCenter().y + CAMERA_DELTA_HEIGHT;
-
-        if (entityManager.getPlayer()->getX() < cameraLeft) {
-            view.move(entityManager.getPlayer()->getX() - cameraLeft, 0);
-        }
-        if (entityManager.getPlayer()->getX() > cameraRight) {
-            view.move(entityManager.getPlayer()->getX() - cameraRight, 0);
-        }
-        if (entityManager.getPlayer()->getY() < cameraTop) {
-            view.move(0, entityManager.getPlayer()->getY() - cameraTop);
-        }
-        if (entityManager.getPlayer()->getY() > cameraBottom) {
-            view.move(0, entityManager.getPlayer()->getY() - cameraBottom);
-        }
+        cameraManager.update(view, entityManager.getPlayer());
     } else {
-        view.setCenter(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f);
+        cameraManager.reset(view);
     }
     window.setView(view);
 }
