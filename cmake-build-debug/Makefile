@@ -534,6 +534,30 @@ systems/menu/Menu.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/menu/Menu.cpp.s
 .PHONY : systems/menu/Menu.cpp.s
 
+systems/pause/Pause.o: systems/pause/Pause.cpp.o
+.PHONY : systems/pause/Pause.o
+
+# target to build an object file
+systems/pause/Pause.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o
+.PHONY : systems/pause/Pause.cpp.o
+
+systems/pause/Pause.i: systems/pause/Pause.cpp.i
+.PHONY : systems/pause/Pause.i
+
+# target to preprocess a source file
+systems/pause/Pause.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.i
+.PHONY : systems/pause/Pause.cpp.i
+
+systems/pause/Pause.s: systems/pause/Pause.cpp.s
+.PHONY : systems/pause/Pause.s
+
+# target to generate assembly for a file
+systems/pause/Pause.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.s
+.PHONY : systems/pause/Pause.cpp.s
+
 systems/ui/UI.o: systems/ui/UI.cpp.o
 .PHONY : systems/ui/UI.o
 
@@ -616,6 +640,9 @@ help:
 	@echo "... systems/menu/Menu.o"
 	@echo "... systems/menu/Menu.i"
 	@echo "... systems/menu/Menu.s"
+	@echo "... systems/pause/Pause.o"
+	@echo "... systems/pause/Pause.i"
+	@echo "... systems/pause/Pause.s"
 	@echo "... systems/ui/UI.o"
 	@echo "... systems/ui/UI.i"
 	@echo "... systems/ui/UI.s"

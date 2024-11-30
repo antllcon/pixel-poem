@@ -25,12 +25,18 @@ class Player {
     void takeMoney(int newMoney);
     sf::FloatRect getGlobalBounds() const;
     bool getIsAlive() const;
+    sf::Vector2f getPosition() const;
+sf::Vector2f setPosition(sf::Vector2f newPosition);
+    sf::Vector2f getPreviousPosition() const;
+    void setPreviousPosition(const sf::Vector2f& position);
+
 
    private:
     sf::RectangleShape player;
     sf::Sprite sprite;
     Animation animation;
     sf::Vector2f position;
+    sf::Vector2f previousPosition;
     sf::Vector2f moveDirection;
     sf::Vector2f viewDirection;
     Weapon weapon;

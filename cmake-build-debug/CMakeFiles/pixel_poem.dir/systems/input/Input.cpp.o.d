@@ -220,32 +220,16 @@ CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o: \
  /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
  /projects/CLionProjects/pixel_poem/systems/input/../../core/config.h \
- /usr/include/SFML/Graphics.hpp /usr/include/SFML/Graphics/BlendMode.hpp \
+ /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/Export.hpp \
- /usr/include/SFML/Graphics/CircleShape.hpp \
  /usr/include/SFML/Graphics/Shape.hpp \
  /usr/include/SFML/Graphics/Drawable.hpp \
  /usr/include/SFML/Graphics/RenderStates.hpp \
+ /usr/include/SFML/Graphics/BlendMode.hpp \
  /usr/include/SFML/Graphics/Transform.hpp \
  /usr/include/SFML/Graphics/Rect.hpp /usr/include/SFML/Graphics/Rect.inl \
  /usr/include/SFML/Graphics/Transformable.hpp \
  /usr/include/SFML/Graphics/VertexArray.hpp \
  /usr/include/SFML/Graphics/Vertex.hpp \
  /usr/include/SFML/Graphics/Color.hpp \
- /usr/include/SFML/Graphics/PrimitiveType.hpp \
- /usr/include/SFML/Graphics/ConvexShape.hpp \
- /usr/include/SFML/Graphics/Font.hpp /usr/include/SFML/Graphics/Glyph.hpp \
- /usr/include/SFML/Graphics/Texture.hpp \
- /usr/include/SFML/Graphics/Image.hpp /usr/include/c++/13/map \
- /usr/include/c++/13/bits/stl_tree.h /usr/include/c++/13/bits/stl_map.h \
- /usr/include/c++/13/bits/stl_multimap.h \
- /usr/include/SFML/Graphics/RectangleShape.hpp \
- /usr/include/SFML/Graphics/RenderTarget.hpp \
- /usr/include/SFML/Graphics/View.hpp \
- /usr/include/SFML/Graphics/RenderTexture.hpp \
- /usr/include/SFML/Graphics/RenderWindow.hpp \
- /usr/include/SFML/Graphics/Shader.hpp \
- /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
- /usr/include/SFML/Graphics/Sprite.hpp \
- /usr/include/SFML/Graphics/Text.hpp \
- /usr/include/SFML/Graphics/VertexBuffer.hpp
+ /usr/include/SFML/Graphics/PrimitiveType.hpp

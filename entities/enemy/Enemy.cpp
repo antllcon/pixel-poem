@@ -11,7 +11,7 @@ Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed, float dir
     : animation(ANIMATION_SPEED),
       position(MAP_BOT_SPAWN_X, MAP_BOT_SPAWN_Y),
       state(state),
-      weapon(WeaponType::Rifle),
+      weapon(WeaponType::Pistol),
       health(health),
       size(BOT_SIZE),
       isAlive(true),

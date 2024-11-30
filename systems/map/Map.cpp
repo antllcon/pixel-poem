@@ -34,6 +34,10 @@ void Map::placeRooms(Map& map, int roomCount){
         } while (grid[y][x] != 0);
         grid[y][x] = 1;
     }
+
+    if (grid[0][0] != 1) {
+        grid[0][0] = 1;
+    }
 }
 
 void Map::connectRooms(Map& map) {

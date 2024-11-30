@@ -23,6 +23,7 @@ class Menu {
     sf::Text lossEndText;
     sf::Text startText;
     sf::Text exitText;
+    sf::Text pauseText;
     sf::Texture textureController;
     sf::Sprite spriteController;
     int selectedOption;

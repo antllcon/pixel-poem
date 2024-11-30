@@ -1,14 +1,16 @@
 #include "CollisionManager.h"
 #include "../../Utils.h"
 #include "../../core/config.h"
+#include "../map/mapManager.h"
 
 CollisionManager::CollisionManager() = default;
 CollisionManager::~CollisionManager() = default;
 
-void CollisionManager::checkCollisions(EntityManager& entityManager) {
+void CollisionManager::checkCollisions(EntityManager& entityManager, MapManager& mapManager) {
     checkBulletEnemyCollisions(entityManager);
     checkBulletPlayerCollisions(entityManager);
     checkPlayerEnemyCollisions(entityManager);
+    // checkEntityWallCollisions(entityManager, mapManager);
 }
 
 void CollisionManager::checkBulletEnemyCollisions(EntityManager& entityManager) {
@@ -48,3 +50,28 @@ void CollisionManager::checkPlayerEnemyCollisions(EntityManager& entityManager) 
         }
     }
 }
+
+// void CollisionManager::checkEntityWallCollisions(EntityManager& entityManager, MapManager& mapManager) {
+//     // Проверка коллизии игрока со стенами
+//     auto player = entityManager.getPlayer();
+//     if (player) {
+//         sf::Vector2f playerPos = player->getPosition();
+//         int gridX = static_cast<int>(playerPos.x / CELL_SIZE);
+//         int gridY = static_cast<int>(playerPos.y / CELL_SIZE);
+//
+//         if (!mapManager.isWalkable(gridX, gridY)) {
+//             player->setPosition(player->getPreviousPosition());
+//         }
+//     }
+
+    // Проверка коллизии врагов со стенами
+    // for (auto& enemy : entityManager.getEnemies()) {
+    //     sf::Vector2f enemyPos = enemy->getPosition();
+    //     int gridX = static_cast<int>(enemyPos.x / CELL_SIZE);
+    //     int gridY = static_cast<int>(enemyPos.y / CELL_SIZE);
+    //
+    //     if (!mapManager.isWalkable(gridX, gridY)) {
+    //         enemy->setPosition(enemy->getPreviousPosition()); // Возвращаем врага на предыдущую позицию
+    //     }
+    // }
+// }

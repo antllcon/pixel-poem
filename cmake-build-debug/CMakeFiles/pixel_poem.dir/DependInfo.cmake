@@ -23,6 +23,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/projects/CLionProjects/pixel_poem/systems/map/Map.cpp" "CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/map/mapManager.cpp" "CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/menu/Menu.cpp" "CMakeFiles/pixel_poem.dir/systems/menu/Menu.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/menu/Menu.cpp.o.d"
+  "/projects/CLionProjects/pixel_poem/systems/pause/Pause.cpp" "CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/ui/UI.cpp" "CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o.d"
   )
 

@@ -13,16 +13,16 @@ bool Input::processControllerConnect() {
     return false;
 }
 
-void Input::checkRightStick(unsigned int joystickId) {
-    if (!sf::Joystick::isConnected(joystickId)) {
-        return;
-    }
-
-    float rightX = sf::Joystick::getAxisPosition(joystickId, sf::Joystick::U);
-    float rightY = sf::Joystick::getAxisPosition(joystickId, sf::Joystick::R);
-
-    // std::cout << "Right Stick - X: " << rightX << ", Y: " << rightY << std::endl;
-}
+// void Input::checkRightStick(unsigned int joystickId) {
+//     if (!sf::Joystick::isConnected(joystickId)) {
+//         return;
+//     }
+//
+//     float rightX = sf::Joystick::getAxisPosition(joystickId, sf::Joystick::U);
+//     float rightY = sf::Joystick::getAxisPosition(joystickId, sf::Joystick::R);
+//
+//     // std::cout << "Right Stick - X: " << rightX << ", Y: " << rightY << std::endl;
+// }
 
 bool Input::isPressed(const std::string& action) const {
     auto it = buttonStates.find(action);
@@ -87,7 +87,7 @@ void Input::checkHeldGamepadButtons() {
     updateButtonState("exit", sf::Joystick::isButtonPressed(joystickId, 10)); // Exit
 }
 
-void Input::checkHeldGamepadAxes() {// декомпозировать
+void Input::checkHeldGamepadAxes() {
     unsigned int joystickId = 0;
 
     // Левый стик (движение)

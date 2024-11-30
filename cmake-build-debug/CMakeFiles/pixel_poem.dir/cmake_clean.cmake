@@ -29,6 +29,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/systems/menu/Menu.cpp.o"
   "CMakeFiles/pixel_poem.dir/systems/menu/Menu.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o"
   "CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o.d"
   "pixel_poem"

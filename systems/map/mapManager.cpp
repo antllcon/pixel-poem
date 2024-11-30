@@ -31,14 +31,29 @@ void MapManager::render(sf::RenderWindow& window) {
     }
 }
 
-// bool MapManager::isWalkable(int x, int y)  {
-//     if (x < 0 || x >= map.getGrid()[0].size() || y < 0 || y >= map.getGrid().size()) return false;
-//     return map.getGrid()[y][x] != 0;
-// }
-
 const Map& MapManager::getMap() const {
     return map;
 }
+
+sf::Vector2f MapManager::getFirstRoomPosition() {
+    const auto& grid = map.getGrid();
+
+    for (int y = 0; y < grid.size(); ++y) {
+        for (int x = 0; x < grid[y].size(); ++x) {
+            if (grid[y][x] == 1) {
+                return sf::Vector2f(x * CELL_SIZE, y * CELL_SIZE);
+            }
+        }
+    }
+
+    return sf::Vector2f(0.f, 0.f);
+}
+
+bool MapManager::isWalkable(int x, int y) {
+    if (x < 0 || x >= map.getGrid()[0].size() || y < 0 || y >= map.getGrid().size()) return false;
+    return map.getGrid()[y][x] != 0;
+}
+
 
 std::vector<sf::Vector2f> MapManager::getRoomPositions() {
     std::vector<sf::Vector2f> roomPositions;

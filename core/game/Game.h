@@ -7,10 +7,10 @@
 #include "../../systems/collision/CollisionManager.h"
 #include "../../systems/map/mapManager.h"
 #include "../../systems/input/Input.h"
-#include "../../systems/map/Map.h"
 #include "../../systems/menu/Menu.h"
 #include "../../systems/ui/UI.h"
 #include "GameStateManager.h"
+#include "../../systems/pause/Pause.h"
 
 class Bullet;
 class Player;
@@ -35,6 +35,7 @@ class Game {
     MapManager mapManager;
     Input inputHandler;
     Menu menu;
+    Pause pause;
     UI* ui;
 
     sf::Clock clock;

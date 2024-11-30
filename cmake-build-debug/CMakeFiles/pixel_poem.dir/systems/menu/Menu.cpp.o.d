@@ -245,13 +245,8 @@ CMakeFiles/pixel_poem.dir/systems/menu/Menu.cpp.o: \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
  /usr/include/c++/13/bits/enable_special_members.h \
+ /usr/include/c++/13/iostream /usr/include/c++/13/istream \
+ /usr/include/c++/13/bits/istream.tcc \
  /projects/CLionProjects/pixel_poem/systems/menu/../../core/config.h \
- /usr/include/SFML/Graphics.hpp \
- /usr/include/SFML/Graphics/CircleShape.hpp \
- /usr/include/SFML/Graphics/Shape.hpp \
- /usr/include/SFML/Graphics/ConvexShape.hpp \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
- /usr/include/SFML/Graphics/RenderTexture.hpp \
- /usr/include/SFML/Graphics/Shader.hpp \
- /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
- /usr/include/SFML/Graphics/VertexBuffer.hpp
+ /usr/include/SFML/Graphics/Shape.hpp

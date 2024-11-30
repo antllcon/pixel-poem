@@ -14,7 +14,7 @@ class EntityManager {
     void spawnPlayer();
     Player* getPlayer();
 
-    void spawnEnemies(const std::vector<sf::Vector2f>& roomPositions);
+    void spawnEnemies(const std::vector<sf::Vector2f>& roomPositions, const sf::Vector2f& playerRoom);
 
     const std::vector<std::unique_ptr<Enemy>>& getEnemies() const;
 

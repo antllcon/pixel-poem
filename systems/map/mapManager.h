@@ -9,8 +9,9 @@ public:
 
     void generateMap();
     void render(sf::RenderWindow& window);
-    // bool isWalkable(int x, int y);
+    sf::Vector2f getFirstRoomPosition();
     std::vector<sf::Vector2f> getRoomPositions();
+    bool isWalkable(int x, int y);
     const Map& getMap() const;
 
 private:

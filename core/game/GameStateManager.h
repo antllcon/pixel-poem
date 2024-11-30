@@ -12,6 +12,7 @@ class GameStateManager {
     void setState(GameState state);
     void setPlayState(GamePlayState state);
 
+
    private:
     GameState currentState;
     GamePlayState currentPlayState;

@@ -1,6 +1,8 @@
+
 #ifndef CONFIG_H
 #define CONFIG_H
-
+#include <SFML/Graphics/RectangleShape.hpp>
+#include <string>
 // === Цветовые настройки ===
 const sf::Color COLOR_LIGHT_YELLOW = sf::Color(255, 255, 200);
 const sf::Color COLOR_DARK_PURPLE = sf::Color(64, 28, 47);
@@ -17,13 +19,14 @@ const sf::Color COLOR_BLUE = sf::Color(100, 0, 255);
 // === Основные настройки игры ===
 constexpr int SCREEN_WIDTH = 1920;
 constexpr int SCREEN_HEIGHT = 1080;
-constexpr int ROOM_COUNT = 9;
+constexpr int ROOM_COUNT = 7;
 constexpr int MAP_WIDTH = 9;
 constexpr int MAP_HEIGHT = 9;
 constexpr int CELL_SIZE = 256;
 constexpr float CAMERA_DELTA_WIDTH = SCREEN_WIDTH / 6.f;
 constexpr float CAMERA_DELTA_HEIGHT = SCREEN_HEIGHT / 6.f;
 constexpr int DEAD_ZONE = 5.0f;
+constexpr float COLLISION_BOUNCE_FACTOR = 0.5f;
 
 // === Настройки игрока ===
 const sf::Vector2f PLAYER_VIEW(1.0f, 0.0f);
@@ -47,7 +50,7 @@ constexpr float BOT_SPEED = 100.f;
 constexpr float BOT_DIRECTION_CHANGE_INTERVAL = 2.f;
 constexpr float BOT_DIRECTION_CHANGE_TIME = 0.f;
 constexpr float BOT_VIEW_SIZE = 128.f;
-constexpr int NUM_ENEMIES = 10;
+constexpr int NUM_ENEMIES = 100;
 const sf::FloatRect BOT_VIEW_AREA(
     -BOT_VIEW_SIZE, -BOT_VIEW_SIZE,
     BOT_VIEW_SIZE * 2 + BOT_SIZE,

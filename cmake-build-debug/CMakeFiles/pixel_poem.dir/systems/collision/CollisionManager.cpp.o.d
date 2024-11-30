@@ -288,4 +288,6 @@ CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o: \
  /usr/include/c++/13/bits/enable_special_members.h \
  /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/player/Player.h \
  /projects/CLionProjects/pixel_poem/systems/collision/../../Utils.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../core/config.h
+ /projects/CLionProjects/pixel_poem/systems/collision/../../core/config.h \
+ /projects/CLionProjects/pixel_poem/systems/collision/../map/mapManager.h \
+ /projects/CLionProjects/pixel_poem/systems/collision/../map/Map.h

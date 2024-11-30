@@ -11,11 +11,11 @@ UI::UI(int maxHealth, int maxArmor, int money)
                                  std::string(SRC_FONT_MONOCRAFT));
     }
 
-    // backgroundPlatform.setSize(BACKGROUND_PLATFORM_SIZE);
-    // backgroundPlatform.setPosition(BACKGROUND_PLATFORM_POS);
-    // backgroundPlatform.setFillColor(COLOR_DARK);
-    // backgroundPlatform.setOutlineColor(COLOR_BLACK);
-    // backgroundPlatform.setOutlineThickness(UI_OUTLINE);
+    backgroundPlatform.setSize(BACKGROUND_PLATFORM_SIZE);
+    backgroundPlatform.setPosition(BACKGROUND_PLATFORM_POS);
+    backgroundPlatform.setFillColor(COLOR_DARK);
+    backgroundPlatform.setOutlineColor(COLOR_BLACK);
+    backgroundPlatform.setOutlineThickness(UI_OUTLINE);
 
     healthBarBackground.setSize(BAR_SIZE);
     healthBarBackground.setFillColor(COLOR_GRAY);

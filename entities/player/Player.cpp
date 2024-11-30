@@ -2,7 +2,6 @@
 #include "Player.h"
 
 #include <cmath>
-#include <iostream>
 
 #include "../../core/config.h"
 #include "../../systems/input/Input.h"
@@ -50,7 +49,10 @@ void Player::update(float deltaTime) {
     animation.applyToSprite(sprite);
 }
 
-void Player::draw(sf::RenderWindow& window) { window.draw(player); window.draw(sprite);  }
+void Player::draw(sf::RenderWindow& window) {
+    window.draw(player);
+    window.draw(sprite);
+}
 
 void Player::processViewDirection(const Input& inputHandler) {
     sf::Vector2f newDirection(0.f, 0.f);
@@ -118,6 +120,7 @@ void Player::setViewDirection(const sf::Vector2f& newViewDirection) {
 }
 
 void Player::move(float deltaTime) {
+    previousPosition = position;
     const sf::Vector2f offset = moveDirection * speed * deltaTime;
     position += offset;
     player.setPosition(position);
@@ -167,3 +170,16 @@ void Player::regenerateArmor(float globalTime) {
         lastRegeneration = globalTime;
     }
 }
+
+sf::Vector2f Player::getPosition() const { return player.getPosition(); }
+
+sf::Vector2f Player::setPosition(sf::Vector2f newPosition) { return position = newPosition; }
+
+// void Player::resolveCollision() {
+//     // Корректируем позицию игрока, добавляя откат
+//     sf::Vector2f bounce = (previousPosition - position) * COLLISION_BOUNCE_FACTOR;
+//     position += bounce;
+//
+//     // Обновляем положение спрайта
+//     player.setPosition(position);
+// }

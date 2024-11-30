@@ -5,6 +5,7 @@
 #include "../../Utils.h"
 #include "../../entities/enemy/Enemy.h"
 #include "../../entities/player/Player.h"
+#include "../../systems/map/mapManager.h"
 #include "../config.h"
 
 Game::Game()
@@ -56,6 +57,7 @@ void Game::handleStartEvents(sf::RenderWindow& window) {
         if (menu.getSelectedOption() == false) {
             initEntitiesPlay();
             gameStateManager.setState(GameStateManager::GameState::Play);
+            gameStateManager.setPlayState(GameStateManager::GamePlayState::Sleep);
         } else if (menu.getSelectedOption() == true) {
             window.close();
         }
@@ -65,7 +67,9 @@ void Game::handleStartEvents(sf::RenderWindow& window) {
 
 void Game::handlePlayEvents() {
     // Стрельба и направление - разобраться!!!
-
+    if (inputHandler.isPressed("exit")) {
+        gameStateManager.setState(GameStateManager::GameState::Pause);
+    }
     inputHandler.processInput();
     if (entityManager.getPlayer()) {
         entityManager.getPlayer()->processInput(inputHandler, globalTime, entityManager.getBullets());
@@ -79,6 +83,14 @@ void Game::handlePlayEvents() {
 
 void Game::handlePauseEvents() {
     inputHandler.processInput();
+    pause.processPause(inputHandler);
+    if (inputHandler.isPressed("approve")) {
+        if (pause.getSelectedOption() == false) {
+            gameStateManager.setState(GameStateManager::GameState::Play);
+        } else if (pause.getSelectedOption() == true) {
+            gameStateManager.setState(GameStateManager::GameState::Start);
+        }
+    }
     inputHandler.resetStates();
 }
 
@@ -96,10 +108,13 @@ void Game::update(sf::RenderWindow& window) {
             break;
 
         case GameStateManager::GameState::Play:
-            // обработка коллизий и изменение состояний игрока - разобраться!!!
-            // вынести это в методы
-            collisionManager.checkCollisions(entityManager);
-
+            if (!entityManager.getPlayer()->getIsAlive()) {
+                gameStateManager.setState(GameStateManager::GameState::End);
+            }
+            if (inputHandler.isPressed("exit")) {
+                gameStateManager.setState(GameStateManager::GameState::Pause);
+            }
+            collisionManager.checkCollisions(entityManager, mapManager);
             if (entityManager.getPlayer()) entityManager.getPlayer()->update(deltaTime);
             if (ui) {
                 ui->update(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(),
@@ -109,15 +124,14 @@ void Game::update(sf::RenderWindow& window) {
             if (gameStateManager.getPlayState() == GameStateManager::GamePlayState::Sleep) {
                 if (entityManager.getPlayer()) entityManager.getPlayer()->regenerateArmor(globalTime);
             }
-            if (!entityManager.getPlayer()->getIsAlive()) {
-                gameStateManager.setState(GameStateManager::GameState::Pause);
-            }
             break;
 
         case GameStateManager::GameState::Pause:
+
             break;
 
         case GameStateManager::GameState::End:
+
             break;
     }
 }
@@ -130,7 +144,8 @@ void Game::updateDeltaTime() {
 }
 
 void Game::updateCamera(sf::RenderWindow& window) {
-    if (gameStateManager.getState() == GameStateManager::GameState::Play && entityManager.getPlayer()) {
+    if ((gameStateManager.getState() == GameStateManager::GameState::Play && entityManager.getPlayer()) ||
+        gameStateManager.getState() == GameStateManager::GameState::Pause) {
         cameraManager.update(view, entityManager.getPlayer());
     } else {
         cameraManager.reset(view);
@@ -163,6 +178,20 @@ void Game::render(sf::RenderWindow& window) {
             break;
 
         case GameStateManager::GameState::Pause:
+            window.clear(COLOR_DARK);
+            mapManager.render(window);
+            if (entityManager.getPlayer()) entityManager.getPlayer()->draw(window);
+            for (const auto& enemy : entityManager.getEnemies()) {
+                enemy->draw(window);
+            }
+            for (const auto& bullet : entityManager.getBullets()) {
+                bullet.draw(window);
+            }
+            window.setView(view);                     // Установка игровой камеры
+            window.setView(window.getDefaultView());  // Сброс для интерфейса
+            if (ui) ui->render(window);               // Отрисовка UI
+            pause.renderPause(inputHandler, window);
+            window.setView(view);                     // Возвращение камеры
             break;
 
         case GameStateManager::GameState::End:
@@ -181,7 +210,9 @@ void Game::initEntitiesPlay() {
                 entityManager.getPlayer()->getMoney());
 
     const auto roomPositions = mapManager.getRoomPositions();
-    entityManager.spawnEnemies(roomPositions);
+
+    sf::Vector2f playerRoom = mapManager.getFirstRoomPosition();
+    entityManager.spawnEnemies(roomPositions, playerRoom);
 }
 
 GameStateManager& Game::getStateManager() { return gameStateManager; }

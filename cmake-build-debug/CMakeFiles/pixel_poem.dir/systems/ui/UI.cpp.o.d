@@ -222,28 +222,4 @@ CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /projects/CLionProjects/pixel_poem/systems/ui/../../core/config.h \
- /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
- /usr/include/SFML/System.hpp /usr/include/SFML/System/Err.hpp \
- /usr/include/SFML/System/FileInputStream.hpp \
- /usr/include/SFML/System/InputStream.hpp \
- /usr/include/SFML/System/Lock.hpp \
- /usr/include/SFML/System/MemoryInputStream.hpp \
- /usr/include/SFML/System/Mutex.hpp /usr/include/SFML/System/Sleep.hpp \
- /usr/include/SFML/System/Thread.hpp /usr/include/SFML/System/Thread.inl \
- /usr/include/SFML/System/ThreadLocal.hpp \
- /usr/include/SFML/System/ThreadLocalPtr.hpp \
- /usr/include/SFML/System/ThreadLocalPtr.inl \
- /usr/include/SFML/System/Vector3.hpp \
- /usr/include/SFML/System/Vector3.inl \
- /usr/include/SFML/Window/Clipboard.hpp \
- /usr/include/SFML/Window/Context.hpp /usr/include/SFML/Window/Event.hpp \
- /usr/include/SFML/Window/Joystick.hpp \
- /usr/include/SFML/Window/Keyboard.hpp /usr/include/SFML/Window/Mouse.hpp \
- /usr/include/SFML/Window/Sensor.hpp /usr/include/SFML/Window/Touch.hpp \
- /usr/include/SFML/Graphics/CircleShape.hpp \
- /usr/include/SFML/Graphics/ConvexShape.hpp \
- /usr/include/SFML/Graphics/RenderTexture.hpp \
- /usr/include/SFML/Graphics/Shader.hpp \
- /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
- /usr/include/SFML/Graphics/VertexBuffer.hpp
+ /projects/CLionProjects/pixel_poem/systems/ui/../../core/config.h
