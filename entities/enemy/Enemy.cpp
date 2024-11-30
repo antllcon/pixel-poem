@@ -7,18 +7,17 @@
 #include "../../core/config.h"
 
 Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed, float directionChangeInterval,
-             float timeSinceDirectionChange)
+             float timeSinceDirectionChange, sf::Vector2f position)
     : animation(ANIMATION_SPEED),
-      position(MAP_BOT_SPAWN_X, MAP_BOT_SPAWN_Y),
+      position(position),
       state(state),
-      weapon(WeaponType::Pistol),
+      weapon(WeaponType::Rifle),
       health(health),
       size(BOT_SIZE),
       isAlive(true),
       speed(speed),
       directionChangeInterval(directionChangeInterval),
       timeSinceDirectionChange(timeSinceDirectionChange) {
-    enemy.setPosition(position);
     enemy.setFillColor(color);
     setRandomDirection();
     enemy.setSize(sf::Vector2f(size, size));

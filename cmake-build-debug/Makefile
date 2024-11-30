@@ -438,6 +438,30 @@ systems/collision/CollisionManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.s
 .PHONY : systems/collision/CollisionManager.cpp.s
 
+systems/end/End.o: systems/end/End.cpp.o
+.PHONY : systems/end/End.o
+
+# target to build an object file
+systems/end/End.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/end/End.cpp.o
+.PHONY : systems/end/End.cpp.o
+
+systems/end/End.i: systems/end/End.cpp.i
+.PHONY : systems/end/End.i
+
+# target to preprocess a source file
+systems/end/End.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/end/End.cpp.i
+.PHONY : systems/end/End.cpp.i
+
+systems/end/End.s: systems/end/End.cpp.s
+.PHONY : systems/end/End.s
+
+# target to generate assembly for a file
+systems/end/End.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/end/End.cpp.s
+.PHONY : systems/end/End.cpp.s
+
 systems/input/Input.o: systems/input/Input.cpp.o
 .PHONY : systems/input/Input.o
 
@@ -628,6 +652,9 @@ help:
 	@echo "... systems/collision/CollisionManager.o"
 	@echo "... systems/collision/CollisionManager.i"
 	@echo "... systems/collision/CollisionManager.s"
+	@echo "... systems/end/End.o"
+	@echo "... systems/end/End.i"
+	@echo "... systems/end/End.s"
 	@echo "... systems/input/Input.o"
 	@echo "... systems/input/Input.i"
 	@echo "... systems/input/Input.s"

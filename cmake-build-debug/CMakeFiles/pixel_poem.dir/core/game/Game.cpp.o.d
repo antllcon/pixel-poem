@@ -300,6 +300,8 @@ CMakeFiles/pixel_poem.dir/core/game/Game.cpp.o: \
  /projects/CLionProjects/pixel_poem/core/game/GameStateManager.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/pause/Pause.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/pause/../input/Input.h \
+ /projects/CLionProjects/pixel_poem/core/game/../../systems/end/End.h \
+ /projects/CLionProjects/pixel_poem/core/game/../../systems/end/../input/Input.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
  /projects/CLionProjects/pixel_poem/core/game/../../Utils.h \

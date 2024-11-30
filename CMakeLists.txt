@@ -26,6 +26,7 @@ set(SOURCES
         systems/camera/cameraManager.cpp
         systems/map/mapManager.cpp
         systems/pause/Pause.cpp
+        systems/end/End.cpp
 )
 
 set(HEADERS
@@ -47,6 +48,7 @@ set(HEADERS
         systems/camera/CameraManager.h
         systems/map/mapManager.h
         systems/pause/Pause.h
+        systems/end/End.h
 
 )
 

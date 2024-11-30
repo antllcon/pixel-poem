@@ -1,4 +1,7 @@
 #include "CollisionManager.h"
+
+#include <iostream>
+
 #include "../../Utils.h"
 #include "../../core/config.h"
 #include "../map/mapManager.h"
@@ -43,6 +46,7 @@ void CollisionManager::checkPlayerEnemyCollisions(EntityManager& entityManager) 
         sf::FloatRect viewArea = addFloatRects(viewAreaBounds, BOT_VIEW_AREA);
         if (entityManager.getPlayer()->getGlobalBounds().intersects(viewArea)) {
             enemy->setState(EnemyState::attack);
+
         } else {
             if (enemy->getState() == EnemyState::attack) {
                 enemy->setState(EnemyState::sleep);

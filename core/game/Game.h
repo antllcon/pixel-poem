@@ -11,6 +11,7 @@
 #include "../../systems/ui/UI.h"
 #include "GameStateManager.h"
 #include "../../systems/pause/Pause.h"
+#include "../../systems/end/End.h"
 
 class Bullet;
 class Player;
@@ -24,7 +25,6 @@ class Game {
     void processEvents(sf::RenderWindow& window);
     void update(sf::RenderWindow& window);
     void render(sf::RenderWindow& window);
-
     GameStateManager& getStateManager();
 
    private:
@@ -36,12 +36,14 @@ class Game {
     Input inputHandler;
     Menu menu;
     Pause pause;
+    End* end;
     UI* ui;
 
     sf::Clock clock;
     sf::View view;
     float globalTime;
     float deltaTime;
+    float lastStateChangeTime;
 
     void handleStartEvents(sf::RenderWindow& window);
     void handlePlayEvents();
@@ -50,4 +52,8 @@ class Game {
     void initEntitiesPlay();
     void updateDeltaTime();
     void updateCamera(sf::RenderWindow& window);
+
+    bool canChangeState();
+    void changeState(GameStateManager::GameState newState);
+
 };

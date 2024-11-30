@@ -302,4 +302,6 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/ui/UI.h \
  /projects/CLionProjects/pixel_poem/core/game/GameStateManager.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/pause/Pause.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/pause/../input/Input.h
+ /projects/CLionProjects/pixel_poem/core/game/../../systems/pause/../input/Input.h \
+ /projects/CLionProjects/pixel_poem/core/game/../../systems/end/End.h \
+ /projects/CLionProjects/pixel_poem/core/game/../../systems/end/../input/Input.h

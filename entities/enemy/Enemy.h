@@ -13,7 +13,7 @@ enum class EnemyState { attack, sleep };
 class Enemy {
    public:
     Enemy(EnemyState state, sf::Color color, int health, int speed,
-          float directionChangeInterval, float timeSinceDirectionChange);
+          float directionChangeInterval, float timeSinceDirectionChange, sf::Vector2f position);
 
     void draw(sf::RenderWindow& window);
     void update(float deltaTime);

@@ -1,5 +1,7 @@
 #include "Menu.h"
 
+#include <iostream>
+
 #include "../../core/config.h"
 
 Menu::Menu() {

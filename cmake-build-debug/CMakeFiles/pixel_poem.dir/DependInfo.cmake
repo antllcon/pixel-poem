@@ -19,6 +19,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/projects/CLionProjects/pixel_poem/systems/animation/Animation.cpp" "CMakeFiles/pixel_poem.dir/systems/animation/Animation.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/animation/Animation.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/camera/cameraManager.cpp" "CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/collision/CollisionManager.cpp" "CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o.d"
+  "/projects/CLionProjects/pixel_poem/systems/end/End.cpp" "CMakeFiles/pixel_poem.dir/systems/end/End.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/end/End.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/input/Input.cpp" "CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/map/Map.cpp" "CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/map/mapManager.cpp" "CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o.d"

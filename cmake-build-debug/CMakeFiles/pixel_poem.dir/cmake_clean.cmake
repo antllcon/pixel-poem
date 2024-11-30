@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o"
   "CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/end/End.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/end/End.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o"
   "CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o"

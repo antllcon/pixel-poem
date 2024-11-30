@@ -14,7 +14,6 @@ Player* EntityManager::getPlayer() { return player.get(); }
 
 void EntityManager::spawnEnemies(const std::vector<sf::Vector2f>& roomPositions, const sf::Vector2f& playerRoom) {
     for (int i = 0; i < NUM_ENEMIES; ++i) {
-
         if (roomPositions.empty()) break;
         sf::Vector2f spawnPosition;
 
@@ -26,9 +25,10 @@ void EntityManager::spawnEnemies(const std::vector<sf::Vector2f>& roomPositions,
         float x = static_cast<float>(rand() % CELL_SIZE);
         float y = static_cast<float>(rand() % CELL_SIZE);
 
+        sf::Vector2f setPosition = {spawnPosition.x + x, spawnPosition.y + y};
+
         auto enemy = std::make_unique<Enemy>(EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED,
-                                             BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME);
-        enemy->setPosition(spawnPosition.x + x, spawnPosition.y + y);
+                                             BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME, setPosition);
         enemies.push_back(std::move(enemy));
     }
 }

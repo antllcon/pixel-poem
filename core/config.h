@@ -12,9 +12,11 @@ const sf::Color COLOR_BRAUN = sf::Color(100, 73, 73);
 const sf::Color COLOR_GRAY = sf::Color(69, 69, 69);
 const sf::Color COLOR_DARK = sf::Color(51, 51, 51);
 const sf::Color COLOR_RED = sf::Color(153, 0, 0);
+const sf::Color COLOR_GOLD = sf::Color(239, 191, 4);
 const sf::Color COLOR_BLACK = sf::Color(33, 33, 33);
 const sf::Color COLOR_WHITE = sf::Color(255, 255, 255);
 const sf::Color COLOR_BLUE = sf::Color(100, 0, 255);
+const sf::Color COLOR_TRANSPARENT = sf::Color(0, 0, 0, 0);
 
 // === Основные настройки игры ===
 constexpr int SCREEN_WIDTH = 1920;
@@ -27,6 +29,9 @@ constexpr float CAMERA_DELTA_WIDTH = SCREEN_WIDTH / 6.f;
 constexpr float CAMERA_DELTA_HEIGHT = SCREEN_HEIGHT / 6.f;
 constexpr int DEAD_ZONE = 5.0f;
 constexpr float COLLISION_BOUNCE_FACTOR = 0.5f;
+constexpr int GAP_TEXT_PAUSE_X = 100;
+constexpr float STATE_CHANGE_COOLDOWN = 0.5f;
+constexpr float INIT_ZERO_TIME = 0.f;
 
 // === Настройки игрока ===
 const sf::Vector2f PLAYER_VIEW(1.0f, 0.0f);
@@ -100,6 +105,7 @@ const std::string SRC_FONT_HARRY = "/projects/CLionProjects/pixel_poem/resources
 const std::string SRC_FONT_MONOCRAFT = "/projects/CLionProjects/pixel_poem/resources/fonts/Monocraft.otf";
 const std::string SRC_CONTROLLER = "/projects/CLionProjects/pixel_poem/resources/textures/controller.png";
 const std::string SRC_UI_COIN = "/projects/CLionProjects/pixel_poem/resources/textures/coin.png";
+const std::string SRC_SKULL = "/projects/CLionProjects/pixel_poem/resources/textures/skull.png";
 const std::string SRC_SKELETON = "/projects/CLionProjects/pixel_poem/resources/sprites/skeleton/skeleton_";
 const std::string SRC_KNIGHT = "/projects/CLionProjects/pixel_poem/resources/sprites/knight/knight_";
 const std::string SRC_ARROW = "/projects/CLionProjects/pixel_poem/resources/sprites/arrow/arrow_";
