@@ -294,6 +294,30 @@ entities/entity/EntityManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/entities/entity/EntityManager.cpp.s
 .PHONY : entities/entity/EntityManager.cpp.s
 
+entities/money/Money.o: entities/money/Money.cpp.o
+.PHONY : entities/money/Money.o
+
+# target to build an object file
+entities/money/Money.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o
+.PHONY : entities/money/Money.cpp.o
+
+entities/money/Money.i: entities/money/Money.cpp.i
+.PHONY : entities/money/Money.i
+
+# target to preprocess a source file
+entities/money/Money.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.i
+.PHONY : entities/money/Money.cpp.i
+
+entities/money/Money.s: entities/money/Money.cpp.s
+.PHONY : entities/money/Money.s
+
+# target to generate assembly for a file
+entities/money/Money.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.s
+.PHONY : entities/money/Money.cpp.s
+
 entities/player/Player.o: entities/player/Player.cpp.o
 .PHONY : entities/player/Player.o
 
@@ -634,6 +658,9 @@ help:
 	@echo "... entities/entity/EntityManager.o"
 	@echo "... entities/entity/EntityManager.i"
 	@echo "... entities/entity/EntityManager.s"
+	@echo "... entities/money/Money.o"
+	@echo "... entities/money/Money.i"
+	@echo "... entities/money/Money.s"
 	@echo "... entities/player/Player.o"
 	@echo "... entities/player/Player.i"
 	@echo "... entities/player/Player.s"

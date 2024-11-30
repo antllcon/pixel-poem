@@ -27,6 +27,7 @@ set(SOURCES
         systems/map/mapManager.cpp
         systems/pause/Pause.cpp
         systems/end/End.cpp
+        entities/money/Money.cpp
 )
 
 set(HEADERS
@@ -49,6 +50,7 @@ set(HEADERS
         systems/map/mapManager.h
         systems/pause/Pause.h
         systems/end/End.h
+        entities/money/Money.h
 
 )
 
