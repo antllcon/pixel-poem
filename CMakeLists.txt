@@ -23,11 +23,12 @@ set(SOURCES
         core/game/GameStateManager.cpp
         entities/entity/EntityManager.cpp
         systems/collision/CollisionManager.cpp
-        systems/camera/cameraManager.cpp
-        systems/map/mapManager.cpp
+        systems/camera/CameraManager.cpp
+        systems/map/MapManager.cpp
         systems/pause/Pause.cpp
         systems/end/End.cpp
         entities/money/Money.cpp
+        entities/boss/Boss.cpp
 )
 
 set(HEADERS
@@ -44,14 +45,14 @@ set(HEADERS
         Utils.h
         core/config.h
         core/game/GameStateManager.h
-        entities/entity/EntitiyManager.h
-        systems/collision/CollisionManager.h
+        entities/entity/EntityManager.h
         systems/camera/CameraManager.h
-        systems/map/mapManager.h
+        systems/collision/CollisionManager.h
+        systems/map/MapManager.h
         systems/pause/Pause.h
         systems/end/End.h
         entities/money/Money.h
-
+        entities/boss/Boss.h
 )
 
 # Добавление исполняемого файла
@@ -60,5 +61,5 @@ add_executable(pixel_poem ${SOURCES} ${HEADERS})
 # Линковка с SFML
 target_link_libraries(pixel_poem sfml-graphics sfml-audio)
 
-# Установка файла
+# Установка исполняемого файла
 install(TARGETS pixel_poem DESTINATION /usr/local/bin)

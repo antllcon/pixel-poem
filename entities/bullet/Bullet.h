@@ -6,7 +6,7 @@
 
 class Bullet {
 public:
-    enum class OwnerType { Player, Bot };
+    enum class OwnerType { Player, Bot, Boss };
 
     Bullet(OwnerType ownerType, sf::Vector2f positionSpawn, sf::Vector2f direction, float speed, int damage);
 

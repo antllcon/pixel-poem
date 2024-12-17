@@ -6,12 +6,11 @@
 #include "../../Utils.h"
 #include "../../core/config.h"
 
-Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed, float directionChangeInterval,
-             float timeSinceDirectionChange, sf::Vector2f position)
+Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed, float directionChangeInterval, float timeSinceDirectionChange, sf::Vector2f position)
     : animation(ANIMATION_SPEED),
       position(position),
       state(state),
-      weapon(WeaponType::Rifle),
+      weapon(WeaponType::Pistol),
       health(health),
       size(BOT_SIZE),
       isAlive(true),
@@ -38,18 +37,19 @@ Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed, float dir
 void Enemy::draw(sf::RenderWindow& window) { window.draw(sprite); }
 
 void Enemy::update(float deltaTime) {
-    timeSinceDirectionChange += deltaTime;
+    // Рассчитываем целевую позицию
+    sf::Vector2f targetPosition = position + moveDirection * speed * deltaTime;
 
-    if (timeSinceDirectionChange >= directionChangeInterval) {
-        setRandomDirection();
-        timeSinceDirectionChange = 0.f;
-    }
-
-    position += moveDirection * speed * deltaTime;
+    // Проверка коллизий (внешний вызов CollisionManager должен откатить движение, если нужно)
+    position = targetPosition;  // Применяем движение
     enemy.setPosition(position);
     sprite.setPosition(position);
+
     animation.update(deltaTime);
     animation.applyToSprite(sprite);
+
+    // Сохраняем текущую позицию для последующего отката
+    previousPosition = position;
 }
 
 void Enemy::processInput(sf::Vector2f playerPosition, float globalTime, std::vector<Bullet>& gameBullets) {
@@ -93,6 +93,11 @@ void Enemy::setRandomDirection() {
     float x = dist(engine);
     float y = dist(engine);
 
+    // Избегаем направления в стену (делаем противоположное текущему)
+    if (moveDirection.x != 0) x = -moveDirection.x;
+    if (moveDirection.y != 0) y = -moveDirection.y;
+
+    // Нормализуем вектор направления
     float length = std::sqrt(x * x + y * y);
     if (length != 0) {
         moveDirection = sf::Vector2f(x / length, y / length);
@@ -121,3 +126,9 @@ void Enemy::setViewDirection(const sf::Vector2f& newViewDirection) { viewDirecti
 EnemyState Enemy::getState() const { return state; }
 
 void Enemy::setState(EnemyState newState) { state = newState; }
+
+void Enemy::blockMovement() {
+    position = previousPosition;  // Возвращаемся к предыдущей позиции
+    setRandomDirection();         // выбираем случайное направление двжиения
+    enemy.setPosition(position);  // Обновляем положение в графике
+}

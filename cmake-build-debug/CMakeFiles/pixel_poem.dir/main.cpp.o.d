@@ -280,7 +280,7 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/c++/13/backward/auto_ptr.h \
  /usr/include/c++/13/bits/ranges_uninitialized.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/EntitiyManager.h \
+ /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/EntityManager.h \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/bullet/Bullet.h \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/bullet/../../systems/animation/Animation.h \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/Enemy.h \
@@ -288,9 +288,11 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/player/Player.h \
+ /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/money/Money.h \
+ /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/boss/Boss.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/camera/CameraManager.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/collision/CollisionManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/map/mapManager.h \
+ /projects/CLionProjects/pixel_poem/core/game/../../systems/map/MapManager.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/map/Map.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/input/Input.h \
  /usr/include/c++/13/unordered_map \

@@ -244,4 +244,6 @@ CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o: \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
  /projects/CLionProjects/pixel_poem/systems/map/./Map.h \
+ /usr/include/c++/13/bitset /usr/include/c++/13/iostream \
+ /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
  /projects/CLionProjects/pixel_poem/systems/map/../../core/config.h

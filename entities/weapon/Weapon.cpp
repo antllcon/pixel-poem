@@ -4,7 +4,7 @@
 #include <unordered_map>
 
 const std::unordered_map<WeaponType, WeaponProperties> weaponConfigs = {
-    {WeaponType::Pistol, {1, 0.5f, 500}}, {WeaponType::Rifle, {2, 0.1f, 800}}, {WeaponType::Shotgun, {5, 1.0f, 1000}}};
+    {WeaponType::Pistol, {2, 0.3f, 600}}, {WeaponType::Rifle, {2, 0.1f, 700}}, {WeaponType::Shotgun, {5, 1.0f, 1000}}};
 
 Weapon::Weapon(WeaponType type) : type(type) {}
 

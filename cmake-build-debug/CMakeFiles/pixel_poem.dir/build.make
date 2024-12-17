@@ -265,33 +265,33 @@ CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /projects/CLionProjects/pixel_poem/systems/collision/CollisionManager.cpp -o CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.s
 
-CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o: CMakeFiles/pixel_poem.dir/flags.make
-CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o: /projects/CLionProjects/pixel_poem/systems/camera/cameraManager.cpp
-CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o: CMakeFiles/pixel_poem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/projects/CLionProjects/pixel_poem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o -MF CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o.d -o CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o -c /projects/CLionProjects/pixel_poem/systems/camera/cameraManager.cpp
+CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o: CMakeFiles/pixel_poem.dir/flags.make
+CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o: /projects/CLionProjects/pixel_poem/systems/camera/CameraManager.cpp
+CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o: CMakeFiles/pixel_poem.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/projects/CLionProjects/pixel_poem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o -MF CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o.d -o CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o -c /projects/CLionProjects/pixel_poem/systems/camera/CameraManager.cpp
 
-CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /projects/CLionProjects/pixel_poem/systems/camera/cameraManager.cpp > CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.i
+CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /projects/CLionProjects/pixel_poem/systems/camera/CameraManager.cpp > CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.i
 
-CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /projects/CLionProjects/pixel_poem/systems/camera/cameraManager.cpp -o CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.s
+CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /projects/CLionProjects/pixel_poem/systems/camera/CameraManager.cpp -o CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.s
 
-CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o: CMakeFiles/pixel_poem.dir/flags.make
-CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o: /projects/CLionProjects/pixel_poem/systems/map/mapManager.cpp
-CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o: CMakeFiles/pixel_poem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/projects/CLionProjects/pixel_poem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o -MF CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o.d -o CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o -c /projects/CLionProjects/pixel_poem/systems/map/mapManager.cpp
+CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o: CMakeFiles/pixel_poem.dir/flags.make
+CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o: /projects/CLionProjects/pixel_poem/systems/map/MapManager.cpp
+CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o: CMakeFiles/pixel_poem.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/projects/CLionProjects/pixel_poem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o -MF CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o.d -o CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o -c /projects/CLionProjects/pixel_poem/systems/map/MapManager.cpp
 
-CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /projects/CLionProjects/pixel_poem/systems/map/mapManager.cpp > CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.i
+CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /projects/CLionProjects/pixel_poem/systems/map/MapManager.cpp > CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.i
 
-CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /projects/CLionProjects/pixel_poem/systems/map/mapManager.cpp -o CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.s
+CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /projects/CLionProjects/pixel_poem/systems/map/MapManager.cpp -o CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.s
 
 CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o: CMakeFiles/pixel_poem.dir/flags.make
 CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o: /projects/CLionProjects/pixel_poem/systems/pause/Pause.cpp
@@ -335,6 +335,20 @@ CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /projects/CLionProjects/pixel_poem/entities/money/Money.cpp -o CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.s
 
+CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o: CMakeFiles/pixel_poem.dir/flags.make
+CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o: /projects/CLionProjects/pixel_poem/entities/boss/Boss.cpp
+CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o: CMakeFiles/pixel_poem.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/projects/CLionProjects/pixel_poem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o -MF CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o.d -o CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o -c /projects/CLionProjects/pixel_poem/entities/boss/Boss.cpp
+
+CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /projects/CLionProjects/pixel_poem/entities/boss/Boss.cpp > CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.i
+
+CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /projects/CLionProjects/pixel_poem/entities/boss/Boss.cpp -o CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.s
+
 # Object files for target pixel_poem
 pixel_poem_OBJECTS = \
 "CMakeFiles/pixel_poem.dir/main.cpp.o" \
@@ -351,11 +365,12 @@ pixel_poem_OBJECTS = \
 "CMakeFiles/pixel_poem.dir/core/game/GameStateManager.cpp.o" \
 "CMakeFiles/pixel_poem.dir/entities/entity/EntityManager.cpp.o" \
 "CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o" \
-"CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o" \
-"CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o" \
+"CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o" \
+"CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o" \
 "CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o" \
 "CMakeFiles/pixel_poem.dir/systems/end/End.cpp.o" \
-"CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o"
+"CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o" \
+"CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o"
 
 # External object files for target pixel_poem
 pixel_poem_EXTERNAL_OBJECTS =
@@ -374,18 +389,19 @@ pixel_poem: CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o
 pixel_poem: CMakeFiles/pixel_poem.dir/core/game/GameStateManager.cpp.o
 pixel_poem: CMakeFiles/pixel_poem.dir/entities/entity/EntityManager.cpp.o
 pixel_poem: CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o
-pixel_poem: CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o
-pixel_poem: CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o
+pixel_poem: CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o
+pixel_poem: CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o
 pixel_poem: CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o
 pixel_poem: CMakeFiles/pixel_poem.dir/systems/end/End.cpp.o
 pixel_poem: CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o
+pixel_poem: CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o
 pixel_poem: CMakeFiles/pixel_poem.dir/build.make
 pixel_poem: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1
 pixel_poem: /usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.6.1
 pixel_poem: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1
 pixel_poem: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
 pixel_poem: CMakeFiles/pixel_poem.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/projects/CLionProjects/pixel_poem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable pixel_poem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/projects/CLionProjects/pixel_poem/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable pixel_poem"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pixel_poem.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

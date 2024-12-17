@@ -6,9 +6,9 @@
 #include "../../core/config.h"
 #include "../../systems/input/Input.h"
 
-Player::Player(int size, sf::Color color, float speed, int health, int armor, int money)
+Player::Player(int size, sf::Color color, float speed, int health, int armor, int money, sf::Vector2f position)
     : animation(ANIMATION_SPEED),
-      position(MAP_PLAYER_SPAWN_X, MAP_PLAYER_SPAWN_Y),
+      position(position.x + CELL_SIZE / 2, position.y + CELL_SIZE / 2),
       moveDirection(PLAYER_MOVE_DIRECTION),
       weapon(WeaponType::Rifle),
       speed(speed),
@@ -39,6 +39,7 @@ void Player::processInput(const Input& inputHandler, float globalTime, std::vect
     processViewDirection(inputHandler);
     processMoveDirection(inputHandler);
     processShoot(inputHandler, globalTime, gameBullets);
+    processSpeed(inputHandler);
 }
 
 void Player::update(float deltaTime) {
@@ -49,10 +50,7 @@ void Player::update(float deltaTime) {
     animation.applyToSprite(sprite);
 }
 
-void Player::draw(sf::RenderWindow& window) {
-    window.draw(player);
-    window.draw(sprite);
-}
+void Player::draw(sf::RenderWindow& window) { window.draw(sprite); }
 
 void Player::processViewDirection(const Input& inputHandler) {
     sf::Vector2f newDirection(0.f, 0.f);
@@ -109,6 +107,14 @@ void Player::processShoot(const Input& inputHandler, float globalTime, std::vect
         }
     }
 }
+void Player::processSpeed(const Input& inputHandler){
+    if (inputHandler.isPressed("run")) {
+        speed = PLAYER_SPEED * 2;
+    } else {
+        speed = PLAYER_SPEED;
+    }
+}
+
 
 void Player::setMoveDirection(const sf::Vector2f& newMoveDirection) { moveDirection = newMoveDirection; }
 
@@ -173,13 +179,9 @@ void Player::regenerateArmor(float globalTime) {
 
 sf::Vector2f Player::getPosition() const { return player.getPosition(); }
 
-sf::Vector2f Player::setPosition(sf::Vector2f newPosition) { return position = newPosition; }
+int Player::setMoney(int newMoney) { return money += newMoney; }
 
-// void Player::resolveCollision() {
-//     // Корректируем позицию игрока, добавляя откат
-//     sf::Vector2f bounce = (previousPosition - position) * COLLISION_BOUNCE_FACTOR;
-//     position += bounce;
-//
-//     // Обновляем положение спрайта
-//     player.setPosition(position);
-// }
+void Player::blockMovement() {
+    position = previousPosition;
+    player.setPosition(position);
+}

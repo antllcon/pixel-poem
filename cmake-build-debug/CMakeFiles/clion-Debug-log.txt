@@ -1,5 +1,14 @@
 /home/antllcon/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "Unix Makefiles" -S /projects/CLionProjects/pixel_poem -B /projects/CLionProjects/pixel_poem/cmake-build-debug
 -- Found SFML 2.6.1 in /usr/lib/x86_64-linux-gnu/cmake/SFML
 -- Configuring done (0.0s)
--- Generating done (0.0s)
--- Build files have been written to: /projects/CLionProjects/pixel_poem/cmake-build-debug
+CMake Error at CMakeLists.txt:59 (add_executable):
+  Cannot find source file:
+
+    systems/camera/CameraManager.cpp
+
+
+CMake Error at CMakeLists.txt:59 (add_executable):
+  No SOURCES given to target: pixel_poem
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

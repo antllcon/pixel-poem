@@ -20,6 +20,8 @@ void Menu::initTextMenu() {
     titleText.setFillColor(COLOR_PURPLE);
     titleText.setPosition(SCREEN_WIDTH / 2.0f - 160,
                           SCREEN_HEIGHT / 2.0f - 150);
+    titleText.setOutlineThickness(UI_OUTLINE);
+    titleText.setOutlineColor(COLOR_BLACK);
 
     subtitleText.setFont(font);
     subtitleText.setString("Dungeon");
@@ -27,18 +29,24 @@ void Menu::initTextMenu() {
     subtitleText.setFillColor(COLOR_PURPLE);
     subtitleText.setPosition(SCREEN_WIDTH / 2.0f - 100,
                              SCREEN_HEIGHT / 2.0f - 100);
+    subtitleText.setOutlineThickness(UI_OUTLINE);
+    subtitleText.setOutlineColor(COLOR_BLACK);
 
     startText.setFont(font);
     startText.setString("Play");
     startText.setCharacterSize(30);
     startText.setFillColor(COLOR_GRAY);
     startText.setPosition(SCREEN_WIDTH / 2.0f - 30, SCREEN_HEIGHT / 2.0f);
+    startText.setOutlineThickness(UI_OUTLINE);
+    startText.setOutlineColor(COLOR_BLACK);
 
     exitText.setFont(font);
     exitText.setString("Exit");
     exitText.setCharacterSize(30);
     exitText.setFillColor(COLOR_GRAY);
     exitText.setPosition(SCREEN_WIDTH / 2.0f - 30, SCREEN_HEIGHT / 2.0f + 30);
+    exitText.setOutlineThickness(UI_OUTLINE);
+    exitText.setOutlineColor(COLOR_BLACK);
 
     winEndText.setFont(font);
     winEndText.setString("You are win!");
@@ -46,6 +54,8 @@ void Menu::initTextMenu() {
     winEndText.setFillColor(COLOR_PURPLE);
     winEndText.setPosition(SCREEN_WIDTH / 2.0f - 160,
                            SCREEN_HEIGHT / 2.0f - 150);
+    winEndText.setOutlineThickness(UI_OUTLINE);
+    winEndText.setOutlineColor(COLOR_BLACK);
 
     lossEndText.setFont(font);
     lossEndText.setString("You are loss!");
@@ -53,6 +63,8 @@ void Menu::initTextMenu() {
     lossEndText.setFillColor(COLOR_RED);
     lossEndText.setPosition(SCREEN_WIDTH / 2.0f - 160,
                             SCREEN_HEIGHT / 2.0f - 150);
+    lossEndText.setOutlineThickness(UI_OUTLINE);
+    lossEndText.setOutlineColor(COLOR_BLACK);
 }
 
 void Menu::initControllerStatus() {

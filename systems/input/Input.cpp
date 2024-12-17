@@ -65,6 +65,7 @@ void Input::checkHeldKeys() {
     updateButtonState("moveRight", sf::Keyboard::isKeyPressed(sf::Keyboard::D));
     updateButtonState("moveUp", sf::Keyboard::isKeyPressed(sf::Keyboard::W));
     updateButtonState("moveDown", sf::Keyboard::isKeyPressed(sf::Keyboard::S));
+    updateButtonState("run", sf::Keyboard::isKeyPressed(sf::Keyboard::R));
     updateButtonState("shoot", sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
     updateButtonState("approve", sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
     updateButtonState("exit", sf::Keyboard::isKeyPressed(sf::Keyboard::Escape));

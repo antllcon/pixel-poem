@@ -34,6 +34,8 @@ void Pause::initTextPause() {
     titleText.setFillColor(COLOR_PURPLE);
     titleText.setPosition(GAP_TEXT_PAUSE_X,
                           SCREEN_HEIGHT / 2.0f - 150);
+    titleText.setOutlineThickness(UI_OUTLINE);
+    titleText.setOutlineColor(COLOR_BLACK);
 
     subtitleText.setFont(font);
     subtitleText.setString("Pause");
@@ -41,20 +43,24 @@ void Pause::initTextPause() {
     subtitleText.setFillColor(COLOR_LIGHT_YELLOW);
     subtitleText.setPosition(GAP_TEXT_PAUSE_X,
                              SCREEN_HEIGHT / 2.0f - 100);
-
+    subtitleText.setOutlineThickness(UI_OUTLINE);
+    subtitleText.setOutlineColor(COLOR_BLACK);
 
     resumeText.setFont(font);
     resumeText.setString("Resume game");
     resumeText.setCharacterSize(30);
     resumeText.setFillColor(COLOR_GRAY);
     resumeText.setPosition(GAP_TEXT_PAUSE_X, SCREEN_HEIGHT / 2.0f);
+    resumeText.setOutlineThickness(UI_OUTLINE);
+    resumeText.setOutlineColor(COLOR_BLACK);
 
     menuText.setFont(font);
     menuText.setString("Exit to menu");
     menuText.setCharacterSize(30);
     menuText.setFillColor(COLOR_GRAY);
     menuText.setPosition(GAP_TEXT_PAUSE_X, SCREEN_HEIGHT / 2.0f + 30);
-
+    menuText.setOutlineThickness(UI_OUTLINE);
+    menuText.setOutlineColor(COLOR_BLACK);
 }
 
 void Pause::initControllerStatus() {

@@ -243,11 +243,11 @@ CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o: \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
+ /projects/CLionProjects/pixel_poem/entities/player/../../systems/animation/Animation.h \
  /projects/CLionProjects/pixel_poem/entities/player/../weapon/Weapon.h \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
  /projects/CLionProjects/pixel_poem/entities/player/../weapon/../bullet/Bullet.h \
- /projects/CLionProjects/pixel_poem/entities/player/../weapon/../bullet/../../systems/animation/Animation.h \
  /usr/include/c++/13/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \

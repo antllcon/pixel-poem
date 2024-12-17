@@ -2,7 +2,7 @@ CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o: \
  /projects/CLionProjects/pixel_poem/systems/collision/CollisionManager.cpp \
  /usr/include/stdc-predef.h \
  /projects/CLionProjects/pixel_poem/systems/collision/CollisionManager.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/EntitiyManager.h \
+ /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/EntityManager.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/memoryfwd.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -287,9 +287,18 @@ CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o: \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
  /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/player/Player.h \
- /usr/include/c++/13/iostream /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc \
+ /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/money/Money.h \
+ /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/boss/Boss.h \
+ /usr/include/c++/13/chrono /usr/include/c++/13/bits/chrono.h \
+ /usr/include/c++/13/ratio /usr/include/c++/13/limits \
+ /usr/include/c++/13/bits/parse_numbers.h /usr/include/c++/13/sstream \
+ /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
+ /usr/include/c++/13/bits/sstream.tcc \
+ /usr/include/c++/13/bits/chrono_io.h /usr/include/c++/13/iomanip \
+ /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/format \
+ /usr/include/c++/13/array /usr/include/c++/13/charconv \
+ /usr/include/c++/13/span /usr/include/c++/13/variant \
  /projects/CLionProjects/pixel_poem/systems/collision/../../Utils.h \
  /projects/CLionProjects/pixel_poem/systems/collision/../../core/config.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../map/mapManager.h \
+ /projects/CLionProjects/pixel_poem/systems/collision/../map/MapManager.h \
  /projects/CLionProjects/pixel_poem/systems/collision/../map/Map.h

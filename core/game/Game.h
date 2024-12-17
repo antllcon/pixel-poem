@@ -2,10 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-#include "../../entities/entity/EntitiyManager.h"
+#include "../../entities/entity/EntityManager.h"
 #include "../../systems/camera/CameraManager.h"
 #include "../../systems/collision/CollisionManager.h"
-#include "../../systems/map/mapManager.h"
+#include "../../systems/map/MapManager.h"
 #include "../../systems/input/Input.h"
 #include "../../systems/menu/Menu.h"
 #include "../../systems/ui/UI.h"

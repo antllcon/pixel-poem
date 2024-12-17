@@ -244,8 +244,8 @@ CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o: \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
  /projects/CLionProjects/pixel_poem/systems/camera/../../entities/player/Player.h \
+ /projects/CLionProjects/pixel_poem/systems/camera/../../entities/player/../../systems/animation/Animation.h \
  /projects/CLionProjects/pixel_poem/systems/camera/../../entities/player/../weapon/Weapon.h \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
- /projects/CLionProjects/pixel_poem/systems/camera/../../entities/player/../weapon/../bullet/Bullet.h \
- /projects/CLionProjects/pixel_poem/systems/camera/../../entities/player/../weapon/../bullet/../../systems/animation/Animation.h
+ /projects/CLionProjects/pixel_poem/systems/camera/../../entities/player/../weapon/../bullet/Bullet.h

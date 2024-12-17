@@ -8,7 +8,7 @@ const sf::Color COLOR_LIGHT_YELLOW = sf::Color(255, 255, 200);
 const sf::Color COLOR_DARK_PURPLE = sf::Color(64, 28, 47);
 const sf::Color COLOR_GREEN = sf::Color(102, 153, 102);
 const sf::Color COLOR_PURPLE = sf::Color(204, 0, 102);
-const sf::Color COLOR_BRAUN = sf::Color(100, 73, 73);
+const sf::Color COLOR_BRAUN = sf::Color(93, 48, 83);
 const sf::Color COLOR_GRAY = sf::Color(69, 69, 69);
 const sf::Color COLOR_DARK = sf::Color(51, 51, 51);
 const sf::Color COLOR_RED = sf::Color(153, 0, 0);
@@ -19,12 +19,11 @@ const sf::Color COLOR_BLUE = sf::Color(100, 0, 255);
 const sf::Color COLOR_TRANSPARENT = sf::Color(0, 0, 0, 0);
 
 // === Основные настройки игры ===
-constexpr int SCREEN_WIDTH = 1920;
-constexpr int SCREEN_HEIGHT = 1080;
-constexpr int ROOM_COUNT = 7;
-constexpr int MAP_WIDTH = 9;
-constexpr int MAP_HEIGHT = 9;
-constexpr int CELL_SIZE = 256;
+constexpr int SCREEN_WIDTH = 960;
+constexpr int SCREEN_HEIGHT = 540;
+constexpr int ROOM_COUNT = 6;
+constexpr int MAP_WIDTH = 8;
+constexpr int MAP_HEIGHT = 8;
 constexpr float CAMERA_DELTA_WIDTH = SCREEN_WIDTH / 6.f;
 constexpr float CAMERA_DELTA_HEIGHT = SCREEN_HEIGHT / 6.f;
 constexpr int DEAD_ZONE = 5.0f;
@@ -32,20 +31,35 @@ constexpr float COLLISION_BOUNCE_FACTOR = 0.5f;
 constexpr int GAP_TEXT_PAUSE_X = 100;
 constexpr float STATE_CHANGE_COOLDOWN = 0.5f;
 constexpr float INIT_ZERO_TIME = 0.f;
+constexpr float ENTITY_SIZE_HALTH = 12;
+constexpr float WALL_SIZE = 24;
+
+// === Настройки комнаты ===
+constexpr int CELL_SIZE = 512;
+constexpr int ROOM_MARGIN_TOP = 96;
+constexpr int ROOM_MARGIN_BOTTOM = CELL_SIZE - 48;
+constexpr int ROOM_MARGIN_LEFT = 32;
+constexpr int ROOM_MARGIN_RIGHT = CELL_SIZE - ROOM_MARGIN_LEFT;
+constexpr int CELL_MARGIN_LEFT = CELL_SIZE / 4 + 32;
+constexpr int CELL_MARGIN_RIGHT = 3 * CELL_SIZE / 4 - 32;
+constexpr int CELL_MARGIN_TOP = CELL_SIZE / 4 + ROOM_MARGIN_TOP;
+constexpr int CELL_MARGIN_BOTTOM = 3 * CELL_SIZE / 4 - 10;
+
+const sf::Vector2f REVERSE_POSITION = sf::Vector2f(-1.f, -1.f);
 
 // === Настройки игрока ===
 const sf::Vector2f PLAYER_VIEW(1.0f, 0.0f);
 const sf::Vector2f PLAYER_MOVE_DIRECTION = sf::Vector2f(0.f, 0.f);
 const sf::Color PLAYER_COLOR = sf::Color(78, 162, 122);
-constexpr float PLAYER_SPEED = 100.f;
+constexpr float PLAYER_SPEED = 200.f;
 constexpr float PLAYER_REGENERATION_COOLDOWN = 3.f;
 constexpr int PLAYER_REGENERATION_ARMOR = 1;
 constexpr int PLAYER_SIZE = 24;
 constexpr int PLAYER_HEALTH = 10;
 constexpr int PLAYER_ARMOR = 20;
 constexpr int PLAYER_MONEY = 0;
-constexpr float MAP_PLAYER_SPAWN_X = 128.f;
-constexpr float MAP_PLAYER_SPAWN_Y = 128.f;
+constexpr float MAP_PLAYER_SPAWN_X = 750.f;
+constexpr float MAP_PLAYER_SPAWN_Y = 750.f;
 
 // === Настройки врагов (ботов) ===
 const sf::Color BOT_COLOR = sf::Color(150, 50, 50);
@@ -55,12 +69,9 @@ constexpr float BOT_SPEED = 100.f;
 constexpr float BOT_DIRECTION_CHANGE_INTERVAL = 2.f;
 constexpr float BOT_DIRECTION_CHANGE_TIME = 0.f;
 constexpr float BOT_VIEW_SIZE = 128.f;
-constexpr int NUM_ENEMIES = 100;
-const sf::FloatRect BOT_VIEW_AREA(
-    -BOT_VIEW_SIZE, -BOT_VIEW_SIZE,
-    BOT_VIEW_SIZE * 2 + BOT_SIZE,
-    BOT_VIEW_SIZE * 2 + BOT_SIZE
-);
+constexpr int NUM_ENEMIES = 15;
+const sf::FloatRect BOT_VIEW_AREA(-BOT_VIEW_SIZE, -BOT_VIEW_SIZE, BOT_VIEW_SIZE * 2 + BOT_SIZE,
+                                  BOT_VIEW_SIZE * 2 + BOT_SIZE);
 constexpr float MAP_BOT_SPAWN_X = 120.f;
 constexpr float MAP_BOT_SPAWN_Y = 20.f;
 
@@ -71,6 +82,15 @@ const sf::Color BULLET_COLOR = COLOR_GREEN;
 constexpr int BULLET_SIZE = 10;
 constexpr int BULLET_SPEED = 500.f;
 constexpr int BULLET_DAMAGE = 10;
+
+// === Настройки денег ===
+constexpr int MONEY_SIZE = 24;
+constexpr int MONEY_VALUE = 1;
+constexpr int MONEY_SPEED = 500.f;
+constexpr int NUM_MONEY = 16;
+constexpr float MONEY_VIEW_SIZE = 64.f;
+const sf::FloatRect MONEY_VIEW_AREA(-MONEY_VIEW_SIZE, -MONEY_VIEW_SIZE, MONEY_VIEW_SIZE * 2 + MONEY_SIZE,
+                                    MONEY_VIEW_SIZE * 2 + MONEY_SIZE);
 
 // === Настройки интерфейса (UI) ===
 constexpr int UI_TEXT = 14;
@@ -92,6 +112,7 @@ const sf::Vector2f MONEY_SPRITE_POS = sf::Vector2f(SCREEN_WIDTH - 45, 10);
 const sf::Vector2f MONEY_TEXT_POS = sf::Vector2f(SCREEN_WIDTH - 55, 18);
 
 // === Масштабирование текстур ===
+const sf::Vector2f SCALE_FACTOR = {2.f, 2.f};
 const sf::Vector2f SCALE_FACTOR_LEFT = {2.2f, 2.2f};
 const sf::Vector2f SCALE_FACTOR_RIGHT = {-2.2f, 2.2f};
 const sf::Vector2f SCALE_FACTOR_UP = {2.2f, -2.2f};
@@ -106,9 +127,15 @@ const std::string SRC_FONT_MONOCRAFT = "/projects/CLionProjects/pixel_poem/resou
 const std::string SRC_CONTROLLER = "/projects/CLionProjects/pixel_poem/resources/textures/controller.png";
 const std::string SRC_UI_COIN = "/projects/CLionProjects/pixel_poem/resources/textures/coin.png";
 const std::string SRC_SKULL = "/projects/CLionProjects/pixel_poem/resources/textures/skull.png";
+const std::string SRC_ROOM = "/projects/CLionProjects/pixel_poem/resources/textures/rooms/";
+const std::string SRC_TRANSITION = "/projects/CLionProjects/pixel_poem/resources/textures/transitions/";
+const std::string SRC_ROOM_NEXT = "/projects/CLionProjects/pixel_poem/resources/textures/cell_test_next.png";
 const std::string SRC_SKELETON = "/projects/CLionProjects/pixel_poem/resources/sprites/skeleton/skeleton_";
+const std::string SRC_SKULLER = "/projects/CLionProjects/pixel_poem/resources/sprites/skull/skull_";
+const std::string SRC_VAMPIRE = "/projects/CLionProjects/pixel_poem/resources/sprites/vampire/vampire_";
 const std::string SRC_KNIGHT = "/projects/CLionProjects/pixel_poem/resources/sprites/knight/knight_";
 const std::string SRC_ARROW = "/projects/CLionProjects/pixel_poem/resources/sprites/arrow/arrow_";
+const std::string SRC_COIN = "/projects/CLionProjects/pixel_poem/resources/sprites/coin/coin_";
 const std::string PNG = ".png";
 
 #endif

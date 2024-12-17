@@ -222,6 +222,30 @@ core/game/GameStateManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/core/game/GameStateManager.cpp.s
 .PHONY : core/game/GameStateManager.cpp.s
 
+entities/boss/Boss.o: entities/boss/Boss.cpp.o
+.PHONY : entities/boss/Boss.o
+
+# target to build an object file
+entities/boss/Boss.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o
+.PHONY : entities/boss/Boss.cpp.o
+
+entities/boss/Boss.i: entities/boss/Boss.cpp.i
+.PHONY : entities/boss/Boss.i
+
+# target to preprocess a source file
+entities/boss/Boss.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.i
+.PHONY : entities/boss/Boss.cpp.i
+
+entities/boss/Boss.s: entities/boss/Boss.cpp.s
+.PHONY : entities/boss/Boss.s
+
+# target to generate assembly for a file
+entities/boss/Boss.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.s
+.PHONY : entities/boss/Boss.cpp.s
+
 entities/bullet/Bullet.o: entities/bullet/Bullet.cpp.o
 .PHONY : entities/bullet/Bullet.o
 
@@ -414,29 +438,29 @@ systems/animation/Animation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/animation/Animation.cpp.s
 .PHONY : systems/animation/Animation.cpp.s
 
-systems/camera/cameraManager.o: systems/camera/cameraManager.cpp.o
-.PHONY : systems/camera/cameraManager.o
+systems/camera/CameraManager.o: systems/camera/CameraManager.cpp.o
+.PHONY : systems/camera/CameraManager.o
 
 # target to build an object file
-systems/camera/cameraManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.o
-.PHONY : systems/camera/cameraManager.cpp.o
+systems/camera/CameraManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o
+.PHONY : systems/camera/CameraManager.cpp.o
 
-systems/camera/cameraManager.i: systems/camera/cameraManager.cpp.i
-.PHONY : systems/camera/cameraManager.i
+systems/camera/CameraManager.i: systems/camera/CameraManager.cpp.i
+.PHONY : systems/camera/CameraManager.i
 
 # target to preprocess a source file
-systems/camera/cameraManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.i
-.PHONY : systems/camera/cameraManager.cpp.i
+systems/camera/CameraManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.i
+.PHONY : systems/camera/CameraManager.cpp.i
 
-systems/camera/cameraManager.s: systems/camera/cameraManager.cpp.s
-.PHONY : systems/camera/cameraManager.s
+systems/camera/CameraManager.s: systems/camera/CameraManager.cpp.s
+.PHONY : systems/camera/CameraManager.s
 
 # target to generate assembly for a file
-systems/camera/cameraManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/camera/cameraManager.cpp.s
-.PHONY : systems/camera/cameraManager.cpp.s
+systems/camera/CameraManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.s
+.PHONY : systems/camera/CameraManager.cpp.s
 
 systems/collision/CollisionManager.o: systems/collision/CollisionManager.cpp.o
 .PHONY : systems/collision/CollisionManager.o
@@ -534,29 +558,29 @@ systems/map/Map.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.s
 .PHONY : systems/map/Map.cpp.s
 
-systems/map/mapManager.o: systems/map/mapManager.cpp.o
-.PHONY : systems/map/mapManager.o
+systems/map/MapManager.o: systems/map/MapManager.cpp.o
+.PHONY : systems/map/MapManager.o
 
 # target to build an object file
-systems/map/mapManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.o
-.PHONY : systems/map/mapManager.cpp.o
+systems/map/MapManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o
+.PHONY : systems/map/MapManager.cpp.o
 
-systems/map/mapManager.i: systems/map/mapManager.cpp.i
-.PHONY : systems/map/mapManager.i
+systems/map/MapManager.i: systems/map/MapManager.cpp.i
+.PHONY : systems/map/MapManager.i
 
 # target to preprocess a source file
-systems/map/mapManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.i
-.PHONY : systems/map/mapManager.cpp.i
+systems/map/MapManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.i
+.PHONY : systems/map/MapManager.cpp.i
 
-systems/map/mapManager.s: systems/map/mapManager.cpp.s
-.PHONY : systems/map/mapManager.s
+systems/map/MapManager.s: systems/map/MapManager.cpp.s
+.PHONY : systems/map/MapManager.s
 
 # target to generate assembly for a file
-systems/map/mapManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/map/mapManager.cpp.s
-.PHONY : systems/map/mapManager.cpp.s
+systems/map/MapManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.s
+.PHONY : systems/map/MapManager.cpp.s
 
 systems/menu/Menu.o: systems/menu/Menu.cpp.o
 .PHONY : systems/menu/Menu.o
@@ -649,6 +673,9 @@ help:
 	@echo "... core/game/GameStateManager.o"
 	@echo "... core/game/GameStateManager.i"
 	@echo "... core/game/GameStateManager.s"
+	@echo "... entities/boss/Boss.o"
+	@echo "... entities/boss/Boss.i"
+	@echo "... entities/boss/Boss.s"
 	@echo "... entities/bullet/Bullet.o"
 	@echo "... entities/bullet/Bullet.i"
 	@echo "... entities/bullet/Bullet.s"
@@ -673,9 +700,9 @@ help:
 	@echo "... systems/animation/Animation.o"
 	@echo "... systems/animation/Animation.i"
 	@echo "... systems/animation/Animation.s"
-	@echo "... systems/camera/cameraManager.o"
-	@echo "... systems/camera/cameraManager.i"
-	@echo "... systems/camera/cameraManager.s"
+	@echo "... systems/camera/CameraManager.o"
+	@echo "... systems/camera/CameraManager.i"
+	@echo "... systems/camera/CameraManager.s"
 	@echo "... systems/collision/CollisionManager.o"
 	@echo "... systems/collision/CollisionManager.i"
 	@echo "... systems/collision/CollisionManager.s"
@@ -688,9 +715,9 @@ help:
 	@echo "... systems/map/Map.o"
 	@echo "... systems/map/Map.i"
 	@echo "... systems/map/Map.s"
-	@echo "... systems/map/mapManager.o"
-	@echo "... systems/map/mapManager.i"
-	@echo "... systems/map/mapManager.s"
+	@echo "... systems/map/MapManager.o"
+	@echo "... systems/map/MapManager.i"
+	@echo "... systems/map/MapManager.s"
 	@echo "... systems/menu/Menu.o"
 	@echo "... systems/menu/Menu.i"
 	@echo "... systems/menu/Menu.s"

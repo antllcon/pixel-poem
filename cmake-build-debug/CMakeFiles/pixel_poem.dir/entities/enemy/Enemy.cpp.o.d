@@ -2,7 +2,6 @@ CMakeFiles/pixel_poem.dir/entities/enemy/Enemy.cpp.o: \
  /projects/CLionProjects/pixel_poem/entities/enemy/Enemy.cpp \
  /usr/include/stdc-predef.h \
  /projects/CLionProjects/pixel_poem/entities/enemy/Enemy.h \
- /projects/CLionProjects/pixel_poem/entities/enemy/../../systems/animation/Animation.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
@@ -244,6 +243,7 @@ CMakeFiles/pixel_poem.dir/entities/enemy/Enemy.cpp.o: \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
+ /projects/CLionProjects/pixel_poem/entities/enemy/../../systems/animation/Animation.h \
  /projects/CLionProjects/pixel_poem/entities/enemy/../weapon/Weapon.h \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \

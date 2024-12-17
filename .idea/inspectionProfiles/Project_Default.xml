@@ -4,6 +4,7 @@
     <inspection_tool class="ClangTidy" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="CppDFAConstantConditions" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="CppDFAConstantParameter" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="CppDefaultCaseNotHandledInSwitchStatement" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="CppFunctionalStyleCast" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="CppLocalVariableMayBeConst" enabled="false" level="HINT" enabled_by_default="false" />
     <inspection_tool class="CppMemberFunctionMayBeConst" enabled="false" level="WEAK WARNING" enabled_by_default="false" />

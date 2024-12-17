@@ -33,14 +33,17 @@ void End::initTextEnd() {
     titleText.setFillColor(COLOR_RED);
     titleText.setPosition(GAP_TEXT_PAUSE_X,
                           SCREEN_HEIGHT / 2.0f - 150);
+    titleText.setOutlineThickness(UI_OUTLINE);
+    titleText.setOutlineColor(COLOR_BLACK);
 
     subtitleText.setFont(font);
-    subtitleText.setString("Your died!");
+    subtitleText.setString("End of game!");
     subtitleText.setCharacterSize(48);
     subtitleText.setFillColor(COLOR_RED);
     subtitleText.setPosition(GAP_TEXT_PAUSE_X,
                              SCREEN_HEIGHT / 2.0f - 100);
-
+    subtitleText.setOutlineThickness(UI_OUTLINE);
+    subtitleText.setOutlineColor(COLOR_BLACK);
 
     resultsText.setFont(font);
     resultsText.setString("Your money - " + std::to_string(money));
@@ -55,6 +58,9 @@ void End::initTextEnd() {
     menuText.setCharacterSize(30);
     menuText.setFillColor(COLOR_GRAY);
     menuText.setPosition(GAP_TEXT_PAUSE_X, SCREEN_HEIGHT / 2.0f + 30);
+    menuText.setOutlineThickness(UI_OUTLINE);
+    menuText.setOutlineColor(COLOR_BLACK);
+
 
     texture.loadFromFile(SRC_SKULL);
 
