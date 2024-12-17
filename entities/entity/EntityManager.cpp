@@ -1,8 +1,8 @@
+#include "./EntityManager.h"
+
 #include <iostream>
 
-
 #include "../../core/config.h"
-#include "./EntityManager.h"
 #include "../boss/Boss.h"
 #include "../money/Money.h"
 
@@ -15,13 +15,12 @@ void EntityManager::spawnPlayer(const sf::Vector2f& playerRoom) {
 }
 
 void EntityManager::spawnBoss(const sf::Vector2f& bossRoom) {
-    // Исправить player - не передавать size, color
     boss = std::make_unique<Boss>(BossState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED, BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME, bossRoom);
 }
 
 Player* EntityManager::getPlayer() { return player.get(); }
 
-Boss* EntityManager::getBoss() {return boss.get(); }
+Boss* EntityManager::getBoss() { return boss.get(); }
 
 void EntityManager::spawnEnemies(const std::vector<sf::Vector2f>& roomPositions, const sf::Vector2f& playerRoom) {
     enemies.clear();
@@ -35,8 +34,7 @@ void EntityManager::spawnEnemies(const std::vector<sf::Vector2f>& roomPositions,
 
         sf::Vector2f setPosition = {spawnPosition.x + CELL_SIZE / 2, spawnPosition.y + CELL_SIZE / 2};
 
-        auto enemy = std::make_unique<Enemy>(EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED,
-                                             BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME, setPosition);
+        auto enemy = std::make_unique<Enemy>(EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED, BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME, setPosition);
         enemies.push_back(std::move(enemy));
     }
 }
@@ -55,7 +53,7 @@ void EntityManager::spawnMoney(const std::vector<sf::Vector2f>& roomPositions, c
         float x = WALL_SIZE + WALL_SIZE + static_cast<float>(rand()) / RAND_MAX * (CELL_SIZE - WALL_SIZE - WALL_SIZE);
         float y = WALL_SIZE + WALL_SIZE + static_cast<float>(rand()) / RAND_MAX * (CELL_SIZE - WALL_SIZE - WALL_SIZE);
 
-        sf::Vector2f setPosition = {spawnPosition.x + x, spawnPosition.y + y} ;
+        sf::Vector2f setPosition = {spawnPosition.x + x, spawnPosition.y + y};
 
         auto money = std::make_unique<Money>(MoneyState::lie, MONEY_VALUE, MONEY_SPEED, setPosition);
         moneys.push_back(std::move(money));
@@ -64,9 +62,7 @@ void EntityManager::spawnMoney(const std::vector<sf::Vector2f>& roomPositions, c
 
 const std::vector<std::unique_ptr<Enemy>>& EntityManager::getEnemies() const { return enemies; }
 
-const std::vector<std::unique_ptr<Money>>& EntityManager::getMoneys() const {
-    return moneys;
-}
+const std::vector<std::unique_ptr<Money>>& EntityManager::getMoneys() const { return moneys; }
 
 void EntityManager::addBullet(const Bullet& bullet) { bullets.push_back(bullet); }
 
@@ -74,6 +70,8 @@ std::vector<Bullet>& EntityManager::getBullets() { return bullets; }
 
 void EntityManager::update(float deltaTime) {
     if (player) player->update(deltaTime);
+
+    if (boss) boss->update(deltaTime);
 
     for (auto& enemy : enemies) {
         enemy->update(deltaTime);
@@ -106,4 +104,6 @@ void EntityManager::render(sf::RenderWindow& window) {
     for (const auto& bullet : bullets) {
         bullet.draw(window);
     }
+
+    if (boss) boss->draw(window);
 }

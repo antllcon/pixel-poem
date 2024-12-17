@@ -227,7 +227,7 @@ void Game::initEntitiesPlay() {
     std::cout << " Появление игрока " << std::endl;
     entityManager.spawnPlayer(playerRoom);
     std::cout << " Появление босса " << std::endl;
-    entityManager.spawnBoss(bossRoom);
+    entityManager.spawnBoss(playerRoom);
 
     ui = new UI(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(),
                 entityManager.getPlayer()->getMoney());

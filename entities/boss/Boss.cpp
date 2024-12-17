@@ -11,7 +11,7 @@ Boss::Boss(BossState state, sf::Color color, int health, int speed, float direct
       weapon(WeaponType::Pistol),
       health(health),
       // ЗАМЕНИТЬ
-      size(BOT_SIZE * 2),
+      size(BOT_SIZE * 5),
       isAlive(true),
       speed(speed),
       directionChangeInterval(directionChangeInterval),
@@ -30,7 +30,7 @@ Boss::Boss(BossState state, sf::Color color, int health, int speed, float direct
     animation.applyToSprite(sprite);
     sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
     sprite.setPosition(position);
-    sprite.setScale(SCALE_FACTOR_LEFT);
+    sprite.setScale(6.6f, 6.6f);
 }
 
 void Boss::processInput(sf::Vector2f playerPosition, float globalTime, std::vector<Bullet>& gameBullets) {
