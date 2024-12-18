@@ -86,7 +86,9 @@ void Game::handlePlayEvents() {
     for (auto& money : entityManager.getMoneys()) {
         money->processInput(position);
     }
-
+    if (entityManager.getBoss()) {
+        entityManager.getBoss()->processInput(position, globalTime, entityManager.getBullets());
+    }
     inputHandler.resetStates();
 }
 
@@ -227,7 +229,7 @@ void Game::initEntitiesPlay() {
     std::cout << " Появление игрока " << std::endl;
     entityManager.spawnPlayer(playerRoom);
     std::cout << " Появление босса " << std::endl;
-    entityManager.spawnBoss(playerRoom);
+    entityManager.spawnBoss(bossRoom);
 
     ui = new UI(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(),
                 entityManager.getPlayer()->getMoney());

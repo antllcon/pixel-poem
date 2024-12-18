@@ -24,8 +24,10 @@ private:
     sf::Sprite sprite;
     sf::Texture texture;
     int roomCount;
-    std::vector<std::vector<uint64_t>> walkabilityMasks;
+    std::vector<std::vector<std::vector<uint64_t>>> walkabilityMasks;
+    std::map<int, sf::Texture> textures;
 
+    void loadTextures();
     void precomputeWalkabilityMasks();
     static bool isRoomWalkable(int cellType, float localX, float localY);
     static bool isCorridorWalkable(int cellType, float localX, float localY);

@@ -15,7 +15,8 @@ void EntityManager::spawnPlayer(const sf::Vector2f& playerRoom) {
 }
 
 void EntityManager::spawnBoss(const sf::Vector2f& bossRoom) {
-    boss = std::make_unique<Boss>(BossState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED, BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME, bossRoom);
+    sf::Vector2f setPosition = {bossRoom.x + CELL_SIZE / 2, bossRoom.y + CELL_SIZE / 2};
+    boss = std::make_unique<Boss>(BossState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED, BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME, setPosition);
 }
 
 Player* EntityManager::getPlayer() { return player.get(); }
@@ -50,8 +51,8 @@ void EntityManager::spawnMoney(const std::vector<sf::Vector2f>& roomPositions, c
             spawnPosition = roomPositions[roomIndex];
         } while (spawnPosition == playerRoom);
 
-        float x = WALL_SIZE + WALL_SIZE + static_cast<float>(rand()) / RAND_MAX * (CELL_SIZE - WALL_SIZE - WALL_SIZE);
-        float y = WALL_SIZE + WALL_SIZE + static_cast<float>(rand()) / RAND_MAX * (CELL_SIZE - WALL_SIZE - WALL_SIZE);
+        float x = WALL_SIZE + SPAWN_MARGIN + static_cast<float>(rand()) / RAND_MAX * (CELL_SIZE - WALL_SIZE - 2 * SPAWN_MARGIN);
+        float y = WALL_SIZE + SPAWN_MARGIN + static_cast<float>(rand()) / RAND_MAX * (CELL_SIZE - WALL_SIZE - 2 * SPAWN_MARGIN);
 
         sf::Vector2f setPosition = {spawnPosition.x + x, spawnPosition.y + y};
 

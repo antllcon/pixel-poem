@@ -11,104 +11,69 @@
 Map::Map(int w, int h) : width(w), height(h) { grid.resize(height, std::vector<int>(width, 0)); }
 
 void Map::printMap() const {
-    for (const auto& row : grid) {
-        for (int cell : row) {
+    for (int y = 0; y < grid.size(); ++y) {
+        for (int x = 0; x < grid[y].size(); ++x) {
             std::string symbol;
-            switch (cell) {
-                case 101:
-                    symbol = " ▢ ";
-                    break;
-                case 102:
-                    symbol = " ▢ ";
-                    break;
-                case 103:
-                    symbol = " ▢ ";
-                    break;
-                case 104:
-                    symbol = " ▢ ";
-                    break;
-                case 105:
-                    symbol = " ▢ ";
-                    break;
-                case 106:
-                    symbol = " ▢ ";
-                    break;
-                case 107:
-                    symbol = " ▢ ";
-                    break;
-                case 108:
-                    symbol = " ▢ ";
-                    break;
-                case 109:
-                    symbol = " ▢ ";
-                    break;
-                case 110:
-                    symbol = " ▢ ";
-                    break;
-                case 111:
-                    symbol = " ▢ ";
-                    break;
-                case 112:
-                    symbol = " ▢ ";
-                    break;
-                case 113:
-                    symbol = " ▢ ";
-                    break;
-                case 114:
-                    symbol = " ▢ ";
-                    break;
-                case 115:
-                    symbol = " ▢ ";
-                    break;
 
-                case 201:
-                    symbol = "═╬═";
-                    break;
-                case 202:
-                    symbol = " ╠═";
-                    break;
-                case 203:
-                    symbol = "═╣ ";
-                    break;
-                case 204:
-                    symbol = " ╦ ";
-                    break;
-                case 205:
-                    symbol = " ╩ ";
-                    break;
-                case 206:
-                    symbol = "═══";
-                    break;
-                case 207:
-                    symbol = " ║ ";
-                    break;
-                case 208:
-                    symbol = " ╚═";
-                    break;
-                case 209:
-                    symbol = "═╝ ";
-                    break;
-                case 210:
-                    symbol = " ╔═";
-                    break;
-                case 211:
-                    symbol = "═╗ ";
-                    break;
-                case 555:
-                    symbol = " ▣ ";
-                    break;
-                case 666:
-                    symbol = " X ";
-                    break;
-                default:
-                    symbol = "   ";
-                    break;
+            if (x == startRoom.x && y == startRoom.y) {
+                symbol = " ▣ ";
             }
+            else if (x == endRoom.x && y == endRoom.y) {
+                symbol = " X ";
+            }
+            else {
+                switch (grid[y][x]) {
+                    case 101: case 102: case 103: case 104: case 105:
+                    case 106: case 107: case 108: case 109: case 110:
+                    case 111: case 112: case 113: case 114: case 115:
+                        symbol = " ▢ ";
+                        break;
+
+                    case 201:
+                        symbol = "═╬═";
+                        break;
+                    case 202:
+                        symbol = " ╠═";
+                        break;
+                    case 203:
+                        symbol = "═╣ ";
+                        break;
+                    case 204:
+                        symbol = " ╦ ";
+                        break;
+                    case 205:
+                        symbol = " ╩ ";
+                        break;
+                    case 206:
+                        symbol = "═══";
+                        break;
+                    case 207:
+                        symbol = " ║ ";
+                        break;
+                    case 208:
+                        symbol = " ╚═";
+                        break;
+                    case 209:
+                        symbol = "═╝ ";
+                        break;
+                    case 210:
+                        symbol = " ╔═";
+                        break;
+                    case 211:
+                        symbol = "═╗ ";
+                        break;
+                    default:
+                        symbol = "   "; // Пустая клетка
+                        break;
+                }
+            }
+
             std::cout << symbol;
         }
         std::cout << "\n";
     }
 }
+
 
 std::vector<std::vector<int>>& Map::getGrid() { return grid; }
 
@@ -161,6 +126,16 @@ void Map::connectRooms(Map& map) {
             }
         }
     }
+}
+
+sf::Vector2i Map::getStartRoom() const{
+    sf::Vector2i roomPosition = sf::Vector2i(startRoom.x * CELL_SIZE, startRoom.y * CELL_SIZE);
+    return roomPosition;
+}
+
+sf::Vector2i Map::getEndRoom() const{
+    sf::Vector2i roomPosition = sf::Vector2i(endRoom.x * CELL_SIZE, endRoom.y * CELL_SIZE);
+    return roomPosition;
 }
 
 void Map::determinationType() {
@@ -225,24 +200,21 @@ void Map::determinationType() {
 }
 
 void Map::determinationStartAndEnd() {
-    sf::Vector2f startRoomPosition = sf::Vector2f(MAP_WIDTH, MAP_HEIGHT);
-    sf::Vector2f endRoomPosition = sf::Vector2f(0, 0);
+    startRoom = sf::Vector2i(MAP_WIDTH, MAP_HEIGHT);
+    endRoom = sf::Vector2i(0, 0);
 
     for (int y = 1; y < grid.size() - 1; ++y) {
         for (int x = 1; x < grid[y].size() - 1; ++x) {
             if (grid[y][x] / 100 == 1) {
-                if (x < startRoomPosition.x || y < startRoomPosition.y) {
-                    startRoomPosition.x = x;
-                    startRoomPosition.y = y;
+                if (x < startRoom.x || y < startRoom.y) {
+                    startRoom.x = x;
+                    startRoom.y = y;
                 }
-                if (x > endRoomPosition.x || y > endRoomPosition.y) {
-                    endRoomPosition.x = x;
-                    endRoomPosition.y = y;
+                if (x > endRoom.x || y > endRoom.y) {
+                    endRoom.x = x;
+                    endRoom.y = y;
                 }
             }
         }
     }
-
-    grid[endRoomPosition.y][endRoomPosition.x] = 666;
-    grid[startRoomPosition.y][startRoomPosition.x] = 555;
 }

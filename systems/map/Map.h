@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <SFML/System/Vector2.hpp>
 
 class Map {
    public:
@@ -11,8 +12,12 @@ class Map {
     void determinationStartAndEnd();
     static void placeRooms(Map& map, int roomCount);
     static void connectRooms(Map& map);
+    sf::Vector2i getStartRoom() const;
+    sf::Vector2i getEndRoom() const;
 
    private:
+    sf::Vector2i startRoom;
+    sf::Vector2i endRoom;
     int width, height;
     std::vector<std::vector<int>> grid;
 };

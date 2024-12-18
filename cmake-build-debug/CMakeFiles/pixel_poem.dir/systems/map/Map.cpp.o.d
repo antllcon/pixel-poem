@@ -59,6 +59,8 @@ CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: \
  /usr/include/c++/13/bits/ranges_util.h \
  /usr/include/c++/13/bits/ranges_base.h \
  /usr/include/c++/13/bits/max_size_type.h /usr/include/c++/13/numbers \
+ /usr/include/SFML/System/Vector2.hpp \
+ /usr/include/SFML/System/Vector2.inl \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
@@ -174,8 +176,7 @@ CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: \
  /usr/include/SFML/Graphics/RenderStates.hpp \
  /usr/include/SFML/Graphics/BlendMode.hpp \
  /usr/include/SFML/Graphics/Transform.hpp \
- /usr/include/SFML/Graphics/Rect.hpp /usr/include/SFML/System/Vector2.hpp \
- /usr/include/SFML/System/Vector2.inl /usr/include/c++/13/algorithm \
+ /usr/include/SFML/Graphics/Rect.hpp /usr/include/c++/13/algorithm \
  /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \
  /usr/include/c++/13/bits/stl_heap.h \

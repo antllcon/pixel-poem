@@ -1,5 +1,6 @@
 #include "Boss.h"
 
+#include <iostream>
 #include <random>
 
 #include "../../core/config.h"
@@ -10,8 +11,7 @@ Boss::Boss(BossState state, sf::Color color, int health, int speed, float direct
       state(state),
       weapon(WeaponType::Pistol),
       health(health),
-      // ЗАМЕНИТЬ
-      size(BOT_SIZE * 5),
+      size(BOT_SIZE * 3),
       isAlive(true),
       speed(speed),
       directionChangeInterval(directionChangeInterval),
@@ -30,7 +30,7 @@ Boss::Boss(BossState state, sf::Color color, int health, int speed, float direct
     animation.applyToSprite(sprite);
     sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
     sprite.setPosition(position);
-    sprite.setScale(6.6f, 6.6f);
+    sprite.setScale(SCALE_FACTOR_BOSS_LEFT);
 }
 
 void Boss::processInput(sf::Vector2f playerPosition, float globalTime, std::vector<Bullet>& gameBullets) {
@@ -53,9 +53,9 @@ void Boss::processViewDirection(sf::Vector2f playerPosition) {
     }
     setViewDirection(newDirection);
     if (newDirection.x > 0) {
-        sprite.setScale(SCALE_FACTOR_LEFT);
+        sprite.setScale(SCALE_FACTOR_BOSS_LEFT);
     } else if (newDirection.x < 0) {
-        sprite.setScale(SCALE_FACTOR_RIGHT);
+        sprite.setScale(SCALE_FACTOR_BOSS_RIGHT);
     }
 }
 

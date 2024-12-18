@@ -1,6 +1,8 @@
 #include "CollisionManager.h"
 
 #include <chrono>
+#include <iostream>
+
 #include "../../Utils.h"
 #include "../../core/config.h"
 #include "../map/MapManager.h"
@@ -13,9 +15,11 @@ void CollisionManager::checkCollisions(EntityManager& entityManager, MapManager&
     checkBulletPlayerCollisions(entityManager);
     checkBulletBossCollisions(entityManager);
     checkPlayerEnemyCollisions(entityManager);
+    checkPlayerBossCollisions(entityManager);
     checkPlayerMoneyCollisions(entityManager);
     checkPlayerTakeMoneyCollisions(entityManager);
     checkEntityWallCollisions(entityManager, mapManager);
+    checkBossWallCollisions(entityManager, mapManager);
     checkBotWallCollisions(entityManager, mapManager);
     checkBulletWallCollisions(entityManager, mapManager);
 }
@@ -70,6 +74,18 @@ void CollisionManager::checkPlayerEnemyCollisions(EntityManager& entityManager) 
     }
 }
 
+void CollisionManager::checkPlayerBossCollisions(EntityManager& entityManager) {
+    sf::FloatRect viewAreaBounds = entityManager.getBoss()->getGlobalBounds();
+    sf::FloatRect viewArea = addFloatRects(viewAreaBounds, BOT_VIEW_AREA);
+    if (entityManager.getPlayer()->getGlobalBounds().intersects(viewArea)) {
+        entityManager.getBoss()->setState(BossState::attack);
+    } else {
+        if (entityManager.getBoss()->getState() == BossState::attack) {
+            entityManager.getBoss()->setState(BossState::sleep);
+        }
+    }
+}
+
 void CollisionManager::checkPlayerMoneyCollisions(EntityManager& entityManager) {
     for (auto& money : entityManager.getMoneys()) {
         sf::FloatRect viewAreaBounds = money->getGlobalBounds();
@@ -115,15 +131,15 @@ void CollisionManager::checkEntityWallCollisions(EntityManager& entityManager, M
 }
 
 void CollisionManager::checkBossWallCollisions(EntityManager& entityManager, MapManager& mapManager) {
-    auto boss = entityManager.getPlayer();
+    auto boss = entityManager.getBoss();
     if (!boss) return;
 
-    sf::Vector2f playerPos = boss->getPosition();
+    sf::Vector2f bossPos = boss->getPosition();
 
-    float checkPoints[4][2] = {{playerPos.x - ENTITY_SIZE_HALTH, playerPos.y - ENTITY_SIZE_HALTH},
-                               {playerPos.x + ENTITY_SIZE_HALTH, playerPos.y - ENTITY_SIZE_HALTH},
-                               {playerPos.x - ENTITY_SIZE_HALTH, playerPos.y + ENTITY_SIZE_HALTH},
-                               {playerPos.x + ENTITY_SIZE_HALTH, playerPos.y + ENTITY_SIZE_HALTH}};
+    float checkPoints[4][2] = {{bossPos.x - ENTITY_SIZE_HALTH, bossPos.y - ENTITY_SIZE_HALTH},
+                               {bossPos.x + ENTITY_SIZE_HALTH, bossPos.y - ENTITY_SIZE_HALTH},
+                               {bossPos.x - ENTITY_SIZE_HALTH, bossPos.y + ENTITY_SIZE_HALTH},
+                               {bossPos.x + ENTITY_SIZE_HALTH, bossPos.y + ENTITY_SIZE_HALTH}};
 
     for (const auto& point : checkPoints) {
         if (!mapManager.isWalkable(point[0], point[1])) {
@@ -134,7 +150,6 @@ void CollisionManager::checkBossWallCollisions(EntityManager& entityManager, Map
 }
 
 void CollisionManager::checkBotWallCollisions(const EntityManager& entityManager, MapManager& mapManager) {
-
     for (auto& bot : entityManager.getEnemies()) {
         if (!bot) continue;
 

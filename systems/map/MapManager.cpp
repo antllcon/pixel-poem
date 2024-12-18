@@ -27,14 +27,29 @@ void MapManager::generateMap() {
     map.determinationType();
     std::cout << " Установка появления игрока и босса " << std::endl;
     map.determinationStartAndEnd();
-    std::cout << " Установка текстур или раскраска " << std::endl;
+    std::cout << " Расчет проходимых областей " << std::endl;
     precomputeWalkabilityMasks();
+    std::cout << " Раскраска карты " << std::endl;
+    loadTextures();
     map.printMap();
 }
 
 
 
-
+void MapManager::loadTextures() {
+    for (int id = 101; id <= 115; ++id) {
+        sf::Texture texture;
+        if (texture.loadFromFile(SRC_ROOM + std::to_string(id) + PNG)) {
+            textures[id] = texture;
+        }
+    }
+    for (int id = 201; id <= 211; ++id) {
+        sf::Texture texture;
+        if (texture.loadFromFile(SRC_TRANSITION + std::to_string(id) + PNG)) {
+            textures[id] = texture;
+        }
+    }
+}
 
 
 void MapManager::render(sf::RenderWindow& window) {
@@ -44,19 +59,13 @@ void MapManager::render(sf::RenderWindow& window) {
             if (grid[y][x] == 0) {
                 continue;
             }
-            if (grid[y][x] != 0) {
-                room.setPosition(x * CELL_SIZE, y * CELL_SIZE);
-                sprite.setPosition(x * CELL_SIZE, y * CELL_SIZE);
-            }
-            if (grid[y][x] / 100 == 1) {
-                texture.loadFromFile(SRC_ROOM + std::to_string(grid[y][x]) + PNG);
-                sprite.setTexture(texture);
-                sprite.setScale(SCALE_FACTOR);
-                window.draw(sprite);
-            }
-            if (grid[y][x] / 100 == 2) {
-                texture.loadFromFile(SRC_TRANSITION + std::to_string(grid[y][x]) + PNG);
-                sprite.setScale(SCALE_FACTOR);
+
+            sprite.setPosition(x * CELL_SIZE, y * CELL_SIZE);
+            sprite.setScale(SCALE_FACTOR);
+
+            auto it = textures.find(grid[y][x]);
+            if (it != textures.end()) {
+                sprite.setTexture(it->second);
                 window.draw(sprite);
             }
         }
@@ -76,28 +85,12 @@ std::vector<std::vector<int>>& MapManager::getMap() { return map.getGrid(); }
 
 
 sf::Vector2f MapManager::getPlayerRoomPosition() {
-    const auto& grid = map.getGrid();
-    for (int y = 0; y < grid.size(); ++y) {
-        for (int x = 0; x < grid[y].size(); ++x) {
-            if (grid[y][x] == 555) {
-                return sf::Vector2f(x * CELL_SIZE, y * CELL_SIZE);
-            }
-        }
-    }
-    return sf::Vector2f(0.f, 0.f);
+    return sf::Vector2f(map.getStartRoom());
 }
 
 
 sf::Vector2f MapManager::getBossRoomPosition() {
-    const auto& grid = map.getGrid();
-    for (int y = 0; y < grid.size(); ++y) {
-        for (int x = 0; x < grid[y].size(); ++x) {
-            if (grid[y][x] == 666) {
-                return sf::Vector2f(x * CELL_SIZE, y * CELL_SIZE);
-            }
-        }
-    }
-    return sf::Vector2f(0.f, 0.f);
+    return sf::Vector2f(map.getEndRoom());
 }
 
 
@@ -137,24 +130,26 @@ bool MapManager::isWalkable(int x, int y) {
         return false;
     }
 
-    int numDivisions = 8; // Соответствует 8x8 разбиению
+    int numDivisions = 32;
     int subCellSize = CELL_SIZE / numDivisions;
+
     int localX = (x % CELL_SIZE) / subCellSize;
     int localY = (y % CELL_SIZE) / subCellSize;
-    int bitIndex = localY * numDivisions + localX;
 
-    return walkabilityMasks[cellY][cellX] & (uint64_t(1) << bitIndex);
+    int globalBitIndex = localY * numDivisions + localX;
+    int maskIndex = globalBitIndex / 64;
+    int localBitIndex = globalBitIndex % 64;
+
+    return walkabilityMasks[cellY][cellX][maskIndex] & (uint64_t(1) << localBitIndex);
 }
 
 
 
 bool MapManager::isRoomWalkable(int cellType, float localX, float localY) {
 
-    // Область комнаты
     const bool ROOM_RECT = localX >= ROOM_MARGIN_LEFT && localX <= ROOM_MARGIN_RIGHT &&
                            localY >= ROOM_MARGIN_TOP && localY <= ROOM_MARGIN_BOTTOM;
 
-    // Проверка нахождения в области
     switch (cellType) {
         case 101: return ROOM_RECT || (localX >= CELL_MARGIN_LEFT && localX <= CELL_MARGIN_RIGHT || localY >= CELL_MARGIN_TOP && localY <= CELL_MARGIN_BOTTOM);
         case 102: return ROOM_RECT || (localX >= CELL_MARGIN_LEFT && localX <= CELL_MARGIN_RIGHT) || (localX >= CELL_MARGIN_LEFT && localY >= CELL_MARGIN_TOP && localY <= CELL_MARGIN_BOTTOM);
@@ -179,7 +174,6 @@ bool MapManager::isRoomWalkable(int cellType, float localX, float localY) {
 
 bool MapManager::isCorridorWalkable(int cellType, float localX, float localY) {
 
-    // Проверка нахождения в области
     switch (cellType) {
         case 201: return (localX >= CELL_MARGIN_LEFT && localX <= CELL_MARGIN_RIGHT || localY >= CELL_MARGIN_TOP && localY <= CELL_MARGIN_BOTTOM);
         case 202: return (localX >= CELL_MARGIN_LEFT && localX <= CELL_MARGIN_RIGHT) || (localX >= CELL_MARGIN_LEFT && localY >= CELL_MARGIN_TOP && localY <= CELL_MARGIN_BOTTOM);
@@ -199,31 +193,34 @@ bool MapManager::isCorridorWalkable(int cellType, float localX, float localY) {
 
 
 void MapManager::precomputeWalkabilityMasks() {
-
-    // Использую uint64_t для 64-битной маски
-    walkabilityMasks.resize(MAP_HEIGHT, std::vector<uint64_t>(MAP_WIDTH, 0));
-
-    // Делю ячейку на 8x8
-    int numDivisions = 8;
+    // Делю ячейку
+    int numDivisions = 32;
     int subCellSize = CELL_SIZE / numDivisions;
+    int numMasks = (numDivisions * numDivisions) / 64;
+
+    // Ресайзим маску
+    walkabilityMasks.resize(MAP_HEIGHT, std::vector<std::vector<uint64_t>>(MAP_WIDTH, std::vector<uint64_t>(numMasks, 0)));
 
     for (int y = 0; y < MAP_HEIGHT; ++y) {
         for (int x = 0; x < MAP_WIDTH; ++x) {
             int cellType = map.getGrid()[y][x];
-            uint64_t mask = 0;
 
             for (int localY = 0; localY < numDivisions; ++localY) {
                 for (int localX = 0; localX < numDivisions; ++localX) {
-                    int bitIndex = localY * numDivisions + localX;
+                    // Осмыслить
+                    int globalBitIndex = localY * numDivisions + localX;
+                    int maskIndex = globalBitIndex / 64;
+                    int localBitIndex = globalBitIndex % 64;
+
+                    // Коэффициенты осмыслить
                     float checkX = localX * subCellSize + 0.5f * subCellSize;
                     float checkY = localY * subCellSize + 0.5f * subCellSize;
 
                     if (isCellWalkable(cellType, checkX, checkY)) {
-                        mask |= (uint64_t(1) << bitIndex); // Устанавливаем соответствующий бит
+                        walkabilityMasks[y][x][maskIndex] |= (uint64_t(1) << localBitIndex);
                     }
                 }
             }
-            walkabilityMasks[y][x] = mask;
         }
     }
 }
@@ -239,11 +236,6 @@ bool MapManager::isCellWalkable(int cellType, float localX, float localY) {
     // Если это коридор
     if (cellType / 100 == 2) {
         return isCorridorWalkable(cellType, localX, localY);
-    }
-
-    // Если это комната появления или с боссом
-    if (cellType / 100 == 5 || cellType / 100 == 6) {
-     return true;
     }
 
     return false;

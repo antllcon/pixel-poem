@@ -44,6 +44,8 @@ constexpr int CELL_MARGIN_LEFT = CELL_SIZE / 4 + 32;
 constexpr int CELL_MARGIN_RIGHT = 3 * CELL_SIZE / 4 - 32;
 constexpr int CELL_MARGIN_TOP = CELL_SIZE / 4 + ROOM_MARGIN_TOP;
 constexpr int CELL_MARGIN_BOTTOM = 3 * CELL_SIZE / 4 - 10;
+constexpr float SPAWN_MARGIN = 96.0f;
+
 
 const sf::Vector2f REVERSE_POSITION = sf::Vector2f(-1.f, -1.f);
 
@@ -117,6 +119,10 @@ const sf::Vector2f SCALE_FACTOR_LEFT = {2.2f, 2.2f};
 const sf::Vector2f SCALE_FACTOR_RIGHT = {-2.2f, 2.2f};
 const sf::Vector2f SCALE_FACTOR_UP = {2.2f, -2.2f};
 const sf::Vector2f SCALE_FACTOR_DOWN = {2.2f, 2.2f};
+
+const sf::Vector2f SCALE_FACTOR_BOSS_LEFT = {6.6f, 6.6f};
+const sf::Vector2f SCALE_FACTOR_BOSS_RIGHT = {-6.6f, 6.6f};
+
 
 // === Анимации ===
 constexpr float ANIMATION_SPEED = 0.2f;

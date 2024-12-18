@@ -28,6 +28,9 @@ Bullet::Bullet(OwnerType owner, sf::Vector2f positionSpawn, sf::Vector2f directi
         if (owner == OwnerType::Bot) {
             texture.loadFromFile(SRC_ARROW + std::to_string(i + 4) + PNG);
         }
+        if (owner == OwnerType::Boss) {
+            texture.loadFromFile(SRC_ARROW + std::to_string(i + 8) + PNG);
+        }
         animation.addFrame(texture);
     }
 
