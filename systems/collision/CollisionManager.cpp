@@ -1,7 +1,6 @@
 #include "CollisionManager.h"
 
 #include <chrono>
-#include <iostream>
 
 #include "../../Utils.h"
 #include "../../core/config.h"

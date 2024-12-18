@@ -115,18 +115,22 @@ void Map::connectRooms(Map& map) {
 
         // Двигаемся к следующей комнате
         while (x1 != x2 || y1 != y2) {
-            if (x1 != x2)
-                x1 += (x2 > x1) ? 1 : -1;
-            else if (y1 != y2)
-                y1 += (y2 > y1) ? 1 : -1;
+            if (rand() % 2 == 0) { // Рандомизируем, в какую сторону двинуться
+                if (x1 != x2)
+                    x1 += (x2 > x1) ? 1 : -1;
+            } else {
+                if (y1 != y2)
+                    y1 += (y2 > y1) ? 1 : -1;
+            }
 
             // Убедимся, что коридоры не выходят за края
             if (x1 > 0 && x1 < grid[0].size() - 1 && y1 > 0 && y1 < grid.size() - 1) {
-                if (grid[y1][x1] == 0) grid[y1][x1] = 2;
+                if (grid[y1][x1] == 0) grid[y1][x1] = 2; // 2 — коридор
             }
         }
     }
 }
+
 
 sf::Vector2i Map::getStartRoom() const{
     sf::Vector2i roomPosition = sf::Vector2i(startRoom.x * CELL_SIZE, startRoom.y * CELL_SIZE);
