@@ -39,10 +39,10 @@ void Map::printMap() const {
                         symbol = "═╣ ";
                         break;
                     case 204:
-                        symbol = " ╦ ";
+                        symbol = "═╦═";
                         break;
                     case 205:
-                        symbol = " ╩ ";
+                        symbol = "═╩═";
                         break;
                     case 206:
                         symbol = "═══";
@@ -95,6 +95,43 @@ void Map::placeRooms(Map& map, int roomCount) {
     }
 }
 
+// лоховской способ
+
+// void Map::connectRooms(Map& map) {
+//     auto& grid = map.getGrid();
+//     std::vector<std::pair<int, int>> rooms;
+//
+//     // Собираем координаты всех комнат
+//     for (int y = 1; y < grid.size() - 1; ++y) {
+//         for (int x = 1; x < grid[y].size() - 1; ++x) {
+//             if (grid[y][x] == 1) rooms.push_back({x, y});
+//         }
+//     }
+//
+//     // Соединяем комнаты коридорами
+//     for (size_t i = 1; i < rooms.size(); ++i) {
+//         int x1 = rooms[i - 1].first;
+//         int y1 = rooms[i - 1].second;
+//         int x2 = rooms[i].first;
+//         int y2 = rooms[i].second;
+//
+//         // Двигаемся к следующей комнате
+//         while (x1 != x2 || y1 != y2) {
+//             if (x1 != x2)
+//                 x1 += (x2 > x1) ? 1 : -1;
+//             else if (y1 != y2)
+//                 y1 += (y2 > y1) ? 1 : -1;
+//
+//             // Убедимся, что коридоры не выходят за края
+//             if (x1 > 0 && x1 < grid[0].size() - 1 && y1 > 0 && y1 < grid.size() - 1) {
+//                 if (grid[y1][x1] == 0) grid[y1][x1] = 2;
+//             }
+//         }
+//     }
+// }
+
+// пацанский - кривой
+
 void Map::connectRooms(Map& map) {
     auto& grid = map.getGrid();
     std::vector<std::pair<int, int>> rooms;
@@ -115,7 +152,7 @@ void Map::connectRooms(Map& map) {
 
         // Двигаемся к следующей комнате
         while (x1 != x2 || y1 != y2) {
-            if (rand() % 2 == 0) { // Рандомизируем, в какую сторону двинуться
+            if (rand() % 2 == 0) {
                 if (x1 != x2)
                     x1 += (x2 > x1) ? 1 : -1;
             } else {

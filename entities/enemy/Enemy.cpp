@@ -22,10 +22,19 @@ Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed, float dir
     enemy.setSize(sf::Vector2f(size, size));
     enemy.setOrigin(enemy.getLocalBounds().width / 2, enemy.getLocalBounds().height / 2);
 
-    for (int i = 1; i <= 4; ++i) {
-        sf::Texture texture;
-        texture.loadFromFile(SRC_SKELETON + std::to_string(i) + PNG);
-        animation.addFrame(texture);
+    sf::Texture texture;
+    if (rand() % 2 == 0) {
+
+        for (int i = 1; i <= 4; ++i) {
+            // рандомно эта или эта текстура
+            texture.loadFromFile(SRC_SKELETON + std::to_string(i) + PNG);
+            animation.addFrame(texture);
+        }
+    } else {
+        for (int i = 1; i <= 4; ++i) {
+            texture.loadFromFile(SRC_VAMPIRE + std::to_string(i) + PNG);
+            animation.addFrame(texture);
+        }
     }
 
     animation.applyToSprite(sprite);

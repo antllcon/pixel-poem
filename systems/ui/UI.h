@@ -4,10 +4,12 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
 
+#include "../../entities/weapon/Weapon.h"
+
 class UI {
    public:
-    UI(int maxHealth, int maxArmor, int money);
-    void update(int currentHealth, int currentArmor, int currentMoney);
+    UI(int maxHealth, int maxArmor, int money, WeaponType weapon);
+    void update(int currentHealth, int currentArmor, int currentMoney, WeaponType currentWeapon);
     void render(sf::RenderWindow& window);
 
    private:
@@ -25,4 +27,10 @@ class UI {
     int maxHealth;
     int maxArmor;
     int money;
+    sf::Texture weaponTexture;
+    sf::Sprite weaponSprite;
+    WeaponType weapon;
+    sf::Text weaponText;
+
+
 };

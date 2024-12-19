@@ -8,8 +8,7 @@ Input::Input() {
 }
 
 bool Input::processControllerConnect() {
-    sf::Joystick::update();
-    if (sf::Joystick::isConnected(0)) return true;
+    if (sf::Joystick::isConnected(0)) return true;sf::Joystick::update();
     return false;
 }
 
@@ -83,7 +82,7 @@ void Input::checkHeldGamepadButtons() {
     updateButtonState("", sf::Joystick::isButtonPressed(joystickId, 3)); // Rectangle
     updateButtonState("", sf::Joystick::isButtonPressed(joystickId, 4)); // L1
     updateButtonState("", sf::Joystick::isButtonPressed(joystickId, 5)); // R1
-    updateButtonState("", sf::Joystick::isButtonPressed(joystickId, 6)); // L2
+    updateButtonState("run", sf::Joystick::isButtonPressed(joystickId, 6)); // L2
     updateButtonState("shoot", sf::Joystick::isButtonPressed(joystickId, 7)); // R2
     updateButtonState("exit", sf::Joystick::isButtonPressed(joystickId, 10)); // Exit
 }
@@ -114,13 +113,14 @@ void Input::checkHeldGamepadAxes() {
         updateButtonState("moveLeft", false);
         updateButtonState("moveRight", false);
     }
+    // std::cout << "Right Stick - X: " << leftX << ", Y: " << leftY << std::endl;
+
 
     // Правый стик (взгляд)
     float rightX = sf::Joystick::getAxisPosition(joystickId, sf::Joystick::U); // Горизонтальная ось
     float rightY = sf::Joystick::getAxisPosition(joystickId, sf::Joystick::V); // Вертикальная ось
 
     // Вывод значений осей для отладки
-    // std::cout << "Right Stick - X: " << rightX << ", Y: " << rightY << std::endl;
 
     // Вправо/влево/вверх/вниз (правый стик, по 90 градусов)
     if (std::abs(rightX) > std::abs(rightY)) {
@@ -140,7 +140,7 @@ void Input::checkHeldGamepadAxes() {
         // Вертикальное направление доминирует
         if (rightY > DEAD_ZONE) {
             updateButtonState("lookDown", true);
-            updateButtonState("lookUp", false);// слишком нагруженно выглядит
+            updateButtonState("lookUp", false);
             updateButtonState("lookLeft", false);
             updateButtonState("lookRight", false);
         } else if (rightY < -DEAD_ZONE) {

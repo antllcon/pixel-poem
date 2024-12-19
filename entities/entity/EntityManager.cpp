@@ -16,7 +16,7 @@ void EntityManager::spawnPlayer(const sf::Vector2f& playerRoom) {
 
 void EntityManager::spawnBoss(const sf::Vector2f& bossRoom) {
     sf::Vector2f setPosition = {bossRoom.x + CELL_SIZE / 2, bossRoom.y + CELL_SIZE / 2};
-    boss = std::make_unique<Boss>(BossState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED, BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME, setPosition);
+    boss = std::make_unique<Boss>(BossState::sleep, BOT_COLOR, BOSS_HEALTH, BOSS_SPEED, BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME, setPosition);
 }
 
 Player* EntityManager::getPlayer() { return player.get(); }
@@ -73,6 +73,9 @@ void EntityManager::update(float deltaTime) {
     if (player) player->update(deltaTime);
 
     if (boss) boss->update(deltaTime);
+    // if (boss && !boss->getIsAlive()) {
+    //     boss.reset();  // Удаляем босса, если он мёртв
+    // }
 
     for (auto& enemy : enemies) {
         enemy->update(deltaTime);
@@ -106,5 +109,5 @@ void EntityManager::render(sf::RenderWindow& window) {
         bullet.draw(window);
     }
 
-    if (boss) boss->draw(window);
+    if (boss && boss->getIsAlive()) boss->draw(window);
 }

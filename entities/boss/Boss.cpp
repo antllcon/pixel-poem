@@ -36,7 +36,7 @@ Boss::Boss(BossState state, sf::Color color, int health, int speed, float direct
 void Boss::processInput(sf::Vector2f playerPosition, float globalTime, std::vector<Bullet>& gameBullets) {
     processViewDirection(playerPosition);
     if (state == BossState::attack) {
-        processShoot(globalTime, gameBullets);
+        processShoot(globalTime, gameBullets, playerPosition);
     }
 }
 
@@ -59,7 +59,20 @@ void Boss::processViewDirection(sf::Vector2f playerPosition) {
     }
 }
 
-void Boss::processShoot(float globalTime, std::vector<Bullet>& gameBullets) {
+void Boss::processShoot(float globalTime, std::vector<Bullet>& gameBullets, sf::Vector2f playerPosition) {
+    // Вычисляем направление на игрока
+    sf::Vector2f directionToPlayer = playerPosition - position;
+
+    // Нормализуем направление
+    float length = std::sqrt(directionToPlayer.x * directionToPlayer.x + directionToPlayer.y * directionToPlayer.y);
+    if (length != 0) {
+        directionToPlayer /= length;  // Делаем вектор единичным
+    }
+
+    // Устанавливаем направление выстрела
+    viewDirection = directionToPlayer;
+
+    // Пытаемся выстрелить
     auto bulletOpt = weapon.tryShoot(position, viewDirection, globalTime, Bullet::OwnerType::Boss);
     if (bulletOpt) {
         gameBullets.push_back(bulletOpt.value());
@@ -110,6 +123,7 @@ void Boss::setPosition(float x, float y) { position = sf::Vector2f(x, y); }
 sf::Vector2f Boss::getPosition() const { return position; }
 
 void Boss::takeDamage(int damage) {
+    std::cout << " Boss health - " + std::to_string(health) << std::endl;
     health -= damage;
     if (health <= 0 && isAlive) {
         isAlive = false;

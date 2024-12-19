@@ -3,6 +3,7 @@
 #define CONFIG_H
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <string>
+#include <SFML/Graphics/Font.hpp>
 // === Цветовые настройки ===
 const sf::Color COLOR_LIGHT_YELLOW = sf::Color(255, 255, 200);
 const sf::Color COLOR_DARK_PURPLE = sf::Color(64, 28, 47);
@@ -21,12 +22,12 @@ const sf::Color COLOR_TRANSPARENT = sf::Color(0, 0, 0, 0);
 // === Основные настройки игры ===
 constexpr int SCREEN_WIDTH = 960;
 constexpr int SCREEN_HEIGHT = 540;
-constexpr int ROOM_COUNT = 7; //6
+constexpr int ROOM_COUNT = 6; //6
 constexpr int MAP_WIDTH = 8; // 8
 constexpr int MAP_HEIGHT = 8; //8
 constexpr float CAMERA_DELTA_WIDTH = SCREEN_WIDTH / 6.f;
 constexpr float CAMERA_DELTA_HEIGHT = SCREEN_HEIGHT / 6.f;
-constexpr int DEAD_ZONE = 5.0f;
+constexpr int DEAD_ZONE = 25.0f;
 constexpr float COLLISION_BOUNCE_FACTOR = 0.5f;
 constexpr int GAP_TEXT_PAUSE_X = 100;
 constexpr float STATE_CHANGE_COOLDOWN = 0.5f;
@@ -62,6 +63,8 @@ constexpr int PLAYER_ARMOR = 20;
 constexpr int PLAYER_MONEY = 0;
 constexpr float MAP_PLAYER_SPAWN_X = 750.f;
 constexpr float MAP_PLAYER_SPAWN_Y = 750.f;
+constexpr float PLAYER_RUN_TIME = 2.f;
+constexpr float RUN_COOLDOWN = 4.f;
 
 // === Настройки врагов (ботов) ===
 const sf::Color BOT_COLOR = sf::Color(150, 50, 50);
@@ -71,11 +74,14 @@ constexpr float BOT_SPEED = 100.f;
 constexpr float BOT_DIRECTION_CHANGE_INTERVAL = 2.f;
 constexpr float BOT_DIRECTION_CHANGE_TIME = 0.f;
 constexpr float BOT_VIEW_SIZE = 128.f;
-constexpr int NUM_ENEMIES = 15;
+constexpr int NUM_ENEMIES = ROOM_COUNT * 6;
 const sf::FloatRect BOT_VIEW_AREA(-BOT_VIEW_SIZE, -BOT_VIEW_SIZE, BOT_VIEW_SIZE * 2 + BOT_SIZE,
                                   BOT_VIEW_SIZE * 2 + BOT_SIZE);
 constexpr float MAP_BOT_SPAWN_X = 120.f;
 constexpr float MAP_BOT_SPAWN_Y = 20.f;
+
+constexpr int BOSS_HEALTH = 100;
+constexpr float BOSS_SPEED = 150.f;
 
 // === Настройки оружия и пуль ===
 constexpr float WEAPON_DESERT_EAGLE = 0.25f;
@@ -112,6 +118,8 @@ const sf::Vector2f ARMOR_TEXT_POS = sf::Vector2f(SCREEN_WIDTH - 105.f, SCREEN_HE
 
 const sf::Vector2f MONEY_SPRITE_POS = sf::Vector2f(SCREEN_WIDTH - 45, 10);
 const sf::Vector2f MONEY_TEXT_POS = sf::Vector2f(SCREEN_WIDTH - 55, 18);
+const sf::Vector2f WEAPON_SPRITE_POS = sf::Vector2f(SCREEN_WIDTH - 90, SCREEN_HEIGHT - 165.f);
+const sf::Vector2f WEAPON_TEXT_POS = sf::Vector2f(SCREEN_WIDTH - 185, SCREEN_HEIGHT - 125.f);
 
 // === Масштабирование текстур ===
 const sf::Vector2f SCALE_FACTOR = {2.f, 2.f};
@@ -142,6 +150,10 @@ const std::string SRC_VAMPIRE = "/projects/CLionProjects/pixel_poem/resources/sp
 const std::string SRC_KNIGHT = "/projects/CLionProjects/pixel_poem/resources/sprites/knight/knight_";
 const std::string SRC_ARROW = "/projects/CLionProjects/pixel_poem/resources/sprites/arrow/arrow_";
 const std::string SRC_COIN = "/projects/CLionProjects/pixel_poem/resources/sprites/coin/coin_";
+const std::string SRC_UI_PISTOL = "/projects/CLionProjects/pixel_poem/resources/textures/guns/pistol.png";
+const std::string SRC_UI_RIFLE = "/projects/CLionProjects/pixel_poem/resources/textures/guns/rifle.png";
+const std::string SRC_UI_SHOTGUN = "/projects/CLionProjects/pixel_poem/resources/textures/guns/shotgun.png";
+
 const std::string PNG = ".png";
 
 #endif

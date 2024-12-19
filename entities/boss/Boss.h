@@ -44,7 +44,7 @@ private:
     float timeSinceDirectionChange;
 
 
-    void processShoot(float globalTime, std::vector<Bullet>& gameBullets);
+    void processShoot(float globalTime, std::vector<Bullet>& gameBullets, sf::Vector2f playerPosition) ;
     void processViewDirection(sf::Vector2f playerPosition);
     void setViewDirection(const sf::Vector2f& newViewDirection);
     void setRandomDirection();

@@ -270,7 +270,8 @@ CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o: \
  /usr/include/c++/13/tr1/modified_bessel_func.tcc \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
- /usr/include/c++/13/tr1/riemann_zeta.tcc \
+ /usr/include/c++/13/tr1/riemann_zeta.tcc /usr/include/c++/13/iostream \
+ /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
  /projects/CLionProjects/pixel_poem/entities/player/../../core/config.h \
  /projects/CLionProjects/pixel_poem/entities/player/../../systems/input/Input.h \
  /usr/include/c++/13/unordered_map \

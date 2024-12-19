@@ -147,13 +147,25 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc \
+ /usr/include/SFML/Graphics/Font.hpp /usr/include/SFML/Graphics/Glyph.hpp \
+ /usr/include/SFML/Graphics/Texture.hpp \
+ /usr/include/SFML/Graphics/Image.hpp \
+ /usr/include/SFML/Window/GlResource.hpp \
+ /usr/include/SFML/Window/Export.hpp \
+ /usr/include/SFML/System/NonCopyable.hpp \
+ /usr/include/SFML/System/Export.hpp /usr/include/c++/13/map \
+ /usr/include/c++/13/bits/stl_tree.h \
+ /usr/include/c++/13/ext/aligned_buffer.h \
+ /usr/include/c++/13/bits/node_handle.h \
+ /usr/include/c++/13/bits/stl_map.h \
+ /usr/include/c++/13/bits/stl_multimap.h \
+ /usr/include/c++/13/bits/erase_if.h \
  /projects/CLionProjects/pixel_poem/core/game/Game.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/System/Clock.hpp \
- /usr/include/SFML/System/Export.hpp /usr/include/SFML/System/Time.hpp \
- /usr/include/SFML/System/Err.hpp /usr/include/c++/13/ostream \
- /usr/include/c++/13/ios /usr/include/c++/13/exception \
- /usr/include/c++/13/bits/exception_ptr.h \
+ /usr/include/SFML/System/Time.hpp /usr/include/SFML/System/Err.hpp \
+ /usr/include/c++/13/ostream /usr/include/c++/13/ios \
+ /usr/include/c++/13/exception /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
  /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h \
  /usr/include/c++/13/bits/ios_base.h /usr/include/c++/13/ext/atomicity.h \
@@ -189,7 +201,6 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/c++/13/bits/ostream.tcc \
  /usr/include/SFML/System/FileInputStream.hpp \
  /usr/include/SFML/System/InputStream.hpp \
- /usr/include/SFML/System/NonCopyable.hpp \
  /usr/include/SFML/System/Lock.hpp \
  /usr/include/SFML/System/MemoryInputStream.hpp \
  /usr/include/SFML/System/Mutex.hpp /usr/include/SFML/System/Sleep.hpp \
@@ -210,8 +221,7 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/SFML/System/Vector3.hpp \
  /usr/include/SFML/System/Vector3.inl \
  /usr/include/SFML/Window/Clipboard.hpp \
- /usr/include/SFML/Window/Export.hpp /usr/include/SFML/Window/Context.hpp \
- /usr/include/SFML/Window/GlResource.hpp \
+ /usr/include/SFML/Window/Context.hpp \
  /usr/include/SFML/Window/ContextSettings.hpp \
  /usr/include/SFML/Window/Cursor.hpp /usr/include/SFML/Window/Event.hpp \
  /usr/include/SFML/Window/Joystick.hpp \
@@ -228,15 +238,6 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/SFML/Window/WindowStyle.hpp \
  /usr/include/SFML/Graphics/CircleShape.hpp \
  /usr/include/SFML/Graphics/ConvexShape.hpp \
- /usr/include/SFML/Graphics/Font.hpp /usr/include/SFML/Graphics/Glyph.hpp \
- /usr/include/SFML/Graphics/Texture.hpp \
- /usr/include/SFML/Graphics/Image.hpp /usr/include/c++/13/map \
- /usr/include/c++/13/bits/stl_tree.h \
- /usr/include/c++/13/ext/aligned_buffer.h \
- /usr/include/c++/13/bits/node_handle.h \
- /usr/include/c++/13/bits/stl_map.h \
- /usr/include/c++/13/bits/stl_multimap.h \
- /usr/include/c++/13/bits/erase_if.h \
  /usr/include/SFML/Graphics/RenderTarget.hpp \
  /usr/include/SFML/Graphics/View.hpp \
  /usr/include/SFML/Graphics/RenderTexture.hpp \

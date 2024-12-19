@@ -2,6 +2,7 @@
 #include "Player.h"
 
 #include <cmath>
+#include <iostream>
 
 #include "../../core/config.h"
 #include "../../systems/input/Input.h"
@@ -39,7 +40,7 @@ void Player::processInput(const Input& inputHandler, float globalTime, std::vect
     processViewDirection(inputHandler);
     processMoveDirection(inputHandler);
     processShoot(inputHandler, globalTime, gameBullets);
-    processSpeed(inputHandler);
+    processSpeed(inputHandler, globalTime);
 }
 
 void Player::update(float deltaTime) {
@@ -107,12 +108,17 @@ void Player::processShoot(const Input& inputHandler, float globalTime, std::vect
         }
     }
 }
-void Player::processSpeed(const Input& inputHandler){
-    if (inputHandler.isPressed("run")) {
-        speed = PLAYER_SPEED * 2;
-    } else {
-        speed = PLAYER_SPEED;
+void Player::processSpeed(const Input& inputHandler, float globalTime) {
+    // Проверяем, можно ли бежать
+    if (inputHandler.isPressed("run") && globalTime >= timeNextRun) {
+        speed = PLAYER_SPEED * 2; // Удваиваем скорость
+        timeLastRun = globalTime; // Запоминаем момент начала бега
+        timeNextRun = globalTime + RUN_COOLDOWN; // Устанавливаем задержку на следующее ускорение
+    } else if (globalTime - timeLastRun >= PLAYER_RUN_TIME) {
+        speed = PLAYER_SPEED; // Возвращаемся к обычной скорости
     }
+
+    // std::cout << " Время: " << globalTime - timeLastRun << std::endl;
 }
 
 
@@ -146,6 +152,8 @@ int Player::getHealth() const { return health; }
 int Player::getArmor() const { return armor; }
 
 int Player::getMoney() const { return money; }
+
+WeaponType Player::getWeapon() const {return weapon.getWeaponType(); }
 
 void Player::takeMoney(int newMoney) { money += newMoney; }
 

@@ -18,7 +18,7 @@ class Player {
     float getX() const;
     float getY() const;
     int getHealth() const;
-    int getMoney() const;
+    int getMoney() const;WeaponType getWeapon()const;
     int getArmor() const;
     void takeDamage(int damage);
     void regenerateArmor(float globalTime);
@@ -46,11 +46,13 @@ class Player {
     bool isAlive;
     float regenerationCooldown;
     float lastRegeneration;
+    float timeLastRun = 0.f;
+    float timeNextRun = 0.f;
 
     void processMoveDirection(const Input& inputHandler);
     void processViewDirection(const Input& inputHandler);
     void processShoot(const Input& inputHandler, float globalTime, std::vector<Bullet>& gameBullets);
-    void processSpeed(const Input& inputHandler);
+    void processSpeed(const Input& inputHandler, float globalTime);
     void setViewDirection(const sf::Vector2f& newViewDirection);
     void view();
     void move(float deltaTime);

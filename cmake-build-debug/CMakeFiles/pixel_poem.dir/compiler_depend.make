@@ -2208,6 +2208,7 @@ CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o: /projects/CLionProjects/
   /usr/include/c++/13/bits/hashtable_policy.h \
   /usr/include/c++/13/bits/invoke.h \
   /usr/include/c++/13/bits/ios_base.h \
+  /usr/include/c++/13/bits/istream.tcc \
   /usr/include/c++/13/bits/iterator_concepts.h \
   /usr/include/c++/13/bits/locale_classes.h \
   /usr/include/c++/13/bits/locale_classes.tcc \
@@ -2290,6 +2291,8 @@ CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o: /projects/CLionProjects/
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/iostream \
+  /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
   /usr/include/c++/13/locale \
@@ -3967,6 +3970,7 @@ CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o: /projects/CL
   /usr/include/c++/13/iomanip \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
@@ -4431,12 +4435,16 @@ CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o: /projects/CLionProjects/pix
   /usr/include/SFML/Graphics/Color.hpp \
   /usr/include/SFML/Graphics/Drawable.hpp \
   /usr/include/SFML/Graphics/Export.hpp \
+  /usr/include/SFML/Graphics/Font.hpp \
+  /usr/include/SFML/Graphics/Glyph.hpp \
+  /usr/include/SFML/Graphics/Image.hpp \
   /usr/include/SFML/Graphics/PrimitiveType.hpp \
   /usr/include/SFML/Graphics/Rect.hpp \
   /usr/include/SFML/Graphics/Rect.inl \
   /usr/include/SFML/Graphics/RectangleShape.hpp \
   /usr/include/SFML/Graphics/RenderStates.hpp \
   /usr/include/SFML/Graphics/Shape.hpp \
+  /usr/include/SFML/Graphics/Texture.hpp \
   /usr/include/SFML/Graphics/Transform.hpp \
   /usr/include/SFML/Graphics/Transformable.hpp \
   /usr/include/SFML/Graphics/Vertex.hpp \
@@ -4557,8 +4565,11 @@ CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o: /projects/CLionProjects/pix
   /usr/include/c++/13/bits/stl_iterator.h \
   /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/13/bits/stl_iterator_base_types.h \
+  /usr/include/c++/13/bits/stl_map.h \
+  /usr/include/c++/13/bits/stl_multimap.h \
   /usr/include/c++/13/bits/stl_pair.h \
   /usr/include/c++/13/bits/stl_tempbuf.h \
+  /usr/include/c++/13/bits/stl_tree.h \
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stl_vector.h \
   /usr/include/c++/13/bits/stream_iterator.h \
@@ -4599,6 +4610,7 @@ CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o: /projects/CLionProjects/pix
   /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/locale \
+  /usr/include/c++/13/map \
   /usr/include/c++/13/new \
   /usr/include/c++/13/numbers \
   /usr/include/c++/13/ostream \
@@ -4725,18 +4737,26 @@ CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: /projects/CLionProjects/pixel_p
   /usr/include/SFML/Graphics/Color.hpp \
   /usr/include/SFML/Graphics/Drawable.hpp \
   /usr/include/SFML/Graphics/Export.hpp \
+  /usr/include/SFML/Graphics/Font.hpp \
+  /usr/include/SFML/Graphics/Glyph.hpp \
+  /usr/include/SFML/Graphics/Image.hpp \
   /usr/include/SFML/Graphics/PrimitiveType.hpp \
   /usr/include/SFML/Graphics/Rect.hpp \
   /usr/include/SFML/Graphics/Rect.inl \
   /usr/include/SFML/Graphics/RectangleShape.hpp \
   /usr/include/SFML/Graphics/RenderStates.hpp \
   /usr/include/SFML/Graphics/Shape.hpp \
+  /usr/include/SFML/Graphics/Texture.hpp \
   /usr/include/SFML/Graphics/Transform.hpp \
   /usr/include/SFML/Graphics/Transformable.hpp \
   /usr/include/SFML/Graphics/Vertex.hpp \
   /usr/include/SFML/Graphics/VertexArray.hpp \
+  /usr/include/SFML/System/Export.hpp \
+  /usr/include/SFML/System/NonCopyable.hpp \
   /usr/include/SFML/System/Vector2.hpp \
   /usr/include/SFML/System/Vector2.inl \
+  /usr/include/SFML/Window/Export.hpp \
+  /usr/include/SFML/Window/GlResource.hpp \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -4756,6 +4776,7 @@ CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: /projects/CLionProjects/pixel_p
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/cxxabi_init_exception.h \
+  /usr/include/c++/13/bits/erase_if.h \
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
   /usr/include/c++/13/bits/exception_ptr.h \
@@ -4777,6 +4798,7 @@ CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: /projects/CLionProjects/pixel_p
   /usr/include/c++/13/bits/move.h \
   /usr/include/c++/13/bits/nested_exception.h \
   /usr/include/c++/13/bits/new_allocator.h \
+  /usr/include/c++/13/bits/node_handle.h \
   /usr/include/c++/13/bits/ostream.tcc \
   /usr/include/c++/13/bits/ostream_insert.h \
   /usr/include/c++/13/bits/postypes.h \
@@ -4800,8 +4822,11 @@ CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: /projects/CLionProjects/pixel_p
   /usr/include/c++/13/bits/stl_iterator.h \
   /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
   /usr/include/c++/13/bits/stl_iterator_base_types.h \
+  /usr/include/c++/13/bits/stl_map.h \
+  /usr/include/c++/13/bits/stl_multimap.h \
   /usr/include/c++/13/bits/stl_pair.h \
   /usr/include/c++/13/bits/stl_tempbuf.h \
+  /usr/include/c++/13/bits/stl_tree.h \
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stl_vector.h \
   /usr/include/c++/13/bits/streambuf.tcc \
@@ -4827,6 +4852,7 @@ CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: /projects/CLionProjects/pixel_p
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/exception \
+  /usr/include/c++/13/ext/aligned_buffer.h \
   /usr/include/c++/13/ext/alloc_traits.h \
   /usr/include/c++/13/ext/atomicity.h \
   /usr/include/c++/13/ext/numeric_traits.h \
@@ -4837,6 +4863,7 @@ CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: /projects/CLionProjects/pixel_p
   /usr/include/c++/13/iosfwd \
   /usr/include/c++/13/iostream \
   /usr/include/c++/13/istream \
+  /usr/include/c++/13/map \
   /usr/include/c++/13/new \
   /usr/include/c++/13/numbers \
   /usr/include/c++/13/ostream \
@@ -5878,13 +5905,21 @@ CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o: /projects/CLionProjects/pix
 
 CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o: /projects/CLionProjects/pixel_poem/systems/ui/UI.cpp \
   /projects/CLionProjects/pixel_poem/core/config.h \
+  /projects/CLionProjects/pixel_poem/systems/animation/Animation.h \
+  /projects/CLionProjects/pixel_poem/entities/bullet/Bullet.h \
+  /projects/CLionProjects/pixel_poem/entities/weapon/Weapon.h \
   /projects/CLionProjects/pixel_poem/systems/ui/UI.h \
   /usr/include/SFML/Config.hpp \
+  /usr/include/SFML/Graphics.hpp \
   /usr/include/SFML/Graphics/BlendMode.hpp \
+  /usr/include/SFML/Graphics/CircleShape.hpp \
   /usr/include/SFML/Graphics/Color.hpp \
+  /usr/include/SFML/Graphics/ConvexShape.hpp \
   /usr/include/SFML/Graphics/Drawable.hpp \
   /usr/include/SFML/Graphics/Export.hpp \
   /usr/include/SFML/Graphics/Font.hpp \
+  /usr/include/SFML/Graphics/Glsl.hpp \
+  /usr/include/SFML/Graphics/Glsl.inl \
   /usr/include/SFML/Graphics/Glyph.hpp \
   /usr/include/SFML/Graphics/Image.hpp \
   /usr/include/SFML/Graphics/PrimitiveType.hpp \
@@ -5893,7 +5928,9 @@ CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o: /projects/CLionProjects/pixel_poe
   /usr/include/SFML/Graphics/RectangleShape.hpp \
   /usr/include/SFML/Graphics/RenderStates.hpp \
   /usr/include/SFML/Graphics/RenderTarget.hpp \
+  /usr/include/SFML/Graphics/RenderTexture.hpp \
   /usr/include/SFML/Graphics/RenderWindow.hpp \
+  /usr/include/SFML/Graphics/Shader.hpp \
   /usr/include/SFML/Graphics/Shape.hpp \
   /usr/include/SFML/Graphics/Sprite.hpp \
   /usr/include/SFML/Graphics/Text.hpp \
@@ -5902,21 +5939,46 @@ CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o: /projects/CLionProjects/pixel_poe
   /usr/include/SFML/Graphics/Transformable.hpp \
   /usr/include/SFML/Graphics/Vertex.hpp \
   /usr/include/SFML/Graphics/VertexArray.hpp \
+  /usr/include/SFML/Graphics/VertexBuffer.hpp \
   /usr/include/SFML/Graphics/View.hpp \
+  /usr/include/SFML/System.hpp \
   /usr/include/SFML/System/Clock.hpp \
+  /usr/include/SFML/System/Err.hpp \
   /usr/include/SFML/System/Export.hpp \
+  /usr/include/SFML/System/FileInputStream.hpp \
+  /usr/include/SFML/System/InputStream.hpp \
+  /usr/include/SFML/System/Lock.hpp \
+  /usr/include/SFML/System/MemoryInputStream.hpp \
+  /usr/include/SFML/System/Mutex.hpp \
   /usr/include/SFML/System/NonCopyable.hpp \
+  /usr/include/SFML/System/Sleep.hpp \
   /usr/include/SFML/System/String.hpp \
   /usr/include/SFML/System/String.inl \
+  /usr/include/SFML/System/Thread.hpp \
+  /usr/include/SFML/System/Thread.inl \
+  /usr/include/SFML/System/ThreadLocal.hpp \
+  /usr/include/SFML/System/ThreadLocalPtr.hpp \
+  /usr/include/SFML/System/ThreadLocalPtr.inl \
   /usr/include/SFML/System/Time.hpp \
   /usr/include/SFML/System/Utf.hpp \
   /usr/include/SFML/System/Utf.inl \
   /usr/include/SFML/System/Vector2.hpp \
   /usr/include/SFML/System/Vector2.inl \
+  /usr/include/SFML/System/Vector3.hpp \
+  /usr/include/SFML/System/Vector3.inl \
+  /usr/include/SFML/Window.hpp \
+  /usr/include/SFML/Window/Clipboard.hpp \
+  /usr/include/SFML/Window/Context.hpp \
   /usr/include/SFML/Window/ContextSettings.hpp \
   /usr/include/SFML/Window/Cursor.hpp \
+  /usr/include/SFML/Window/Event.hpp \
   /usr/include/SFML/Window/Export.hpp \
   /usr/include/SFML/Window/GlResource.hpp \
+  /usr/include/SFML/Window/Joystick.hpp \
+  /usr/include/SFML/Window/Keyboard.hpp \
+  /usr/include/SFML/Window/Mouse.hpp \
+  /usr/include/SFML/Window/Sensor.hpp \
+  /usr/include/SFML/Window/Touch.hpp \
   /usr/include/SFML/Window/VideoMode.hpp \
   /usr/include/SFML/Window/Vulkan.hpp \
   /usr/include/SFML/Window/Window.hpp \
@@ -5943,6 +6005,7 @@ CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o: /projects/CLionProjects/pixel_poe
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/cxxabi_init_exception.h \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
@@ -6039,6 +6102,7 @@ CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o: /projects/CLionProjects/pixel_poe
   /usr/include/c++/13/map \
   /usr/include/c++/13/new \
   /usr/include/c++/13/numbers \
+  /usr/include/c++/13/optional \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/execution_defs.h \
   /usr/include/c++/13/pstl/glue_algorithm_defs.h \

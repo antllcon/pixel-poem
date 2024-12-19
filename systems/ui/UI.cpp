@@ -3,12 +3,11 @@
 #include <iostream>
 
 #include "../../core/config.h"
+#include "../../entities/weapon/Weapon.h"
 
-UI::UI(int maxHealth, int maxArmor, int money)
-    : maxHealth(maxHealth), maxArmor(maxArmor), money(money) {
+UI::UI(int maxHealth, int maxArmor, int money, WeaponType weapon) : maxHealth(maxHealth), maxArmor(maxArmor), money(money), weapon(weapon) {
     if (!font.loadFromFile(SRC_FONT_MONOCRAFT)) {
-        throw std::runtime_error("Failed to load font from " +
-                                 std::string(SRC_FONT_MONOCRAFT));
+        throw std::runtime_error("Failed to load font from " + std::string(SRC_FONT_MONOCRAFT));
     }
 
     backgroundPlatform.setSize(BACKGROUND_PLATFORM_SIZE);
@@ -57,9 +56,26 @@ UI::UI(int maxHealth, int maxArmor, int money)
     moneyText.setCharacterSize(UI_TEXT);
     moneyText.setFillColor(COLOR_LIGHT_YELLOW);
 
+    if (weapon == WeaponType::Pistol) {
+        weaponTexture.loadFromFile(SRC_UI_PISTOL);
+    }
+    if (weapon == WeaponType::Rifle) {
+        weaponTexture.loadFromFile(SRC_UI_RIFLE);
+    }
+    if (weapon == WeaponType::Shotgun) {
+        weaponTexture.loadFromFile(SRC_UI_SHOTGUN);
+    }
+    weaponSprite.setTexture(weaponTexture);
+    weaponSprite.setScale(SCALE_FACTOR_LEFT);
+    weaponSprite.setPosition(WEAPON_SPRITE_POS);
+
+    weaponText.setPosition(WEAPON_TEXT_POS);
+    weaponText.setFont(font);
+    weaponText.setCharacterSize(UI_TEXT);
+    weaponText.setFillColor(COLOR_LIGHT_YELLOW);
 }
 
-void UI::update(int currentHealth, int currentArmor, int currentMoney) {
+void UI::update(int currentHealth, int currentArmor, int currentMoney, WeaponType currentWeapon) {
     float healthRatio = static_cast<float>(currentHealth) / maxHealth;
     healthBar.setSize({160.f * healthRatio, 10.f});
     healthText.setString("Health " + std::to_string(currentHealth));
@@ -69,7 +85,34 @@ void UI::update(int currentHealth, int currentArmor, int currentMoney) {
     armorText.setString("Armor " + std::to_string(currentArmor));
 
     moneyText.setString(std::to_string(currentMoney));
+
+    if (weapon == WeaponType::Pistol) {
+        weaponTexture.loadFromFile(SRC_UI_PISTOL);
+    }
+    if (weapon == WeaponType::Rifle) {
+        weaponTexture.loadFromFile(SRC_UI_RIFLE);
+    }
+    if (weapon == WeaponType::Shotgun) {
+        weaponTexture.loadFromFile(SRC_UI_SHOTGUN);
+    }
+    weaponSprite.setTexture(weaponTexture);
+    weaponSprite.setScale(SCALE_FACTOR_LEFT);
+    weaponSprite.setPosition(WEAPON_SPRITE_POS);
+
+    std::string weaponTypeText;
+    if (weapon == WeaponType::Pistol) {
+        weaponTypeText = "Pistol";
+    }
+    if (weapon == WeaponType::Rifle) {
+        weaponTypeText = "Rifle";
+    }
+    if (weapon == WeaponType::Shotgun) {
+        weaponTypeText = "Shotgun";
+    }
+
+    weaponText.setString("Gun " + weaponTypeText);
 }
+
 
 void UI::render(sf::RenderWindow& window) {
     window.draw(backgroundPlatform);
@@ -80,5 +123,7 @@ void UI::render(sf::RenderWindow& window) {
     window.draw(armorBar);
     window.draw(armorText);
     window.draw(moneySprite);
+    window.draw(weaponSprite);
     window.draw(moneyText);
+    window.draw(weaponText);
 }
