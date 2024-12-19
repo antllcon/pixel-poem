@@ -26,6 +26,7 @@ class Boss {
     void blockMovement();
 
 private:
+    sf::Font font;
     sf::Sprite sprite;
     Animation animation;
     sf::RectangleShape boss;
@@ -33,6 +34,7 @@ private:
     sf::Vector2f previousPosition;
     sf::Vector2f moveDirection;
     sf::Vector2f viewDirection;
+    sf::Text healthText;
     BossState state;
     Weapon weapon;
 
@@ -42,7 +44,6 @@ private:
     float speed;
     float directionChangeInterval;
     float timeSinceDirectionChange;
-
 
     void processShoot(float globalTime, std::vector<Bullet>& gameBullets, sf::Vector2f playerPosition) ;
     void processViewDirection(sf::Vector2f playerPosition);

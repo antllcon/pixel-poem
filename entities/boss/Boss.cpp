@@ -9,7 +9,7 @@ Boss::Boss(BossState state, sf::Color color, int health, int speed, float direct
     : animation(ANIMATION_SPEED),
       position(position),
       state(state),
-      weapon(WeaponType::Pistol),
+      weapon(WeaponType::Rifle),
       health(health),
       size(BOT_SIZE * 3),
       isAlive(true),
@@ -31,6 +31,14 @@ Boss::Boss(BossState state, sf::Color color, int health, int speed, float direct
     sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
     sprite.setPosition(position);
     sprite.setScale(SCALE_FACTOR_BOSS_LEFT);
+
+    if (!font.loadFromFile(SRC_FONT_MONOCRAFT)) {
+        throw std::runtime_error("Failed to load font");
+    }
+    healthText.setFont(font);
+    healthText.setCharacterSize(FONT_SIZE);
+    healthText.setFillColor(COLOR_LIGHT_YELLOW);
+
 }
 
 void Boss::processInput(sf::Vector2f playerPosition, float globalTime, std::vector<Bullet>& gameBullets) {
@@ -100,7 +108,7 @@ void Boss::setRandomDirection() {
     }
 }
 
-void Boss::draw(sf::RenderWindow& window) { window.draw(sprite); }
+void Boss::draw(sf::RenderWindow& window) { window.draw(sprite); window.draw(healthText);}
 
 void Boss::update(float deltaTime) {
     // Рассчитываем целевую позицию
@@ -116,6 +124,9 @@ void Boss::update(float deltaTime) {
 
     // Сохраняем текущую позицию для последующего отката
     previousPosition = position;
+
+    healthText.setString("Health [ " + std::to_string(health) + " ]");
+    healthText.setPosition(position.x - healthText.getLocalBounds().width / 2, position.y + size / 2 + 5.f);
 }
 
 void Boss::setPosition(float x, float y) { position = sf::Vector2f(x, y); }

@@ -65,6 +65,7 @@ constexpr float MAP_PLAYER_SPAWN_X = 750.f;
 constexpr float MAP_PLAYER_SPAWN_Y = 750.f;
 constexpr float PLAYER_RUN_TIME = 2.f;
 constexpr float RUN_COOLDOWN = 4.f;
+constexpr float MAP_OFFSET = 20.f;
 
 // === Настройки врагов (ботов) ===
 const sf::Color BOT_COLOR = sf::Color(150, 50, 50);
@@ -131,6 +132,7 @@ const sf::Vector2f SCALE_FACTOR_DOWN = {2.2f, 2.2f};
 const sf::Vector2f SCALE_FACTOR_BOSS_LEFT = {6.6f, 6.6f};
 const sf::Vector2f SCALE_FACTOR_BOSS_RIGHT = {-6.6f, 6.6f};
 
+constexpr int FONT_SIZE = 16;
 
 // === Анимации ===
 constexpr float ANIMATION_SPEED = 0.2f;

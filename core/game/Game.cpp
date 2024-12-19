@@ -142,8 +142,10 @@ void Game::update(sf::RenderWindow& window) {
             }
             if (ui) {
                 ui->update(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(),
-                           entityManager.getPlayer()->getMoney(), entityManager.getPlayer()->getWeapon());
+                           entityManager.getPlayer()->getMoney(), entityManager.getPlayer()->getWeapon(),
+                           mapManager.getMap());
             }
+
             entityManager.update(deltaTime);
             if (gameStateManager.getPlayState() == GameStateManager::GamePlayState::Sleep) {
                 if (entityManager.getPlayer()) entityManager.getPlayer()->regenerateArmor(globalTime);

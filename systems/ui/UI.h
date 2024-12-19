@@ -9,8 +9,8 @@
 class UI {
    public:
     UI(int maxHealth, int maxArmor, int money, WeaponType weapon);
-    void update(int currentHealth, int currentArmor, int currentMoney, WeaponType currentWeapon);
-    void render(sf::RenderWindow& window);
+    void update(int currentHealth, int currentArmor, int currentMoney, WeaponType currentWeapon, std::vector<std::vector<int>> mapGrid);
+    static void renderMapAsSymbols(const std::vector<std::vector<int>>&mapGrid);void render(sf::RenderWindow& window);
 
    private:
     sf::Font font;
@@ -32,5 +32,7 @@ class UI {
     WeaponType weapon;
     sf::Text weaponText;
 
-
+    std::vector<std::vector<int>> mapGrid;
+    float blockSize;  // Размер одного блока
+    sf::RectangleShape mapBlock;  // Шаблон блока
 };

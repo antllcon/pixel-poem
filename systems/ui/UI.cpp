@@ -5,7 +5,8 @@
 #include "../../core/config.h"
 #include "../../entities/weapon/Weapon.h"
 
-UI::UI(int maxHealth, int maxArmor, int money, WeaponType weapon) : maxHealth(maxHealth), maxArmor(maxArmor), money(money), weapon(weapon) {
+UI::UI(int maxHealth, int maxArmor, int money, WeaponType weapon) : maxHealth(maxHealth), maxArmor(maxArmor), money(money), weapon(weapon), blockSize(16.f) {
+    mapBlock.setSize({blockSize, blockSize});
     if (!font.loadFromFile(SRC_FONT_MONOCRAFT)) {
         throw std::runtime_error("Failed to load font from " + std::string(SRC_FONT_MONOCRAFT));
     }
@@ -75,7 +76,9 @@ UI::UI(int maxHealth, int maxArmor, int money, WeaponType weapon) : maxHealth(ma
     weaponText.setFillColor(COLOR_LIGHT_YELLOW);
 }
 
-void UI::update(int currentHealth, int currentArmor, int currentMoney, WeaponType currentWeapon) {
+void UI::update(int currentHealth, int currentArmor, int currentMoney, WeaponType currentWeapon, std::vector<std::vector<int>> mapGrid) {
+    this->mapGrid = mapGrid;
+
     float healthRatio = static_cast<float>(currentHealth) / maxHealth;
     healthBar.setSize({160.f * healthRatio, 10.f});
     healthText.setString("Health " + std::to_string(currentHealth));
@@ -113,7 +116,6 @@ void UI::update(int currentHealth, int currentArmor, int currentMoney, WeaponTyp
     weaponText.setString("Gun " + weaponTypeText);
 }
 
-
 void UI::render(sf::RenderWindow& window) {
     window.draw(backgroundPlatform);
     window.draw(healthBarBackground);
@@ -126,4 +128,21 @@ void UI::render(sf::RenderWindow& window) {
     window.draw(weaponSprite);
     window.draw(moneyText);
     window.draw(weaponText);
+    for (size_t y = 0; y < mapGrid.size(); ++y) {
+        for (size_t x = 0; x < mapGrid[y].size(); ++x) {
+            int cell = mapGrid[y][x];
+
+            if (cell >= 101 && cell <= 115) {
+                mapBlock.setFillColor(COLOR_GOLD);  // Комнаты
+            } else if (cell >= 201 && cell <= 211) {
+                mapBlock.setFillColor(COLOR_GRAY);  // Туннели
+            } else {
+                mapBlock.setFillColor(COLOR_DARK);  // Пустота
+            }
+
+            mapBlock.setPosition(x * blockSize + MAP_OFFSET, y * blockSize + MAP_OFFSET);
+            window.draw(mapBlock);
+        }
+    }
+
 }
