@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/pixel_poem.dir/entities/enemy/Enemy.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/entities/entity/EntityManager.cpp.o"
   "CMakeFiles/pixel_poem.dir/entities/entity/EntityManager.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/entities/item/Item.cpp.o"
+  "CMakeFiles/pixel_poem.dir/entities/item/Item.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o"
   "CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o"

@@ -191,17 +191,4 @@ CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: \
  /usr/include/SFML/Graphics/VertexArray.hpp \
  /usr/include/SFML/Graphics/Vertex.hpp \
  /usr/include/SFML/Graphics/Color.hpp \
- /usr/include/SFML/Graphics/PrimitiveType.hpp \
- /usr/include/SFML/Graphics/Font.hpp /usr/include/SFML/Graphics/Glyph.hpp \
- /usr/include/SFML/Graphics/Texture.hpp \
- /usr/include/SFML/Graphics/Image.hpp \
- /usr/include/SFML/Window/GlResource.hpp \
- /usr/include/SFML/Window/Export.hpp \
- /usr/include/SFML/System/NonCopyable.hpp \
- /usr/include/SFML/System/Export.hpp /usr/include/c++/13/map \
- /usr/include/c++/13/bits/stl_tree.h \
- /usr/include/c++/13/ext/aligned_buffer.h \
- /usr/include/c++/13/bits/node_handle.h \
- /usr/include/c++/13/bits/stl_map.h \
- /usr/include/c++/13/bits/stl_multimap.h \
- /usr/include/c++/13/bits/erase_if.h
+ /usr/include/SFML/Graphics/PrimitiveType.hpp

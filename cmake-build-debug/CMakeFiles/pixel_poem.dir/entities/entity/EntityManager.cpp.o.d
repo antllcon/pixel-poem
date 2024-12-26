@@ -288,6 +288,7 @@ CMakeFiles/pixel_poem.dir/entities/entity/EntityManager.cpp.o: \
  /projects/CLionProjects/pixel_poem/entities/entity/./../../entities/player/Player.h \
  /projects/CLionProjects/pixel_poem/entities/entity/./../../entities/money/Money.h \
  /projects/CLionProjects/pixel_poem/entities/entity/./../../entities/boss/Boss.h \
+ /projects/CLionProjects/pixel_poem/entities/entity/./../item/Item.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
  /projects/CLionProjects/pixel_poem/entities/entity/../../core/config.h

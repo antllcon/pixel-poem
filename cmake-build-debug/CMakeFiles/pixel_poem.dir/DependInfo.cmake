@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/projects/CLionProjects/pixel_poem/entities/bullet/Bullet.cpp" "CMakeFiles/pixel_poem.dir/entities/bullet/Bullet.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/entities/bullet/Bullet.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/entities/enemy/Enemy.cpp" "CMakeFiles/pixel_poem.dir/entities/enemy/Enemy.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/entities/enemy/Enemy.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/entities/entity/EntityManager.cpp" "CMakeFiles/pixel_poem.dir/entities/entity/EntityManager.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/entities/entity/EntityManager.cpp.o.d"
+  "/projects/CLionProjects/pixel_poem/entities/item/Item.cpp" "CMakeFiles/pixel_poem.dir/entities/item/Item.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/entities/item/Item.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/entities/money/Money.cpp" "CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/entities/player/Player.cpp" "CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/entities/weapon/Weapon.cpp" "CMakeFiles/pixel_poem.dir/entities/weapon/Weapon.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/entities/weapon/Weapon.cpp.o.d"

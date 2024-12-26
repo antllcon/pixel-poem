@@ -287,6 +287,7 @@ CMakeFiles/pixel_poem.dir/core/game/Game.cpp.o: \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/player/Player.h \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/money/Money.h \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/boss/Boss.h \
+ /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../item/Item.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/camera/CameraManager.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/collision/CollisionManager.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/map/MapManager.h \
