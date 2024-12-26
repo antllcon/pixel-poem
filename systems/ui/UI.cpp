@@ -1,15 +1,11 @@
 #include "UI.h"
 
-#include <iostream>
-
 #include "../../core/config.h"
 #include "../../entities/weapon/Weapon.h"
 
-UI::UI(int maxHealth, int maxArmor, int money, WeaponType weapon) : maxHealth(maxHealth), maxArmor(maxArmor), money(money), weapon(weapon), blockSize(16.f) {
-    mapBlock.setSize({blockSize, blockSize});
-    if (!font.loadFromFile(SRC_FONT_MONOCRAFT)) {
-        throw std::runtime_error("Failed to load font from " + std::string(SRC_FONT_MONOCRAFT));
-    }
+UI::UI(int maxHealth, int maxArmor, int money, WeaponType weapon) : maxHealth(maxHealth), maxArmor(maxArmor), money(money), weapon(weapon) {
+    mapBlock.setSize({BLOCK_SIZE, BLOCK_SIZE});
+    font.loadFromFile(SRC_FONT_MONOCRAFT);
 
     backgroundPlatform.setSize(BACKGROUND_PLATFORM_SIZE);
     backgroundPlatform.setPosition(BACKGROUND_PLATFORM_POS);
@@ -35,12 +31,12 @@ UI::UI(int maxHealth, int maxArmor, int money, WeaponType weapon) : maxHealth(ma
     armorBarBackground.setSize(BAR_SIZE);
     armorBarBackground.setPosition(ARMOR_BACKGROUND_POS);
     armorBarBackground.setFillColor(COLOR_GRAY);
+    armorBarBackground.setOutlineColor(COLOR_BLACK);
+    armorBarBackground.setOutlineThickness(UI_OUTLINE);
 
     armorBar.setSize(BAR_SIZE);
     armorBar.setPosition(ARMOR_BAR_POS);
     armorBar.setFillColor(COLOR_BLUE);
-    armorBarBackground.setOutlineColor(COLOR_BLACK);
-    armorBarBackground.setOutlineThickness(UI_OUTLINE);
 
     armorText.setPosition(ARMOR_TEXT_POS);
     armorText.setFont(font);
@@ -57,63 +53,85 @@ UI::UI(int maxHealth, int maxArmor, int money, WeaponType weapon) : maxHealth(ma
     moneyText.setCharacterSize(UI_TEXT);
     moneyText.setFillColor(COLOR_LIGHT_YELLOW);
 
-    if (weapon == WeaponType::Pistol) {
-        weaponTexture.loadFromFile(SRC_UI_PISTOL);
-    }
-    if (weapon == WeaponType::Rifle) {
-        weaponTexture.loadFromFile(SRC_UI_RIFLE);
-    }
-    if (weapon == WeaponType::Shotgun) {
-        weaponTexture.loadFromFile(SRC_UI_SHOTGUN);
-    }
-    weaponSprite.setTexture(weaponTexture);
-    weaponSprite.setScale(SCALE_FACTOR_LEFT);
-    weaponSprite.setPosition(WEAPON_SPRITE_POS);
-
     weaponText.setPosition(WEAPON_TEXT_POS);
     weaponText.setFont(font);
     weaponText.setCharacterSize(UI_TEXT);
     weaponText.setFillColor(COLOR_LIGHT_YELLOW);
 }
 
-void UI::update(int currentHealth, int currentArmor, int currentMoney, WeaponType currentWeapon, std::vector<std::vector<int>> mapGrid) {
-    this->mapGrid = mapGrid;
+void UI::update(int currentHealth, int currentArmor, int currentMoney, const std::vector<std::vector<int>>& mapGrid, sf::Vector2f playerPosition, sf::Vector2f spawnRoomPosition, sf::Vector2f bossRoomPosition, sf::Vector2f shopRoomPosition) {
+    updateHealthBar(currentHealth);
+    updateArmorBar(currentArmor);
+    updateMoney(currentMoney);
+    updateMiniMap(mapGrid);
+    updateWeapon(weapon);
+    this->spawnRoomPosition = spawnRoomPosition;
+    this->bossRoomPosition = bossRoomPosition;
+    this->shopRoomPosition = shopRoomPosition;
+    this->playerPosition = playerPosition;
+}
 
+sf::Color UI::getBlockColor(size_t x, size_t y, int cell) const {
+    if (x == static_cast<size_t>(spawnRoomPosition.x / CELL_SIZE) && y == static_cast<size_t>(spawnRoomPosition.y / CELL_SIZE)) {
+        return COLOR_WHITE;
+    }
+
+    if (x == static_cast<size_t>(bossRoomPosition.x / CELL_SIZE) && y == static_cast<size_t>(bossRoomPosition.y / CELL_SIZE)) {
+        return COLOR_BLUE;
+    }
+
+    if (x == static_cast<size_t>(shopRoomPosition.x / CELL_SIZE) && y == static_cast<size_t>(shopRoomPosition.y / CELL_SIZE)) {
+        return COLOR_GOLD;
+    }
+
+    if (x == static_cast<size_t>(playerPosition.x / CELL_SIZE) && y == static_cast<size_t>(playerPosition.y / CELL_SIZE)) {
+        return COLOR_GREEN;
+    }
+
+    if (cell >= 101 && cell <= 115) {
+        return COLOR_PINK;
+    }
+    if (cell >= 201 && cell <= 211) {
+        return COLOR_GRAY;
+    }
+    return COLOR_DARK;
+}
+
+void UI::updateHealthBar(int currentHealth) {
     float healthRatio = static_cast<float>(currentHealth) / maxHealth;
     healthBar.setSize({160.f * healthRatio, 10.f});
     healthText.setString("Health " + std::to_string(currentHealth));
+}
 
+void UI::updateArmorBar(int currentArmor) {
     float armorRatio = static_cast<float>(currentArmor) / maxArmor;
     armorBar.setSize({BAR_SIZE.x * armorRatio, BAR_SIZE.y});
     armorText.setString("Armor " + std::to_string(currentArmor));
+}
 
-    moneyText.setString(std::to_string(currentMoney));
+void UI::updateMoney(int currentMoney) { moneyText.setString(std::to_string(currentMoney)); }
 
-    if (weapon == WeaponType::Pistol) {
-        weaponTexture.loadFromFile(SRC_UI_PISTOL);
+void UI::updateWeapon(WeaponType weapon) {
+    std::string weaponTexturePath;
+    switch (weapon) {
+        case WeaponType::Pistol:
+            weaponTexturePath = SRC_UI_PISTOL;
+            weaponText.setString("Pistol");
+            break;
+        case WeaponType::Rifle:
+            weaponTexturePath = SRC_UI_RIFLE;
+            weaponText.setString("Rifle");
+            break;
+        case WeaponType::Shotgun:
+            weaponTexturePath = SRC_UI_SHOTGUN;
+            weaponText.setString("Shotgun");
+            break;
     }
-    if (weapon == WeaponType::Rifle) {
-        weaponTexture.loadFromFile(SRC_UI_RIFLE);
-    }
-    if (weapon == WeaponType::Shotgun) {
-        weaponTexture.loadFromFile(SRC_UI_SHOTGUN);
-    }
+
+    weaponTexture.loadFromFile(weaponTexturePath);
     weaponSprite.setTexture(weaponTexture);
     weaponSprite.setScale(SCALE_FACTOR_LEFT);
     weaponSprite.setPosition(WEAPON_SPRITE_POS);
-
-    std::string weaponTypeText;
-    if (weapon == WeaponType::Pistol) {
-        weaponTypeText = "Pistol";
-    }
-    if (weapon == WeaponType::Rifle) {
-        weaponTypeText = "Rifle";
-    }
-    if (weapon == WeaponType::Shotgun) {
-        weaponTypeText = "Shotgun";
-    }
-
-    weaponText.setString("Gun " + weaponTypeText);
 }
 
 void UI::render(sf::RenderWindow& window) {
@@ -128,21 +146,21 @@ void UI::render(sf::RenderWindow& window) {
     window.draw(weaponSprite);
     window.draw(moneyText);
     window.draw(weaponText);
+    drawMap(window);
+}
+
+void UI::drawMap(sf::RenderWindow& window) {
     for (size_t y = 0; y < mapGrid.size(); ++y) {
         for (size_t x = 0; x < mapGrid[y].size(); ++x) {
             int cell = mapGrid[y][x];
 
-            if (cell >= 101 && cell <= 115) {
-                mapBlock.setFillColor(COLOR_GOLD);  // Комнаты
-            } else if (cell >= 201 && cell <= 211) {
-                mapBlock.setFillColor(COLOR_GRAY);  // Туннели
-            } else {
-                mapBlock.setFillColor(COLOR_DARK);  // Пустота
-            }
+            sf::Color blockColor = getBlockColor(x, y, cell);
+            mapBlock.setFillColor(blockColor);
 
-            mapBlock.setPosition(x * blockSize + MAP_OFFSET, y * blockSize + MAP_OFFSET);
+            mapBlock.setPosition(x * BLOCK_SIZE + MAP_OFFSET, y * BLOCK_SIZE + MAP_OFFSET);
             window.draw(mapBlock);
         }
     }
-
 }
+
+void UI::updateMiniMap(const std::vector<std::vector<int>>& mapGrid) { this->mapGrid = mapGrid; }

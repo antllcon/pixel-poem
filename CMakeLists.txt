@@ -29,6 +29,7 @@ set(SOURCES
         systems/end/End.cpp
         entities/money/Money.cpp
         entities/boss/Boss.cpp
+        entities/item/Item.cpp
 )
 
 set(HEADERS
@@ -53,6 +54,7 @@ set(HEADERS
         systems/end/End.h
         entities/money/Money.h
         entities/boss/Boss.h
+        entities/item/Item.h
 )
 
 # Добавление исполняемого файла

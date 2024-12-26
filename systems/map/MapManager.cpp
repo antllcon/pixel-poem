@@ -13,28 +13,25 @@ MapManager::MapManager(int width, int height, int roomCount) : map(width, height
     coridor.setSize(size);
 }
 
-
 MapManager::~MapManager() = default;
-
-
 
 void MapManager::generateMap() {
     std::cout << " Генерация комнат " << std::endl;
-    Map::placeRooms(map, roomCount);
+    Map::generateRooms(map, roomCount);
     std::cout << " Генерация туннелей " << std::endl;
-    Map::connectRooms(map);
+    Map::generateCorridors(map);
     std::cout << " Распределение типов комнат " << std::endl;
-    map.determinationType();
+    map.determinationCellTypes();
     std::cout << " Установка появления игрока и босса " << std::endl;
-    map.determinationStartAndEnd();
+    map.findStartAndEndRooms();
+    std::cout << " Создание магазина " << std::endl;
+    map.setShopRoom();
     std::cout << " Расчет проходимых областей " << std::endl;
     precomputeWalkabilityMasks();
     std::cout << " Раскраска карты " << std::endl;
     loadTextures();
-    map.printMap();
+    map.printConsole();
 }
-
-
 
 void MapManager::loadTextures() {
     for (int id = 101; id <= 115; ++id) {
@@ -50,7 +47,6 @@ void MapManager::loadTextures() {
         }
     }
 }
-
 
 void MapManager::render(sf::RenderWindow& window) {
     const auto& grid = map.getGrid();
@@ -72,29 +68,19 @@ void MapManager::render(sf::RenderWindow& window) {
     }
 }
 
-
-
-
-
-
 std::vector<std::vector<int>>& MapManager::getMap() { return map.getGrid(); }
 
-
-
-
-
-
 sf::Vector2f MapManager::getPlayerRoomPosition() {
-    return sf::Vector2f(map.getStartRoom());
+    return sf::Vector2f(map.getSpawnRoomPosition());
 }
-
 
 sf::Vector2f MapManager::getBossRoomPosition() {
-    return sf::Vector2f(map.getEndRoom());
+    return sf::Vector2f(map.getBossRoomPosition());
 }
 
-
-
+sf::Vector2f MapManager::getShopRoomPosition() {
+ return sf::Vector2f(map.getShopRoomPosition());
+}
 
 std::vector<sf::Vector2f> MapManager::getRoomPositions() {
     std::vector<sf::Vector2f> roomPositions;
@@ -110,17 +96,10 @@ std::vector<sf::Vector2f> MapManager::getRoomPositions() {
     return roomPositions;
 }
 
-
-
-
-
 std::vector<std::vector<int>> MapManager::getAllPositions() {
     std::vector<sf::Vector2f> roomPositions;
     return map.getGrid();
 }
-
-
-
 
 bool MapManager::isWalkable(int x, int y) {
     int cellX = x / CELL_SIZE;
@@ -142,8 +121,6 @@ bool MapManager::isWalkable(int x, int y) {
 
     return walkabilityMasks[cellY][cellX][maskIndex] & (uint64_t(1) << localBitIndex);
 }
-
-
 
 bool MapManager::isRoomWalkable(int cellType, float localX, float localY) {
 
@@ -170,8 +147,6 @@ bool MapManager::isRoomWalkable(int cellType, float localX, float localY) {
     return false;
 }
 
-
-
 bool MapManager::isCorridorWalkable(int cellType, float localX, float localY) {
 
     switch (cellType) {
@@ -189,8 +164,6 @@ bool MapManager::isCorridorWalkable(int cellType, float localX, float localY) {
     }
     return false;
 }
-
-
 
 void MapManager::precomputeWalkabilityMasks() {
     // Делю ячейку
@@ -224,7 +197,6 @@ void MapManager::precomputeWalkabilityMasks() {
         }
     }
 }
-
 
 bool MapManager::isCellWalkable(int cellType, float localX, float localY) {
 

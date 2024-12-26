@@ -127,9 +127,7 @@ void Game::update(sf::RenderWindow& window) {
 
         case GameStateManager::GameState::Play:
             // Условие победы - вынести
-            if (!entityManager.getPlayer()->getIsAlive() ||
-                entityManager.getPlayer()->getMoney() == NUM_MONEY ||
-                !entityManager.getBoss()->getIsAlive()) {
+            if (!entityManager.getPlayer()->getIsAlive() || entityManager.getPlayer()->getMoney() == NUM_MONEY || !entityManager.getBoss()->getIsAlive()) {
                 changeState(GameStateManager::GameState::End);
                 end = new End(entityManager.getPlayer()->getMoney());
             }
@@ -141,9 +139,7 @@ void Game::update(sf::RenderWindow& window) {
                 changeState(GameStateManager::GameState::Pause);
             }
             if (ui) {
-                ui->update(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(),
-                           entityManager.getPlayer()->getMoney(), entityManager.getPlayer()->getWeapon(),
-                           mapManager.getMap());
+                ui->update(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(), entityManager.getPlayer()->getMoney(), mapManager.getMap(), entityManager.getPlayer()->getPosition(), mapManager.getPlayerRoomPosition(), mapManager.getBossRoomPosition(), mapManager.getShopRoomPosition());
             }
 
             entityManager.update(deltaTime);
@@ -168,8 +164,7 @@ void Game::updateDeltaTime() {
 }
 
 void Game::updateCamera(sf::RenderWindow& window) {
-    if ((gameStateManager.getState() == GameStateManager::GameState::Play && entityManager.getPlayer()) ||
-        gameStateManager.getState() == GameStateManager::GameState::Pause ||
+    if ((gameStateManager.getState() == GameStateManager::GameState::Play && entityManager.getPlayer()) || gameStateManager.getState() == GameStateManager::GameState::Pause ||
         gameStateManager.getState() == GameStateManager::GameState::End) {
         cameraManager.update(view, entityManager.getPlayer());
     } else {
@@ -226,6 +221,7 @@ void Game::initEntitiesPlay() {
     const auto roomPositions = mapManager.getRoomPositions();
     sf::Vector2f playerRoom = mapManager.getPlayerRoomPosition();
     sf::Vector2f bossRoom = mapManager.getBossRoomPosition();
+    sf::Vector2f shopRoom = mapManager.getShopRoomPosition();
     std::cout << " Появление врагов " << std::endl;
     entityManager.spawnEnemies(roomPositions, playerRoom);
     std::cout << " Появление монет " << std::endl;
@@ -234,9 +230,10 @@ void Game::initEntitiesPlay() {
     entityManager.spawnPlayer(playerRoom);
     std::cout << " Появление босса " << std::endl;
     entityManager.spawnBoss(bossRoom);
+    std::cout << " Появление вещей в магазине " << std::endl;
+    entityManager.spawnShopItems(shopRoom);
 
-    ui = new UI(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(),
-                entityManager.getPlayer()->getMoney(), entityManager.getPlayer()->getWeapon());
+    ui = new UI(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(), entityManager.getPlayer()->getMoney(), entityManager.getPlayer()->getWeapon());
 }
 
 GameStateManager& Game::getStateManager() { return gameStateManager; }

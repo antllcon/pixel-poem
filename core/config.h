@@ -3,7 +3,7 @@
 #define CONFIG_H
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <string>
-#include <SFML/Graphics/Font.hpp>
+
 // === Цветовые настройки ===
 const sf::Color COLOR_LIGHT_YELLOW = sf::Color(255, 255, 200);
 const sf::Color COLOR_DARK_PURPLE = sf::Color(64, 28, 47);
@@ -13,6 +13,7 @@ const sf::Color COLOR_BRAUN = sf::Color(93, 48, 83);
 const sf::Color COLOR_GRAY = sf::Color(69, 69, 69);
 const sf::Color COLOR_DARK = sf::Color(51, 51, 51);
 const sf::Color COLOR_RED = sf::Color(153, 0, 0);
+const sf::Color COLOR_PINK = sf::Color(255, 0, 127);
 const sf::Color COLOR_GOLD = sf::Color(239, 191, 4);
 const sf::Color COLOR_BLACK = sf::Color(33, 33, 33);
 const sf::Color COLOR_WHITE = sf::Color(255, 255, 255);
@@ -22,9 +23,9 @@ const sf::Color COLOR_TRANSPARENT = sf::Color(0, 0, 0, 0);
 // === Основные настройки игры ===
 constexpr int SCREEN_WIDTH = 960;
 constexpr int SCREEN_HEIGHT = 540;
-constexpr int ROOM_COUNT = 6; //6
-constexpr int MAP_WIDTH = 8; // 8
-constexpr int MAP_HEIGHT = 8; //8
+constexpr int ROOM_COUNT = 9; //6
+constexpr int MAP_WIDTH = 12; // 8
+constexpr int MAP_HEIGHT = 12; //8
 constexpr float CAMERA_DELTA_WIDTH = SCREEN_WIDTH / 6.f;
 constexpr float CAMERA_DELTA_HEIGHT = SCREEN_HEIGHT / 6.f;
 constexpr int DEAD_ZONE = 25.0f;
@@ -34,6 +35,8 @@ constexpr float STATE_CHANGE_COOLDOWN = 0.5f;
 constexpr float INIT_ZERO_TIME = 0.f;
 constexpr float ENTITY_SIZE_HALTH = 12;
 constexpr float WALL_SIZE = 24;
+constexpr float BLOCK_SIZE = 16.f;
+
 
 // === Настройки комнаты ===
 constexpr int CELL_SIZE = 512;
@@ -46,8 +49,6 @@ constexpr int CELL_MARGIN_RIGHT = 3 * CELL_SIZE / 4 - 32;
 constexpr int CELL_MARGIN_TOP = CELL_SIZE / 4 + ROOM_MARGIN_TOP;
 constexpr int CELL_MARGIN_BOTTOM = 3 * CELL_SIZE / 4 - 10;
 constexpr float SPAWN_MARGIN = 96.0f;
-
-
 const sf::Vector2f REVERSE_POSITION = sf::Vector2f(-1.f, -1.f);
 
 // === Настройки игрока ===
@@ -120,7 +121,7 @@ const sf::Vector2f ARMOR_TEXT_POS = sf::Vector2f(SCREEN_WIDTH - 105.f, SCREEN_HE
 const sf::Vector2f MONEY_SPRITE_POS = sf::Vector2f(SCREEN_WIDTH - 45, 10);
 const sf::Vector2f MONEY_TEXT_POS = sf::Vector2f(SCREEN_WIDTH - 55, 18);
 const sf::Vector2f WEAPON_SPRITE_POS = sf::Vector2f(SCREEN_WIDTH - 90, SCREEN_HEIGHT - 165.f);
-const sf::Vector2f WEAPON_TEXT_POS = sf::Vector2f(SCREEN_WIDTH - 185, SCREEN_HEIGHT - 125.f);
+const sf::Vector2f WEAPON_TEXT_POS = sf::Vector2f(SCREEN_WIDTH - 185, SCREEN_HEIGHT - 135.f);
 
 // === Масштабирование текстур ===
 const sf::Vector2f SCALE_FACTOR = {2.f, 2.f};
@@ -155,6 +156,8 @@ const std::string SRC_COIN = "/projects/CLionProjects/pixel_poem/resources/sprit
 const std::string SRC_UI_PISTOL = "/projects/CLionProjects/pixel_poem/resources/textures/guns/pistol.png";
 const std::string SRC_UI_RIFLE = "/projects/CLionProjects/pixel_poem/resources/textures/guns/rifle.png";
 const std::string SRC_UI_SHOTGUN = "/projects/CLionProjects/pixel_poem/resources/textures/guns/shotgun.png";
+const std::string SRC_UI_HEART = "/projects/CLionProjects/pixel_poem/resources/textures/heart.png";
+const std::string SRC_UI_ARMOR = "/projects/CLionProjects/pixel_poem/resources/textures/armor.png";
 
 const std::string PNG = ".png";
 

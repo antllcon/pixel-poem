@@ -11,9 +11,9 @@ public:
     void render(sf::RenderWindow& window);
     sf::Vector2f getPlayerRoomPosition();
     sf::Vector2f getBossRoomPosition();
+    sf::Vector2f getShopRoomPosition();
     std::vector<sf::Vector2f> getRoomPositions();
     std::vector<std::vector<int>>getAllPositions();
-
     bool isWalkable(int x, int y);
     std::vector<std::vector<int>>& getMap();
 
@@ -31,5 +31,5 @@ private:
     void precomputeWalkabilityMasks();
     static bool isRoomWalkable(int cellType, float localX, float localY);
     static bool isCorridorWalkable(int cellType, float localX, float localY);
-    static bool  isCellWalkable(int cellType, float localX, float localY);
+    static bool isCellWalkable(int cellType, float localX, float localY);
 };

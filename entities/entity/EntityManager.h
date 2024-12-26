@@ -7,6 +7,7 @@
 #include "../../entities/player/Player.h"
 #include "../../entities/money/Money.h"
 #include "../../entities/boss/Boss.h"
+#include "../item/Item.h"
 
 class EntityManager {
    public:
@@ -20,9 +21,11 @@ class EntityManager {
 
     void spawnEnemies(const std::vector<sf::Vector2f>& roomPositions, const sf::Vector2f& playerRoom);
     void spawnMoney(const std::vector<sf::Vector2f>& roomPositions, const sf::Vector2f& playerRoom);
+    void spawnShopItems(const sf::Vector2f&shopRoom);
 
     const std::vector<std::unique_ptr<Enemy>>& getEnemies() const;
     const std::vector<std::unique_ptr<Money>>& getMoneys() const;
+    std::vector<std::unique_ptr<Item>>& getItems();
 
     void addBullet(const Bullet& bullet);
     std::vector<Bullet>& getBullets();
@@ -36,4 +39,5 @@ class EntityManager {
     std::vector<std::unique_ptr<Enemy>> enemies;
     std::vector<Bullet> bullets;
     std::vector<std::unique_ptr<Money>> moneys;
+    std::vector<std::unique_ptr<Item>> items;
 };

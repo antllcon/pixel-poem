@@ -2,7 +2,6 @@
 #include "Player.h"
 
 #include <cmath>
-#include <iostream>
 
 #include "../../core/config.h"
 #include "../../systems/input/Input.h"
@@ -11,7 +10,7 @@ Player::Player(int size, sf::Color color, float speed, int health, int armor, in
     : animation(ANIMATION_SPEED),
       position(position.x + CELL_SIZE / 2, position.y + CELL_SIZE / 2),
       moveDirection(PLAYER_MOVE_DIRECTION),
-      weapon(WeaponType::Rifle),
+      weapon(WeaponType::Pistol),
       speed(speed),
       health(health),
       armor(armor),
@@ -184,6 +183,29 @@ void Player::regenerateArmor(float globalTime) {
         lastRegeneration = globalTime;
     }
 }
+
+WeaponType Player::swapWeapon(WeaponType newWeapon) {
+    WeaponType oldWeapon = weapon.getWeaponType();
+    weapon = newWeapon;
+    return oldWeapon; // Возвращаем старое оружие
+}
+
+void Player::restoreArmor() {
+    armor = PLAYER_ARMOR; // PLAYER_ARMOR — максимальная броня
+}
+
+void Player::restoreHealth() {
+    health = PLAYER_HEALTH; // PLAYER_HEALTH — максимальное здоровье
+}
+
+bool Player::reduceMoney(int amount) {
+    if (money >= amount) {
+        money -= amount;
+        return true; // Покупка прошла успешно
+    }
+    return false; // Недостаточно денег
+}
+
 
 sf::Vector2f Player::getPosition() const { return player.getPosition(); }
 

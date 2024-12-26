@@ -16,6 +16,7 @@ private:
     static void checkPlayerEnemyCollisions(EntityManager& entityManager);
     static void checkPlayerBossCollisions(EntityManager&entityManager);
     static void checkPlayerMoneyCollisions(EntityManager& entityManager);
+    static void checkPlayerShopCollisions(EntityManager& entityManager);
     static void checkPlayerTakeMoneyCollisions(EntityManager& entityManager);
     static void checkEntityWallCollisions(EntityManager& entityManager, MapManager& mapManager);
     static void checkBossWallCollisions(EntityManager&entityManager, MapManager&mapManager);

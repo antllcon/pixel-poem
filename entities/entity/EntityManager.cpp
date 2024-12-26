@@ -61,9 +61,29 @@ void EntityManager::spawnMoney(const std::vector<sf::Vector2f>& roomPositions, c
     }
 }
 
+void EntityManager::spawnShopItems(const sf::Vector2f& shopRoom) {
+    items.clear();
+    //
+    // // Генерируем позиции предметов внутри комнаты магазина
+
+    constexpr int CENTER_ROOM = CELL_SIZE / 2;
+    std::vector<sf::Vector2f> itemPositions = {
+    {shopRoom.x + CENTER_ROOM + 40, shopRoom.y + CENTER_ROOM + 40},
+    {shopRoom.x + CENTER_ROOM + 80, shopRoom.y  + CENTER_ROOM + 40},
+    {shopRoom.x + CENTER_ROOM+ 120, shopRoom.y +CENTER_ROOM  + 40}
+    };
+    //
+    // Создаём предметы магазина
+    items.push_back(std::make_unique<Item>(ItemType::Weapon, 5, itemPositions[0]));
+    items.push_back(std::make_unique<Item>(ItemType::Armor, 3, itemPositions[1]));
+    items.push_back(std::make_unique<Item>(ItemType::Health, 2, itemPositions[2]));
+}
+
 const std::vector<std::unique_ptr<Enemy>>& EntityManager::getEnemies() const { return enemies; }
 
 const std::vector<std::unique_ptr<Money>>& EntityManager::getMoneys() const { return moneys; }
+
+std::vector<std::unique_ptr<Item>>& EntityManager::getItems() { return items; }; // Убираем const
 
 void EntityManager::addBullet(const Bullet& bullet) { bullets.push_back(bullet); }
 
@@ -91,6 +111,11 @@ void EntityManager::update(float deltaTime) {
     for (auto& money : moneys) {
         money->update(deltaTime);
     }
+    //
+    // for (auto& item : items) {
+    //     item->update(deltaTime);
+    // }
+    //
     std::erase_if(moneys, [](const std::unique_ptr<Money>& money) { return !money->getIsTaken(); });
 }
 
@@ -107,6 +132,14 @@ void EntityManager::render(sf::RenderWindow& window) {
 
     for (const auto& bullet : bullets) {
         bullet.draw(window);
+    }
+
+    for (auto& item : items) {
+        if (item) {
+            item->draw(window);
+        } else {
+            std::cerr << "Найдён невалидный предмет!" << std::endl;
+        }
     }
 
     if (boss && boss->getIsAlive()) boss->draw(window);

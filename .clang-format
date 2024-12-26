@@ -1,7 +1,7 @@
 # Основные параметры для форматирования
 BasedOnStyle: Google
 IndentWidth: 4
-ColumnLimit: 240
+ColumnLimit: 120
 
 # Добавление пустых строк
 EmptyLineBeforeAccessModifier: LogicalBlock  # Пустая строка перед модификаторами доступа (public, private)

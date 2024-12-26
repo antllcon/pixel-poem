@@ -249,6 +249,6 @@ CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o: \
  /usr/include/c++/13/bits/enable_special_members.h \
  /projects/CLionProjects/pixel_poem/systems/ui/../../entities/weapon/../bullet/Bullet.h \
  /projects/CLionProjects/pixel_poem/systems/ui/../../entities/weapon/../bullet/../../systems/animation/Animation.h \
- /usr/include/c++/13/iostream /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc \
+ /projects/CLionProjects/pixel_poem/systems/ui/../map/MapManager.h \
+ /projects/CLionProjects/pixel_poem/systems/ui/../map/Map.h \
  /projects/CLionProjects/pixel_poem/systems/ui/../../core/config.h

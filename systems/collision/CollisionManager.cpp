@@ -1,7 +1,6 @@
 #include "CollisionManager.h"
 
 #include <chrono>
-#include <iostream>
 
 #include "../../Utils.h"
 #include "../../core/config.h"
@@ -17,6 +16,8 @@ void CollisionManager::checkCollisions(EntityManager& entityManager, MapManager&
     checkPlayerEnemyCollisions(entityManager);
     checkPlayerBossCollisions(entityManager);
     checkPlayerMoneyCollisions(entityManager);
+    checkPlayerShopCollisions(entityManager);
+    checkPlayerTakeMoneyCollisions(entityManager);
     checkPlayerTakeMoneyCollisions(entityManager);
     checkEntityWallCollisions(entityManager, mapManager);
     checkBossWallCollisions(entityManager, mapManager);
@@ -39,7 +40,7 @@ void CollisionManager::checkBulletEnemyCollisions(EntityManager& entityManager) 
 
 void CollisionManager::checkBulletPlayerCollisions(EntityManager& entityManager) {
     for (auto& bullet : entityManager.getBullets()) {
-        if (bullet.getOwnerType() == Bullet::OwnerType::Bot) {
+        if (bullet.getOwnerType() == Bullet::OwnerType::Bot || bullet.getOwnerType() == Bullet::OwnerType::Boss) {
             if (bullet.getGlobalBounds().intersects(entityManager.getPlayer()->getGlobalBounds())) {
                 entityManager.getPlayer()->takeDamage(bullet.getDamage());
                 bullet.setActive(false);
@@ -95,6 +96,37 @@ void CollisionManager::checkPlayerMoneyCollisions(EntityManager& entityManager) 
         } else {
             if (money->getState() == MoneyState::take) {
                 money->setState(MoneyState::lie);
+            }
+        }
+    }
+}
+
+void CollisionManager::checkPlayerShopCollisions(EntityManager& entityManager) {
+    auto& items = entityManager.getItems(); // Получаем ссылку на вектор предметов
+
+    for (size_t i = 0; i < items.size(); ++i) {
+        if (entityManager.getPlayer()->getGlobalBounds().intersects(items[i]->getGlobalBounds())) {
+            int cost = items[i]->getCost();
+
+            if (entityManager.getPlayer()->getMoney() >= cost) {
+                entityManager.getPlayer()->reduceMoney(cost);
+
+                // Покупка предмета
+                switch (items[i]->getType()) {
+                    case ItemType::Weapon:
+                        entityManager.getPlayer()->swapWeapon(WeaponType::Rifle);
+                    break;
+                    case ItemType::Armor:
+                        entityManager.getPlayer()->restoreArmor();
+                    break;
+                    case ItemType::Health:
+                        entityManager.getPlayer()->restoreHealth();
+                    break;
+                }
+
+                // Удаляем предмет из вектора
+                items.erase(items.begin() + i);
+                break; // Завершаем обработку, так как вектор изменился
             }
         }
     }

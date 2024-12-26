@@ -1,83 +1,13 @@
-
 #include "Map.h"
-
 #include <stdint.h>
-
 #include <ctime>
 #include <iostream>
-
 #include "../../core/config.h"
 
-Map::Map(int w, int h) : width(w), height(h) { grid.resize(height, std::vector<int>(width, 0)); }
+Map::Map(int width, int height): width(width), height(height)
+{ grid.resize(height, std::vector<int>(width, 0)); }
 
-void Map::printMap() const {
-    for (int y = 0; y < grid.size(); ++y) {
-        for (int x = 0; x < grid[y].size(); ++x) {
-            std::string symbol;
-
-            if (x == startRoom.x && y == startRoom.y) {
-                symbol = " ▣ ";
-            }
-            else if (x == endRoom.x && y == endRoom.y) {
-                symbol = " X ";
-            }
-            else {
-                switch (grid[y][x]) {
-                    case 101: case 102: case 103: case 104: case 105:
-                    case 106: case 107: case 108: case 109: case 110:
-                    case 111: case 112: case 113: case 114: case 115:
-                        symbol = " ▢ ";
-                        break;
-
-                    case 201:
-                        symbol = "═╬═";
-                        break;
-                    case 202:
-                        symbol = " ╠═";
-                        break;
-                    case 203:
-                        symbol = "═╣ ";
-                        break;
-                    case 204:
-                        symbol = "═╦═";
-                        break;
-                    case 205:
-                        symbol = "═╩═";
-                        break;
-                    case 206:
-                        symbol = "═══";
-                        break;
-                    case 207:
-                        symbol = " ║ ";
-                        break;
-                    case 208:
-                        symbol = " ╚═";
-                        break;
-                    case 209:
-                        symbol = "═╝ ";
-                        break;
-                    case 210:
-                        symbol = " ╔═";
-                        break;
-                    case 211:
-                        symbol = "═╗ ";
-                        break;
-                    default:
-                        symbol = "   "; // Пустая клетка
-                        break;
-                }
-            }
-
-            std::cout << symbol;
-        }
-        std::cout << "\n";
-    }
-}
-
-
-std::vector<std::vector<int>>& Map::getGrid() { return grid; }
-
-void Map::placeRooms(Map& map, int roomCount) {
+void Map::generateRooms(Map& map, int roomCount) {
     auto& grid = map.getGrid();
     int width = grid[0].size();
     int height = grid.size();
@@ -95,44 +25,7 @@ void Map::placeRooms(Map& map, int roomCount) {
     }
 }
 
-// лоховской способ
-
-// void Map::connectRooms(Map& map) {
-//     auto& grid = map.getGrid();
-//     std::vector<std::pair<int, int>> rooms;
-//
-//     // Собираем координаты всех комнат
-//     for (int y = 1; y < grid.size() - 1; ++y) {
-//         for (int x = 1; x < grid[y].size() - 1; ++x) {
-//             if (grid[y][x] == 1) rooms.push_back({x, y});
-//         }
-//     }
-//
-//     // Соединяем комнаты коридорами
-//     for (size_t i = 1; i < rooms.size(); ++i) {
-//         int x1 = rooms[i - 1].first;
-//         int y1 = rooms[i - 1].second;
-//         int x2 = rooms[i].first;
-//         int y2 = rooms[i].second;
-//
-//         // Двигаемся к следующей комнате
-//         while (x1 != x2 || y1 != y2) {
-//             if (x1 != x2)
-//                 x1 += (x2 > x1) ? 1 : -1;
-//             else if (y1 != y2)
-//                 y1 += (y2 > y1) ? 1 : -1;
-//
-//             // Убедимся, что коридоры не выходят за края
-//             if (x1 > 0 && x1 < grid[0].size() - 1 && y1 > 0 && y1 < grid.size() - 1) {
-//                 if (grid[y1][x1] == 0) grid[y1][x1] = 2;
-//             }
-//         }
-//     }
-// }
-
-// пацанский - кривой
-
-void Map::connectRooms(Map& map) {
+void Map::generateCorridors(Map& map) {
     auto& grid = map.getGrid();
     std::vector<std::pair<int, int>> rooms;
 
@@ -153,33 +46,20 @@ void Map::connectRooms(Map& map) {
         // Двигаемся к следующей комнате
         while (x1 != x2 || y1 != y2) {
             if (rand() % 2 == 0) {
-                if (x1 != x2)
-                    x1 += (x2 > x1) ? 1 : -1;
+                if (x1 != x2) x1 += (x2 > x1) ? 1 : -1;
             } else {
-                if (y1 != y2)
-                    y1 += (y2 > y1) ? 1 : -1;
+                if (y1 != y2) y1 += (y2 > y1) ? 1 : -1;
             }
 
             // Убедимся, что коридоры не выходят за края
             if (x1 > 0 && x1 < grid[0].size() - 1 && y1 > 0 && y1 < grid.size() - 1) {
-                if (grid[y1][x1] == 0) grid[y1][x1] = 2; // 2 — коридор
+                if (grid[y1][x1] == 0) grid[y1][x1] = 2;  // 2 — коридор
             }
         }
     }
 }
 
-
-sf::Vector2i Map::getStartRoom() const{
-    sf::Vector2i roomPosition = sf::Vector2i(startRoom.x * CELL_SIZE, startRoom.y * CELL_SIZE);
-    return roomPosition;
-}
-
-sf::Vector2i Map::getEndRoom() const{
-    sf::Vector2i roomPosition = sf::Vector2i(endRoom.x * CELL_SIZE, endRoom.y * CELL_SIZE);
-    return roomPosition;
-}
-
-void Map::determinationType() {
+void Map::determinationCellTypes() {
     for (int y = 1; y < grid.size() - 1; ++y) {
         for (int x = 1; x < grid[y].size() - 1; ++x) {
             int index = 0;
@@ -240,22 +120,130 @@ void Map::determinationType() {
     }
 }
 
-void Map::determinationStartAndEnd() {
-    startRoom = sf::Vector2i(MAP_WIDTH, MAP_HEIGHT);
-    endRoom = sf::Vector2i(0, 0);
+void Map::findStartAndEndRooms() {
+    spawnRoom = sf::Vector2i(MAP_WIDTH, MAP_HEIGHT);
+    bossRoom = sf::Vector2i(0, 0);
 
     for (int y = 1; y < grid.size() - 1; ++y) {
         for (int x = 1; x < grid[y].size() - 1; ++x) {
             if (grid[y][x] / 100 == 1) {
-                if (x < startRoom.x || y < startRoom.y) {
-                    startRoom.x = x;
-                    startRoom.y = y;
+                if (x < spawnRoom.x || y < spawnRoom.y) {
+                    spawnRoom.x = x;
+                    spawnRoom.y = y;
                 }
-                if (x > endRoom.x || y > endRoom.y) {
-                    endRoom.x = x;
-                    endRoom.y = y;
+                if (x > bossRoom.x || y > bossRoom.y) {
+                    bossRoom.x = x;
+                    bossRoom.y = y;
                 }
             }
         }
     }
+}
+
+void Map::setShopRoom() {
+    shopRoom = getRandomRoom(spawnRoom, bossRoom);
+}
+
+std::vector<std::vector<int>>& Map::getGrid() { return grid; }
+
+sf::Vector2i Map::getSpawnRoomPosition() const {
+    sf::Vector2i roomPosition = sf::Vector2i(spawnRoom.x * CELL_SIZE, spawnRoom.y * CELL_SIZE);
+    return roomPosition;
+}
+
+sf::Vector2i Map::getBossRoomPosition() const {
+    sf::Vector2i roomPosition = sf::Vector2i(bossRoom.x * CELL_SIZE, bossRoom.y * CELL_SIZE);
+    return roomPosition;
+}
+
+sf::Vector2i Map::getShopRoomPosition() const {
+    sf::Vector2i roomPosition = sf::Vector2i(shopRoom.x * CELL_SIZE, shopRoom.y * CELL_SIZE);
+    return roomPosition;
+}
+
+void Map::printConsole() const {
+    for (int y = 0; y < grid.size(); ++y) {
+        for (int x = 0; x < grid[y].size(); ++x) {
+            std::string symbol;
+
+            if (x == spawnRoom.x && y == spawnRoom.y) {
+                symbol = " ▣ ";
+            } else if (x == bossRoom.x && y == bossRoom.y) {
+                symbol = " X ";
+            } else if (x == shopRoom.x && y == shopRoom.y) {
+                symbol = " $ ";
+            } else {
+                switch (grid[y][x]) {
+                    case 101:
+                    case 102:
+                    case 103:
+                    case 104:
+                    case 105:
+                    case 106:
+                    case 107:
+                    case 108:
+                    case 109:
+                    case 110:
+                    case 111:
+                    case 112:
+                    case 113:
+                    case 114:
+                    case 115:
+                        symbol = " ▢ ";
+                        break;
+
+                    case 201:
+                        symbol = "═╬═";
+                        break;
+                    case 202:
+                        symbol = " ╠═";
+                        break;
+                    case 203:
+                        symbol = "═╣ ";
+                        break;
+                    case 204:
+                        symbol = "═╦═";
+                        break;
+                    case 205:
+                        symbol = "═╩═";
+                        break;
+                    case 206:
+                        symbol = "═══";
+                        break;
+                    case 207:
+                        symbol = " ║ ";
+                        break;
+                    case 208:
+                        symbol = " ╚═";
+                        break;
+                    case 209:
+                        symbol = "═╝ ";
+                        break;
+                    case 210:
+                        symbol = " ╔═";
+                        break;
+                    case 211:
+                        symbol = "═╗ ";
+                        break;
+                    default:
+                        symbol = "   ";
+                        break;
+                }
+            }
+
+            std::cout << symbol;
+        }
+        std::cout << "\n";
+    }
+}
+
+sf::Vector2i Map::getRandomRoom(const sf::Vector2i& bossRoom, const sf::Vector2i& playerRoom) {
+    int x, y;
+    do {
+        x = (rand() % (MAP_WIDTH / 2)) * 2 + 1;
+        y = (rand() % (MAP_HEIGHT / 2)) * 2 + 1;
+    } while ((grid[y][x] < 101 || grid[y][x] > 115) ||
+             sf::Vector2i{x, y} == bossRoom ||
+             sf::Vector2i{x, y} == playerRoom);
+    return sf::Vector2i{x, y};
 }

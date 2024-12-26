@@ -27,8 +27,12 @@ class Player {
     bool getIsAlive() const;
     sf::Vector2f getPosition() const;
     int setMoney(int newMoney);
-    void blockMovement();                  // Блокирует движение игрока
+    void blockMovement();
     void setMoveDirection(const sf::Vector2f& newMoveDirection);
+    WeaponType swapWeapon(WeaponType newWeapon);
+    void restoreArmor();
+    void restoreHealth();
+    bool reduceMoney(int amount);
 
    private:
     sf::RectangleShape player;
