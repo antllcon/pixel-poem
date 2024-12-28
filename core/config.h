@@ -35,7 +35,7 @@ constexpr float STATE_CHANGE_COOLDOWN = 0.5f;
 constexpr float INIT_ZERO_TIME = 0.f;
 constexpr float ENTITY_SIZE_HALTH = 12;
 constexpr float WALL_SIZE = 24;
-constexpr float BLOCK_SIZE = 16.f;
+constexpr float BLOCK_SIZE = 8.f;
 
 
 // === Настройки комнаты ===
@@ -55,7 +55,7 @@ const sf::Vector2f REVERSE_POSITION = sf::Vector2f(-1.f, -1.f);
 const sf::Vector2f PLAYER_VIEW(1.0f, 0.0f);
 const sf::Vector2f PLAYER_MOVE_DIRECTION = sf::Vector2f(0.f, 0.f);
 const sf::Color PLAYER_COLOR = sf::Color(78, 162, 122);
-constexpr float PLAYER_SPEED = 200.f;
+constexpr float PLAYER_SPEED = 300.f;
 constexpr float PLAYER_REGENERATION_COOLDOWN = 3.f;
 constexpr int PLAYER_REGENERATION_ARMOR = 1;
 constexpr int PLAYER_SIZE = 24;
@@ -69,6 +69,8 @@ constexpr float RUN_COOLDOWN = 4.f;
 constexpr float MAP_OFFSET = 20.f;
 
 // === Настройки врагов (ботов) ===
+constexpr int BOSS_SIZE = 72;
+
 const sf::Color BOT_COLOR = sf::Color(150, 50, 50);
 constexpr int BOT_SIZE = 24;
 constexpr int BOT_HEALTH = 5;
@@ -76,9 +78,12 @@ constexpr float BOT_SPEED = 100.f;
 constexpr float BOT_DIRECTION_CHANGE_INTERVAL = 2.f;
 constexpr float BOT_DIRECTION_CHANGE_TIME = 0.f;
 constexpr float BOT_VIEW_SIZE = 128.f;
+constexpr float BOSS_VIEW_SIZE = 256.f;
 constexpr int NUM_ENEMIES = ROOM_COUNT * 6;
 const sf::FloatRect BOT_VIEW_AREA(-BOT_VIEW_SIZE, -BOT_VIEW_SIZE, BOT_VIEW_SIZE * 2 + BOT_SIZE,
                                   BOT_VIEW_SIZE * 2 + BOT_SIZE);
+const sf::FloatRect BOSS_VIEW_AREA(-BOSS_VIEW_SIZE, -BOSS_VIEW_SIZE, BOSS_VIEW_SIZE * 2 + BOSS_SIZE,
+                                  BOSS_VIEW_SIZE * 2 + BOSS_SIZE);
 constexpr float MAP_BOT_SPAWN_X = 120.f;
 constexpr float MAP_BOT_SPAWN_Y = 20.f;
 
@@ -107,7 +112,9 @@ constexpr int UI_TEXT = 14;
 constexpr float UI_OUTLINE = 4.f;
 
 const sf::Vector2f BACKGROUND_PLATFORM_SIZE = sf::Vector2f(180.f, 85.f);
+const sf::Vector2f MAP_PLATFORM_SIZE = sf::Vector2f(MAP_WIDTH * BLOCK_SIZE, MAP_HEIGHT * BLOCK_SIZE);
 const sf::Vector2f BACKGROUND_PLATFORM_POS = sf::Vector2f(SCREEN_WIDTH - 195.f, SCREEN_HEIGHT - 100.f);
+const sf::Vector2f MAP_PLATFORM_POS = sf::Vector2f(MAP_OFFSET, MAP_OFFSET);
 
 const sf::Vector2f BAR_SIZE = sf::Vector2f(160.f, 10.f);
 const sf::Vector2f HEALTH_BACKGROUND_POS = sf::Vector2f(SCREEN_WIDTH - 185.f, SCREEN_HEIGHT - 75.f);
@@ -158,6 +165,8 @@ const std::string SRC_UI_RIFLE = "/projects/CLionProjects/pixel_poem/resources/t
 const std::string SRC_UI_SHOTGUN = "/projects/CLionProjects/pixel_poem/resources/textures/guns/shotgun.png";
 const std::string SRC_UI_HEART = "/projects/CLionProjects/pixel_poem/resources/textures/heart.png";
 const std::string SRC_UI_ARMOR = "/projects/CLionProjects/pixel_poem/resources/textures/armor.png";
+const std::string SOUND_FIRE = "/projects/CLionProjects/pixel_poem/resources/sounds/pistol.wav";
+const std::string MUSIC_GAME = "/projects/CLionProjects/pixel_poem/resources/sounds/menu.flac";
 
 const std::string PNG = ".png";
 

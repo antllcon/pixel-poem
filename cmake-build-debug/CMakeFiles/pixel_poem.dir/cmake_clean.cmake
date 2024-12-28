@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/pixel_poem.dir/entities/weapon/Weapon.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/main.cpp.o"
   "CMakeFiles/pixel_poem.dir/main.cpp.o.d"
+  "CMakeFiles/pixel_poem.dir/systems/Sound/SoundManager.cpp.o"
+  "CMakeFiles/pixel_poem.dir/systems/Sound/SoundManager.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/systems/animation/Animation.cpp.o"
   "CMakeFiles/pixel_poem.dir/systems/animation/Animation.cpp.o.d"
   "CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o"

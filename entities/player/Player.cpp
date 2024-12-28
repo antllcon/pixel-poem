@@ -4,6 +4,7 @@
 #include <cmath>
 
 #include "../../core/config.h"
+#include "../../systems/Sound/SoundManager.h"
 #include "../../systems/input/Input.h"
 
 Player::Player(int size, sf::Color color, float speed, int health, int armor, int money, sf::Vector2f position)
@@ -103,23 +104,24 @@ void Player::processShoot(const Input& inputHandler, float globalTime, std::vect
     if (inputHandler.isPressed("shoot")) {
         auto bulletOpt = weapon.tryShoot(position, viewDirection, globalTime, Bullet::OwnerType::Player);
         if (bulletOpt) {
+            SoundManager::getInstance().playSound(SoundEffect::Fire);
             gameBullets.push_back(bulletOpt.value());
         }
     }
 }
+
 void Player::processSpeed(const Input& inputHandler, float globalTime) {
     // Проверяем, можно ли бежать
     if (inputHandler.isPressed("run") && globalTime >= timeNextRun) {
-        speed = PLAYER_SPEED * 2; // Удваиваем скорость
-        timeLastRun = globalTime; // Запоминаем момент начала бега
-        timeNextRun = globalTime + RUN_COOLDOWN; // Устанавливаем задержку на следующее ускорение
+        speed = PLAYER_SPEED * 2;  // Удваиваем скорость
+        timeLastRun = globalTime;  // Запоминаем момент начала бега
+        timeNextRun = globalTime + RUN_COOLDOWN;  // Устанавливаем задержку на следующее ускорение
     } else if (globalTime - timeLastRun >= PLAYER_RUN_TIME) {
-        speed = PLAYER_SPEED; // Возвращаемся к обычной скорости
+        speed = PLAYER_SPEED;                     // Возвращаемся к обычной скорости
     }
 
     // std::cout << " Время: " << globalTime - timeLastRun << std::endl;
 }
-
 
 void Player::setMoveDirection(const sf::Vector2f& newMoveDirection) { moveDirection = newMoveDirection; }
 
@@ -152,7 +154,7 @@ int Player::getArmor() const { return armor; }
 
 int Player::getMoney() const { return money; }
 
-WeaponType Player::getWeapon() const {return weapon.getWeaponType(); }
+WeaponType Player::getWeapon() const { return weapon.getWeaponType(); }
 
 void Player::takeMoney(int newMoney) { money += newMoney; }
 
@@ -187,25 +189,24 @@ void Player::regenerateArmor(float globalTime) {
 WeaponType Player::swapWeapon(WeaponType newWeapon) {
     WeaponType oldWeapon = weapon.getWeaponType();
     weapon = newWeapon;
-    return oldWeapon; // Возвращаем старое оружие
+    return oldWeapon;  // Возвращаем старое оружие
 }
 
 void Player::restoreArmor() {
-    armor = PLAYER_ARMOR; // PLAYER_ARMOR — максимальная броня
+    armor = PLAYER_ARMOR;  // PLAYER_ARMOR — максимальная броня
 }
 
 void Player::restoreHealth() {
-    health = PLAYER_HEALTH; // PLAYER_HEALTH — максимальное здоровье
+    health = PLAYER_HEALTH;  // PLAYER_HEALTH — максимальное здоровье
 }
 
 bool Player::reduceMoney(int amount) {
     if (money >= amount) {
         money -= amount;
-        return true; // Покупка прошла успешно
+        return true;  // Покупка прошла успешно
     }
-    return false; // Недостаточно денег
+    return false;     // Недостаточно денег
 }
-
 
 sf::Vector2f Player::getPosition() const { return player.getPosition(); }
 

@@ -19,6 +19,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/projects/CLionProjects/pixel_poem/entities/player/Player.cpp" "CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/entities/weapon/Weapon.cpp" "CMakeFiles/pixel_poem.dir/entities/weapon/Weapon.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/entities/weapon/Weapon.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/main.cpp" "CMakeFiles/pixel_poem.dir/main.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/main.cpp.o.d"
+  "/projects/CLionProjects/pixel_poem/systems/Sound/SoundManager.cpp" "CMakeFiles/pixel_poem.dir/systems/Sound/SoundManager.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/Sound/SoundManager.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/animation/Animation.cpp" "CMakeFiles/pixel_poem.dir/systems/animation/Animation.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/animation/Animation.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/camera/CameraManager.cpp" "CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/camera/CameraManager.cpp.o.d"
   "/projects/CLionProjects/pixel_poem/systems/collision/CollisionManager.cpp" "CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o" "gcc" "CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o.d"

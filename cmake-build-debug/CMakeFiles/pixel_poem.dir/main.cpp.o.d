@@ -1,13 +1,6 @@
 CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /projects/CLionProjects/pixel_poem/main.cpp /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/core/config.h \
- /usr/include/SFML/Graphics/RectangleShape.hpp \
- /usr/include/SFML/Graphics/Export.hpp /usr/include/SFML/Config.hpp \
- /usr/include/SFML/Graphics/Shape.hpp \
- /usr/include/SFML/Graphics/Drawable.hpp \
- /usr/include/SFML/Graphics/RenderStates.hpp \
- /usr/include/SFML/Graphics/BlendMode.hpp \
- /usr/include/SFML/Graphics/Transform.hpp \
+ /projects/CLionProjects/pixel_poem/Utils.h \
  /usr/include/SFML/Graphics/Rect.hpp /usr/include/SFML/System/Vector2.hpp \
  /usr/include/SFML/System/Vector2.inl /usr/include/c++/13/algorithm \
  /usr/include/c++/13/bits/stl_algobase.h \
@@ -91,6 +84,14 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h \
  /usr/include/SFML/Graphics/Rect.inl \
+ /projects/CLionProjects/pixel_poem/core/config.h \
+ /usr/include/SFML/Graphics/RectangleShape.hpp \
+ /usr/include/SFML/Graphics/Export.hpp /usr/include/SFML/Config.hpp \
+ /usr/include/SFML/Graphics/Shape.hpp \
+ /usr/include/SFML/Graphics/Drawable.hpp \
+ /usr/include/SFML/Graphics/RenderStates.hpp \
+ /usr/include/SFML/Graphics/BlendMode.hpp \
+ /usr/include/SFML/Graphics/Transform.hpp \
  /usr/include/SFML/Graphics/Transformable.hpp \
  /usr/include/SFML/Graphics/VertexArray.hpp \
  /usr/include/SFML/Graphics/Vertex.hpp \
@@ -147,13 +148,12 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc \
- /projects/CLionProjects/pixel_poem/core/game/Game.h \
- /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
- /usr/include/SFML/System.hpp /usr/include/SFML/System/Clock.hpp \
- /usr/include/SFML/System/Export.hpp /usr/include/SFML/System/Time.hpp \
- /usr/include/SFML/System/Err.hpp /usr/include/c++/13/ostream \
- /usr/include/c++/13/ios /usr/include/c++/13/exception \
- /usr/include/c++/13/bits/exception_ptr.h \
+ /projects/CLionProjects/pixel_poem/systems/Sound/SoundManager.h \
+ /usr/include/SFML/Audio.hpp /usr/include/SFML/System.hpp \
+ /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
+ /usr/include/SFML/System/Time.hpp /usr/include/SFML/System/Err.hpp \
+ /usr/include/c++/13/ostream /usr/include/c++/13/ios \
+ /usr/include/c++/13/exception /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
  /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h \
  /usr/include/c++/13/bits/ios_base.h /usr/include/c++/13/ext/atomicity.h \
@@ -209,6 +209,34 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/SFML/System/ThreadLocalPtr.inl \
  /usr/include/SFML/System/Vector3.hpp \
  /usr/include/SFML/System/Vector3.inl \
+ /usr/include/SFML/Audio/InputSoundFile.hpp \
+ /usr/include/SFML/Audio/Export.hpp /usr/include/SFML/Audio/Listener.hpp \
+ /usr/include/SFML/Audio/Music.hpp \
+ /usr/include/SFML/Audio/SoundStream.hpp \
+ /usr/include/SFML/Audio/SoundSource.hpp \
+ /usr/include/SFML/Audio/AlResource.hpp \
+ /usr/include/SFML/Audio/OutputSoundFile.hpp \
+ /usr/include/SFML/Audio/Sound.hpp \
+ /usr/include/SFML/Audio/SoundBuffer.hpp /usr/include/c++/13/set \
+ /usr/include/c++/13/bits/stl_tree.h \
+ /usr/include/c++/13/ext/aligned_buffer.h \
+ /usr/include/c++/13/bits/node_handle.h \
+ /usr/include/c++/13/bits/stl_set.h \
+ /usr/include/c++/13/bits/stl_multiset.h \
+ /usr/include/c++/13/bits/erase_if.h \
+ /usr/include/SFML/Audio/SoundBufferRecorder.hpp \
+ /usr/include/SFML/Audio/SoundRecorder.hpp \
+ /usr/include/SFML/Audio/SoundFileFactory.hpp \
+ /usr/include/SFML/Audio/SoundFileFactory.inl \
+ /usr/include/SFML/Audio/SoundFileReader.hpp \
+ /usr/include/SFML/Audio/SoundFileWriter.hpp \
+ /usr/include/c++/13/unordered_map \
+ /usr/include/c++/13/bits/unordered_map.h \
+ /usr/include/c++/13/bits/hashtable.h \
+ /usr/include/c++/13/bits/hashtable_policy.h \
+ /usr/include/c++/13/bits/enable_special_members.h \
+ /projects/CLionProjects/pixel_poem/core/game/Game.h \
+ /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/Window/Clipboard.hpp \
  /usr/include/SFML/Window/Export.hpp /usr/include/SFML/Window/Context.hpp \
  /usr/include/SFML/Window/GlResource.hpp \
@@ -231,12 +259,8 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/SFML/Graphics/Font.hpp /usr/include/SFML/Graphics/Glyph.hpp \
  /usr/include/SFML/Graphics/Texture.hpp \
  /usr/include/SFML/Graphics/Image.hpp /usr/include/c++/13/map \
- /usr/include/c++/13/bits/stl_tree.h \
- /usr/include/c++/13/ext/aligned_buffer.h \
- /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
- /usr/include/c++/13/bits/erase_if.h \
  /usr/include/SFML/Graphics/RenderTarget.hpp \
  /usr/include/SFML/Graphics/View.hpp \
  /usr/include/SFML/Graphics/RenderTexture.hpp \
@@ -286,7 +310,6 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/Enemy.h \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/../weapon/Weapon.h \
  /usr/include/c++/13/optional \
- /usr/include/c++/13/bits/enable_special_members.h \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/player/Player.h \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/money/Money.h \
  /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/boss/Boss.h \
@@ -296,10 +319,6 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/map/MapManager.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/map/Map.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/input/Input.h \
- /usr/include/c++/13/unordered_map \
- /usr/include/c++/13/bits/unordered_map.h \
- /usr/include/c++/13/bits/hashtable.h \
- /usr/include/c++/13/bits/hashtable_policy.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/menu/Menu.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/menu/../input/Input.h \
  /projects/CLionProjects/pixel_poem/core/game/../../systems/ui/UI.h \

@@ -13,6 +13,12 @@ UI::UI(int maxHealth, int maxArmor, int money, WeaponType weapon) : maxHealth(ma
     backgroundPlatform.setOutlineColor(COLOR_BLACK);
     backgroundPlatform.setOutlineThickness(UI_OUTLINE);
 
+    mapPlatform.setSize(MAP_PLATFORM_SIZE);
+    mapPlatform.setPosition(MAP_PLATFORM_POS);
+    mapPlatform.setFillColor(COLOR_DARK);
+    mapPlatform.setOutlineColor(COLOR_BLACK);
+    mapPlatform.setOutlineThickness(UI_OUTLINE);
+
     healthBarBackground.setSize(BAR_SIZE);
     healthBarBackground.setFillColor(COLOR_GRAY);
     healthBarBackground.setPosition(HEALTH_BACKGROUND_POS);
@@ -59,7 +65,7 @@ UI::UI(int maxHealth, int maxArmor, int money, WeaponType weapon) : maxHealth(ma
     weaponText.setFillColor(COLOR_LIGHT_YELLOW);
 }
 
-void UI::update(int currentHealth, int currentArmor, int currentMoney, const std::vector<std::vector<int>>& mapGrid, sf::Vector2f playerPosition, sf::Vector2f spawnRoomPosition, sf::Vector2f bossRoomPosition, sf::Vector2f shopRoomPosition) {
+void UI::update(int currentHealth, int currentArmor, int currentMoney, WeaponType weapon, const std::vector<std::vector<int>>& mapGrid, sf::Vector2f playerPosition, sf::Vector2f spawnRoomPosition, sf::Vector2f bossRoomPosition, sf::Vector2f shopRoomPosition) {
     updateHealthBar(currentHealth);
     updateArmorBar(currentArmor);
     updateMoney(currentMoney);
@@ -72,6 +78,11 @@ void UI::update(int currentHealth, int currentArmor, int currentMoney, const std
 }
 
 sf::Color UI::getBlockColor(size_t x, size_t y, int cell) const {
+
+    if (x == static_cast<size_t>(playerPosition.x / CELL_SIZE) && y == static_cast<size_t>(playerPosition.y / CELL_SIZE)) {
+        return COLOR_GREEN;
+    }
+
     if (x == static_cast<size_t>(spawnRoomPosition.x / CELL_SIZE) && y == static_cast<size_t>(spawnRoomPosition.y / CELL_SIZE)) {
         return COLOR_WHITE;
     }
@@ -82,10 +93,6 @@ sf::Color UI::getBlockColor(size_t x, size_t y, int cell) const {
 
     if (x == static_cast<size_t>(shopRoomPosition.x / CELL_SIZE) && y == static_cast<size_t>(shopRoomPosition.y / CELL_SIZE)) {
         return COLOR_GOLD;
-    }
-
-    if (x == static_cast<size_t>(playerPosition.x / CELL_SIZE) && y == static_cast<size_t>(playerPosition.y / CELL_SIZE)) {
-        return COLOR_GREEN;
     }
 
     if (cell >= 101 && cell <= 115) {
@@ -136,6 +143,7 @@ void UI::updateWeapon(WeaponType weapon) {
 
 void UI::render(sf::RenderWindow& window) {
     window.draw(backgroundPlatform);
+    window.draw(mapPlatform);
     window.draw(healthBarBackground);
     window.draw(healthBar);
     window.draw(healthText);

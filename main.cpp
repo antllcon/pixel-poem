@@ -1,5 +1,6 @@
 
 
+#include "Utils.h"
 #include "core/config.h"
 #include "core/game/Game.h"
 
@@ -10,6 +11,10 @@ int main() {
     // Инициализация игры
     Game pixelPoem;
     pixelPoem.getStateManager().setState(GameStateManager::GameState::Start);
+
+    // Инициализация музыки
+    initializeSounds();
+    SoundManager::getInstance().playMusic();
 
     // Цикл игры
     while (window.isOpen()) {

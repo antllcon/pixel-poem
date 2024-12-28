@@ -18,7 +18,6 @@ Enemy::Enemy(EnemyState state, sf::Color color, int health, int speed, float dir
       directionChangeInterval(directionChangeInterval),
       timeSinceDirectionChange(timeSinceDirectionChange) {
     enemy.setFillColor(color);
-    setRandomDirection();
     enemy.setSize(sf::Vector2f(size, size));
     enemy.setOrigin(enemy.getLocalBounds().width / 2, enemy.getLocalBounds().height / 2);
 
@@ -57,6 +56,7 @@ void Enemy::update(float deltaTime) {
     animation.update(deltaTime);
     animation.applyToSprite(sprite);
 
+
     // Сохраняем текущую позицию для последующего отката
     previousPosition = position;
 }
@@ -65,6 +65,10 @@ void Enemy::processInput(sf::Vector2f playerPosition, float globalTime, std::vec
     processViewDirection(playerPosition);
     if (state == EnemyState::attack) {
         processShoot(globalTime, gameBullets);
+    }
+    if (globalTime - timeSinceDirectionChange > directionChangeInterval) {
+        setRandomDirection();
+        timeSinceDirectionChange = globalTime;
     }
 }
 

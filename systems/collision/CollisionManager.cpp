@@ -77,7 +77,7 @@ void CollisionManager::checkPlayerEnemyCollisions(EntityManager& entityManager) 
 
 void CollisionManager::checkPlayerBossCollisions(EntityManager& entityManager) {
     sf::FloatRect viewAreaBounds = entityManager.getBoss()->getGlobalBounds();
-    sf::FloatRect viewArea = addFloatRects(viewAreaBounds, BOT_VIEW_AREA);
+    sf::FloatRect viewArea = addFloatRects(viewAreaBounds, BOSS_VIEW_AREA);
     if (entityManager.getPlayer()->getGlobalBounds().intersects(viewArea)) {
         entityManager.getBoss()->setState(BossState::attack);
     } else {

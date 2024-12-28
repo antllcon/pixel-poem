@@ -438,6 +438,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+systems/Sound/SoundManager.o: systems/Sound/SoundManager.cpp.o
+.PHONY : systems/Sound/SoundManager.o
+
+# target to build an object file
+systems/Sound/SoundManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/Sound/SoundManager.cpp.o
+.PHONY : systems/Sound/SoundManager.cpp.o
+
+systems/Sound/SoundManager.i: systems/Sound/SoundManager.cpp.i
+.PHONY : systems/Sound/SoundManager.i
+
+# target to preprocess a source file
+systems/Sound/SoundManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/Sound/SoundManager.cpp.i
+.PHONY : systems/Sound/SoundManager.cpp.i
+
+systems/Sound/SoundManager.s: systems/Sound/SoundManager.cpp.s
+.PHONY : systems/Sound/SoundManager.s
+
+# target to generate assembly for a file
+systems/Sound/SoundManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pixel_poem.dir/build.make CMakeFiles/pixel_poem.dir/systems/Sound/SoundManager.cpp.s
+.PHONY : systems/Sound/SoundManager.cpp.s
+
 systems/animation/Animation.o: systems/animation/Animation.cpp.o
 .PHONY : systems/animation/Animation.o
 
@@ -724,6 +748,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... systems/Sound/SoundManager.o"
+	@echo "... systems/Sound/SoundManager.i"
+	@echo "... systems/Sound/SoundManager.s"
 	@echo "... systems/animation/Animation.o"
 	@echo "... systems/animation/Animation.i"
 	@echo "... systems/animation/Animation.s"

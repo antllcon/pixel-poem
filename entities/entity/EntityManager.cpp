@@ -5,6 +5,7 @@
 #include "../../core/config.h"
 #include "../boss/Boss.h"
 #include "../money/Money.h"
+#include <random>
 
 EntityManager::EntityManager() = default;
 EntityManager::~EntityManager() = default;
@@ -25,6 +26,11 @@ Boss* EntityManager::getBoss() { return boss.get(); }
 
 void EntityManager::spawnEnemies(const std::vector<sf::Vector2f>& roomPositions, const sf::Vector2f& playerRoom) {
     enemies.clear();
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution dist(1.0f, 3.0f);
+
     for (int i = 0; i < NUM_ENEMIES; ++i) {
         if (roomPositions.empty()) break;
         sf::Vector2f spawnPosition;
@@ -35,7 +41,9 @@ void EntityManager::spawnEnemies(const std::vector<sf::Vector2f>& roomPositions,
 
         sf::Vector2f setPosition = {spawnPosition.x + CELL_SIZE / 2, spawnPosition.y + CELL_SIZE / 2};
 
-        auto enemy = std::make_unique<Enemy>(EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED, BOT_DIRECTION_CHANGE_INTERVAL, BOT_DIRECTION_CHANGE_TIME, setPosition);
+        float directionChangeInterval = dist(gen);
+
+        auto enemy = std::make_unique<Enemy>(EnemyState::sleep, BOT_COLOR, BOT_HEALTH, BOT_SPEED, directionChangeInterval, BOT_DIRECTION_CHANGE_TIME, setPosition);
         enemies.push_back(std::move(enemy));
     }
 }
@@ -61,29 +69,37 @@ void EntityManager::spawnMoney(const std::vector<sf::Vector2f>& roomPositions, c
     }
 }
 
+
 void EntityManager::spawnShopItems(const sf::Vector2f& shopRoom) {
     items.clear();
-    //
-    // // Генерируем позиции предметов внутри комнаты магазина
 
     constexpr int CENTER_ROOM = CELL_SIZE / 2;
+
     std::vector<sf::Vector2f> itemPositions = {
-    {shopRoom.x + CENTER_ROOM + 40, shopRoom.y + CENTER_ROOM + 40},
-    {shopRoom.x + CENTER_ROOM + 80, shopRoom.y  + CENTER_ROOM + 40},
-    {shopRoom.x + CENTER_ROOM+ 120, shopRoom.y +CENTER_ROOM  + 40}
+        {shopRoom.x + CENTER_ROOM - 60, shopRoom.y + CENTER_ROOM + 40},
+        {shopRoom.x + CENTER_ROOM, shopRoom.y + CENTER_ROOM + 40},
+        {shopRoom.x + CENTER_ROOM + 60, shopRoom.y + CENTER_ROOM + 40}
     };
-    //
-    // Создаём предметы магазина
-    items.push_back(std::make_unique<Item>(ItemType::Weapon, 5, itemPositions[0]));
-    items.push_back(std::make_unique<Item>(ItemType::Armor, 3, itemPositions[1]));
-    items.push_back(std::make_unique<Item>(ItemType::Health, 2, itemPositions[2]));
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> typeDist(0, 2);
+    std::uniform_int_distribution<int> costDist(2, 10);
+    std::ranges::shuffle(itemPositions, gen);
+
+    for (const auto& position : itemPositions) {
+        ItemType randomType = static_cast<ItemType>(typeDist(gen));
+        int randomCost = costDist(gen);
+        items.push_back(std::make_unique<Item>(randomType, randomCost, position));
+    }
 }
+
 
 const std::vector<std::unique_ptr<Enemy>>& EntityManager::getEnemies() const { return enemies; }
 
 const std::vector<std::unique_ptr<Money>>& EntityManager::getMoneys() const { return moneys; }
 
-std::vector<std::unique_ptr<Item>>& EntityManager::getItems() { return items; }; // Убираем const
+std::vector<std::unique_ptr<Item>>& EntityManager::getItems() { return items; }
 
 void EntityManager::addBullet(const Bullet& bullet) { bullets.push_back(bullet); }
 
@@ -120,6 +136,14 @@ void EntityManager::update(float deltaTime) {
 }
 
 void EntityManager::render(sf::RenderWindow& window) {
+    for (auto& item : items) {
+        if (item) {
+            item->draw(window);
+        } else {
+            std::cerr << "Найдён невалидный предмет!" << std::endl;
+        }
+    }
+
     for (const auto& money : moneys) {
         money->draw(window);
     }
@@ -132,14 +156,6 @@ void EntityManager::render(sf::RenderWindow& window) {
 
     for (const auto& bullet : bullets) {
         bullet.draw(window);
-    }
-
-    for (auto& item : items) {
-        if (item) {
-            item->draw(window);
-        } else {
-            std::cerr << "Найдён невалидный предмет!" << std::endl;
-        }
     }
 
     if (boss && boss->getIsAlive()) boss->draw(window);

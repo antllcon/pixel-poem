@@ -127,7 +127,7 @@ void Game::update(sf::RenderWindow& window) {
 
         case GameStateManager::GameState::Play:
             // Условие победы - вынести
-            if (!entityManager.getPlayer()->getIsAlive() || entityManager.getPlayer()->getMoney() == NUM_MONEY || !entityManager.getBoss()->getIsAlive()) {
+            if (!entityManager.getPlayer()->getIsAlive() || !entityManager.getBoss()->getIsAlive()) {
                 changeState(GameStateManager::GameState::End);
                 end = new End(entityManager.getPlayer()->getMoney());
             }
@@ -139,7 +139,7 @@ void Game::update(sf::RenderWindow& window) {
                 changeState(GameStateManager::GameState::Pause);
             }
             if (ui) {
-                ui->update(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(), entityManager.getPlayer()->getMoney(), mapManager.getMap(), entityManager.getPlayer()->getPosition(), mapManager.getPlayerRoomPosition(), mapManager.getBossRoomPosition(), mapManager.getShopRoomPosition());
+                ui->update(entityManager.getPlayer()->getHealth(), entityManager.getPlayer()->getArmor(), entityManager.getPlayer()->getMoney(), entityManager.getPlayer()->getWeapon(), mapManager.getMap(), entityManager.getPlayer()->getPosition(), mapManager.getPlayerRoomPosition(), mapManager.getBossRoomPosition(), mapManager.getShopRoomPosition());
             }
 
             entityManager.update(deltaTime);

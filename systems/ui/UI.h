@@ -9,7 +9,7 @@
 class UI {
    public:
     UI(int maxHealth, int maxArmor, int money, WeaponType weapon);
-    void update(int currentHealth, int currentArmor, int currentMoney, const std::vector<std::vector<int>> &mapGrid, sf::Vector2f playerPosition, sf::Vector2f spawnRoomPosition, sf::Vector2f bossRoomPosition, sf::Vector2f shopRoomPosition);
+    void update(int currentHealth, int currentArmor, int currentMoney, WeaponType weapon, const std::vector<std::vector<int>> &mapGrid, sf::Vector2f playerPosition, sf::Vector2f spawnRoomPosition, sf::Vector2f bossRoomPosition, sf::Vector2f shopRoomPosition);
     void render(sf::RenderWindow& window);
 
    private:
@@ -32,6 +32,7 @@ class UI {
     sf::Sprite moneySprite;
 
     sf::RectangleShape backgroundPlatform;
+    sf::RectangleShape mapPlatform;
 
     int maxHealth;
     int maxArmor;

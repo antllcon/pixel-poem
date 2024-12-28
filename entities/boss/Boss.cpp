@@ -11,7 +11,7 @@ Boss::Boss(BossState state, sf::Color color, int health, int speed, float direct
       state(state),
       weapon(WeaponType::Rifle),
       health(health),
-      size(BOT_SIZE * 3),
+      size(BOSS_SIZE),
       isAlive(true),
       speed(speed),
       directionChangeInterval(directionChangeInterval),
