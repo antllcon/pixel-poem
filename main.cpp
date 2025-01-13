@@ -1,5 +1,3 @@
-
-
 #include "Utils.h"
 #include "core/config.h"
 #include "core/game/Game.h"

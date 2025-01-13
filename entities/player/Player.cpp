@@ -2,6 +2,7 @@
 #include "Player.h"
 
 #include <cmath>
+#include <iostream>
 
 #include "../../core/config.h"
 #include "../../systems/Sound/SoundManager.h"
@@ -17,6 +18,7 @@ Player::Player(int size, sf::Color color, float speed, int health, int armor, in
       armor(armor),
       money(money),
       isAlive(true),
+      lastRegeneration(0),
       regenerationCooldown(PLAYER_REGENERATION_COOLDOWN) {
     setViewDirection(PLAYER_VIEW);
     player.setSize(sf::Vector2f(size, size));
@@ -111,16 +113,13 @@ void Player::processShoot(const Input& inputHandler, float globalTime, std::vect
 }
 
 void Player::processSpeed(const Input& inputHandler, float globalTime) {
-    // Проверяем, можно ли бежать
     if (inputHandler.isPressed("run") && globalTime >= timeNextRun) {
-        speed = PLAYER_SPEED * 2;  // Удваиваем скорость
-        timeLastRun = globalTime;  // Запоминаем момент начала бега
-        timeNextRun = globalTime + RUN_COOLDOWN;  // Устанавливаем задержку на следующее ускорение
+        speed = PLAYER_SPEED * 1.6;
+        timeLastRun = globalTime;
+        timeNextRun = globalTime + RUN_COOLDOWN;
     } else if (globalTime - timeLastRun >= PLAYER_RUN_TIME) {
-        speed = PLAYER_SPEED;                     // Возвращаемся к обычной скорости
+        speed = PLAYER_SPEED;
     }
-
-    // std::cout << " Время: " << globalTime - timeLastRun << std::endl;
 }
 
 void Player::setMoveDirection(const sf::Vector2f& newMoveDirection) { moveDirection = newMoveDirection; }

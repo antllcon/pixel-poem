@@ -1,7 +1,7 @@
 CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o: \
- /projects/CLionProjects/pixel_poem/systems/map/MapManager.cpp \
+ /projects/pixel_poem/systems/map/MapManager.cpp \
  /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/systems/map/./MapManager.h \
+ /projects/pixel_poem/systems/map/./MapManager.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
@@ -243,7 +243,7 @@ CMakeFiles/pixel_poem.dir/systems/map/MapManager.cpp.o: \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /projects/CLionProjects/pixel_poem/systems/map/./Map.h \
- /usr/include/c++/13/bitset /usr/include/c++/13/iostream \
- /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
- /projects/CLionProjects/pixel_poem/systems/map/../../core/config.h
+ /projects/pixel_poem/systems/map/./Map.h /usr/include/c++/13/bitset \
+ /usr/include/c++/13/iostream /usr/include/c++/13/istream \
+ /usr/include/c++/13/bits/istream.tcc \
+ /projects/pixel_poem/systems/map/../../core/config.h

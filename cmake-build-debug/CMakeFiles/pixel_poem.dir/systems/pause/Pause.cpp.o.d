@@ -1,7 +1,6 @@
 CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o: \
- /projects/CLionProjects/pixel_poem/systems/pause/Pause.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/systems/pause/Pause.h \
+ /projects/pixel_poem/systems/pause/Pause.cpp /usr/include/stdc-predef.h \
+ /projects/pixel_poem/systems/pause/Pause.h \
  /usr/include/SFML/Graphics/Font.hpp \
  /usr/include/SFML/Graphics/Export.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/Graphics/Glyph.hpp /usr/include/SFML/Graphics/Rect.hpp \
@@ -218,7 +217,7 @@ CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o: \
  /usr/include/SFML/Graphics/Transformable.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexArray.hpp \
- /projects/CLionProjects/pixel_poem/systems/pause/../input/Input.h \
+ /projects/pixel_poem/systems/pause/../input/Input.h \
  /usr/include/SFML/Window.hpp /usr/include/SFML/System.hpp \
  /usr/include/SFML/System/Err.hpp /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/basic_ios.h \
@@ -245,6 +244,6 @@ CMakeFiles/pixel_poem.dir/systems/pause/Pause.cpp.o: \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
  /usr/include/c++/13/bits/enable_special_members.h \
- /projects/CLionProjects/pixel_poem/systems/pause/../../core/config.h \
+ /projects/pixel_poem/systems/pause/../../core/config.h \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/Shape.hpp

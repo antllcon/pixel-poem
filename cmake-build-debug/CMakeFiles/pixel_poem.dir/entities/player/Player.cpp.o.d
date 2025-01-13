@@ -1,7 +1,6 @@
 CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o: \
- /projects/CLionProjects/pixel_poem/entities/player/Player.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/entities/player/Player.h \
+ /projects/pixel_poem/entities/player/Player.cpp \
+ /usr/include/stdc-predef.h /projects/pixel_poem/entities/player/Player.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
@@ -243,11 +242,11 @@ CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o: \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /projects/CLionProjects/pixel_poem/entities/player/../../systems/animation/Animation.h \
- /projects/CLionProjects/pixel_poem/entities/player/../weapon/Weapon.h \
+ /projects/pixel_poem/entities/player/../../systems/animation/Animation.h \
+ /projects/pixel_poem/entities/player/../weapon/Weapon.h \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
- /projects/CLionProjects/pixel_poem/entities/player/../weapon/../bullet/Bullet.h \
+ /projects/pixel_poem/entities/player/../weapon/../bullet/Bullet.h \
  /usr/include/c++/13/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -270,9 +269,10 @@ CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o: \
  /usr/include/c++/13/tr1/modified_bessel_func.tcc \
  /usr/include/c++/13/tr1/poly_hermite.tcc \
  /usr/include/c++/13/tr1/poly_laguerre.tcc \
- /usr/include/c++/13/tr1/riemann_zeta.tcc \
- /projects/CLionProjects/pixel_poem/entities/player/../../core/config.h \
- /projects/CLionProjects/pixel_poem/entities/player/../../systems/Sound/SoundManager.h \
+ /usr/include/c++/13/tr1/riemann_zeta.tcc /usr/include/c++/13/iostream \
+ /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
+ /projects/pixel_poem/entities/player/../../core/config.h \
+ /projects/pixel_poem/entities/player/../../systems/Sound/SoundManager.h \
  /usr/include/SFML/Audio.hpp /usr/include/SFML/Audio/InputSoundFile.hpp \
  /usr/include/SFML/Audio/Export.hpp /usr/include/SFML/Audio/Listener.hpp \
  /usr/include/SFML/Audio/Music.hpp \
@@ -294,4 +294,4 @@ CMakeFiles/pixel_poem.dir/entities/player/Player.cpp.o: \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
- /projects/CLionProjects/pixel_poem/entities/player/../../systems/input/Input.h
+ /projects/pixel_poem/entities/player/../../systems/input/Input.h

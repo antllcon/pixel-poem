@@ -1,12 +1,10 @@
 CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o: \
- /projects/CLionProjects/pixel_poem/systems/input/Input.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/systems/input/Input.h \
- /usr/include/SFML/Window.hpp /usr/include/SFML/System.hpp \
- /usr/include/SFML/Config.hpp /usr/include/SFML/System/Clock.hpp \
- /usr/include/SFML/System/Export.hpp /usr/include/SFML/System/Time.hpp \
- /usr/include/SFML/System/Err.hpp /usr/include/c++/13/ostream \
- /usr/include/c++/13/bits/requires_hosted.h \
+ /projects/pixel_poem/systems/input/Input.cpp /usr/include/stdc-predef.h \
+ /projects/pixel_poem/systems/input/Input.h /usr/include/SFML/Window.hpp \
+ /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
+ /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
+ /usr/include/SFML/System/Time.hpp /usr/include/SFML/System/Err.hpp \
+ /usr/include/c++/13/ostream /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -219,7 +217,7 @@ CMakeFiles/pixel_poem.dir/systems/input/Input.cpp.o: \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
- /projects/CLionProjects/pixel_poem/systems/input/../../core/config.h \
+ /projects/pixel_poem/systems/input/../../core/config.h \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/Export.hpp \
  /usr/include/SFML/Graphics/Shape.hpp \

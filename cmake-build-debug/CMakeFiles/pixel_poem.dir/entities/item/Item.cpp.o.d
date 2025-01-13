@@ -1,7 +1,6 @@
 CMakeFiles/pixel_poem.dir/entities/item/Item.cpp.o: \
- /projects/CLionProjects/pixel_poem/entities/item/Item.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/entities/item/Item.h \
+ /projects/pixel_poem/entities/item/Item.cpp /usr/include/stdc-predef.h \
+ /projects/pixel_poem/entities/item/Item.h \
  /usr/include/SFML/Graphics/Rect.hpp /usr/include/SFML/System/Vector2.hpp \
  /usr/include/SFML/System/Vector2.inl /usr/include/c++/13/algorithm \
  /usr/include/c++/13/bits/stl_algobase.h \
@@ -214,12 +213,12 @@ CMakeFiles/pixel_poem.dir/entities/item/Item.cpp.o: \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h \
  /usr/include/SFML/Graphics/VertexArray.hpp \
- /projects/CLionProjects/pixel_poem/entities/item/../../core/config.h \
+ /projects/pixel_poem/entities/item/../../core/config.h \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/Shape.hpp \
- /projects/CLionProjects/pixel_poem/entities/item/../../Utils.h \
- /projects/CLionProjects/pixel_poem/entities/item/../../core/config.h \
- /projects/CLionProjects/pixel_poem/entities/item/../../systems/Sound/SoundManager.h \
+ /projects/pixel_poem/entities/item/../../Utils.h \
+ /projects/pixel_poem/entities/item/../../core/config.h \
+ /projects/pixel_poem/entities/item/../../systems/Sound/SoundManager.h \
  /usr/include/SFML/Audio.hpp /usr/include/SFML/System.hpp \
  /usr/include/SFML/System/Err.hpp /usr/include/c++/13/ostream \
  /usr/include/c++/13/ios /usr/include/c++/13/bits/basic_ios.h \

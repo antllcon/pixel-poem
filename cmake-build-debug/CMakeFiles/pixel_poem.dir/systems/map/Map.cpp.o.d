@@ -1,8 +1,7 @@
 CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: \
- /projects/CLionProjects/pixel_poem/systems/map/Map.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/systems/map/Map.h \
- /usr/include/c++/13/vector /usr/include/c++/13/bits/requires_hosted.h \
+ /projects/pixel_poem/systems/map/Map.cpp /usr/include/stdc-predef.h \
+ /projects/pixel_poem/systems/map/Map.h /usr/include/c++/13/vector \
+ /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -168,7 +167,7 @@ CMakeFiles/pixel_poem.dir/systems/map/Map.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /projects/CLionProjects/pixel_poem/systems/map/../../core/config.h \
+ /projects/pixel_poem/systems/map/../../core/config.h \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/Export.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/Graphics/Shape.hpp \

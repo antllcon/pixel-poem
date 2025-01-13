@@ -1,7 +1,6 @@
 CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o: \
- /projects/CLionProjects/pixel_poem/entities/boss/Boss.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/entities/boss/Boss.h \
+ /projects/pixel_poem/entities/boss/Boss.cpp /usr/include/stdc-predef.h \
+ /projects/pixel_poem/entities/boss/Boss.h \
  /usr/include/SFML/Graphics/RenderWindow.hpp \
  /usr/include/SFML/Graphics/Export.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/Graphics/RenderTarget.hpp \
@@ -204,7 +203,7 @@ CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o: \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Drawable.hpp \
  /usr/include/SFML/Graphics/Transformable.hpp \
- /projects/CLionProjects/pixel_poem/entities/boss/../../systems/animation/Animation.h \
+ /projects/pixel_poem/entities/boss/../../systems/animation/Animation.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/System/Err.hpp \
  /usr/include/c++/13/ostream /usr/include/c++/13/ios \
@@ -245,10 +244,10 @@ CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o: \
  /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /projects/CLionProjects/pixel_poem/entities/boss/../weapon/Weapon.h \
+ /projects/pixel_poem/entities/boss/../weapon/Weapon.h \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
- /projects/CLionProjects/pixel_poem/entities/boss/../weapon/../bullet/Bullet.h \
+ /projects/pixel_poem/entities/boss/../weapon/../bullet/Bullet.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/random \
  /usr/include/c++/13/cmath /usr/include/math.h \
@@ -279,4 +278,4 @@ CMakeFiles/pixel_poem.dir/entities/boss/Boss.cpp.o: \
  /usr/include/c++/13/bits/random.tcc /usr/include/c++/13/numeric \
  /usr/include/c++/13/bits/stl_numeric.h \
  /usr/include/c++/13/pstl/glue_numeric_defs.h \
- /projects/CLionProjects/pixel_poem/entities/boss/../../core/config.h
+ /projects/pixel_poem/entities/boss/../../core/config.h

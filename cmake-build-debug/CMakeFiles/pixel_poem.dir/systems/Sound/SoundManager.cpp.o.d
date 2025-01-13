@@ -1,7 +1,7 @@
 CMakeFiles/pixel_poem.dir/systems/Sound/SoundManager.cpp.o: \
- /projects/CLionProjects/pixel_poem/systems/Sound/SoundManager.cpp \
+ /projects/pixel_poem/systems/Sound/SoundManager.cpp \
  /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/systems/Sound/SoundManager.h \
+ /projects/pixel_poem/systems/Sound/SoundManager.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

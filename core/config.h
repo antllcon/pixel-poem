@@ -79,7 +79,7 @@ constexpr float BOT_DIRECTION_CHANGE_INTERVAL = 2.f;
 constexpr float BOT_DIRECTION_CHANGE_TIME = 0.f;
 constexpr float BOT_VIEW_SIZE = 128.f;
 constexpr float BOSS_VIEW_SIZE = 256.f;
-constexpr int NUM_ENEMIES = ROOM_COUNT * 6;
+constexpr int NUM_ENEMIES = ROOM_COUNT * 3;
 const sf::FloatRect BOT_VIEW_AREA(-BOT_VIEW_SIZE, -BOT_VIEW_SIZE, BOT_VIEW_SIZE * 2 + BOT_SIZE,
                                   BOT_VIEW_SIZE * 2 + BOT_SIZE);
 const sf::FloatRect BOSS_VIEW_AREA(-BOSS_VIEW_SIZE, -BOSS_VIEW_SIZE, BOSS_VIEW_SIZE * 2 + BOSS_SIZE,
@@ -146,27 +146,27 @@ constexpr int FONT_SIZE = 16;
 constexpr float ANIMATION_SPEED = 0.2f;
 
 // === Ресурсы ===
-const std::string SRC_FONT_HARRY = "/projects/CLionProjects/pixel_poem/resources/fonts/Harry.ttf";
-const std::string SRC_FONT_MONOCRAFT = "/projects/CLionProjects/pixel_poem/resources/fonts/Monocraft.otf";
-const std::string SRC_CONTROLLER = "/projects/CLionProjects/pixel_poem/resources/textures/controller.png";
-const std::string SRC_UI_COIN = "/projects/CLionProjects/pixel_poem/resources/textures/coin.png";
-const std::string SRC_SKULL = "/projects/CLionProjects/pixel_poem/resources/textures/skull.png";
-const std::string SRC_ROOM = "/projects/CLionProjects/pixel_poem/resources/textures/rooms/";
-const std::string SRC_TRANSITION = "/projects/CLionProjects/pixel_poem/resources/textures/transitions/";
-const std::string SRC_ROOM_NEXT = "/projects/CLionProjects/pixel_poem/resources/textures/cell_test_next.png";
-const std::string SRC_SKELETON = "/projects/CLionProjects/pixel_poem/resources/sprites/skeleton/skeleton_";
-const std::string SRC_SKULLER = "/projects/CLionProjects/pixel_poem/resources/sprites/skull/skull_";
-const std::string SRC_VAMPIRE = "/projects/CLionProjects/pixel_poem/resources/sprites/vampire/vampire_";
-const std::string SRC_KNIGHT = "/projects/CLionProjects/pixel_poem/resources/sprites/knight/knight_";
-const std::string SRC_ARROW = "/projects/CLionProjects/pixel_poem/resources/sprites/arrow/arrow_";
-const std::string SRC_COIN = "/projects/CLionProjects/pixel_poem/resources/sprites/coin/coin_";
-const std::string SRC_UI_PISTOL = "/projects/CLionProjects/pixel_poem/resources/textures/guns/pistol.png";
-const std::string SRC_UI_RIFLE = "/projects/CLionProjects/pixel_poem/resources/textures/guns/rifle.png";
-const std::string SRC_UI_SHOTGUN = "/projects/CLionProjects/pixel_poem/resources/textures/guns/shotgun.png";
-const std::string SRC_UI_HEART = "/projects/CLionProjects/pixel_poem/resources/textures/heart.png";
-const std::string SRC_UI_ARMOR = "/projects/CLionProjects/pixel_poem/resources/textures/armor.png";
-const std::string SOUND_FIRE = "/projects/CLionProjects/pixel_poem/resources/sounds/pistol.wav";
-const std::string MUSIC_GAME = "/projects/CLionProjects/pixel_poem/resources/sounds/menu.flac";
+const std::string SRC_FONT_HARRY = "/projects/pixel_poem/resources/fonts/Harry.ttf";
+const std::string SRC_FONT_MONOCRAFT = "/projects/pixel_poem/resources/fonts/Monocraft.otf";
+const std::string SRC_CONTROLLER = "/projects/pixel_poem/resources/textures/controller.png";
+const std::string SRC_UI_COIN = "/projects/pixel_poem/resources/textures/coin.png";
+const std::string SRC_SKULL = "/projects/pixel_poem/resources/textures/skull.png";
+const std::string SRC_ROOM = "/projects/pixel_poem/resources/textures/rooms/";
+const std::string SRC_TRANSITION = "/projects/pixel_poem/resources/textures/transitions/";
+const std::string SRC_ROOM_NEXT = "/projects/pixel_poem/resources/textures/cell_test_next.png";
+const std::string SRC_SKELETON = "/projects/pixel_poem/resources/sprites/skeleton/skeleton_";
+const std::string SRC_SKULLER = "/projects/pixel_poem/resources/sprites/skull/skull_";
+const std::string SRC_VAMPIRE = "/projects/pixel_poem/resources/sprites/vampire/vampire_";
+const std::string SRC_KNIGHT = "/projects/pixel_poem/resources/sprites/knight/knight_";
+const std::string SRC_ARROW = "/projects/pixel_poem/resources/sprites/arrow/arrow_";
+const std::string SRC_COIN = "/projects/pixel_poem/resources/sprites/coin/coin_";
+const std::string SRC_UI_PISTOL = "/projects/pixel_poem/resources/textures/guns/pistol.png";
+const std::string SRC_UI_RIFLE = "/projects/pixel_poem/resources/textures/guns/rifle.png";
+const std::string SRC_UI_SHOTGUN = "/projects/pixel_poem/resources/textures/guns/shotgun.png";
+const std::string SRC_UI_HEART = "/projects/pixel_poem/resources/textures/heart.png";
+const std::string SRC_UI_ARMOR = "/projects/pixel_poem/resources/textures/armor.png";
+const std::string SOUND_FIRE = "/projects/pixel_poem/resources/sounds/pistol.wav";
+const std::string MUSIC_GAME = "/projects/pixel_poem/resources/sounds/menu.flac";
 
 const std::string PNG = ".png";
 

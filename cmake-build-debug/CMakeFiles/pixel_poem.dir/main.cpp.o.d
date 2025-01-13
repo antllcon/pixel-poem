@@ -1,6 +1,5 @@
-CMakeFiles/pixel_poem.dir/main.cpp.o: \
- /projects/CLionProjects/pixel_poem/main.cpp /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/Utils.h \
+CMakeFiles/pixel_poem.dir/main.cpp.o: /projects/pixel_poem/main.cpp \
+ /usr/include/stdc-predef.h /projects/pixel_poem/Utils.h \
  /usr/include/SFML/Graphics/Rect.hpp /usr/include/SFML/System/Vector2.hpp \
  /usr/include/SFML/System/Vector2.inl /usr/include/c++/13/algorithm \
  /usr/include/c++/13/bits/stl_algobase.h \
@@ -83,8 +82,7 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/c++/13/bits/invoke.h /usr/include/c++/13/bits/ranges_util.h \
  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h \
- /usr/include/SFML/Graphics/Rect.inl \
- /projects/CLionProjects/pixel_poem/core/config.h \
+ /usr/include/SFML/Graphics/Rect.inl /projects/pixel_poem/core/config.h \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/Export.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/Graphics/Shape.hpp \
@@ -148,7 +146,7 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc \
- /projects/CLionProjects/pixel_poem/systems/Sound/SoundManager.h \
+ /projects/pixel_poem/systems/Sound/SoundManager.h \
  /usr/include/SFML/Audio.hpp /usr/include/SFML/System.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
  /usr/include/SFML/System/Time.hpp /usr/include/SFML/System/Err.hpp \
@@ -235,9 +233,8 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
  /usr/include/c++/13/bits/enable_special_members.h \
- /projects/CLionProjects/pixel_poem/core/game/Game.h \
- /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
- /usr/include/SFML/Window/Clipboard.hpp \
+ /projects/pixel_poem/core/game/Game.h /usr/include/SFML/Graphics.hpp \
+ /usr/include/SFML/Window.hpp /usr/include/SFML/Window/Clipboard.hpp \
  /usr/include/SFML/Window/Export.hpp /usr/include/SFML/Window/Context.hpp \
  /usr/include/SFML/Window/GlResource.hpp \
  /usr/include/SFML/Window/ContextSettings.hpp \
@@ -304,26 +301,26 @@ CMakeFiles/pixel_poem.dir/main.cpp.o: \
  /usr/include/c++/13/backward/auto_ptr.h \
  /usr/include/c++/13/bits/ranges_uninitialized.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/EntityManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/bullet/Bullet.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/bullet/../../systems/animation/Animation.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/Enemy.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/../weapon/Weapon.h \
+ /projects/pixel_poem/core/game/../../entities/entity/EntityManager.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/bullet/Bullet.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/bullet/../../systems/animation/Animation.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/Enemy.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/../weapon/Weapon.h \
  /usr/include/c++/13/optional \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/player/Player.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/money/Money.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/boss/Boss.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../item/Item.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/camera/CameraManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/collision/CollisionManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/map/MapManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/map/Map.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/input/Input.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/menu/Menu.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/menu/../input/Input.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/ui/UI.h \
- /projects/CLionProjects/pixel_poem/core/game/GameStateManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/pause/Pause.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/pause/../input/Input.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/end/End.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/end/../input/Input.h
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/player/Player.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/money/Money.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/boss/Boss.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../item/Item.h \
+ /projects/pixel_poem/core/game/../../systems/camera/CameraManager.h \
+ /projects/pixel_poem/core/game/../../systems/collision/CollisionManager.h \
+ /projects/pixel_poem/core/game/../../systems/map/MapManager.h \
+ /projects/pixel_poem/core/game/../../systems/map/Map.h \
+ /projects/pixel_poem/core/game/../../systems/input/Input.h \
+ /projects/pixel_poem/core/game/../../systems/menu/Menu.h \
+ /projects/pixel_poem/core/game/../../systems/menu/../input/Input.h \
+ /projects/pixel_poem/core/game/../../systems/ui/UI.h \
+ /projects/pixel_poem/core/game/GameStateManager.h \
+ /projects/pixel_poem/core/game/../../systems/pause/Pause.h \
+ /projects/pixel_poem/core/game/../../systems/pause/../input/Input.h \
+ /projects/pixel_poem/core/game/../../systems/end/End.h \
+ /projects/pixel_poem/core/game/../../systems/end/../input/Input.h

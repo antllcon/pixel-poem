@@ -1,12 +1,11 @@
 CMakeFiles/pixel_poem.dir/core/game/Game.cpp.o: \
- /projects/CLionProjects/pixel_poem/core/game/Game.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/core/game/Game.h \
- /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
- /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
- /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
- /usr/include/SFML/System/Time.hpp /usr/include/SFML/System/Err.hpp \
- /usr/include/c++/13/ostream /usr/include/c++/13/bits/requires_hosted.h \
+ /projects/pixel_poem/core/game/Game.cpp /usr/include/stdc-predef.h \
+ /projects/pixel_poem/core/game/Game.h /usr/include/SFML/Graphics.hpp \
+ /usr/include/SFML/Window.hpp /usr/include/SFML/System.hpp \
+ /usr/include/SFML/Config.hpp /usr/include/SFML/System/Clock.hpp \
+ /usr/include/SFML/System/Export.hpp /usr/include/SFML/System/Time.hpp \
+ /usr/include/SFML/System/Err.hpp /usr/include/c++/13/ostream \
+ /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -277,39 +276,39 @@ CMakeFiles/pixel_poem.dir/core/game/Game.cpp.o: \
  /usr/include/c++/13/backward/auto_ptr.h \
  /usr/include/c++/13/bits/ranges_uninitialized.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/EntityManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/bullet/Bullet.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/bullet/../../systems/animation/Animation.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/Enemy.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/../weapon/Weapon.h \
+ /projects/pixel_poem/core/game/../../entities/entity/EntityManager.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/bullet/Bullet.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/bullet/../../systems/animation/Animation.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/Enemy.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/enemy/../weapon/Weapon.h \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/player/Player.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/money/Money.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../../entities/boss/Boss.h \
- /projects/CLionProjects/pixel_poem/core/game/../../entities/entity/../item/Item.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/camera/CameraManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/collision/CollisionManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/map/MapManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/map/Map.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/input/Input.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/player/Player.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/money/Money.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../../entities/boss/Boss.h \
+ /projects/pixel_poem/core/game/../../entities/entity/../item/Item.h \
+ /projects/pixel_poem/core/game/../../systems/camera/CameraManager.h \
+ /projects/pixel_poem/core/game/../../systems/collision/CollisionManager.h \
+ /projects/pixel_poem/core/game/../../systems/map/MapManager.h \
+ /projects/pixel_poem/core/game/../../systems/map/Map.h \
+ /projects/pixel_poem/core/game/../../systems/input/Input.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/menu/Menu.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/menu/../input/Input.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/ui/UI.h \
- /projects/CLionProjects/pixel_poem/core/game/GameStateManager.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/pause/Pause.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/pause/../input/Input.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/end/End.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/end/../input/Input.h \
+ /projects/pixel_poem/core/game/../../systems/menu/Menu.h \
+ /projects/pixel_poem/core/game/../../systems/menu/../input/Input.h \
+ /projects/pixel_poem/core/game/../../systems/ui/UI.h \
+ /projects/pixel_poem/core/game/GameStateManager.h \
+ /projects/pixel_poem/core/game/../../systems/pause/Pause.h \
+ /projects/pixel_poem/core/game/../../systems/pause/../input/Input.h \
+ /projects/pixel_poem/core/game/../../systems/end/End.h \
+ /projects/pixel_poem/core/game/../../systems/end/../input/Input.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /projects/CLionProjects/pixel_poem/core/game/../../Utils.h \
- /projects/CLionProjects/pixel_poem/core/game/../../core/config.h \
- /projects/CLionProjects/pixel_poem/core/game/../../systems/Sound/SoundManager.h \
+ /projects/pixel_poem/core/game/../../Utils.h \
+ /projects/pixel_poem/core/game/../../core/config.h \
+ /projects/pixel_poem/core/game/../../systems/Sound/SoundManager.h \
  /usr/include/SFML/Audio.hpp /usr/include/SFML/Audio/InputSoundFile.hpp \
  /usr/include/SFML/Audio/Export.hpp /usr/include/SFML/Audio/Listener.hpp \
  /usr/include/SFML/Audio/Music.hpp \
@@ -327,4 +326,4 @@ CMakeFiles/pixel_poem.dir/core/game/Game.cpp.o: \
  /usr/include/SFML/Audio/SoundFileFactory.inl \
  /usr/include/SFML/Audio/SoundFileReader.hpp \
  /usr/include/SFML/Audio/SoundFileWriter.hpp \
- /projects/CLionProjects/pixel_poem/core/game/../config.h
+ /projects/pixel_poem/core/game/../config.h

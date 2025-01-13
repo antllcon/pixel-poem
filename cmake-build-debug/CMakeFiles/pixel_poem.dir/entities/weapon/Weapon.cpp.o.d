@@ -1,7 +1,6 @@
 CMakeFiles/pixel_poem.dir/entities/weapon/Weapon.cpp.o: \
- /projects/CLionProjects/pixel_poem/entities/weapon/Weapon.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/entities/weapon/Weapon.h \
+ /projects/pixel_poem/entities/weapon/Weapon.cpp \
+ /usr/include/stdc-predef.h /projects/pixel_poem/entities/weapon/Weapon.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
@@ -244,8 +243,8 @@ CMakeFiles/pixel_poem.dir/entities/weapon/Weapon.cpp.o: \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
- /projects/CLionProjects/pixel_poem/entities/weapon/../bullet/Bullet.h \
- /projects/CLionProjects/pixel_poem/entities/weapon/../bullet/../../systems/animation/Animation.h \
+ /projects/pixel_poem/entities/weapon/../bullet/Bullet.h \
+ /projects/pixel_poem/entities/weapon/../bullet/../../systems/animation/Animation.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \

@@ -1,7 +1,6 @@
 CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o: \
- /projects/CLionProjects/pixel_poem/entities/money/Money.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/entities/money/Money.h \
+ /projects/pixel_poem/entities/money/Money.cpp /usr/include/stdc-predef.h \
+ /projects/pixel_poem/entities/money/Money.h \
  /usr/include/SFML/Graphics/Rect.hpp /usr/include/SFML/System/Vector2.hpp \
  /usr/include/SFML/System/Vector2.inl /usr/include/c++/13/algorithm \
  /usr/include/c++/13/bits/stl_algobase.h \
@@ -94,7 +93,7 @@ CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o: \
  /usr/include/SFML/Graphics/Transformable.hpp \
  /usr/include/SFML/Graphics/Vertex.hpp \
  /usr/include/SFML/Graphics/Color.hpp \
- /projects/CLionProjects/pixel_poem/entities/money/../../systems/animation/Animation.h \
+ /projects/pixel_poem/entities/money/../../systems/animation/Animation.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/System/Clock.hpp \
  /usr/include/SFML/System/Export.hpp /usr/include/SFML/System/Time.hpp \
@@ -275,9 +274,9 @@ CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o: \
  /usr/include/c++/13/bits/random.tcc /usr/include/c++/13/numeric \
  /usr/include/c++/13/bits/stl_numeric.h \
  /usr/include/c++/13/pstl/glue_numeric_defs.h \
- /projects/CLionProjects/pixel_poem/entities/money/../../Utils.h \
- /projects/CLionProjects/pixel_poem/entities/money/../../core/config.h \
- /projects/CLionProjects/pixel_poem/entities/money/../../systems/Sound/SoundManager.h \
+ /projects/pixel_poem/entities/money/../../Utils.h \
+ /projects/pixel_poem/entities/money/../../core/config.h \
+ /projects/pixel_poem/entities/money/../../systems/Sound/SoundManager.h \
  /usr/include/SFML/Audio.hpp /usr/include/SFML/Audio/InputSoundFile.hpp \
  /usr/include/SFML/Audio/Export.hpp /usr/include/SFML/Audio/Listener.hpp \
  /usr/include/SFML/Audio/Music.hpp \
@@ -300,4 +299,4 @@ CMakeFiles/pixel_poem.dir/entities/money/Money.cpp.o: \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
  /usr/include/c++/13/bits/enable_special_members.h \
- /projects/CLionProjects/pixel_poem/entities/money/../../core/config.h
+ /projects/pixel_poem/entities/money/../../core/config.h

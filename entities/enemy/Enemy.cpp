@@ -94,6 +94,7 @@ void Enemy::processViewDirection(sf::Vector2f playerPosition) {
 void Enemy::processShoot(float globalTime, std::vector<Bullet>& gameBullets) {
     auto bulletOpt = weapon.tryShoot(position, viewDirection, globalTime, Bullet::OwnerType::Bot);
     if (bulletOpt) {
+        SoundManager::getInstance().playSound(SoundEffect::Fire);
         gameBullets.push_back(bulletOpt.value());
     }
 }
@@ -141,7 +142,7 @@ EnemyState Enemy::getState() const { return state; }
 void Enemy::setState(EnemyState newState) { state = newState; }
 
 void Enemy::blockMovement() {
-    position = previousPosition;  // Возвращаемся к предыдущей позиции
-    setRandomDirection();         // выбираем случайное направление двжиения
-    enemy.setPosition(position);  // Обновляем положение в графике
+    position = previousPosition;
+    setRandomDirection();
+    enemy.setPosition(position);
 }

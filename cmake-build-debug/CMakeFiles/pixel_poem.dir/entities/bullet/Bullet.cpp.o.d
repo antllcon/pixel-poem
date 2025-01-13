@@ -1,7 +1,6 @@
 CMakeFiles/pixel_poem.dir/entities/bullet/Bullet.cpp.o: \
- /projects/CLionProjects/pixel_poem/entities/bullet/Bullet.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/entities/bullet/Bullet.h \
+ /projects/pixel_poem/entities/bullet/Bullet.cpp \
+ /usr/include/stdc-predef.h /projects/pixel_poem/entities/bullet/Bullet.h \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/Export.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/Graphics/Shape.hpp \
@@ -208,7 +207,7 @@ CMakeFiles/pixel_poem.dir/entities/bullet/Bullet.cpp.o: \
  /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
  /usr/include/SFML/System/String.inl \
  /usr/include/SFML/Graphics/Sprite.hpp \
- /projects/CLionProjects/pixel_poem/entities/bullet/../../systems/animation/Animation.h \
+ /projects/pixel_poem/entities/bullet/../../systems/animation/Animation.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/System/Err.hpp \
  /usr/include/c++/13/ostream /usr/include/c++/13/ios \
@@ -246,8 +245,8 @@ CMakeFiles/pixel_poem.dir/entities/bullet/Bullet.cpp.o: \
  /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /projects/CLionProjects/pixel_poem/entities/bullet/../../core/config.h \
- /projects/CLionProjects/pixel_poem/entities/bullet/../player/Player.h \
- /projects/CLionProjects/pixel_poem/entities/bullet/../player/../weapon/Weapon.h \
+ /projects/pixel_poem/entities/bullet/../../core/config.h \
+ /projects/pixel_poem/entities/bullet/../player/Player.h \
+ /projects/pixel_poem/entities/bullet/../player/../weapon/Weapon.h \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h

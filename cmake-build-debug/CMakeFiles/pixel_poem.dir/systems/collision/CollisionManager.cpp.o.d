@@ -1,8 +1,8 @@
 CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o: \
- /projects/CLionProjects/pixel_poem/systems/collision/CollisionManager.cpp \
+ /projects/pixel_poem/systems/collision/CollisionManager.cpp \
  /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/systems/collision/CollisionManager.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/EntityManager.h \
+ /projects/pixel_poem/systems/collision/CollisionManager.h \
+ /projects/pixel_poem/systems/collision/../../entities/entity/EntityManager.h \
  /usr/include/c++/13/memory /usr/include/c++/13/bits/memoryfwd.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
@@ -200,7 +200,7 @@ CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o: \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc \
- /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/bullet/Bullet.h \
+ /projects/pixel_poem/systems/collision/../../entities/entity/../../entities/bullet/Bullet.h \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/Export.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/Graphics/Shape.hpp \
@@ -249,7 +249,7 @@ CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o: \
  /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
  /usr/include/SFML/System/String.inl \
  /usr/include/SFML/Graphics/Sprite.hpp \
- /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/bullet/../../systems/animation/Animation.h \
+ /projects/pixel_poem/systems/collision/../../entities/entity/../../entities/bullet/../../systems/animation/Animation.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/System/Err.hpp \
  /usr/include/SFML/System/FileInputStream.hpp \
@@ -282,14 +282,14 @@ CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o: \
  /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
  /usr/include/SFML/Graphics/Text.hpp \
  /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/enemy/Enemy.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/enemy/../weapon/Weapon.h \
+ /projects/pixel_poem/systems/collision/../../entities/entity/../../entities/enemy/Enemy.h \
+ /projects/pixel_poem/systems/collision/../../entities/entity/../../entities/enemy/../weapon/Weapon.h \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/player/Player.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/money/Money.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../../entities/boss/Boss.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../entities/entity/../item/Item.h \
+ /projects/pixel_poem/systems/collision/../../entities/entity/../../entities/player/Player.h \
+ /projects/pixel_poem/systems/collision/../../entities/entity/../../entities/money/Money.h \
+ /projects/pixel_poem/systems/collision/../../entities/entity/../../entities/boss/Boss.h \
+ /projects/pixel_poem/systems/collision/../../entities/entity/../item/Item.h \
  /usr/include/c++/13/chrono /usr/include/c++/13/bits/chrono.h \
  /usr/include/c++/13/ratio /usr/include/c++/13/limits \
  /usr/include/c++/13/bits/parse_numbers.h /usr/include/c++/13/sstream \
@@ -299,9 +299,9 @@ CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o: \
  /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/format \
  /usr/include/c++/13/array /usr/include/c++/13/charconv \
  /usr/include/c++/13/span /usr/include/c++/13/variant \
- /projects/CLionProjects/pixel_poem/systems/collision/../../Utils.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../core/config.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../systems/Sound/SoundManager.h \
+ /projects/pixel_poem/systems/collision/../../Utils.h \
+ /projects/pixel_poem/systems/collision/../../core/config.h \
+ /projects/pixel_poem/systems/collision/../../systems/Sound/SoundManager.h \
  /usr/include/SFML/Audio.hpp /usr/include/SFML/Audio/InputSoundFile.hpp \
  /usr/include/SFML/Audio/Export.hpp /usr/include/SFML/Audio/Listener.hpp \
  /usr/include/SFML/Audio/Music.hpp \
@@ -323,6 +323,6 @@ CMakeFiles/pixel_poem.dir/systems/collision/CollisionManager.cpp.o: \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../../core/config.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../map/MapManager.h \
- /projects/CLionProjects/pixel_poem/systems/collision/../map/Map.h
+ /projects/pixel_poem/systems/collision/../../core/config.h \
+ /projects/pixel_poem/systems/collision/../map/MapManager.h \
+ /projects/pixel_poem/systems/collision/../map/Map.h

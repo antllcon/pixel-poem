@@ -20,12 +20,10 @@ Item::Item(ItemType type, int cost, sf::Vector2f position)
     sprite.setPosition(position);
     sprite.setScale(SCALE_FACTOR_LEFT);
 
-    // Загрузка шрифта
     if (!font.loadFromFile(SRC_FONT_MONOCRAFT)) {
         throw std::runtime_error("Failed to load font: " + std::string(SRC_FONT_MONOCRAFT));
     }
 
-    // Настройка текста цены
     priceText.setFont(font);
     priceText.setString(std::to_string(cost) + "$");
     priceText.setCharacterSize(12);

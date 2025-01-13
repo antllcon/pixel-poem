@@ -1,7 +1,6 @@
 CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o: \
- /projects/CLionProjects/pixel_poem/systems/ui/UI.cpp \
- /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/systems/ui/UI.h \
+ /projects/pixel_poem/systems/ui/UI.cpp /usr/include/stdc-predef.h \
+ /projects/pixel_poem/systems/ui/UI.h \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/Export.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/Graphics/Shape.hpp \
@@ -217,7 +216,7 @@ CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o: \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h \
- /projects/CLionProjects/pixel_poem/systems/ui/../../entities/weapon/Weapon.h \
+ /projects/pixel_poem/systems/ui/../../entities/weapon/Weapon.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/System/Err.hpp \
  /usr/include/c++/13/ostream /usr/include/c++/13/ios \
@@ -247,8 +246,8 @@ CMakeFiles/pixel_poem.dir/systems/ui/UI.cpp.o: \
  /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
  /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
- /projects/CLionProjects/pixel_poem/systems/ui/../../entities/weapon/../bullet/Bullet.h \
- /projects/CLionProjects/pixel_poem/systems/ui/../../entities/weapon/../bullet/../../systems/animation/Animation.h \
- /projects/CLionProjects/pixel_poem/systems/ui/../map/MapManager.h \
- /projects/CLionProjects/pixel_poem/systems/ui/../map/Map.h \
- /projects/CLionProjects/pixel_poem/systems/ui/../../core/config.h
+ /projects/pixel_poem/systems/ui/../../entities/weapon/../bullet/Bullet.h \
+ /projects/pixel_poem/systems/ui/../../entities/weapon/../bullet/../../systems/animation/Animation.h \
+ /projects/pixel_poem/systems/ui/../map/MapManager.h \
+ /projects/pixel_poem/systems/ui/../map/Map.h \
+ /projects/pixel_poem/systems/ui/../../core/config.h

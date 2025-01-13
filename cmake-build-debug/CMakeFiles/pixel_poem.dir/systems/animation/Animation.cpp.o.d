@@ -1,7 +1,7 @@
 CMakeFiles/pixel_poem.dir/systems/animation/Animation.cpp.o: \
- /projects/CLionProjects/pixel_poem/systems/animation/Animation.cpp \
+ /projects/pixel_poem/systems/animation/Animation.cpp \
  /usr/include/stdc-predef.h \
- /projects/CLionProjects/pixel_poem/systems/animation/Animation.h \
+ /projects/pixel_poem/systems/animation/Animation.h \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
