@@ -23,9 +23,9 @@ const sf::Color COLOR_TRANSPARENT = sf::Color(0, 0, 0, 0);
 // === Основные настройки игры ===
 constexpr int SCREEN_WIDTH = 960;
 constexpr int SCREEN_HEIGHT = 540;
-constexpr int ROOM_COUNT = 9; //6
-constexpr int MAP_WIDTH = 12; // 8
-constexpr int MAP_HEIGHT = 12; //8
+constexpr int ROOM_COUNT = 5; //6
+constexpr int MAP_WIDTH = 8; // 8
+constexpr int MAP_HEIGHT = 8; //8
 constexpr float CAMERA_DELTA_WIDTH = SCREEN_WIDTH / 6.f;
 constexpr float CAMERA_DELTA_HEIGHT = SCREEN_HEIGHT / 6.f;
 constexpr int DEAD_ZONE = 25.0f;
@@ -102,7 +102,7 @@ constexpr int BULLET_DAMAGE = 10;
 constexpr int MONEY_SIZE = 24;
 constexpr int MONEY_VALUE = 1;
 constexpr int MONEY_SPEED = 500.f;
-constexpr int NUM_MONEY = 16;
+constexpr int NUM_MONEY = 32;
 constexpr float MONEY_VIEW_SIZE = 64.f;
 const sf::FloatRect MONEY_VIEW_AREA(-MONEY_VIEW_SIZE, -MONEY_VIEW_SIZE, MONEY_VIEW_SIZE * 2 + MONEY_SIZE,
                                     MONEY_VIEW_SIZE * 2 + MONEY_SIZE);
